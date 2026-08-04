@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banana Doce - Vitrine de Ofertas</title>
+    <style>
+        :root {
+            --amarelo: #ffcc00;
+            --amarelo-escuro: #e6b800;
+            --verde: #5cb85c;
+            --preto: #1a1a1a;
+            --branco: #ffffff;
+            --cinza-claro: #f4f4f4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--cinza-claro);
+            color: var(--preto);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: var(--preto);
+            padding: 20px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid var(--amarelo);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-container img {
+            height: 60px;
+            width: auto;
+            border-radius: 50%;
+        }
+
+        .logo-container h1 {
+            color: var(--amarelo);
+            font-size: 1.5rem;
+        }
+
+        .btn-topo {
+            background-color: var(--verde);
+            color: var(--branco);
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn-topo:hover {
+            background-color: #4cae4c;
+        }
+
+        /* Seção Principal (Hero) */
+        .hero {
+            background: linear-gradient(135deg, var(--amarelo) 0%, var(--amarelo-escuro) 100%);
+            padding: 60px 10%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .hero img.banner-logo {
+            max-width: 220px;
+            height: auto;
+            margin-bottom: 10px;
+            filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.2));
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            color: var(--preto);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            color: #333;
+        }
+
+        .cta-button {
+            background-color: #1877f2; /* Cor oficial do Facebook */
+            color: var(--branco);
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: transform 0.2s, background-color 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .cta-button:hover {
+            background-color: #145dbf;
+            transform: translateY(-3px);
+        }
+
+        /* Seção de Vantagens / Recursos */
+        .features {
+            padding: 50px 10%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            background-color: var(--branco);
+        }
+
+        .feature-card {
+            background: var(--cinza-claro);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            border-top: 4px solid var(--verde);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+            color: var(--preto);
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: var(--preto);
+            color: var(--branco);
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+            font-size: 0.9rem;
+        }
+
+        footer span {
+            color: var(--amarelo);
+        }
+    </style>
+</head>
+<!-- Metadados básicos -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banana Doce - Vitrine de Ofertas</title>
+    <meta name="description" content="Acompanhe a vitrine de ofertas da Banana Doce e aproveite descontos imperdíveis todos os dias. Visite nossa página!">
+    <meta name="keywords" content="Banana Doce, Vitrine de Ofertas, Promoções, Descontos">
+
+    <!-- Open Graph / Facebook (Melhora a aparência ao compartilhar o link) -->
+    <meta property="og:title" content="Banana Doce - Vitrine de Ofertas">
+    <meta property="og:description" content="Confira as melhores ofertas e promoções exclusivas na nossa vitrine!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.facebook.com/bdvitrineofertas">
+    <meta property="og:image" content="https://banana-doce-vtof.github.io/blog-banana-doce/logotipo.png">
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <div class="logo-container">
+            <!-- Certifique-se de salvar a imagem do logotipo como 'logo.png' na mesma pasta -->
+            <img src="logotipo.png" alt="Logotipo Banana Doce">
+            <h1>Banana Doce Vitrine de Ofertas</h1>
+        </div>
+        <a href="https://www.facebook.com/bdvitrineofertas" target="_blank" class="btn-topo">Acessar Ofertas</a>
+    </header>
+
+    <!-- Seção Principal -->
+    <section class="hero">
+        <video autoplay muted controls width="640" height="360" controls>
+          <source src="banana.mp4" type="video/mp4">
+           Seu navegador não suporta este vídeo.
+        </video>
+        <h2>As Melhores Ofertas Estão Aqui!</h2>
+        <p>Economize tempo e dinheiro. Acompanhe nossa vitrine exclusiva e aproveite descontos imperdíveis todos os dias.</p>
+        
+        <a href="https://www.facebook.com/bdvitrineofertas" target="_blank" class="cta-button">
+            Visite nossa página no Facebook
+        </a>
+    </section>
+
+    <!-- Seção de Destaques -->
+    <section class="features">
+        <div class="feature-card">
+            <h3>🔥 Ofertas Diárias</h3>
+            <p>Seleção especial de promoções atualizadas frequentemente para você não perder nada.</p>
+        </div>
+        <div class="feature-card">
+            <h3>⭐ Qualidade Garantida</h3>
+            <p>Parceiros selecionados e produtos com preços que cabem no seu bolso.</p>
+        </div>
+        <div class="feature-card">
+            <h3>🚀 Praticidade</h3>
+            <p>Tudo o que você procura reunido em um só lugar de forma rápida e transparente.</p>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2026 <span>Banana Doce - Vitrine de Ofertas</span>. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
