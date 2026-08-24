@@ -4,31 +4,37 @@
 
   <url>
        <loc>https://banana-doce-vtof.github.io/blog-banana-doce/</loc>
-       <lastmod>2026-08-20T23:04:22+00:00</lastmod>
+       <lastmod>2026-08-24T20:53:21+00:00</lastmod>
        <changefreq>daily</changefreq>
        <priority>1.0000</priority>
   </url>
   <url>
+       <loc>https://banana-doce-vtof.github.io/blog-banana-doce/artigo5/</loc>
+       <lastmod>2026-08-24T20:53:21+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
        <loc>https://banana-doce-vtof.github.io/blog-banana-doce/artigo4/</loc>
-       <lastmod>2026-08-20T23:04:22+00:00</lastmod>
+       <lastmod>2026-08-24T20:53:21+00:00</lastmod>
        <changefreq>daily</changefreq>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://banana-doce-vtof.github.io/blog-banana-doce/artigo3/</loc>
-       <lastmod>2026-08-20T23:04:22+00:00</lastmod>
+       <lastmod>2026-08-24T20:53:21+00:00</lastmod>
        <changefreq>daily</changefreq>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://banana-doce-vtof.github.io/blog-banana-doce/artigo2/</loc>
-       <lastmod>2026-08-20T23:04:22+00:00</lastmod>
+       <lastmod>2026-08-24T20:53:21+00:00</lastmod>
        <changefreq>daily</changefreq>
        <priority>0.8000</priority>
   </url>
   <url>
        <loc>https://banana-doce-vtof.github.io/blog-banana-doce/artigo1/</loc>
-       <lastmod>2026-08-20T23:04:22+00:00</lastmod>
+       <lastmod>2026-08-24T20:53:21+00:00</lastmod>
        <changefreq>daily</changefreq>
        <priority>0.8000</priority>
   </url>
