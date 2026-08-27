@@ -78,6 +78,15 @@
     .meu-botao:hover {
         background-color: #0056b3;
     }
+    .tabela-container {
+        width: 100%;       /* Ocupa a largura total da tela */
+        overflow-x: auto;  /* Ativa a rolagem horizontal quando necessário */ 
+    }
+    table {
+        width: 100%;       
+        min-width: 600px;  /* Força a tabela a ser maior que telas pequenas para a rolagem acontecer */
+        border-collapse: collapse;
+    }
   </style>
   <link rel="icon" href="logotipo.png">  
 </head>
@@ -128,7 +137,7 @@
         <li><strong> Lembre-se:</strong> A tecnologia facilitou o acesso, mas a responsabilidade pela sua saúde continua sendo sua. Pesquise, questione e treine com inteligência!</li>      
     </ul>
     <h2><span>Sugestões para Compra</h2>
-    <div>
+    <div tabela-container>
     <table style="width: 60%; margin: 0 auto; text-align: center;">
         <tbody>
          <tr>
