@@ -1,309 +1,233 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banana Doce - Vitrine de Ofertas</title>
-    <style>
-        :root {
-            --amarelo: #ffcc00;
-            --amarelo-escuro: #e6b800;
-            --verde: #5cb85c;
-            --preto: #1a1a1a;
-            --branco: #ffffff;
-            --cinza-claro: #f4f4f4;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--cinza-claro);
-            color: var(--preto);
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        /* Cabeçalho */
-        header {
-            background-color: var(--preto);
-            padding: 20px 10%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 4px solid var(--amarelo);
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .logo-container img {
-            height: 60px;
-            width: auto;
-            border-radius: 50%;
-        }
-
-        .logo-container h1 {
-            color: var(--amarelo);
-            font-size: 1.5rem;
-        }
-
-        .btn-topo {
-            background-color: var(--verde);
-            color: var(--branco);
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-
-        .btn-topo:hover {
-            background-color: #4cae4c;
-        }
-
-        /* Seção Principal (Hero) */
-        .hero {
-            background: linear-gradient(135deg, var(--amarelo) 0%, var(--amarelo-escuro) 100%);
-            padding: 60px 10%;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .hero img.banner-logo {
-            max-width: 220px;
-            height: auto;
-            margin-bottom: 10px;
-            filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.2));
-        }
-
-        .hero h2 {
-            font-size: 2.5rem;
-            color: var(--preto);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            color: #333;
-        }
-
-        .cta-button {
-            background-color: #1877f2; /* Cor oficial do Facebook */
-            color: var(--branco);
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            border-radius: 30px;
-            text-decoration: none;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            transition: transform 0.2s, background-color 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .cta-button:hover {
-            background-color: #145dbf;
-            transform: translateY(-3px);
-        }
-
-        /*Seção de Destaques*/
-
-        .secao-destaque {
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            color: #ffffff;
-            padding: 80px 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        .conteudo-destaque {
-            max-width: 600px;
-        }
-
-        .conteudo-destaque h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .conteudo-destaque span {
-            color: #ffeb3b;
-        }
-
-        .conteudo-destaque p {
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-
-        .botao-acao {
-            background-color: #ffeb3b;
-            color: #333333;
-            padding: 12px 28px;
-            border-radius: 4px;
-            font-weight: bold;
-            text-decoration: none;
-            display: inline-block;
-            transition: background 0.3s;
-        }
-
-        .botao-acao:hover {
-            background-color: #fdd835;
-        }
-        
-        /* Seção de Vantagens / Recursos */
-        .features {
-            padding: 50px 10%;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            background-color: var(--branco);
-        }
-
-        .feature-card {
-            background: var(--cinza-claro);
-            padding: 30px;
-            border-radius: 8px;
-            text-align: center;
-            border-top: 4px solid var(--verde);
-        }
-
-        .feature-card h3 {
-            margin-bottom: 10px;
-            color: var(--preto);
-        }
-
-        /* Rodapé */
-        footer {
-            background-color: var(--preto);
-            color: var(--branco);
-            text-align: center;
-            padding: 20px;
-            margin-top: auto;
-            font-size: 0.9rem;
-        }
-
-        footer span {
-            color: var(--amarelo);
-        }
-    </style>
-    <link rel="icon" href="logotipo.png">  
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>N-acetilcisteína (NAC) — Guia Essencial</title>
+   <!-- SEO Básico -->
+  <meta name="description" content="Descubra o poder da N-acetilcisteína (NAC): benefícios para fígado, respiração, imunidade e saúde mental. Veja como usar corretamente e os cuidados essenciais." />
+  <meta name="keywords" content="NAC, N-acetilcisteína, suplemento, saúde do fígado, saúde respiratória, antioxidante, glutationa, saúde mental, detoxificação, fertilidade" />
+  <meta name="author" content="Equipe de Saúde" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: #222;
+      margin: 0;
+      padding: 40px 20px;
+      line-height: 1.6;
+    }
+    header {
+      background: #a0bea8; /* verde suave */
+      border-bottom: 2px solid #a3d9a5; /* borda verde discreta */
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 28px;
+      font-weight: 600;
+      margin: 0;
+      color: #2f6d31; /* verde escuro */
+    }
+    h2 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-top: 32px;
+      color: #2f6d31;
+    }
+    p, li {
+      font-size: 16px;
+      color: #444;
+    }
+    ul {
+      margin: 12px 0 24px 20px;
+    }
+    .section {
+      max-width: 800px;
+      margin: 0 auto 40px auto;
+      border-left: 3px solid #a3d9a5; /* borda lateral verde */
+      padding-left: 16px;
+    }
+    .btn {
+      display: inline-block;
+      background: none;
+      border: 1px solid #2f6d31;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: #2f6d31;
+    }
+    .btn:hover {
+      background: #2f6d31;
+      color: #fff;
+    }
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 14px;
+      color: #777;
+      border-top: 2px solid #a3d9a5;
+      padding-top: 12px;
+    }
+    .meu-botao {
+        padding: 8px 16px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .meu-botao:hover {
+        background-color: #0056b3;
+    }
+    .tabela-container {
+        width: 100%;       /* Ocupa a largura total da tela */
+        overflow-x: auto;  /* Ativa a rolagem horizontal quando necessário */ 
+    }
+    table {
+        width: 100%;       
+        min-width: 600px;  /* Força a tabela a ser maior que telas pequenas para a rolagem acontecer */
+        border-collapse: collapse;
+    }
+  </style>
 </head>
-<!-- Metadados básicos -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banana Doce - Vitrine de Ofertas</title>
-    <meta name="description" content="Acompanhe a vitrine de ofertas da Banana Doce e aproveite descontos imperdíveis todos os dias. Visite nossa página!">
-    <meta name="keywords" content="Banana Doce, Vitrine de Ofertas, Promoções, Descontos">
-
-    <!-- Open Graph / Facebook (Melhora a aparência ao compartilhar o link) -->
-    <meta property="og:title" content="Banana Doce - Vitrine de Ofertas">
-    <meta property="og:description" content="Confira as melhores ofertas e promoções exclusivas na nossa vitrine!">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.facebook.com/bdvitrineofertas">
-    <meta property="og:image" content="https://banana-doce-vtof.github.io/blog-banana-doce/logotipo.png">
 <body>
+  <header>
+    <h1>✨ Descubra o poder da N-acetilcisteína (NAC)</h1>
+    <p>Você sabia que esse suplemento pode ajudar na saúde do fígado, melhorar a respiração e até apoiar a saúde mental?</p>
+    <img src="artigoQR6.png" title="Escaneie e Veja no Celular" width="100" height="100">  
+</header>
+  <div class="section">
+        <center>
+             <p><img src="artigo6.png" width="300" height="400"></p>   
+        </center>
+  </div> 
+  <div class="section">
+    <p><strong>Segue baixo uma breve explicação:</strong></p>
+    <ul>
+      <li>✅ O que é a NAC</li>
+      <li>✅ Para que serve</li>
+      <li>✅ Como usar corretamente</li>
+      <li>✅ Cuidados essenciais no consumo</li>
+    </ul>
+    <p><strong>👉 Leia agora e entenda como a NAC pode ser uma aliada para sua saúde!</strong></p>
+  </div>
 
-    <!-- Cabeçalho -->
-    <header>
-        <div class="logo-container">
-            <!-- Certifique-se de salvar a imagem do logotipo como 'logo.png' na mesma pasta -->
-            <h1>Banana Doce Vitrine de Ofertas</h1>
-        </div>
-        <a href="https://www.facebook.com/bdvitrineofertas" target="_blank" class="btn-topo">Acessar Ofertas</a>
-    </header>
+  <div class="section">
+    <h2>🧪 O que é a NAC?</h2>
+    <p>N-acetilcisteína é a forma suplementar do aminoácido L-cisteína.</p>
+    <p>Atua como precursor da glutationa, o antioxidante mais poderoso produzido pelo corpo.</p>
+    <p>Usada na medicina há mais de 50 anos, especialmente em hospitais para intoxicações e problemas respiratórios.</p>
+  </div>
 
-    <!-- Seção Principal -->
-    <section class="hero">
-        <video autoplay muted controls width="640" height="360" controls>
-          <source src="banana1.mp4" type="video/mp4">
-           Seu navegador não suporta este vídeo.
-        </video>
-        <h2>As Melhores Ofertas Estão Aqui!</h2>
-        <p>Economize tempo e dinheiro. Acompanhe nossa vitrine exclusiva e aproveite descontos imperdíveis todos os dias.</p>
-        
-        <a href="https://www.facebook.com/bdvitrineofertas" target="_blank" class="cta-button">
-            Visite nossa página no Facebook
-        </a>
-    </section>
-    <!-- Seção de Destaques -->
-    <center><h2>Blog do Banana Doce</h2></center>
-    <section class="secao-destaque">
-        <div class="conteudo-destaque">
-            <img src="artigo5.jpg" alt="artigo1" width="400" height="250" >
-            <h3><span>Tudo o que você precisa saber sobre Whey Protein antes de comprar! 🥛💪</span></h3>
-             <p>Guia completo para escolher o suplemento certo.</p>
-             <a href="https://banana-doce-vtof.github.io/blog-banana-doce/artigo5/" class="botao-acao">Saiba mais.</a>
-        </div>
-    </section>
-    <section class="secao-destaque">
-        <div class="conteudo-destaque">
-            <img src="artigo4.png" alt="artigo1" width="200" height="200" >
-            <h3><span>O Guia Definitivo do Magnésio</span></h3>
-             <p>Conheça os Diferentes Tipos, Mecanismos de Absorção e Seus Benefícios Fundamentais para a Saúde.</p>
-             <a href="https://banana-doce-vtof.github.io/blog-banana-doce/artigo4/" class="botao-acao">Saiba mais.</a>
-        </div>
-    </section>
-    <section class="secao-destaque">
-        <div class="conteudo-destaque">
-            <img src="artigo3.jpg" alt="artigo1" width="200" height="200" >
-            <h3><span>Tudo Sobre o Colágeno: Tipos, Benefícios e Como Usar</span></h3>
-             <p>Entenda a ciência por trás da suplementação e saiba como escolher a melhor opção para a pele e articulações.</p>
-             <a href="https://banana-doce-vtof.github.io/blog-banana-doce/artigo3/" class="botao-acao">Saiba mais.</a>
-        </div>
-    </section>
-    <section class="secao-destaque">
-        <div class="conteudo-destaque">
-            <img src="artigo2.jpg" alt="artigo1" width="200" height="200" >
-            <h3><span>O Triângulo da Beleza Descomplicado</span></h3>
-             <p>Um guia prático sobre como cuidar da pele, cabelo e unhas de dentro para fora.</p>
-             <a href="https://banana-doce-vtof.github.io/blog-banana-doce/artigo2/" class="botao-acao">Saiba mais.</a>
-        </div>
-    </section>
-    <section class="secao-destaque">
-        <div class="conteudo-destaque">
-            <img src="artigo1.jpg" alt="artigo1" width="200" height="200" >
-            <h3><span>A Revolução dos Suplementos Online</span></h3>
-             <p>Como Comprar com Inteligência e Segurança.</p>
-             <a href="https://banana-doce-vtof.github.io/blog-banana-doce/artigo1/" class="botao-acao">Saiba mais.</a>
-        </div>
-    </section>
-    
-    <section class="features">
-        <div class="feature-card">
-            <h3>🔥 Ofertas Diárias</h3>
-            <p>Seleção especial de promoções atualizadas frequentemente para você não perder nada.</p>
-        </div>
-        <div class="feature-card">
-            <h3>⭐ Qualidade Garantida</h3>
-            <p>Parceiros selecionados e produtos com preços que cabem no seu bolso.</p>
-        </div>
-        <div class="feature-card">
-            <h3>🚀 Praticidade</h3>
-            <p>Tudo o que você procura reunido em um só lugar de forma rápida e transparente.</p>
-        </div>
-    </section>
+  <div class="section">
+    <h2>🌿 Para que serve?</h2>
+    <ul>
+      <li><strong>Saúde hepática:</strong> protege e regenera o fígado, sendo antídoto em intoxicações e útil contra danos de álcool e medicamentos.</li>
+      <li><strong>Saúde respiratória:</strong> ação mucolítica que dissolve muco, facilitando a respiração em casos de bronquite, sinusite ou poluição.</li>
+      <li><strong>Imunidade:</strong> fortalece células de defesa contra vírus e bactérias.</li>
+      <li><strong>Saúde mental:</strong> estudos mostram benefícios em transtorno obsessivo-compulsivo (TOC), depressão e compulsões.</li>
+      <li><strong>Detoxificação:</strong> auxilia na eliminação de toxinas e metais pesados.</li>
+      <li><strong>Fertilidade:</strong> melhora parâmetros seminais em homens e ovulação em mulheres com SOP.</li>
+    </ul>
+  </div>
 
-    <!-- Rodapé -->
-    <footer>
-        <p>&copy; 2026 <span>Banana Doce - Vitrine de Ofertas</span>. Todos os direitos reservados.</p>
-    </footer>
+  <div class="section">
+    <h2>💊 Como usar?</h2>
+    <ul>
+      <li><strong>Dose geral:</strong> entre 600 mg e 1200 mg por dia, dividida em 2 tomadas.</li>
+      <li><strong>Saúde respiratória:</strong> até 1800 mg/dia em episódios agudos.</li>
+      <li><strong>Dica prática:</strong> tomar em jejum e, se possível, junto com vitamina C, que potencializa a síntese de glutationa.</li>
+    </ul>
+  </div>
 
+  <div class="section">
+    <h2>⚠️ Cuidados importantes</h2>
+    <ul>
+      <li><strong>Contraindicações:</strong> não deve ser usada sem orientação em gestantes, lactantes ou pessoas com doenças crônicas sem supervisão médica.</li>
+      <li><strong>Efeitos adversos:</strong> náusea, diarreia, dor abdominal e, raramente, reações alérgicas.</li>
+      <li><strong>Interações medicamentosas:</strong> pode interagir com alguns remédios, especialmente broncodilatadores e anticoagulantes.</li>
+      <li><strong>Uso supervisionado:</strong> sempre consultar médico ou nutricionista antes de iniciar, principalmente em doses altas ou uso prolongado.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>📌 Conclusão</h2>
+    <p>A NAC é um suplemento versátil, com aplicações que vão de proteção hepática a suporte respiratório e mental. Seu uso deve ser individualizado e acompanhado por profissional de saúde, garantindo segurança e eficácia.</p>
+  </div>
+  <div class="section">
+    <h2><span>🕵 Sugestões para Compra</h2>
+    <table style="width: 60%; margin: 0 auto; text-align: center;">
+        <tbody>
+         <tr>
+            <td>
+                <img src="https://http2.mlstatic.com/D_NQ_NP_2X_690214-MLA113495617962_072026-F.webp" width="110" height="160">
+                <a href="https://meli.la/1y4Gj8R"><button class="meu-botao">Compre Agora</button>  
+            </td>
+            <td>
+                <img src="https://http2.mlstatic.com/D_NQ_NP_2X_759603-MLA112585594154_062026-F.webp" width="110" height="160">
+                <a href="https://meli.la/1Bor968"><button class="meu-botao">Compre Agora</button>                        
+            </td>
+            <td>
+                <img src="https://http2.mlstatic.com/D_NQ_NP_2X_611878-MLA109597772632_042026-F.webp" width="110" height="160">
+                <a href="https://meli.la/2EANSkM"><button class="meu-botao">Compre Agora</button>                        
+            </td>
+         </tr>
+         <tr>
+            <td>
+                <img src="https://m.media-amazon.com/images/I/51YdgbmHUnL._AC_SL1080_.jpg" width="110" height="160">
+                <a href="https://link.amazon/B05HaMrT7"><button class="meu-botao">Compre Agora</button>  
+            </td>
+            <td>
+                <img src="https://http2.mlstatic.com/D_NQ_NP_2X_880872-MLA100080592737_122025-F.webp" width="110" height="160">
+                <a href="https://meli.la/11HvHCA"><button class="meu-botao">Compre Agora</button>                        
+            </td>
+            <td>
+                <img src="https://http2.mlstatic.com/D_NQ_NP_2X_836273-MLA112270986479_052026-F.webp" width="110" height="160">
+                <a href="https://meli.la/1Wa3tcR"><button class="meu-botao">Compre Agora</button>                        
+            </td>
+         </tr>
+         <tr>
+            <td>
+                <img src="https://http2.mlstatic.com/D_NQ_NP_2X_893236-MLA109232002618_042026-F.webp" width="110" height="160">
+                <a href="https://meli.la/19FZojf"><button class="meu-botao">Compre Agora</button>  
+            </td>
+            <td>
+                <img src="https://m.media-amazon.com/images/I/61AUKHQqIZL._AC_SL1500_.jpg" width="110" height="160">
+                <a href="https://link.amazon/A02oefL0V"><button class="meu-botao">Compre Agora</button>                        
+            </td>
+            <td>
+                <img src="https://http2.mlstatic.com/D_NQ_NP_2X_831749-MLB115099983865_072026-F-nac-500mg-60-capsulas-bionutri-100-original.webp" width="110" height="160">
+                <a href="https://meli.la/339NHTk"><button class="meu-botao">Compre Agora</button>                        
+            </td>
+         </tr>
+         <tr>
+            <td>
+                <img src="https://m.media-amazon.com/images/I/513MSa+yIuL._AC_SL1000_.jpg" width="110" height="160">
+                <a href="https://link.amazon/B0f2nrjKi"><button class="meu-botao">Compre Agora</button>  
+            </td>
+            <td>
+                <img src="https://m.media-amazon.com/images/I/71Q03tL-qtL._AC_SL1500_.jpg" width="110" height="160">
+                <a href="https://link.amazon/B07syzere"><button class="meu-botao">Compre Agora</button>                        
+            </td>
+            <td>
+                <img src="https://http2.mlstatic.com/D_NQ_NP_2X_637422-MLA106759069987_022026-F.webp" width="110" height="160">
+                <a href="https://meli.la/11f6cP5"><button class="meu-botao">Compre Agora</button>                        
+            </td>
+         </tr>
+        </tbody>
+    </table>
+    </div>
+  <footer>
+    <p>Conteúdo informativo — não substitui avaliação médica.</p>
+  </footer>
+    <center>
+        <div><img src="logotipo.png" alt="Descrição da imagem" width="100" height="100">
+        <p>Banana Doce Vitrine de Ofertas</p>
+        <a href="https://www.facebook.com/bdvitrineofertas"><button class="meu-botao">Conheça nossa página no Facebook</button></a></div>  
+    </center>
 </body>
 </html>
