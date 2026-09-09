@@ -1,325 +1,467 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banana Doce - Vitrine de Ofertas</title>
-    <!-- Metadados básicos -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banana Doce - Vitrine de Ofertas</title>
-    <meta name="description" content="Acompanhe a vitrine de ofertas da Banana Doce e aproveite descontos imperdíveis todos os dias. Visite nossa página!">
-    <meta name="keywords" content="Banana Doce, Vitrine de Ofertas, Promoções, Descontos">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Open Graph / Facebook (Melhora a aparência ao compartilhar o link) -->
-    <meta property="og:title" content="Banana Doce - Vitrine de Ofertas">
-    <meta property="og:description" content="Confira as melhores ofertas e promoções exclusivas na nossa vitrine!">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.facebook.com/bdvitrineofertas">
-    <meta property="og:image" content="https://banana-doce-vtof.github.io/blog-banana-doce/logotipo.png">
-    <style>
-        :root {
-            --amarelo: #ffcc00;
-            --amarelo-escuro: #e6b800;
-            --verde: #5cb85c;
-            --preto: #1a1a1a;
-            --branco: #ffffff;
-            --cinza-claro: #f4f4f4;
-        }
+<meta property="og:title" content="Banana Doce - Vitrine de Ofertas">
+<meta property="og:description" content="Confira as melhores ofertas e promoções exclusivas na nossa vitrine!">
+<meta property="og:image" content="https://banana-doce-vtof.github.io/blog-banana-doce/idvisual.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+ <!-- Código específico para o Twitter/X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://banana-doce-vtof.github.io/blog-banana-doce/idvisual.jpg">
 
-        body {
-            background-color: var(--cinza-claro);
-            color: var(--preto);
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+<title>Banana Doce - Vitrine de Ofertas</title>
+<meta name="description" content="Acompanhe a vitrine de ofertas da Banana Doce e aproveite descontos imperdíveis todos os dias. Visite nossa página!">
+<meta name="keywords" content="Banana Doce, Vitrine de Ofertas, Promoções, Descontos">
 
-        /* Cabeçalho */
-        header {
-            background-color: var(--preto);
-            padding: 20px 10%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 4px solid var(--amarelo);
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .logo-container img {
-            height: 60px;
-            width: auto;
-            border-radius: 50%;
-        }
-
-        .logo-container h1 {
-            color: var(--amarelo);
-            font-size: 1.5rem;
-        }
-
-        .btn-topo {
-            background-color: var(--verde);
-            color: var(--branco);
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-
-        .btn-topo:hover {
-            background-color: #4cae4c;
-        }
-
-        /* Seção Principal (Hero) */
-        .hero {
-            background: linear-gradient(135deg, var(--amarelo) 0%, var(--amarelo-escuro) 100%);
-            padding: 60px 10%;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .hero img.banner-logo {
-            max-width: 220px;
-            height: auto;
-            margin-bottom: 10px;
-            filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.2));
-        }
-
-        .hero h2 {
-            font-size: 2.5rem;
-            color: var(--preto);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            color: #333;
-        }
-
-        .cta-button {
-            background-color: #1877f2; /* Cor oficial do Facebook */
-            color: var(--branco);
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            border-radius: 30px;
-            text-decoration: none;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            transition: transform 0.2s, background-color 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .cta-button:hover {
-            background-color: #145dbf;
-            transform: translateY(-3px);
-        }
-
-        /*Seção de Destaques*/
-
-        .secao-destaque {
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            color: #ffffff;
-            padding: 80px 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        .conteudo-destaque {
-            max-width: 600px;
-        }
-
-        .conteudo-destaque h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .conteudo-destaque span {
-            color: #ffeb3b;
-        }
-
-        .conteudo-destaque p {
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-
-        .botao-acao {
-            background-color: #ffeb3b;
-            color: #333333;
-            padding: 12px 28px;
-            border-radius: 4px;
-            font-weight: bold;
-            text-decoration: none;
-            display: inline-block;
-            transition: background 0.3s;
-        }
-
-        .botao-acao:hover {
-            background-color: #fdd835;
-        }
-        
-        /* Seção de Vantagens / Recursos */
-        .features {
-            padding: 50px 10%;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            background-color: var(--branco);
-        }
-
-        .feature-card {
-            background: var(--cinza-claro);
-            padding: 30px;
-            border-radius: 8px;
-            text-align: center;
-            border-top: 4px solid var(--verde);
-        }
-
-        .feature-card h3 {
-            margin-bottom: 10px;
-            color: var(--preto);
-        }
-
-        /* Rodapé */
-        footer {
-            background-color: var(--preto);
-            color: var(--branco);
-            text-align: center;
-            padding: 20px;
-            margin-top: auto;
-            font-size: 0.9rem;
-        }
-
-        footer span {
-            color: var(--amarelo);
-        }
-    </style>
-    <link rel="icon" href="logotipo.png">  
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/poppins@5.0.8/index.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/fredoka@5.0.8/index.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+<style>
+  :root {
+    --banana: #FFD60A;
+    --banana-dark: #E6B800;
+    --orange: #FF8C00;
+    --dark: #1a1a1a;
+  }
+  * { font-family: 'Poppins', sans-serif; }
+  h1, h2, h3, .brand { font-family: 'Fredoka', sans-serif; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #0f0f0f;
+    color: #fff;
+    overflow-x: hidden;
+  }
+  .gradient-bg {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d1b00 50%, #1a1a1a 100%);
+  }
+  .banana-gradient {
+    background: linear-gradient(135deg, #FFD60A 0%, #FF8C00 100%);
+  }
+  .text-banana-gradient {
+    background: linear-gradient(135deg, #FFD60A 0%, #FF8C00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .card-hover {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(255, 214, 10, 0.2);
+  }
+  .glow {
+    box-shadow: 0 0 60px rgba(255, 214, 10, 0.3);
+  }
+  .social-icon {
+    transition: all 0.3s ease;
+  }
+  .social-icon:hover {
+    transform: translateY(-4px) scale(1.1);
+  }
+  .social-icon.instagram:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+  .social-icon.x:hover { background: #000; }
+  .social-icon.threads:hover { background: #000; }
+  .social-icon.youtube:hover { background: #FF0000; }
+  .social-icon.tiktok:hover { background: #000; }
+  .social-icon.facebook:hover { background: #1877F2; }
+  
+  .floating {
+    animation: floating 3s ease-in-out infinite;
+  }
+  @keyframes floating {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+  }
+  
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .pulse-btn {
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255, 214, 10, 0.7); }
+    50% { box-shadow: 0 0 0 20px rgba(255, 214, 10, 0); }
+  }
+  
+  .banana-emoji {
+    display: inline-block;
+    animation: wiggle 2s ease-in-out infinite;
+  }
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(-10deg); }
+    50% { transform: rotate(10deg); }
+  }
+  
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.3;
+    z-index: 0;
+  }
+  
+  .nav-link {
+    position: relative;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #FFD60A, #FF8C00);
+    transition: width 0.3s ease;
+  }
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  
+  .article-card {
+    background: linear-gradient(145deg, #1f1f1f, #151515);
+    border: 1px solid rgba(255, 214, 10, 0.1);
+  }
+  .article-card:hover {
+    border-color: rgba(255, 214, 10, 0.5);
+  }
+  
+  .hero-pattern {
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(255, 214, 10, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(255, 140, 0, 0.15) 0%, transparent 50%);
+  }
+  
+  .scroll-indicator {
+    animation: bounce 2s infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+  }
+</style>
+<link rel="icon" href="logotipo1.jpg">   
 </head>
 <body>
 
-    <!-- Cabeçalho -->
-    <header>
-        <div class="logo-container">
-            <!-- Certifique-se de salvar a imagem do logotipo como 'logo.png' na mesma pasta -->
-            <h1>Banana Doce Vitrine de Ofertas</h1>
-        </div>
-        <a href="https://www.facebook.com/bdvitrineofertas" target="_blank" class="btn-topo">Acessar Ofertas</a>
-    </header>
+<!-- Navbar -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-lg border-b border-yellow-500/20">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-2 brand text-2xl font-bold">
+      <span class="banana-emoji text-3xl">🍌</span>
+      <span class="text-banana-gradient">Banana Doce</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#ofertas" class="nav-link text-gray-300 hover:text-yellow-400 transition">Ofertas</a>
+      <a href="#blog" class="nav-link text-gray-300 hover:text-yellow-400 transition">Blog</a>
+      <a href="#contato" class="nav-link text-gray-300 hover:text-yellow-400 transition">Contato</a>
+    </div>
+      <a href="https://banana-doce-vtof.github.io/blog-banana-doce/glrof1/" target="_blank" class="banana-gradient text-black font-bold px-5 py-2 rounded-full hover:scale-105 transition-transform">
+      😎 Acessar a Vitrine de Ofertas
+      </a>
+  </div>
+</nav>
 
-    <!-- Seção Principal -->
-    <section class="hero">
-        <video autoplay muted controls width="640" height="360" controls>
-          <source src="banana1.mp4" type="video/mp4">
-           Seu navegador não suporta este vídeo.
-        </video>
-        <h2>As Melhores Ofertas Estão Aqui!</h2>
-        <p>Economize tempo e dinheiro. Acompanhe nossa vitrine exclusiva e aproveite descontos imperdíveis todos os dias.</p>
-        
-        <a href="https://www.facebook.com/bdvitrineofertas" target="_blank" class="cta-button">
-            Visite nossa página no Facebook
+<!-- Hero Section -->
+<section id="ofertas" class="relative min-h-screen flex items-center justify-center gradient-bg hero-pattern pt-20 overflow-hidden">
+  <div class="blob bg-yellow-500 w-96 h-96 top-20 -left-20"></div>
+  <div class="blob bg-orange-500 w-96 h-96 bottom-20 -right-20"></div>
+  
+  <div class="relative z-10 max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+    <div class="fade-in">
+      <div class="inline-flex items-center gap-2 bg-yellow-500/10 border border-yellow-500/30 rounded-full px-4 py-2 mb-6">
+        <span class="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></span>
+        <span class="text-yellow-400 text-sm font-medium">Ofertas atualizadas diariamente</span>
+      </div>
+      <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6">
+        As Melhores<br/>
+        <span class="text-banana-gradient">Ofertas</span> Estão<br/>
+        Aqui! 🍌
+      </h1>
+      <p class="text-lg text-gray-300 mb-8 max-w-lg">
+        Economize tempo e dinheiro. Acompanhe nossa vitrine exclusiva e aproveite descontos imperdíveis todos os dias.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href="https://banana-doce-vtof.github.io/blog-banana-doce/glrof1/" target="_blank" class="banana-gradient text-black font-bold px-8 py-4 rounded-full hover:scale-105 transition-transform pulse-btn flex items-center gap-2">
+          😎 Acessar a Vitrine de Ofertas
         </a>
-    </section>
-    <!-- Seção de Destaques -->
-    <center><h2>Blog do Banana Doce</h2></center>
-    <section class="secao-destaque">
-        <div class="conteudo-destaque">
-            <img src="artigo7.png" alt="artigo1" width="300" height="400" >
-            <h3><span>✨ Ômega-3: Essencial para a saúde do coração e do corpo</span></h3>
-            <p></p>
-            <a href="https://banana-doce-vtof.github.io/blog-banana-doce/artigo7/" class="botao-acao">Saiba mais.</a>
+        <a href="#blog" class="border-2 border-yellow-500 text-yellow-400 font-bold px-8 py-4 rounded-full hover:bg-yellow-500 hover:text-black transition-all flex items-center gap-2">
+          <i class="fas fa-book-open"></i>
+          Leia o Blog
+        </a>
+      </div>
+    </div>
+   
+    <div class="fade-in relative">
+      <div class="relative rounded-3xl overflow-hidden glow floating">
+        <div class="aspect-video banana-gradient flex items-center justify-center relative">
+          <div class="absolute inset-0 bg-gradient-to-br from-yellow-400/20 to-orange-500/40"></div>
+          <div class="relative text-center p-8">
+            <div class="text-9xl mb-4">🍌</div>
+            <div class="text-4xl font-bold text-black">Banana Doce</div>
+            <div class="text-black/70 mt-2">Vitrine de Ofertas</div>
+          </div>
         </div>
-    </section>
-    <section class="secao-destaque">
-        <div class="conteudo-destaque">
-            <img src="artigo6.png" alt="artigo1" width="300" height="400" >
-            <h3><span>✨ Descubra o poder da N-acetilcisteína (NAC)</span></h3>
-             <p>Você sabia que esse suplemento pode ajudar na saúde do fígado, melhorar a respiração e até apoiar a saúde mental?</p>
-             <a href="https://banana-doce-vtof.github.io/blog-banana-doce/artigo6/" class="botao-acao">Saiba mais.</a>
-        </div>
-    </section>
-    <section class="secao-destaque">
-        <div class="conteudo-destaque">
-            <img src="artigo5.jpg" alt="artigo1" width="400" height="250" >
-            <h3><span>Tudo o que você precisa saber sobre Whey Protein antes de comprar! 🥛💪</span></h3>
-             <p>Guia completo para escolher o suplemento certo.</p>
-             <a href="https://banana-doce-vtof.github.io/blog-banana-doce/artigo5/" class="botao-acao">Saiba mais.</a>
-        </div>
-    </section>
-    <section class="secao-destaque">
-        <div class="conteudo-destaque">
-            <img src="artigo4.png" alt="artigo1" width="350" height="350" >
-            <h3><span>O Guia Definitivo do Magnésio</span></h3>
-             <p>Conheça os Diferentes Tipos, Mecanismos de Absorção e Seus Benefícios Fundamentais para a Saúde.</p>
-             <a href="https://banana-doce-vtof.github.io/blog-banana-doce/artigo4/" class="botao-acao">Saiba mais.</a>
-        </div>
-    </section>
-    <section class="secao-destaque">
-        <div class="conteudo-destaque">
-            <img src="artigo3.jpg" alt="artigo1" width="350" height="350" >
-            <h3><span>Tudo Sobre o Colágeno: Tipos, Benefícios e Como Usar</span></h3>
-             <p>Entenda a ciência por trás da suplementação e saiba como escolher a melhor opção para a pele e articulações.</p>
-             <a href="https://banana-doce-vtof.github.io/blog-banana-doce/artigo3/" class="botao-acao">Saiba mais.</a>
-        </div>
-    </section>
-    <section class="secao-destaque">
-        <div class="conteudo-destaque">
-            <img src="artigo2.jpg" alt="artigo1" width="350" height="350" >
-            <h3><span>O Triângulo da Beleza Descomplicado</span></h3>
-             <p>Um guia prático sobre como cuidar da pele, cabelo e unhas de dentro para fora.</p>
-             <a href="https://banana-doce-vtof.github.io/blog-banana-doce/artigo2/" class="botao-acao">Saiba mais.</a>
-        </div>
-    </section>
-    <section class="secao-destaque">
-        <div class="conteudo-destaque">
-            <img src="artigo1.jpg" alt="artigo1" width="350" height="350" >
-            <h3><span>A Revolução dos Suplementos Online</span></h3>
-             <p>Como Comprar com Inteligência e Segurança.</p>
-             <a href="https://banana-doce-vtof.github.io/blog-banana-doce/artigo1/" class="botao-acao">Saiba mais.</a>
-        </div>
-    </section>
-    
-    <section class="features">
-        <div class="feature-card">
-            <h3>🔥 Ofertas Diárias</h3>
-            <p>Seleção especial de promoções atualizadas frequentemente para você não perder nada.</p>
-        </div>
-        <div class="feature-card">
-            <h3>⭐ Qualidade Garantida</h3>
-            <p>Parceiros selecionados e produtos com preços que cabem no seu bolso.</p>
-        </div>
-        <div class="feature-card">
-            <h3>🚀 Praticidade</h3>
-            <p>Tudo o que você procura reunido em um só lugar de forma rápida e transparente.</p>
-        </div>
-    </section>
+      </div>
+      <div class="absolute -top-4 -right-4 bg-red-500 text-white font-bold px-4 py-2 rounded-full rotate-12 shadow-lg">
+        🔥 HOT
+      </div>
+    </div>
+  </div>
+  
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator">
+    <i class="fas fa-chevron-down text-yellow-400 text-2xl"></i>
+  </div>
+</section>
 
-    <!-- Rodapé -->
-    <footer>
-        <p>&copy; 2026 <span>Banana Doce - Vitrine de Ofertas</span>. Todos os direitos reservados.</p>
-    </footer>
+<!-- Blog Section -->
+<section id="blog" class="py-24 relative">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 fade-in">
+      <div class="inline-block banana-gradient text-black font-bold px-4 py-1 rounded-full text-sm mb-4">
+        📚 CONTEÚDO EXCLUSIVO
+      </div>
+      <h2 class="text-4xl md:text-6xl font-bold mb-4">
+        Blog do <span class="text-banana-gradient">Banana Doce</span>
+      </h2>
+      <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+        Artigos completos sobre saúde, suplementação e bem-estar para você tomar decisões inteligentes.
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Article 1 -->
+      <a href="https://banana-doce-vtof.github.io/blog-banana-doce/artigo7/" target="_blank" class="article-card rounded-2xl overflow-hidden card-hover fade-in group">
+        <div class="h-48 banana-gradient flex items-center justify-center relative overflow-hidden">
+          <div class="text-7xl group-hover:scale-125 transition-transform duration-500">🐟</div>
+          <div class="absolute top-4 right-4 bg-black/60 backdrop-blur text-yellow-400 text-xs font-bold px-3 py-1 rounded-full">SAÚDE</div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2 group-hover:text-yellow-400 transition">✨ Ômega-3: Essencial para a saúde do coração e do corpo</h3>
+          <p class="text-gray-400 text-sm mb-4">Descubra os benefícios desse ácido graxo fundamental.</p>
+          <div class="flex items-center text-yellow-400 font-semibold text-sm">
+            Saiba mais <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform"></i>
+          </div>
+        </div>
+      </a>
+      
+      <!-- Article 2 -->
+      <a href="https://banana-doce-vtof.github.io/blog-banana-doce/artigo6/" target="_blank" class="article-card rounded-2xl overflow-hidden card-hover fade-in group">
+        <div class="h-48 bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center relative overflow-hidden">
+          <div class="text-7xl group-hover:scale-125 transition-transform duration-500">💊</div>
+          <div class="absolute top-4 right-4 bg-black/60 backdrop-blur text-yellow-400 text-xs font-bold px-3 py-1 rounded-full">SUPLEMENTO</div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2 group-hover:text-yellow-400 transition">✨ Descubra o poder da N-acetilcisteína (NAC)</h3>
+          <p class="text-gray-400 text-sm mb-4">Saúde do fígado, respiração e saúde mental.</p>
+          <div class="flex items-center text-yellow-400 font-semibold text-sm">
+            Saiba mais <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform"></i>
+          </div>
+        </div>
+      </a>
+      
+      <!-- Article 3 -->
+      <a href="https://banana-doce-vtof.github.io/blog-banana-doce/artigo5/" target="_blank" class="article-card rounded-2xl overflow-hidden card-hover fade-in group">
+        <div class="h-48 bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center relative overflow-hidden">
+          <div class="text-7xl group-hover:scale-125 transition-transform duration-500">🥛</div>
+          <div class="absolute top-4 right-4 bg-black/60 backdrop-blur text-yellow-400 text-xs font-bold px-3 py-1 rounded-full">FITNESS</div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2 group-hover:text-yellow-400 transition">Tudo sobre Whey Protein antes de comprar! 💪</h3>
+          <p class="text-gray-400 text-sm mb-4">Guia completo para escolher o suplemento certo.</p>
+          <div class="flex items-center text-yellow-400 font-semibold text-sm">
+            Saiba mais <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform"></i>
+          </div>
+        </div>
+      </a>
+      
+      <!-- Article 4 -->
+      <a href="https://banana-doce-vtof.github.io/blog-banana-doce/artigo4/" target="_blank" class="article-card rounded-2xl overflow-hidden card-hover fade-in group">
+        <div class="h-48 bg-gradient-to-br from-green-600 to-teal-500 flex items-center justify-center relative overflow-hidden">
+          <div class="text-7xl group-hover:scale-125 transition-transform duration-500">⚡</div>
+          <div class="absolute top-4 right-4 bg-black/60 backdrop-blur text-yellow-400 text-xs font-bold px-3 py-1 rounded-full">GUIA</div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2 group-hover:text-yellow-400 transition">O Guia Definitivo do Magnésio</h3>
+          <p class="text-gray-400 text-sm mb-4">Tipos, mecanismos de absorção e benefícios.</p>
+          <div class="flex items-center text-yellow-400 font-semibold text-sm">
+            Saiba mais <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform"></i>
+          </div>
+        </div>
+      </a>
+      
+      <!-- Article 5 -->
+      <a href="https://banana-doce-vtof.github.io/blog-banana-doce/artigo3/" target="_blank" class="article-card rounded-2xl overflow-hidden card-hover fade-in group">
+        <div class="h-48 bg-gradient-to-br from-pink-500 to-rose-500 flex items-center justify-center relative overflow-hidden">
+          <div class="text-7xl group-hover:scale-125 transition-transform duration-500">💎</div>
+          <div class="absolute top-4 right-4 bg-black/60 backdrop-blur text-yellow-400 text-xs font-bold px-3 py-1 rounded-full">BELEZA</div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2 group-hover:text-yellow-400 transition">Tudo Sobre o Colágeno: Tipos e Benefícios</h3>
+          <p class="text-gray-400 text-sm mb-4">Como escolher a melhor opção para pele e articulações.</p>
+          <div class="flex items-center text-yellow-400 font-semibold text-sm">
+            Saiba mais <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform"></i>
+          </div>
+        </div>
+      </a>
+      
+      <!-- Article 6 -->
+      <a href="https://banana-doce-vtof.github.io/blog-banana-doce/artigo2/" target="_blank" class="article-card rounded-2xl overflow-hidden card-hover fade-in group">
+        <div class="h-48 bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center relative overflow-hidden">
+          <div class="text-7xl group-hover:scale-125 transition-transform duration-500">✨</div>
+          <div class="absolute top-4 right-4 bg-black/60 backdrop-blur text-yellow-400 text-xs font-bold px-3 py-1 rounded-full">BELEZA</div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2 group-hover:text-yellow-400 transition">O Triângulo da Beleza Descomplicado</h3>
+          <p class="text-gray-400 text-sm mb-4">Cuide da pele, cabelo e unhas de dentro para fora.</p>
+          <div class="flex items-center text-yellow-400 font-semibold text-sm">
+            Saiba mais <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform"></i>
+          </div>
+        </div>
+      </a>
+      
+      <!-- Article 7 - Full width -->
+      <a href="https://banana-doce-vtof.github.io/blog-banana-doce/artigo1/" target="_blank" class="article-card rounded-2xl overflow-hidden card-hover fade-in group md:col-span-2 lg:col-span-3 grid md:grid-cols-2 gap-0">
+        <div class="h-48 md:h-auto bg-gradient-to-br from-yellow-500 via-orange-500 to-red-500 flex items-center justify-center relative overflow-hidden">
+          <div class="text-8xl group-hover:scale-125 transition-transform duration-500">🚀</div>
+          <div class="absolute top-4 right-4 bg-black/60 backdrop-blur text-yellow-400 text-xs font-bold px-3 py-1 rounded-full">DESTAQUE</div>
+        </div>
+        <div class="p-8 flex flex-col justify-center">
+          <h3 class="text-2xl md:text-3xl font-bold mb-3 group-hover:text-yellow-400 transition">A Revolução dos Suplementos Online</h3>
+          <p class="text-gray-400 mb-4">Como Comprar com Inteligência e Segurança. Um guia completo para navegar no mundo dos suplementos digitais.</p>
+          <div class="flex items-center text-yellow-400 font-semibold">
+            Saiba mais <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform"></i>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+<!-- CTA Section -->
+<section class="py-20 relative overflow-hidden">
+  <div class="max-w-4xl mx-auto px-6 text-center fade-in">
+    <div class="banana-gradient rounded-3xl p-12 relative overflow-hidden">
+      <div class="absolute inset-0 bg-black/10"></div>
+      <div class="relative">
+        <h2 class="text-4xl md:text-5xl font-bold text-black mb-4">
+          Não perca nenhuma oferta! 🍌
+        </h2>
+        <p class="text-black/80 text-lg mb-8 max-w-2xl mx-auto">
+          Siga nossas redes sociais e fique por dentro das melhores promoções em primeira mão.
+        </p>
+        <a href="https://www.facebook.com/bdvitrineofertas" target="_blank" class="inline-flex items-center gap-2 bg-black text-yellow-400 font-bold px-8 py-4 rounded-full hover:scale-105 transition-transform">
+          <i class="fab fa-facebook"></i>
+          Seguir no Facebook
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer id="contato" class="bg-black border-t border-yellow-500/20 pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-3 gap-12 mb-12">
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="text-4xl">🍌</span>
+          <span class="brand text-2xl font-bold text-banana-gradient">Banana Doce</span>
+        </div>
+        <p class="text-gray-400 mb-6">
+          Sua vitrine de ofertas exclusiva. As melhores promoções reunidas em um só lugar.
+        </p>
+        <!-- Social Media Icons -->
+        <div class="flex flex-wrap gap-3">
+          <a href="https://www.instagram.com/zerenatope72/" target="_blank" class="social-icon instagram w-11 h-11 bg-gray-800 rounded-full flex items-center justify-center text-white hover:text-white" title="Instagram">
+            <i class="fab fa-instagram text-lg"></i>
+          </a>
+          <a href="https://x.com/bananadocevtof" target="_blank" class="social-icon x w-11 h-11 bg-gray-800 rounded-full flex items-center justify-center text-white hover:text-white" title="X (Twitter)">
+            <i class="fab fa-x-twitter text-lg"></i>
+          </a>
+          <a href="https://www.threads.com/@zerenatope72" target="_blank" class="social-icon threads w-11 h-11 bg-gray-800 rounded-full flex items-center justify-center text-white hover:text-white" title="Threads">
+            <i class="fab fa-threads text-lg"></i>
+          </a>
+          <a href="https://www.youtube.com/@BananaDoceVitrinedeOfertas" target="_blank" class="social-icon youtube w-11 h-11 bg-gray-800 rounded-full flex items-center justify-center text-white hover:text-white" title="YouTube">
+            <i class="fab fa-youtube text-lg"></i>
+          </a>
+          <a href="https://www.tiktok.com/@user5725103245511" target="_blank" class="social-icon tiktok w-11 h-11 bg-gray-800 rounded-full flex items-center justify-center text-white hover:text-white" title="TikTok">
+            <i class="fab fa-tiktok text-lg"></i>
+          </a>
+          <a href="https://www.facebook.com/bdvitrineofertas" target="_blank" class="social-icon facebook w-11 h-11 bg-gray-800 rounded-full flex items-center justify-center text-white hover:text-white" title="Facebook">
+            <i class="fab fa-facebook-f text-lg"></i>
+          </a>
+        </div>
+      </div>
+      
+      <div>
+        <h4 class="text-yellow-400 font-bold mb-4 text-lg">Navegação</h4>
+        <ul class="space-y-2">
+          <li><a href="#ofertas" class="text-gray-400 hover:text-yellow-400 transition">Ofertas</a></li>
+          <li><a href="#blog" class="text-gray-400 hover:text-yellow-400 transition">Blog</a></li>
+          <li><a href="https://www.facebook.com/bdvitrineofertas" target="_blank" class="text-gray-400 hover:text-yellow-400 transition">Facebook</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4 class="text-yellow-400 font-bold mb-4 text-lg">Artigos em Destaque</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="https://banana-doce-vtof.github.io/blog-banana-doce/artigo7/" target="_blank" class="text-gray-400 hover:text-yellow-400 transition">Ômega-3</a></li>
+          <li><a href="https://banana-doce-vtof.github.io/blog-banana-doce/artigo5/" target="_blank" class="text-gray-400 hover:text-yellow-400 transition">Whey Protein</a></li>
+          <li><a href="https://banana-doce-vtof.github.io/blog-banana-doce/artigo4/" target="_blank" class="text-gray-400 hover:text-yellow-400 transition">Guia do Magnésio</a></li>
+          <li><a href="https://banana-doce-vtof.github.io/blog-banana-doce/artigo3/" target="_blank" class="text-gray-400 hover:text-yellow-400 transition">Tudo sobre Colágeno</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p><img src="logotipo.png" alt="Descrição da imagem" width="80" height="80"></p>
+      <p class="text-gray-500 text-sm">
+        © 2026 <span class="text-yellow-400">Banana Doce</span> - Vitrine de Ofertas. Todos os direitos reservados.
+      </p>
+      <p class="text-gray-500 text-sm flex items-center gap-2">
+        Feito com <span class="text-red-500">❤</span> e <span>🍌</span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Fade-in animation on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  
+  // Navbar background on scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 50) {
+      nav.classList.add('shadow-lg');
+    } else {
+      nav.classList.remove('shadow-lg');
+    }
+  });
+</script>
 
 </body>
 </html>
