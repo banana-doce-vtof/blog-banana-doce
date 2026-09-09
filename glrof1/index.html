@@ -273,7 +273,6 @@
         <button class="filter-btn active" data-category="all">Todos</button>
         <button class="filter-btn" data-category="cell">Celulares</button>
         <button class="filter-btn" data-category="tech">Eletrônicos</button>
-        <button class="filter-btn" data-category="casa">Casa & Cozinha</button>
         <button class="filter-btn" data-category="blz">Beleza</button>
         <button class="filter-btn" data-category="moda">Moda</button>
       </div>
@@ -289,7 +288,162 @@
 
   <script>
     // 1. Array de produtos (adicione seus produtos e links de afiliado aqui)
-    const products = [];
+    const products = [
+      {
+            "id": 1,
+            "title": "Smartphone Motorola Moto g35 5G - 128GB 12GB (4GB RAM+8GB Ram Boost) e Camera 50MP com AI NFC Tela 6.7\" com Superbrilho - Verde",
+            "category": "cell",
+            "categoryName": "Celulares",
+            "oldPrice": "R$ 1.499",
+            "newPrice": "R$ 849",
+            "discountBadge": "-43% OFF",
+            "image": "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T3/images/I/61pGaBV+-AL._AC_SX425_.jpg",
+            "affiliateLink": "https://link.amazon/B003IIrJY"
+      },
+      {
+            "id": 2,
+            "title": "Apple iPhone 16e de 128 GB — Preto",
+            "category": "cell",
+            "categoryName": "Celulares",
+            "oldPrice": "R$ 5.799",
+            "newPrice": "R$3.499",
+            "discountBadge": "-10% OFF à vista",
+            "image": "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T3/images/I/412RWxKFt8L._AC_SX679_.jpg",
+            "affiliateLink": "https://link.amazon/B0bZlmnKi"
+      },
+      {
+            "id": 5,
+            "title": "Apple iPhone 17 de 256 GB — Branco",
+            "category": "cell",
+            "categoryName": "Celulares",
+            "oldPrice": "R$ 7.999",
+            "newPrice": "R$ 5,299",
+            "discountBadge": "-10% OFF à vista",
+            "image": "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T3/images/I/41i8XYawSOL._AC_SX679_.jpg",
+            "affiliateLink": "https://link.amazon/B0hd2ZRaV"
+      },
+      {
+            "id": 4,
+            "title": "Smartphone Motorola Moto g06-128GB 12GB (4GB RAM + 8GB Ram Boost) e Camera 50MP com AI Bateria de 5200 mAh Tela 6.9\" - Azul Marinho",
+            "category": "cell",
+            "categoryName": "Celulares",
+            "oldPrice": "R$ 999",
+            "newPrice": "R$ 699",
+            "discountBadge": "-10% OFF à vista",
+            "image": "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T3/images/I/51QcVeIu4pL._AC_SX522_.jpg",
+            "affiliateLink": "https://link.amazon/B0hQdDHKS"
+      },
+      {
+            "id": 6,
+            "title": "Celular Samsung Galaxy A17, 128GB, 4GB, 50MP Tela 6.7\", IP54 - Preto",
+            "category": "cell",
+            "categoryName": "Celulares",
+            "oldPrice": "R$ 1.599",
+            "newPrice": "R$ 869",
+            "discountBadge": "",
+            "image": "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T3/images/I/61ldkLk4JYL._AC_SX522_.jpg",
+            "affiliateLink": "https://link.amazon/B02fxhuOj"
+      },
+      {
+            "id": 7,
+            "title": "Smartphone Motorola Moto g35 5G - 256GB 12GB (4GB RAM+8GB Ram Boost) e Camera 50MP com AI NFC Tela 6.7\" com Superbrilho - Cinza Vegan Leather",
+            "category": "cell",
+            "categoryName": "Celulares",
+            "oldPrice": "R$ 1.699",
+            "newPrice": "R$ 899",
+            "discountBadge": "-10% OFF à vista",
+            "image": "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T3/images/I/51gcKxZwEIL._AC_SX569_.jpg",
+            "affiliateLink": "https://link.amazon/B0gnHAWOf"
+      },
+      {
+            "id": 8,
+            "title": "Smartphone Motorola Moto g06-128GB 12GB (4GB RAM + 8GB Ram Boost) e Camera 50MP com AI Bateria de 5200 mAh Tela 6.9\" - Laranja",
+            "category": "cell",
+            "categoryName": "Celulares",
+            "oldPrice": "R$ 999",
+            "newPrice": "R$ 699,01",
+            "discountBadge": "-9% OFF à vista",
+            "image": "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T3/images/I/51FCuOjQjWL._AC_SX522_.jpg",
+            "affiliateLink": "https://link.amazon/B0d93GggQ"
+      },
+      {
+            "id": 9,
+            "title": "Smartphone Motorola Moto g06-256GB 12GB (4GB RAM + 8GB Ram Boost) e Camera 50MP com AI Bateria de 5200 mAh Tela 6.9\" - Bege",
+            "category": "cell",
+            "categoryName": "Celulares",
+            "oldPrice": "R$ 1.199",
+            "newPrice": "R$ 789,89",
+            "discountBadge": "-10% OFF à vista",
+            "image": "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T3/images/I/61NgIKe6Q4L._AC_SX522_.jpg",
+            "affiliateLink": "https://link.amazon/B07YjE2MW"
+      },
+      {
+            "id": 10,
+            "title": "Celular Samsung Galaxy A17, 256GB, 8GB, 50MP Tela 6.7\", IP54 - Preto",
+            "category": "cell",
+            "categoryName": "Celulares",
+            "oldPrice": "R$ 1.899",
+            "newPrice": "R$ 1.169,09",
+            "discountBadge": "-10% OFF à vista",
+            "image": "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T3/images/I/51kT5SgPhNL._AC_SX522_.jpg",
+            "affiliateLink": "https://link.amazon/B08F760QC"
+      },
+      {
+            "id": 11,
+            "title": "Celular Samsung Galaxy A07 128GB, 4GB, Câm. 50MP, Tela 6.7\"- Preto",
+            "category": "cell",
+            "categoryName": "Celulares",
+            "oldPrice": "",
+            "newPrice": "R$ 774,90",
+            "discountBadge": "-10% OFF à vista",
+            "image": "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T3/images/I/51Adgl-DQtL._AC_SX522_.jpg",
+            "affiliateLink": "https://link.amazon/B03oIw4yp"
+      },
+      {
+            "id": 12,
+            "title": "Smartphone Motorola Moto G17 4G - 128GB 12GB (4GB RAM + 8GB RAM Boost) camera 50MP Sony Lytia 600, tela FHD+ 60hz, bateria 5200 mAh - Rosa",
+            "category": "cell",
+            "categoryName": "Celulares",
+            "oldPrice": "R$ 1.299",
+            "newPrice": "R$ 799",
+            "discountBadge": "-10% OFF à vista",
+            "image": "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T3/images/I/61Dbw+ElR1L._AC_SX522_.jpg",
+            "affiliateLink": "https://link.amazon/B09TbR0FL"
+      },
+      {
+            "id": 13,
+            "title": "Celular Samsung Galaxy A07 256GB, 8GB, Câm. 50MP, Tela 6.7\" - Verde",
+            "category": "cell",
+            "categoryName": "Celulares",
+            "oldPrice": "R$ 1.099",
+            "newPrice": "R$ 800,43",
+            "discountBadge": "-10% OFF à vista",
+            "image": "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T3/images/I/51G8vgohj0L._AC_SX522_.jpg",
+            "affiliateLink": "https://link.amazon/B0bQRCVc2"
+      },
+      {
+            "id": 14,
+            "title": "Smartphone Motorola Moto G77 5G - 256GB 24GB (8GB RAM + 16GB RAM Boost) camera 108MP Ultra-Pixel, tela 1.5K extreme Amoled 120hz, ultrarresistente - Marrom",
+            "category": "cell",
+            "categoryName": "Celulares",
+            "oldPrice": "R$ 2.999",
+            "newPrice": "R$ 1.529",
+            "discountBadge": "-10% OFF à vista",
+            "image": "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T3/images/I/61zXvb3EmiL._AC_SX522_.jpg",
+            "affiliateLink": "https://link.amazon/B03r2zIRi"
+      },
+      {
+            "id": 15,
+            "title": "Smartphone Motorola Moto g15-256GB 12GB (4GB RAM+8GB Ram Boost) e Camera 50MP com AI e Night Vision Bateria de 5200 mAh Tela FHD+ 6.7\" com Superbrilho NFC - Verde",
+            "category": "cell",
+            "categoryName": "Celulares",
+            "oldPrice": "",
+            "newPrice": "R$ 934,14",
+            "discountBadge": "-15% OFF à vista",
+            "image": "https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T3/images/I/61WloGge9OL._AC_SX522_.jpg",
+            "affiliateLink": "https://link.amazon/B0gjffAxA"
+      }
+];
 
     const grid = document.getElementById("productGrid");
     const searchInput = document.getElementById("search");
