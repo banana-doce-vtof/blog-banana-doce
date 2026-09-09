@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ofertas Banana Doce | Vitrine de Promoções e Descontos</title>
+  <meta name="description" content="Aproveite as melhores ofertas da Banana Doce. Encontre produtos selecionados com descontos exclusivos por tempo limitado. Confira nossa vitrine!">
+  <meta name="keywords" content="Banana Doce, vitrine de ofertas, promoções Banana Doce, descontos, compras online, liquidação">
+  <meta name="robots" content="index, follow">
+ 
+  <meta property="og:title" content="Banana Doce - Vitrine de Ofertas">
+  <meta property="og:description" content="Confira as melhores ofertas e promoções exclusivas na nossa vitrine!">
+  <meta property="og:image" content="https://banana-doce-vtof.github.io/blog-banana-doce/glrof1/idvisual.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!-- Código específico para o Twitter/X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://banana-doce-vtof.github.io/blog-banana-doce/glrof1/idvisual.jpg">
+  
+ <style>
+    :root {
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --bg: #ffffff;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --badge: #ef4444;
+      --radius: 12px;
+      --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Cabeçalho */
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    header h1 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    /* Controles (Busca e Filtros) */
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .controls {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+    .search-input {
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius);
+      border: 1px solid #cbd5e1;
+      width: 100%;
+      max-width: 400px;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+    }
+
+    .filter-buttons {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: #e2e8f0;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #475569;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    /* Grid de Produtos */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    /* Card de Produto */
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    }
+
+    .badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--badge);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      z-index: 10;
+    }
+
+    .card-img-container {
+      width: 100%;
+      height: 200px;
+      background: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-category {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 0.75rem;
+    }
+
+    .card-pricing {
+      margin-top: auto;
+      margin-bottom: 1rem;
+    }
+
+    .price-old {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-decoration: line-through;
+    }
+
+    .price-new {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .affiliate-btn {
+      display: block;
+      width: 100%;
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      padding: 0.75rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+    }
+
+    .affiliate-btn:hover {
+      background: var(--primary-hover);
+    }
+
+    /* Aviso de Transparência */
+    .disclosure {
+      margin-top: 3rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: center;
+      line-height: 1.4;
+    }
+    .meu-botao {
+        padding: 8px 16px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .meu-botao:hover {
+        background-color: #0056b3;
+    }
+    .meu-cabecalho {
+         background-color: #FFFF00; 
+         color: #000000;            
+         padding: 20px;
+    }
+  </style>
+</head>
+<link rel="icon" href="logotipo.png"> 
+<body>
+
+  <div class="container">
+    <header class="meu-cabecalho">
+      <h1>Banana Doce Vitrine de Ofertas</h1>
+      <p>Seleção com as melhores ofertas do dia</p>
+    </header>
+
+    <div class="controls">
+      <input type="text" id="search" class="search-input" placeholder="Buscar oferta...">
+      
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-category="all">Todos</button>
+        <button class="filter-btn" data-category="cell">Celulares</button>
+        <button class="filter-btn" data-category="tech">Eletrônicos</button>
+        <button class="filter-btn" data-category="casa">Casa & Cozinha</button>
+        <button class="filter-btn" data-category="blz">Beleza</button>
+        <button class="filter-btn" data-category="moda">Moda</button>
+      </div>
+    </div>
+
+    <!-- Grid onde os produtos serão renderizados -->
+    <div class="grid" id="productGrid"></div>
+
+    <div class="disclosure">
+      Transparência: Comprando através dos nossos links, podemos receber uma comissão sem custo adicional para você.
+    </div>
+  </div>
+
+  <script>
+    // 1. Array de produtos (adicione seus produtos e links de afiliado aqui)
+    const products = [];
+
+    const grid = document.getElementById("productGrid");
+    const searchInput = document.getElementById("search");
+    const filterBtns = document.querySelectorAll(".filter-btn");
+
+    let currentCategory = "all";
+    let searchQuery = "";
+
+    // 2. Função para renderizar os cards
+    function renderProducts() {
+      grid.innerHTML = "";
+
+      const filtered = products.filter(product => {
+        const matchesCategory = currentCategory === "all" || product.category === currentCategory;
+        const matchesSearch = product.title.toLowerCase().includes(searchQuery.toLowerCase());
+        return matchesCategory && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--muted); padding: 2rem 0;">Nenhuma oferta encontrada.</p>`;
+        return;
+      }
+
+      filtered.forEach(p => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          ${p.discountBadge ? `<span class="badge">${p.discountBadge}</span>` : ""}
+          <div class="card-img-container">
+            <img src="${p.image}" alt="${p.title}" class="card-img" loading="lazy">
+          </div>
+          <div class="card-body">
+            <span class="card-category">${p.categoryName}</span>
+            <h3 class="card-title">${p.title}</h3>
+            <div class="card-pricing">
+              ${p.oldPrice ? `<div class="price-old">${p.oldPrice}</div>` : ""}
+              <div class="price-new">${p.newPrice}</div>
+            </div>
+            <a href="${p.affiliateLink}" target="_blank" rel="nofollow noopener sponsored" class="affiliate-btn">
+              Ver Oferta
+            </a>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // 3. Event Listeners para Filtros e Busca
+    filterBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        filterBtns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        currentCategory = btn.dataset.category;
+        renderProducts();
+      });
+    });
+
+    searchInput.addEventListener("input", (e) => {
+      searchQuery = e.target.value;
+      renderProducts();
+    });
+
+    // Render inicial
+    renderProducts();
+  </script>
+  <center>
+    <div><img src="logotipo.png" alt="Descrição da imagem" width="100" height="100">
+    <p><strong><h3>Banana Doce Vitrine de Ofertas</h3></strong></p>
+    <a href="https://banana-doce-vtof.github.io/blog-banana-doce/"><button class="meu-botao"><strong>Conheça nossa Página e Redes Sociais</strong></button></a></div>  
+  </center>
+</body>
+</html>
