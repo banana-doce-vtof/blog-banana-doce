@@ -1704,10 +1704,20 @@ function waitForImages(container, timeoutMs = 20000) {
 async function downloadPDF() {
   if (offers.length === 0) { showToast('Nenhuma oferta para gerar o PDF', 'error'); return; }
 
+  if (location.protocol === 'file:') {
+    alert(
+      '⚠️ Não é possível gerar o PDF abrindo o arquivo direto (file://).\n\n' +
+      'Use um servidor local (Live Server, python -m http.server 8000, npx serve .) ' +
+      'ou publique o site.\n\n' +
+      'Acesse via http://localhost:... e clique novamente.'
+    );
+    return;
+  }
+
   showPdfLoading('Preparando catálogo PDF...', 'Filtrando ofertas', 5);
 
   try {
-    // ===== 1. Filtra e ordena (descarta ofertas sem link válido) =====
+    // ===== 1. Filtra e ordena =====
     let filtered = offers.filter(o => {
       const matchCategory = currentCategory === 'all' || o.categoria === currentCategory;
       const haystack = (o.titulo + ' ' + (o.descricao || '')).toLowerCase();
@@ -1723,9 +1733,8 @@ async function downloadPDF() {
       return;
     }
 
-    // ===== 2. Pré-carrega imagens com fallback garantido =====
+    // ===== 2. Pré-carrega imagens =====
     updatePdfProgress('Carregando imagens...', `0 de ${filtered.length}`, 10);
-
     const imageMap = {};
     for (let i = 0; i < filtered.length; i++) {
       const offer = filtered[i];
@@ -1733,12 +1742,10 @@ async function downloadPDF() {
       let dataUrl = await imageToDataUrl(offer.imagem || fallback);
       if (!dataUrl) dataUrl = await imageToDataUrl(fallback);
       imageMap[offer.id] = dataUrl || fallback;
-
       const progress = 10 + Math.round(((i + 1) / filtered.length) * 30);
       updatePdfProgress('Carregando imagens...', `${i + 1} de ${filtered.length}`, progress);
     }
 
-    // Logo: tenta, mas não bloqueia se falhar
     let logoDataUrl = await imageToDataUrl(settings.logoUrl);
     if (!logoDataUrl && settings.logoUrl) {
       logoDataUrl = await imageToDataUrl(getFallbackImage('Logo', ''));
@@ -1798,7 +1805,7 @@ async function downloadPDF() {
 
     const renderArea = document.getElementById('pdf-render-area');
     renderArea.innerHTML = `
-      <div class="pdf-page">
+      <div class="pdf-page" id="pdf-page-root">
         <div class="pdf-header" style="background: ${t.headerGradient}; color: ${t.headerTextColor}">
           ${logoDataUrl ? `<img src="${escapeHtml(logoDataUrl)}" alt="Logo">` : ''}
           <h1 style="color: ${settings.headerTitleColor || t.headerTextColor}">${escapeHtml(settings.headerTitle)}</h1>
@@ -1819,64 +1826,87 @@ async function downloadPDF() {
       </div>
     `;
 
-    // ===== 4. Aguarda imagens + fontes + 2 frames de renderização =====
+    // ===== 4. Aguarda renderização =====
     updatePdfProgress('Aguardando renderização...', '', 55);
     await waitForImages(renderArea, 20000);
     try { await document.fonts.ready; } catch (e) {}
-
-    const rect = renderArea.getBoundingClientRect();
-    console.log('[PDF DEBUG] Container:', {
-      width: rect.width, height: rect.height, top: rect.top, left: rect.left,
-      children: renderArea.children.length,
-      cardsFound: renderArea.querySelectorAll('.pdf-card').length,
-      imgsFound: renderArea.querySelectorAll('img').length
-    });
-
-    if (rect.height === 0 || renderArea.children.length === 0) {
-      throw new Error('Container do PDF está vazio');
-    }
-
     await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
     await new Promise(r => setTimeout(r, 300));
 
-    updatePdfProgress('Gerando PDF A4...', 'Isso pode levar alguns segundos', 60);
+    const pageRoot = document.getElementById('pdf-page-root');
+    if (!pageRoot) throw new Error('Container do PDF não encontrado');
 
-    // ===== 5. Gera o PDF UMA única vez =====
-    const opt = {
-      margin: [10, 10, 10, 10],
-      filename: `catalogo_banana_doce_${new Date().toISOString().slice(0,10)}.pdf`,
-      image: { type: 'jpeg', quality: 0.95 },
-      html2canvas: {
-        scale: 2,
-        useCORS: true,
-        allowTaint: true,
-        logging: false,
-        letterRendering: true,
-        backgroundColor: '#ffffff',
-        windowWidth: 794,
-        width: 794
-      },
-      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait', compress: true },
-      pagebreak: { mode: ['css', 'legacy'], avoid: ['.pdf-card', '.pdf-header', '.pdf-hero', '.pdf-footer'] }
-    };
+    const rect = pageRoot.getBoundingClientRect();
+    console.log('[PDF DEBUG] Vou rasterizar:', {
+      width: rect.width, height: rect.height,
+      cardsFound: pageRoot.querySelectorAll('.pdf-card').length
+    });
 
-    const worker = html2pdf().set(opt).from(renderArea).toPdf();
-    const pdf = await worker.get('pdf');
+    if (rect.height < 100) throw new Error('Container do PDF está vazio');
 
-    // ===== 6. Adiciona links clicáveis =====
+    // ===== 5. Rasteriza TUDO com html2canvas (direto, sem html2pdf) =====
+    updatePdfProgress('Rasterizando catálogo...', 'Isso pode levar alguns segundos', 60);
+
+    const SCALE = 2;
+    const canvas = await html2canvas(pageRoot, {
+      scale: SCALE,
+      useCORS: true,
+      allowTaint: true,
+      logging: false,
+      backgroundColor: '#ffffff',
+      windowWidth: 794,
+      width: 794,
+      height: pageRoot.scrollHeight
+    });
+
+    console.log('[PDF DEBUG] Canvas:', { w: canvas.width, h: canvas.height });
+
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait', compress: true });
+
+    // Dimensões
+    const pageWidthMm  = 210;
+    const pageHeightMm = 297;
+    const marginMm     = 10;
+    const contentWidthMm  = pageWidthMm  - marginMm * 2; // 190
+    const contentHeightMm = pageHeightMm - marginMm * 2; // 277
+
+    // 1 px CSS  ->  quantos mm
+    const cssWidth = pageRoot.offsetWidth;                    // ~794
+    const mmPerCssPx = contentWidthMm / cssWidth;
+    const cssPxPerPage = contentHeightMm / mmPerCssPx;        // altura útil em px CSS
+
+    // Canvas tem SCALE multiplicador
+    const canvasPxPerPage = Math.floor(cssPxPerPage * SCALE);
+    const totalPages = Math.ceil(canvas.height / canvasPxPerPage);
+
+    // Recorta o canvas em fatias (uma por página) e adiciona cada uma
+    for (let p = 0; p < totalPages; p++) {
+      const yStart = p * canvasPxPerPage;
+      const sliceH = Math.min(canvasPxPerPage, canvas.height - yStart);
+
+      const slice = document.createElement('canvas');
+      slice.width = canvas.width;
+      slice.height = sliceH;
+      const sctx = slice.getContext('2d');
+      sctx.fillStyle = '#ffffff';
+      sctx.fillRect(0, 0, slice.width, slice.height);
+      sctx.drawImage(canvas, 0, yStart, canvas.width, sliceH, 0, 0, canvas.width, sliceH);
+
+      const sliceData = slice.toDataURL('image/jpeg', 0.92);
+      const sliceHeightMm = sliceH / SCALE * mmPerCssPx;
+
+      if (p > 0) pdf.addPage();
+      pdf.addImage(sliceData, 'JPEG', marginMm, marginMm, contentWidthMm, sliceHeightMm, undefined, 'FAST');
+
+      const progress = 60 + Math.round(((p + 1) / totalPages) * 28);
+      updatePdfProgress('Montando páginas...', `${p + 1} de ${totalPages}`, progress);
+    }
+
+    // ===== 6. Adiciona links clicáveis em cada botão "Ver Oferta" =====
     updatePdfProgress('Adicionando links clicáveis...', '', 90);
 
-    const pageWidth = pdf.internal.pageSize.getWidth();
-    const pageHeight = pdf.internal.pageSize.getHeight();
-    const marginMm = 10;
-    const pdfWidthMm = pageWidth - marginMm * 2;
-    const renderWidthPx = 794;
-    const pxToMm = pdfWidthMm / renderWidthPx;
-    const pdfHeightMm = pageHeight - marginMm * 2;
-    const pxPerPage = pdfHeightMm / pxToMm;
-
-    const totalPages = pdf.internal.getNumberOfPages();
-    const cards = renderArea.querySelectorAll('.pdf-card');
+    const cards = pageRoot.querySelectorAll('.pdf-card');
     let processed = 0;
 
     cards.forEach(card => {
@@ -1885,37 +1915,43 @@ async function downloadPDF() {
       if (!btn || !link || link === '#' || !isValidUrl(link)) return;
 
       const btnRect = btn.getBoundingClientRect();
-      const renderRect = renderArea.getBoundingClientRect();
-      const relTop = btnRect.top - renderRect.top;
-      const relLeft = btnRect.left - renderRect.left;
-      const relWidth = btnRect.width;
-      const relHeight = btnRect.height;
+      const rootRect = pageRoot.getBoundingClientRect();
+      const relTop = btnRect.top - rootRect.top;
+      const relLeft = btnRect.left - rootRect.left;
+      const relW = btnRect.width;
+      const relH = btnRect.height;
 
-      const pageNum = Math.floor(relTop / pxPerPage) + 1;
-      const topInPage = relTop - (pageNum - 1) * pxPerPage;
+      // Em qual página caiu esse botão?
+      const pageNum = Math.floor(relTop / cssPxPerPage) + 1;
+      const topInPage = relTop - (pageNum - 1) * cssPxPerPage;
 
-      const xMm = marginMm + relLeft * pxToMm;
-      const yMm = marginMm + topInPage * pxToMm;
-      const wMm = relWidth * pxToMm;
-      const hMm = relHeight * pxToMm;
+      const xMm = marginMm + relLeft * mmPerCssPx;
+      const yMm = marginMm + topInPage * mmPerCssPx;
+      const wMm = relW * mmPerCssPx;
+      const hMm = relH * mmPerCssPx;
 
       if (pageNum >= 1 && pageNum <= totalPages &&
-          yMm >= 0 && yMm + hMm <= pageHeight &&
-          xMm >= 0 && xMm + wMm <= pageWidth) {
-        try { pdf.setPage(pageNum); pdf.link(xMm, yMm, wMm, hMm, { url: link }); } catch (e) {}
+          yMm >= 0 && yMm + hMm <= pageHeightMm &&
+          xMm >= 0 && xMm + wMm <= pageWidthMm) {
+        try {
+          pdf.setPage(pageNum);
+          pdf.link(xMm, yMm, wMm, hMm, { url: link });
+        } catch (e) { /* ignora */ }
       }
+
       processed++;
-      const progress = 90 + Math.round((processed / Math.max(cards.length, 1)) * 8);
+      const progress = 90 + Math.round((processed / Math.max(cards.length, 1)) * 7);
       updatePdfProgress('Adicionando links...', `${processed} de ${cards.length}`, progress);
     });
 
-    // ===== 7. Salva e limpa =====
+    // ===== 7. Salva =====
     updatePdfProgress('Finalizando...', '', 98);
-    await pdf.save(opt.filename);
+    pdf.save(`catalogo_banana_doce_${new Date().toISOString().slice(0,10)}.pdf`);
 
     renderArea.innerHTML = '';
     hidePdfLoading();
     showToast(`PDF gerado: ${filtered.length} oferta(s) em ${totalPages} página(s)!`, 'success');
+
   } catch (err) {
     console.error('Erro ao gerar PDF:', err);
     hidePdfLoading();
