@@ -168,7 +168,7 @@
     mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath d='M331.5 225.5c.6 6 1 12.3 1 18.7 0 98-72.5 144.3-153.8 144.3-83 0-144.3-65.7-144.3-154.8 0-95.4 66.8-157.7 154.8-157.7 48 0 81 12.5 110 37.5L275 131.3c-24.5-21.5-54-31.8-91-31.8-62 0-108.5 45.5-108.5 111.5 0 63.5 43 109.5 105 109.5 53.5 0 92.5-30.5 92.5-81.5 0-4.5-.3-8.8-.8-13H225v-45h152c1.8 9.8 2.8 20.5 2.8 31.5h-48.3z'/%3E%3C/svg%3E") no-repeat center;
   }
 
-  /* ===== PDF RENDER AREA (usado apenas para gerar o PDF) ===== */
+    /* ===== PDF RENDER AREA (usado apenas para gerar o PDF) ===== */
   #pdf-render-area {
     position: fixed;
     top: 0;
@@ -180,82 +180,122 @@
     font-family: 'Inter', sans-serif;
   }
   #pdf-render-area * { box-sizing: border-box; }
+
+  /* Página A4 em px (794 × 1157px ≈ 210 × 297mm na proporção correta) */
   #pdf-render-area .pdf-page {
     width: 794px;
-    padding: 30px;
+    height: 1157px;
+    padding: 28px 24px;
     background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
   }
+  #pdf-render-area .pdf-page + .pdf-page {
+    margin-top: 20px;
+  }
+
+  /* ---------- HEADER ---------- */
   #pdf-render-area .pdf-header {
     text-align: center;
-    padding: 24px 20px;
-    margin-bottom: 20px;
-    border-radius: 16px;
-    color: white;
+    padding: 18px 20px 20px;
+    margin-bottom: 14px;
+    border-radius: 14px;
+    flex-shrink: 0;
   }
   #pdf-render-area .pdf-header img {
-    width: 80px;
-    height: 80px;
+    width: 72px;
+    height: 72px;
     border-radius: 50%;
     object-fit: cover;
-    margin: 0 auto 12px;
+    margin: 0 auto 8px;
     display: block;
     border: 4px solid rgba(255,255,255,0.5);
   }
   #pdf-render-area .pdf-header h1 {
-    font-size: 30px;
+    font-size: 26px;
     font-weight: 900;
-    margin: 0 0 4px;
+    margin: 0 0 2px;
+    line-height: 1.15;
   }
   #pdf-render-area .pdf-header p {
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 600;
     margin: 0;
+    line-height: 1.2;
   }
+
+  /* ---------- HERO ---------- */
   #pdf-render-area .pdf-hero {
     text-align: center;
-    padding: 22px 20px;
-    margin-bottom: 18px;
-    border-radius: 16px;
+    padding: 14px 20px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    flex-shrink: 0;
   }
   #pdf-render-area .pdf-hero h2 {
-    font-size: 24px;
+    font-size: 19px;
     font-weight: 900;
-    margin: 0 0 6px;
+    margin: 0 0 4px;
+    line-height: 1.2;
   }
   #pdf-render-area .pdf-hero p {
-    font-size: 14px;
+    font-size: 12px;
     margin: 0;
+    line-height: 1.3;
   }
+
+  /* ---------- DISCLOSURE ---------- */
   #pdf-render-area .pdf-disclosure {
     text-align: center;
-    padding: 8px 14px;
+    padding: 6px 14px;
     border-radius: 999px;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 600;
     display: inline-block;
-    margin: 0 auto 18px;
+    margin: 0 auto 14px;
+    line-height: 1.4;
+    max-width: 92%;
   }
+  #pdf-render-area .pdf-page > div[style*="text-align:center"] {
+    flex-shrink: 0;
+    text-align: center;
+  }
+
+  /* ---------- GRID ---------- */
+  /* flex: 1 faz o grid ocupar todo o espaço vertical restante;
+     align-content: center centraliza as linhas quando sobra espaço (ex: página 1 com 2 cards). */
   #pdf-render-area .pdf-grid {
+    flex: 1;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 14px;
+    align-content: center;
   }
+
+  /* ---------- CARD ---------- */
   #pdf-render-area .pdf-card {
     background: #ffffff;
-    border-radius: 14px;
+    border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     border: 1px solid #e5e7eb;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-height: 520px;
     break-inside: avoid;
     page-break-inside: avoid;
   }
+
+  /* Área da imagem com altura fixa — garante que todas as linhas fiquem simétricas */
   #pdf-render-area .pdf-card .img-wrap {
     position: relative;
     width: 100%;
-    aspect-ratio: 1/1;
+    height: 260px;
     background: #f3f4f6;
     overflow: hidden;
+    flex-shrink: 0;
   }
   #pdf-render-area .pdf-card img {
     width: 100%;
@@ -263,6 +303,7 @@
     object-fit: cover;
     display: block;
   }
+
   #pdf-render-area .pdf-card .discount-badge {
     position: absolute;
     top: 10px;
@@ -272,17 +313,19 @@
     padding: 5px 11px;
     border-radius: 999px;
     font-size: 12px;
+    line-height: 1;
   }
   #pdf-render-area .pdf-card .cat-badge {
     position: absolute;
     top: 10px;
     right: 10px;
     background: rgba(255,255,255,0.95);
-    padding: 4px 10px;
+    padding: 5px 10px;
     border-radius: 999px;
     font-size: 10px;
     font-weight: 700;
     color: #374151;
+    line-height: 1;
   }
   #pdf-render-area .pdf-card .store-badge {
     position: absolute;
@@ -290,53 +333,70 @@
     left: 10px;
     background: rgba(17,24,39,0.9);
     color: #facc15;
-    padding: 4px 10px;
+    padding: 5px 10px;
     border-radius: 999px;
     font-size: 10px;
     font-weight: 700;
+    line-height: 1;
   }
+
+  /* Corpo com flex column + gap consistente */
   #pdf-render-area .pdf-card .card-body {
-    padding: 12px;
+    padding: 12px 14px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+    min-height: 0;
   }
+
   #pdf-render-area .pdf-card h4 {
     font-size: 13px;
     font-weight: 700;
     color: #111827;
-    margin: 0 0 4px;
+    margin: 0;
     min-height: 32px;
+    line-height: 1.25;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+
   #pdf-render-area .pdf-card .desc {
     font-size: 10px;
     color: #6b7280;
-    margin: 0 0 8px;
-    min-height: 22px;
+    margin: 0;
+    min-height: 26px;
+    line-height: 1.3;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+
+  /* Preço empurrado para baixo (margin-top:auto) — alinha todos os preços na mesma linha */
   #pdf-render-area .pdf-card .price-area {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
-    margin-bottom: 10px;
+    margin-top: auto;
+    padding-top: 4px;
     gap: 6px;
   }
   #pdf-render-area .pdf-card .old-price {
     font-size: 10px;
     color: #9ca3af;
     text-decoration: line-through;
-    margin: 0;
+    margin: 0 0 1px;
+    line-height: 1.2;
   }
   #pdf-render-area .pdf-card .new-price {
     font-size: 17px;
     font-weight: 900;
     color: #111827;
     margin: 0;
+    line-height: 1.1;
   }
   #pdf-render-area .pdf-card .save {
     font-size: 9px;
@@ -345,7 +405,10 @@
     background: #f0fdf4;
     padding: 3px 7px;
     border-radius: 6px;
+    line-height: 1.2;
+    white-space: nowrap;
   }
+
   #pdf-render-area .pdf-card .btn-offer {
     display: block;
     width: 100%;
@@ -358,25 +421,32 @@
     font-size: 12px;
     border: none;
     cursor: default;
+    line-height: 1.2;
+    margin-top: 2px;
+    flex-shrink: 0;
   }
+
+  /* ---------- FOOTER ---------- */
   #pdf-render-area .pdf-footer {
-    margin-top: 24px;
-    padding: 18px;
-    color: #facc15;
+    margin-top: 14px;
+    padding: 16px;
     border-radius: 12px;
     text-align: center;
+    flex-shrink: 0;
   }
   #pdf-render-area .pdf-footer .ft-title {
     font-size: 15px;
     font-weight: 700;
     color: white;
     margin: 0 0 4px;
+    line-height: 1.2;
   }
   #pdf-render-area .pdf-footer .ft-copy {
     font-size: 10px;
     margin: 6px 0 0;
+    line-height: 1.3;
   }
-
+  
   /* Loading overlay do PDF */
   .pdf-loading-overlay {
     position: fixed;
