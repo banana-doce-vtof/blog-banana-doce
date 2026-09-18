@@ -11,6 +11,7 @@
 <meta property="og:description" content="As melhores ofertas do dia">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.0/index.min.css">
 <style>
@@ -51,17 +52,11 @@
   }
   .scrollbar-hide::-webkit-scrollbar { display: none; }
   .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-  .admin-only { display: none !important; }
-  .admin-only.visible { display: flex !important; }
-  .admin-only.visible-inline { display: inline-flex !important; }
-  .admin-only.visible-block { display: block !important; }
-  .admin-panel { display: none; }
-  .admin-panel.visible { display: block; }
   .delete-btn { transition: all 0.2s; }
   .delete-btn:hover { transform: scale(1.1); background: #dc2626 !important; }
   .edit-btn { transition: all 0.2s; }
   .edit-btn:hover { transform: scale(1.1); background: #2563eb !important; }
-  
+
   .template-card {
     cursor: pointer;
     transition: all 0.3s;
@@ -149,7 +144,6 @@
     text-transform: uppercase;
   }
 
-  /* Ícone X (Twitter) customizado via SVG */
   .fa-x-twitter-custom {
     display: inline-block;
     width: 1em;
@@ -159,7 +153,6 @@
     mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z'/%3E%3C/svg%3E") no-repeat center;
   }
 
-  /* Ícone Threads customizado via SVG */
   .fa-threads-custom {
     display: inline-block;
     width: 1em;
@@ -167,6 +160,264 @@
     background-color: currentColor;
     -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath d='M331.5 225.5c.6 6 1 12.3 1 18.7 0 98-72.5 144.3-153.8 144.3-83 0-144.3-65.7-144.3-154.8 0-95.4 66.8-157.7 154.8-157.7 48 0 81 12.5 110 37.5L275 131.3c-24.5-21.5-54-31.8-91-31.8-62 0-108.5 45.5-108.5 111.5 0 63.5 43 109.5 105 109.5 53.5 0 92.5-30.5 92.5-81.5 0-4.5-.3-8.8-.8-13H225v-45h152c1.8 9.8 2.8 20.5 2.8 31.5h-48.3z'/%3E%3C/svg%3E") no-repeat center;
     mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath d='M331.5 225.5c.6 6 1 12.3 1 18.7 0 98-72.5 144.3-153.8 144.3-83 0-144.3-65.7-144.3-154.8 0-95.4 66.8-157.7 154.8-157.7 48 0 81 12.5 110 37.5L275 131.3c-24.5-21.5-54-31.8-91-31.8-62 0-108.5 45.5-108.5 111.5 0 63.5 43 109.5 105 109.5 53.5 0 92.5-30.5 92.5-81.5 0-4.5-.3-8.8-.8-13H225v-45h152c1.8 9.8 2.8 20.5 2.8 31.5h-48.3z'/%3E%3C/svg%3E") no-repeat center;
+  }
+
+  /* ===== PDF RENDER AREA (usado apenas para gerar o PDF) ===== */
+  #pdf-render-area {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 794px;
+    background: #ffffff;
+    z-index: -9999;
+    pointer-events: none;
+    font-family: 'Inter', sans-serif;
+  }
+  #pdf-render-area * { box-sizing: border-box; }
+  #pdf-render-area .pdf-page {
+    width: 794px;
+    padding: 30px;
+    background: #ffffff;
+  }
+  #pdf-render-area .pdf-header {
+    text-align: center;
+    padding: 24px 20px;
+    margin-bottom: 20px;
+    border-radius: 16px;
+    color: white;
+  }
+  #pdf-render-area .pdf-header img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 12px;
+    display: block;
+    border: 4px solid rgba(255,255,255,0.5);
+  }
+  #pdf-render-area .pdf-header h1 {
+    font-size: 30px;
+    font-weight: 900;
+    margin: 0 0 4px;
+  }
+  #pdf-render-area .pdf-header p {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0;
+  }
+  #pdf-render-area .pdf-hero {
+    text-align: center;
+    padding: 22px 20px;
+    margin-bottom: 18px;
+    border-radius: 16px;
+  }
+  #pdf-render-area .pdf-hero h2 {
+    font-size: 24px;
+    font-weight: 900;
+    margin: 0 0 6px;
+  }
+  #pdf-render-area .pdf-hero p {
+    font-size: 14px;
+    margin: 0;
+  }
+  #pdf-render-area .pdf-disclosure {
+    text-align: center;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    display: inline-block;
+    margin: 0 auto 18px;
+  }
+  #pdf-render-area .pdf-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  #pdf-render-area .pdf-card {
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border: 1px solid #e5e7eb;
+    position: relative;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  #pdf-render-area .pdf-card .img-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1/1;
+    background: #f3f4f6;
+    overflow: hidden;
+  }
+  #pdf-render-area .pdf-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  #pdf-render-area .pdf-card .discount-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: white;
+    font-weight: 900;
+    padding: 5px 11px;
+    border-radius: 999px;
+    font-size: 12px;
+  }
+  #pdf-render-area .pdf-card .cat-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255,255,255,0.95);
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 700;
+    color: #374151;
+  }
+  #pdf-render-area .pdf-card .store-badge {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(17,24,39,0.9);
+    color: #facc15;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 700;
+  }
+  #pdf-render-area .pdf-card .card-body {
+    padding: 12px;
+  }
+  #pdf-render-area .pdf-card h4 {
+    font-size: 13px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 4px;
+    min-height: 32px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  #pdf-render-area .pdf-card .desc {
+    font-size: 10px;
+    color: #6b7280;
+    margin: 0 0 8px;
+    min-height: 22px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  #pdf-render-area .pdf-card .price-area {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    gap: 6px;
+  }
+  #pdf-render-area .pdf-card .old-price {
+    font-size: 10px;
+    color: #9ca3af;
+    text-decoration: line-through;
+    margin: 0;
+  }
+  #pdf-render-area .pdf-card .new-price {
+    font-size: 17px;
+    font-weight: 900;
+    color: #111827;
+    margin: 0;
+  }
+  #pdf-render-area .pdf-card .save {
+    font-size: 9px;
+    font-weight: 700;
+    color: #16a34a;
+    background: #f0fdf4;
+    padding: 3px 7px;
+    border-radius: 6px;
+  }
+  #pdf-render-area .pdf-card .btn-offer {
+    display: block;
+    width: 100%;
+    padding: 9px;
+    border-radius: 10px;
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    border: none;
+    cursor: default;
+  }
+  #pdf-render-area .pdf-footer {
+    margin-top: 24px;
+    padding: 18px;
+    color: #facc15;
+    border-radius: 12px;
+    text-align: center;
+  }
+  #pdf-render-area .pdf-footer .ft-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: white;
+    margin: 0 0 4px;
+  }
+  #pdf-render-area .pdf-footer .ft-copy {
+    font-size: 10px;
+    margin: 6px 0 0;
+  }
+
+  /* Loading overlay do PDF */
+  .pdf-loading-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(6px);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .pdf-loading-overlay .spinner {
+    width: 70px;
+    height: 70px;
+    border: 6px solid rgba(255,255,255,0.2);
+    border-top-color: #facc15;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .pdf-loading-overlay .progress-text {
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+    text-align: center;
+  }
+  .pdf-loading-overlay .progress-sub {
+    color: #facc15;
+    font-size: 13px;
+    text-align: center;
+    max-width: 320px;
+  }
+  .pdf-loading-overlay .progress-bar {
+    width: 280px;
+    height: 6px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .pdf-loading-overlay .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #facc15, #eab308);
+    border-radius: 3px;
+    transition: width 0.3s;
+    width: 0%;
   }
 </style>
 </head>
@@ -183,17 +434,13 @@
       </div>
     </div>
     <div class="flex items-center gap-3">
-      <button id="btn-import-excel" onclick="openUploadModal()" class="admin-only bg-gray-900 hover:bg-gray-800 text-yellow-400 px-4 py-2.5 rounded-xl font-bold items-center gap-2 transition-all shadow-lg hover:shadow-xl">
+      <button id="btn-import-excel" onclick="openUploadModal()" class="bg-gray-900 hover:bg-gray-800 text-yellow-400 px-4 py-2.5 rounded-xl font-bold flex items-center gap-2 transition-all shadow-lg hover:shadow-xl">
         <i class="fas fa-file-excel"></i>
         <span class="hidden sm:inline">Importar Excel</span>
       </button>
-      <button id="btn-new-offer" onclick="openAddModal()" class="admin-only bg-white hover:bg-gray-100 text-gray-900 px-4 py-2.5 rounded-xl font-bold items-center gap-2 transition-all shadow-lg hover:shadow-xl">
+      <button id="btn-new-offer" onclick="openAddModal()" class="bg-white hover:bg-gray-100 text-gray-900 px-4 py-2.5 rounded-xl font-bold flex items-center gap-2 transition-all shadow-lg hover:shadow-xl">
         <i class="fas fa-plus"></i>
         <span class="hidden sm:inline">Nova Oferta</span>
-      </button>
-      <button id="auth-btn" onclick="handleAuth()" class="bg-gray-900 hover:bg-gray-800 text-yellow-400 px-4 py-2.5 rounded-xl font-bold flex items-center gap-2 transition-all shadow-lg hover:shadow-xl">
-        <i class="fas fa-lock" id="auth-icon"></i>
-        <span id="auth-label" class="hidden sm:inline">Admin</span>
       </button>
     </div>
   </div>
@@ -229,17 +476,21 @@
 </section>
 
 <!-- ADMIN PANEL -->
-<section class="max-w-7xl mx-auto px-4 pb-6 admin-panel" id="admin-panel">
+<section class="max-w-7xl mx-auto px-4 pb-6" id="admin-panel">
   <div class="bg-white rounded-2xl shadow-lg p-6 border-2 border-yellow-200">
     <div class="flex items-center gap-2 mb-4 flex-wrap">
       <i class="fas fa-cog text-yellow-600 text-xl"></i>
       <h3 class="text-lg font-black text-gray-900">Painel do Administrador</h3>
       <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full font-bold" id="saved-count">0 ofertas salvas</span>
     </div>
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3">
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-8 gap-3">
       <button onclick="openCustomizeModal()" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-xl transition-all shadow flex items-center justify-center gap-2">
         <i class="fas fa-palette"></i>
         <span class="text-xs sm:text-sm">Personalizar</span>
+      </button>
+      <button onclick="downloadPDF()" class="bg-rose-600 hover:bg-rose-700 text-white font-bold py-3 px-4 rounded-xl transition-all shadow flex items-center justify-center gap-2">
+        <i class="fas fa-file-pdf"></i>
+        <span class="text-xs sm:text-sm">Baixar PDF</span>
       </button>
       <button onclick="exportJSON()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl transition-all shadow flex items-center justify-center gap-2">
         <i class="fas fa-file-export"></i>
@@ -308,45 +559,8 @@
   </div>
 </footer>
 
-<!-- LOGIN MODAL -->
-<div id="login-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 modal-overlay">
-  <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full">
-    <div class="gradient-header p-6 rounded-t-3xl flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center">
-          <i class="fas fa-user-shield text-gray-900 text-2xl"></i>
-        </div>
-        <div>
-          <h3 class="text-xl font-black text-gray-900">Área Restrita</h3>
-          <p class="text-sm text-gray-700">Acesso de administrador</p>
-        </div>
-      </div>
-      <button onclick="closeLoginModal()" class="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-all">
-        <i class="fas fa-times text-gray-700"></i>
-      </button>
-    </div>
-    <div class="p-6 space-y-4">
-      <div class="bg-blue-50 border-l-4 border-blue-500 p-3 rounded-lg">
-        <p class="text-sm text-blue-800"><i class="fas fa-info-circle mr-1"></i> Digite a senha de administrador.</p>
-      </div>
-      <div>
-        <label class="block text-sm font-bold text-gray-700 mb-1">Senha</label>
-        <div class="relative">
-          <input type="password" id="login-password" placeholder="Digite a senha..." class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-yellow-500 focus:outline-none pr-12" onkeypress="if(event.key==='Enter')doLogin()">
-          <button onclick="togglePassword()" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-700">
-            <i class="fas fa-eye" id="eye-icon"></i>
-          </button>
-        </div>
-      </div>
-      <div id="login-error" class="hidden bg-red-50 border border-red-300 text-red-700 px-3 py-2 rounded-lg text-sm">
-        <i class="fas fa-exclamation-circle mr-1"></i>Senha incorreta.
-      </div>
-      <button onclick="doLogin()" class="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-gray-900 font-black py-3 rounded-xl transition-all shadow-lg">
-        <i class="fas fa-sign-in-alt mr-2"></i>Entrar
-      </button>
-    </div>
-  </div>
-</div>
+<!-- CONTAINER OCULTO PARA RENDERIZAÇÃO DO PDF -->
+<div id="pdf-render-area"></div>
 
 <!-- UPLOAD EXCEL MODAL -->
 <div id="upload-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 modal-overlay">
@@ -473,7 +687,7 @@
       </button>
     </div>
     <div class="p-6 space-y-8">
-      
+
       <div>
         <h4 class="text-lg font-black text-gray-900 mb-3 flex items-center gap-2">
           <i class="fas fa-swatchbook text-purple-600"></i> 1. Escolha um Template de Cores
@@ -733,30 +947,24 @@
 </div>
 
 <script>
-// ============ CONFIGURAÇÃO (senha ofuscada) ============
-const _k = [97,100,109,105,110,49,50,51];
-const ADMIN_PASSWORD = String.fromCharCode.apply(null, _k);
-const STORAGE_KEY = 'banana_doce_admin_logged';
+// ============ CONFIGURAÇÃO ============
 const OFFERS_STORAGE_KEY = 'banana_doce_offers';
 const SETTINGS_STORAGE_KEY = 'banana_doce_settings';
-
-let isAdmin = false;
 
 // ============ 10 TEMPLATES DE CORES ============
 const TEMPLATES = [
   { id: 'default', name: 'Amarelo Banana', icon: '🍌', headerGradient: 'linear-gradient(135deg, #fde047 0%, #facc15 50%, #eab308 100%)', bgColor: '#fefce8', headerTextColor: '#111827', headerSubtitleColor: '#1f2937', discountGradient: 'linear-gradient(135deg, #ef4444, #dc2626)', activeCategoryBg: 'linear-gradient(135deg, #facc15, #eab308)', activeCategoryText: '#1a1a1a', borderColor: '#eab308', borderHover: '#ca8a04', uploadHover: '#fef9c3', heroFrom: 'from-yellow-50', heroTo: 'to-yellow-100', searchBorder: 'border-yellow-200', searchFocus: 'focus:border-yellow-500' },
   { id: 'ocean', name: 'Azul Oceano', icon: '🌊', headerGradient: 'linear-gradient(135deg, #38bdf8 0%, #0ea5e9 50%, #0284c7 100%)', bgColor: '#f0f9ff', headerTextColor: '#ffffff', headerSubtitleColor: '#f0f9ff', discountGradient: 'linear-gradient(135deg, #ef4444, #dc2626)', activeCategoryBg: 'linear-gradient(135deg, #0ea5e9, #0284c7)', activeCategoryText: '#ffffff', borderColor: '#0ea5e9', borderHover: '#0284c7', uploadHover: '#e0f2fe', heroFrom: 'from-sky-50', heroTo: 'to-sky-100', searchBorder: 'border-sky-200', searchFocus: 'focus:border-sky-500' },
   { id: 'forest', name: 'Verde Floresta', icon: '🌲', headerGradient: 'linear-gradient(135deg, #86efac 0%, #22c55e 50%, #16a34a 100%)', bgColor: '#f0fdf4', headerTextColor: '#111827', headerSubtitleColor: '#1f2937', discountGradient: 'linear-gradient(135deg, #ef4444, #dc2626)', activeCategoryBg: 'linear-gradient(135deg, #22c55e, #16a34a)', activeCategoryText: '#ffffff', borderColor: '#22c55e', borderHover: '#16a34a', uploadHover: '#dcfce7', heroFrom: 'from-green-50', heroTo: 'to-green-100', searchBorder: 'border-green-200', searchFocus: 'focus:border-green-500' },
-  { id: 'pink', name: 'Rosa Pink', icon: '', headerGradient: 'linear-gradient(135deg, #f9a8d4 0%, #ec4899 50%, #db2777 100%)', bgColor: '#fdf2f8', headerTextColor: '#ffffff', headerSubtitleColor: '#fdf2f8', discountGradient: 'linear-gradient(135deg, #ef4444, #dc2626)', activeCategoryBg: 'linear-gradient(135deg, #ec4899, #db2777)', activeCategoryText: '#ffffff', borderColor: '#ec4899', borderHover: '#db2777', uploadHover: '#fce7f3', heroFrom: 'from-pink-50', heroTo: 'to-pink-100', searchBorder: 'border-pink-200', searchFocus: 'focus:border-pink-500' },
+  { id: 'pink', name: 'Rosa Pink', icon: '💖', headerGradient: 'linear-gradient(135deg, #f9a8d4 0%, #ec4899 50%, #db2777 100%)', bgColor: '#fdf2f8', headerTextColor: '#ffffff', headerSubtitleColor: '#fdf2f8', discountGradient: 'linear-gradient(135deg, #ef4444, #dc2626)', activeCategoryBg: 'linear-gradient(135deg, #ec4899, #db2777)', activeCategoryText: '#ffffff', borderColor: '#ec4899', borderHover: '#db2777', uploadHover: '#fce7f3', heroFrom: 'from-pink-50', heroTo: 'to-pink-100', searchBorder: 'border-pink-200', searchFocus: 'focus:border-pink-500' },
   { id: 'royal', name: 'Roxo Royal', icon: '👑', headerGradient: 'linear-gradient(135deg, #c4b5fd 0%, #8b5cf6 50%, #7c3aed 100%)', bgColor: '#faf5ff', headerTextColor: '#ffffff', headerSubtitleColor: '#faf5ff', discountGradient: 'linear-gradient(135deg, #ef4444, #dc2626)', activeCategoryBg: 'linear-gradient(135deg, #8b5cf6, #7c3aed)', activeCategoryText: '#ffffff', borderColor: '#8b5cf6', borderHover: '#7c3aed', uploadHover: '#f3e8ff', heroFrom: 'from-purple-50', heroTo: 'to-purple-100', searchBorder: 'border-purple-200', searchFocus: 'focus:border-purple-500' },
   { id: 'sunset', name: 'Laranja Sunset', icon: '🌅', headerGradient: 'linear-gradient(135deg, #fdba74 0%, #f97316 50%, #ea580c 100%)', bgColor: '#fff7ed', headerTextColor: '#ffffff', headerSubtitleColor: '#fff7ed', discountGradient: 'linear-gradient(135deg, #ef4444, #dc2626)', activeCategoryBg: 'linear-gradient(135deg, #f97316, #ea580c)', activeCategoryText: '#ffffff', borderColor: '#f97316', borderHover: '#ea580c', uploadHover: '#ffedd5', heroFrom: 'from-orange-50', heroTo: 'to-orange-100', searchBorder: 'border-orange-200', searchFocus: 'focus:border-orange-500' },
-  { id: 'cherry', name: 'Vermelho Cherry', icon: '', headerGradient: 'linear-gradient(135deg, #fca5a5 0%, #ef4444 50%, #dc2626 100%)', bgColor: '#fef2f2', headerTextColor: '#ffffff', headerSubtitleColor: '#fef2f2', discountGradient: 'linear-gradient(135deg, #7c2d12, #991b1b)', activeCategoryBg: 'linear-gradient(135deg, #ef4444, #dc2626)', activeCategoryText: '#ffffff', borderColor: '#ef4444', borderHover: '#dc2626', uploadHover: '#fee2e2', heroFrom: 'from-red-50', heroTo: 'to-red-100', searchBorder: 'border-red-200', searchFocus: 'focus:border-red-500' },
+  { id: 'cherry', name: 'Vermelho Cherry', icon: '🍒', headerGradient: 'linear-gradient(135deg, #fca5a5 0%, #ef4444 50%, #dc2626 100%)', bgColor: '#fef2f2', headerTextColor: '#ffffff', headerSubtitleColor: '#fef2f2', discountGradient: 'linear-gradient(135deg, #7c2d12, #991b1b)', activeCategoryBg: 'linear-gradient(135deg, #ef4444, #dc2626)', activeCategoryText: '#ffffff', borderColor: '#ef4444', borderHover: '#dc2626', uploadHover: '#fee2e2', heroFrom: 'from-red-50', heroTo: 'to-red-100', searchBorder: 'border-red-200', searchFocus: 'focus:border-red-500' },
   { id: 'elegant', name: 'Preto Elegante', icon: '🖤', headerGradient: 'linear-gradient(135deg, #525252 0%, #262626 50%, #171717 100%)', bgColor: '#fafafa', headerTextColor: '#facc15', headerSubtitleColor: '#fde047', discountGradient: 'linear-gradient(135deg, #facc15, #eab308)', activeCategoryBg: 'linear-gradient(135deg, #262626, #171717)', activeCategoryText: '#facc15', borderColor: '#262626', borderHover: '#171717', uploadHover: '#f5f5f5', heroFrom: 'from-gray-50', heroTo: 'to-gray-100', searchBorder: 'border-gray-300', searchFocus: 'focus:border-gray-600' },
   { id: 'minimal', name: 'Cinza Minimalista', icon: '⚪', headerGradient: 'linear-gradient(135deg, #e5e7eb 0%, #9ca3af 50%, #6b7280 100%)', bgColor: '#ffffff', headerTextColor: '#ffffff', headerSubtitleColor: '#f3f4f6', discountGradient: 'linear-gradient(135deg, #3b82f6, #2563eb)', activeCategoryBg: 'linear-gradient(135deg, #6b7280, #4b5563)', activeCategoryText: '#ffffff', borderColor: '#9ca3af', borderHover: '#6b7280', uploadHover: '#f3f4f6', heroFrom: 'from-gray-50', heroTo: 'to-gray-100', searchBorder: 'border-gray-200', searchFocus: 'focus:border-gray-500' },
   { id: 'tropical', name: 'Tropical', icon: '🌴', headerGradient: 'linear-gradient(135deg, #06b6d4 0%, #10b981 50%, #84cc16 100%)', bgColor: '#ecfdf5', headerTextColor: '#ffffff', headerSubtitleColor: '#ecfdf5', discountGradient: 'linear-gradient(135deg, #f97316, #ef4444)', activeCategoryBg: 'linear-gradient(135deg, #10b981, #059669)', activeCategoryText: '#ffffff', borderColor: '#10b981', borderHover: '#059669', uploadHover: '#d1fae5', heroFrom: 'from-emerald-50', heroTo: 'to-teal-100', searchBorder: 'border-emerald-200', searchFocus: 'focus:border-emerald-500' }
 ];
 
-// ============ REDES SOCIAIS PADRÃO (com X e Threads) ============
 const defaultSocials = [
   { name: 'Instagram', icon: 'fa-instagram', color: '#E1306C', url: '' },
   { name: 'Facebook', icon: 'fa-facebook-f', color: '#1877F2', url: '' },
@@ -822,6 +1030,17 @@ let currentSort = 'date-desc';
 let pendingDeleteId = null;
 let editingOfferId = null;
 
+const categoryColors = { 'Celulares': 'from-blue-400 to-blue-600', 'Eletrônicos': 'from-purple-400 to-purple-600', 'Beleza': 'from-pink-400 to-pink-600', 'Moda': 'from-orange-400 to-orange-600', 'Casa': 'from-green-400 to-green-600', 'Games': 'from-red-400 to-red-600' };
+const categoryColorsPdf = {
+  'Celulares': 'linear-gradient(135deg, #60a5fa, #2563eb)',
+  'Eletrônicos': 'linear-gradient(135deg, #a78bfa, #7c3aed)',
+  'Beleza': 'linear-gradient(135deg, #f472b6, #db2777)',
+  'Moda': 'linear-gradient(135deg, #fb923c, #ea580c)',
+  'Casa': 'linear-gradient(135deg, #4ade80, #16a34a)',
+  'Games': 'linear-gradient(135deg, #f87171, #dc2626)'
+};
+const defaultBtnGradient = 'linear-gradient(135deg, #facc15, #eab308)';
+
 // ============ PERSISTÊNCIA ============
 function loadOffers() {
   try {
@@ -845,16 +1064,11 @@ function loadSettings() {
       settings = { ...JSON.parse(JSON.stringify(defaultSettings)), ...parsed };
       if (!settings.socials) settings.socials = JSON.parse(JSON.stringify(defaultSocials));
       if (!settings.categories) settings.categories = JSON.parse(JSON.stringify(defaultCategories));
-      
-      // Migração: adicionar X e Threads se não existirem nas configurações salvas
+
       const hasX = settings.socials.some(s => s.icon === 'fa-x-twitter-custom' || s.icon === 'fa-x-twitter' || s.name === 'X (Twitter)' || s.name === 'X');
       const hasThreads = settings.socials.some(s => s.icon === 'fa-threads-custom' || s.icon === 'fa-threads' || s.name === 'Threads');
-      if (!hasX) {
-        settings.socials.push({ name: 'X (Twitter)', icon: 'fa-x-twitter-custom', color: '#000000', url: '' });
-      }
-      if (!hasThreads) {
-        settings.socials.push({ name: 'Threads', icon: 'fa-threads-custom', color: '#000000', url: '' });
-      }
+      if (!hasX) settings.socials.push({ name: 'X (Twitter)', icon: 'fa-x-twitter-custom', color: '#000000', url: '' });
+      if (!hasThreads) settings.socials.push({ name: 'Threads', icon: 'fa-threads-custom', color: '#000000', url: '' });
     }
   } catch (e) { settings = JSON.parse(JSON.stringify(defaultSettings)); }
 }
@@ -868,27 +1082,17 @@ function updateSavedCount() {
   if (el) el.textContent = `${offers.length} oferta${offers.length !== 1 ? 's' : ''} salva${offers.length !== 1 ? 's' : ''}`;
 }
 
-// ============ RENDERIZAR ÍCONE DE REDE SOCIAL ============
 function renderSocialIcon(iconName) {
-  // Ícones customizados (X e Threads) via CSS mask
-  if (iconName === 'fa-x-twitter-custom') {
-    return '<span class="fa-x-twitter-custom" style="font-size: 1.25em;"></span>';
-  }
-  if (iconName === 'fa-threads-custom') {
-    return '<span class="fa-threads-custom" style="font-size: 1.25em;"></span>';
-  }
-  // Font Awesome
-  if (iconName.startsWith('fa-')) {
-    return `<i class="fab ${iconName} text-white text-xl"></i>`;
-  }
+  if (iconName === 'fa-x-twitter-custom') return '<span class="fa-x-twitter-custom" style="font-size: 1.25em;"></span>';
+  if (iconName === 'fa-threads-custom') return '<span class="fa-threads-custom" style="font-size: 1.25em;"></span>';
+  if (iconName.startsWith('fa-')) return `<i class="fab ${iconName} text-white text-xl"></i>`;
   return `<i class="${iconName} text-white text-xl"></i>`;
 }
 
-// ============ APLICAR CONFIGURAÇÕES VISUAIS ============
 function applySettings() {
   const t = TEMPLATES.find(x => x.id === settings.template) || TEMPLATES[0];
   const root = document.documentElement;
-  
+
   root.style.setProperty('--header-gradient', t.headerGradient);
   root.style.setProperty('--bg-color', t.bgColor);
   root.style.setProperty('--discount-gradient', t.discountGradient);
@@ -897,83 +1101,59 @@ function applySettings() {
   root.style.setProperty('--border-color', t.borderColor);
   root.style.setProperty('--border-hover', t.borderHover);
   root.style.setProperty('--upload-hover', t.uploadHover);
-  
+
   const titleEl = document.getElementById('header-title');
   const subtitleEl = document.getElementById('header-subtitle');
-  if (titleEl) {
-    titleEl.style.color = settings.headerTitleColor || t.headerTextColor;
-    titleEl.textContent = settings.headerTitle;
-  }
-  if (subtitleEl) {
-    subtitleEl.style.color = settings.headerSubtitleColor || t.headerSubtitleColor;
-    subtitleEl.textContent = settings.headerSubtitle;
-  }
-  
+  if (titleEl) { titleEl.style.color = settings.headerTitleColor || t.headerTextColor; titleEl.textContent = settings.headerTitle; }
+  if (subtitleEl) { subtitleEl.style.color = settings.headerSubtitleColor || t.headerSubtitleColor; subtitleEl.textContent = settings.headerSubtitle; }
+
   const logoEl = document.getElementById('logo-img');
   const footerLogoEl = document.getElementById('footer-logo');
   if (logoEl) logoEl.src = settings.logoUrl;
   if (footerLogoEl) footerLogoEl.src = settings.logoUrl;
-  
+
   updateFavicon(settings.logoUrl);
   updateOgImage(settings.ogImageUrl || settings.logoUrl);
-  
+
   document.title = settings.pageTitle || `${settings.headerTitle} | ${settings.headerSubtitle}`;
-  
   const ogTitle = document.querySelector('meta[property="og:title"]');
   if (ogTitle) ogTitle.setAttribute('content', settings.pageTitle || `${settings.headerTitle} | ${settings.headerSubtitle}`);
-  
+
   const heroTitleEl = document.getElementById('hero-title');
   const heroSubtitleEl = document.getElementById('hero-subtitle');
   const heroDisclosureEl = document.getElementById('hero-disclosure-text');
   const heroDisclosure = document.getElementById('hero-disclosure');
-  
-  if (heroTitleEl) {
-    heroTitleEl.textContent = settings.heroTitle || '🏆 As Melhores Ofertas do Dia';
-    heroTitleEl.style.color = settings.heroTitleColor || '#111827';
-  }
-  if (heroSubtitleEl) {
-    heroSubtitleEl.textContent = settings.heroSubtitle || 'Seleção com as melhores ofertas do dia';
-    heroSubtitleEl.style.color = settings.heroSubtitleColor || '#374151';
-  }
+
+  if (heroTitleEl) { heroTitleEl.textContent = settings.heroTitle || '🏆 As Melhores Ofertas do Dia'; heroTitleEl.style.color = settings.heroTitleColor || '#111827'; }
+  if (heroSubtitleEl) { heroSubtitleEl.textContent = settings.heroSubtitle || 'Seleção com as melhores ofertas do dia'; heroSubtitleEl.style.color = settings.heroSubtitleColor || '#374151'; }
   if (heroDisclosureEl) heroDisclosureEl.textContent = settings.heroDisclosure || '';
-  
   if (heroDisclosure) {
     if (settings.heroDisclosure && settings.heroDisclosure.trim()) {
       heroDisclosure.style.display = 'inline-flex';
       heroDisclosure.style.backgroundColor = settings.heroDisclosureBg || '#fef08a';
       heroDisclosure.style.color = settings.heroDisclosureTextColor || '#713f12';
-    } else {
-      heroDisclosure.style.display = 'none';
-    }
+    } else heroDisclosure.style.display = 'none';
   }
-  
+
   const footerTextEl = document.getElementById('footer-text');
   const footerCopyrightEl = document.getElementById('footer-copyright');
   const siteFooter = document.getElementById('site-footer');
-  
-  if (footerTextEl) {
-    footerTextEl.textContent = settings.footerText;
-    footerTextEl.style.color = settings.footerTextColor || '#facc15';
-  }
-  if (footerCopyrightEl) {
-    footerCopyrightEl.textContent = settings.footerCopyright || '© 2026 Banana Doce. Todos os direitos reservados.';
-    footerCopyrightEl.style.color = settings.footerCopyrightColor || '#ca8a04';
-  }
+  if (footerTextEl) { footerTextEl.textContent = settings.footerText; footerTextEl.style.color = settings.footerTextColor || '#facc15'; }
+  if (footerCopyrightEl) { footerCopyrightEl.textContent = settings.footerCopyright || '© 2026 Banana Doce. Todos os direitos reservados.'; footerCopyrightEl.style.color = settings.footerCopyrightColor || '#ca8a04'; }
   if (siteFooter) siteFooter.style.backgroundColor = settings.footerBg || '#111827';
-  
+
   const hero = document.getElementById('hero-section');
   if (hero) hero.className = `bg-gradient-to-b ${t.heroFrom} ${t.heroTo} py-8 md:py-12`;
-  
+
   const searchInput = document.getElementById('search-input');
   if (searchInput) searchInput.className = `w-full pl-12 pr-4 py-3.5 rounded-2xl border-2 ${t.searchBorder} ${t.searchFocus} focus:outline-none shadow-sm bg-white text-gray-800`;
-  
+
   const sortSelect = document.getElementById('sort-select');
   if (sortSelect) sortSelect.className = `px-4 py-2 rounded-xl border-2 ${t.searchBorder} ${t.searchFocus} focus:outline-none shadow-sm bg-white text-gray-800 font-semibold text-sm`;
-  
+
   renderSocialIcons();
 }
 
-// ============ FAVICON ============
 function updateFavicon(url) {
   if (!url) return;
   const faviconLink = document.getElementById('favicon-link');
@@ -987,53 +1167,89 @@ function updateFavicon(url) {
   }
 }
 
-// ============ OPEN GRAPH IMAGE ============
 function updateOgImage(url) {
   const ogMeta = document.querySelector('meta[property="og:image"]');
-  if (ogMeta && url) {
-    ogMeta.setAttribute('content', url);
-  }
+  if (ogMeta && url) ogMeta.setAttribute('content', url);
 }
 
-// ============ RENDERIZAR ÍCONES DE REDES SOCIAIS (FOOTER) ============
 function renderSocialIcons() {
   const container = document.getElementById('social-icons');
   if (!container) return;
   const activeSocials = (settings.socials || []).filter(s => s.url && s.url.trim() !== '');
-  
   if (activeSocials.length === 0) {
     container.innerHTML = '<p class="text-xs text-yellow-600">Redes sociais em breve</p>';
     return;
   }
-  
   container.innerHTML = activeSocials.map(s => `
-    <a href="${escapeHtml(s.url)}" target="_blank" rel="noopener noreferrer" 
+    <a href="${escapeHtml(s.url)}" target="_blank" rel="noopener noreferrer"
        class="social-icon-btn w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl"
-       style="background-color: ${escapeHtml(s.color)}; color: white;" 
-       title="${escapeHtml(s.name)}"
-       aria-label="${escapeHtml(s.name)}">
+       style="background-color: ${escapeHtml(s.color)}; color: white;"
+       title="${escapeHtml(s.name)}" aria-label="${escapeHtml(s.name)}">
       ${renderSocialIcon(s.icon)}
     </a>
   `).join('');
 }
 
-// ============ UTILITÁRIOS ============
+// Escapa HTML com segurança para uso em atributos e conteúdo
 function escapeHtml(text) {
-  if (!text) return '';
-  const div = document.createElement('div');
-  div.textContent = String(text);
-  return div.innerHTML;
+  if (text === null || text === undefined) return '';
+  return String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
 }
 
+// Só aceita http(s):// — bloqueia javascript:, data:, file:, etc.
 function isValidUrl(url) {
-  try { new URL(url); return true; } catch { return false; }
+  try {
+    const u = new URL(url);
+    return u.protocol === 'http:' || u.protocol === 'https:';
+  } catch { return false; }
 }
 
 function isValidHexColor(color) {
   return /^#[0-9A-Fa-f]{6}$/.test(color);
 }
 
-// ============ RENDERIZAR TEMPLATES ============
+function calculateDiscount(preco, preco_original) {
+  if (!preco_original || preco_original <= preco) return 0;
+  return Math.round(((preco_original - preco) / preco_original) * 100);
+}
+
+function formatCurrency(value) {
+  return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
+}
+
+function getFallbackImage(titulo, categoria) {
+  const colors = { 'Celulares': '3b82f6', 'Eletrônicos': '8b5cf6', 'Beleza': 'ec4899', 'Moda': 'f97316', 'Casa': '22c55e', 'Games': 'ef4444' };
+  const color = colors[categoria] || 'eab308';
+  return `https://placehold.co/400x400/${color}/ffffff?text=${encodeURIComponent(String(titulo).substring(0, 20))}`;
+}
+
+function sortOffers() {
+  currentSort = document.getElementById('sort-select').value;
+  renderOffers();
+}
+
+function getSortedOffers(list) {
+  const sorted = [...list];
+  switch(currentSort) {
+    case 'date-desc': sorted.sort((a, b) => new Date(b.dateAdded || 0) - new Date(a.dateAdded || 0)); break;
+    case 'date-asc': sorted.sort((a, b) => new Date(a.dateAdded || 0) - new Date(b.dateAdded || 0)); break;
+    case 'price-asc': sorted.sort((a, b) => a.preco - b.preco); break;
+    case 'price-desc': sorted.sort((a, b) => b.preco - a.preco); break;
+    case 'discount-desc': sorted.sort((a, b) => calculateDiscount(b.preco, b.preco_original) - calculateDiscount(a.preco, a.preco_original)); break;
+    case 'discount-asc': sorted.sort((a, b) => calculateDiscount(a.preco, a.preco_original) - calculateDiscount(b.preco, b.preco_original)); break;
+    case 'name-asc': sorted.sort((a, b) => a.titulo.localeCompare(b.titulo)); break;
+    case 'name-desc': sorted.sort((a, b) => b.titulo.localeCompare(a.titulo)); break;
+    case 'category': sorted.sort((a, b) => a.categoria.localeCompare(b.categoria)); break;
+    case 'store': sorted.sort((a, b) => (a.loja || '').localeCompare(b.loja || '')); break;
+  }
+  return sorted;
+}
+
 function renderTemplates() {
   const grid = document.getElementById('templates-grid');
   if (!grid) return;
@@ -1054,11 +1270,9 @@ function selectTemplate(id) {
   applySettings();
 }
 
-// ============ RENDERIZAR LISTA DE REDES SOCIAIS (MODAL) ============
 function renderSocialList() {
   const list = document.getElementById('social-list');
   if (!list) return;
-  // Lista de ícones disponíveis - inclui Font Awesome e os customizados (X e Threads)
   const icons = [
     { value: 'fa-x-twitter-custom', label: '✖ X (Twitter) [Oficial]' },
     { value: 'fa-threads-custom', label: '@ Threads [Oficial]' },
@@ -1076,7 +1290,6 @@ function renderSocialList() {
     { value: 'fa-twitch', label: 'Twitch' },
     { value: 'fa-reddit-alien', label: 'Reddit' }
   ];
-  
   list.innerHTML = (settings.socials || []).map((s, idx) => `
     <div class="bg-white p-3 rounded-lg border border-gray-200 flex items-center gap-2 flex-wrap">
       <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background-color: ${s.color}; color: white;">
@@ -1118,7 +1331,6 @@ function removeSocial(idx) {
   applySettings();
 }
 
-// ============ CATEGORIAS ============
 function renderCategoriesList() {
   const list = document.getElementById('categories-list');
   if (!list) return;
@@ -1127,7 +1339,7 @@ function renderCategoriesList() {
       <i class="fas ${cat.icon} text-gray-500"></i>
       <input type="text" value="${escapeHtml(cat.name)}" onchange="updateCategory(${idx}, 'name', this.value)" placeholder="Nome">
       <select onchange="updateCategory(${idx}, 'icon', this.value)">
-        ${['fa-th-large','fa-mobile-alt','fa-laptop','fa-spa','fa-tshirt','fa-home','fa-gamepad','fa-book','fa-car','fa-utensils','fa-dumbbell','fa-baby','fa-paw','fa-music','fa-camera','fa-tools','fa-heart','fa-star','fa-gem','fa-gift'].map(ic => 
+        ${['fa-th-large','fa-mobile-alt','fa-laptop','fa-spa','fa-tshirt','fa-home','fa-gamepad','fa-book','fa-car','fa-utensils','fa-dumbbell','fa-baby','fa-paw','fa-music','fa-camera','fa-tools','fa-heart','fa-star','fa-gem','fa-gift'].map(ic =>
           `<option value="${ic}" ${cat.icon === ic ? 'selected' : ''}>${ic.replace('fa-','')}</option>`
         ).join('')}
       </select>
@@ -1167,7 +1379,6 @@ function renderCategoryButtons() {
     const isActive = (cat.isAll && currentCategory === 'all') || (!cat.isAll && currentCategory === cat.name);
     return `<button class="category-btn px-5 py-2.5 rounded-full font-bold whitespace-nowrap transition-all bg-white text-gray-700 shadow ${isActive ? 'active' : ''}" data-category="${cat.isAll ? 'all' : cat.name}"><i class="fas ${cat.icon} mr-2"></i>${escapeHtml(cat.name)}</button>`;
   }).join('');
-  
   container.querySelectorAll('.category-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       currentCategory = btn.dataset.category;
@@ -1184,105 +1395,23 @@ function populateCategorySelect() {
   select.innerHTML = nonAll.map(c => `<option>${escapeHtml(c.name)}</option>`).join('');
 }
 
-// ============ AUTENTICAÇÃO ============
-function checkAuth() {
-  setAdminMode(localStorage.getItem(STORAGE_KEY) === 'true');
-}
-
-function setAdminMode(active) {
-  isAdmin = active;
-  const authIcon = document.getElementById('auth-icon');
-  const authLabel = document.getElementById('auth-label');
-  const adminBtns = document.querySelectorAll('.admin-only');
-  const adminPanel = document.getElementById('admin-panel');
-
-  if (active) {
-    authIcon.className = 'fas fa-sign-out-alt';
-    authLabel.textContent = 'Sair';
-    adminBtns.forEach(btn => {
-      btn.classList.add('visible');
-      if (btn.tagName === 'BUTTON') btn.classList.add('visible-inline');
-    });
-    if (adminPanel) adminPanel.classList.add('visible');
-  } else {
-    authIcon.className = 'fas fa-lock';
-    authLabel.textContent = 'Admin';
-    adminBtns.forEach(btn => btn.classList.remove('visible', 'visible-inline', 'visible-block'));
-    if (adminPanel) adminPanel.classList.remove('visible');
-  }
-  renderOffers();
-}
-
-function handleAuth() {
-  if (isAdmin) {
-    localStorage.removeItem(STORAGE_KEY);
-    setAdminMode(false);
-    showToast('Sessão encerrada', 'success');
-  } else {
-    openLoginModal();
-  }
-}
-
-function openLoginModal() {
-  const modal = document.getElementById('login-modal');
-  if (!modal) return;
-  modal.classList.remove('hidden');
-  modal.classList.add('flex');
-  document.getElementById('login-password').value = '';
-  document.getElementById('login-error').classList.add('hidden');
-  setTimeout(() => document.getElementById('login-password').focus(), 100);
-}
-function closeLoginModal() {
-  const modal = document.getElementById('login-modal');
-  if (!modal) return;
-  modal.classList.add('hidden');
-  modal.classList.remove('flex');
-}
-function doLogin() {
-  const password = document.getElementById('login-password').value;
-  if (password === ADMIN_PASSWORD) {
-    localStorage.setItem(STORAGE_KEY, 'true');
-    setAdminMode(true);
-    closeLoginModal();
-    showToast('Bem-vindo, Administrador!', 'success');
-  } else {
-    document.getElementById('login-error').classList.remove('hidden');
-    document.getElementById('login-password').value = '';
-    document.getElementById('login-password').focus();
-  }
-}
-function togglePassword() {
-  const input = document.getElementById('login-password');
-  const icon = document.getElementById('eye-icon');
-  if (input.type === 'password') { input.type = 'text'; icon.className = 'fas fa-eye-slash'; }
-  else { input.type = 'password'; icon.className = 'fas fa-eye'; }
-}
-
-// ============ CUSTOMIZE MODAL ============
 function openCustomizeModal() {
-  if (!isAdmin) { showToast('Acesso restrito', 'error'); return; }
-  
   document.getElementById('cfg-logo').value = settings.logoUrl;
   const logoPreview = document.getElementById('logo-preview');
   logoPreview.src = settings.logoUrl;
   logoPreview.style.display = 'block';
-  
+
   document.getElementById('cfg-og-image').value = settings.ogImageUrl || '';
   const ogPreview = document.getElementById('og-preview');
-  if (settings.ogImageUrl) {
-    ogPreview.src = settings.ogImageUrl;
-    ogPreview.style.display = 'block';
-  } else {
-    ogPreview.style.display = 'none';
-  }
-  
+  if (settings.ogImageUrl) { ogPreview.src = settings.ogImageUrl; ogPreview.style.display = 'block'; }
+  else ogPreview.style.display = 'none';
+
   document.getElementById('cfg-page-title').value = settings.pageTitle || 'Banana Doce | Vitrine de Ofertas';
-  
   document.getElementById('cfg-header-title').value = settings.headerTitle;
   document.getElementById('cfg-header-subtitle').value = settings.headerSubtitle;
   setColorInput('cfg-header-title-color', settings.headerTitleColor || '#111827');
   setColorInput('cfg-header-subtitle-color', settings.headerSubtitleColor || '#1f2937');
-  
+
   document.getElementById('cfg-hero-title').value = settings.heroTitle || '🏆 As Melhores Ofertas do Dia';
   document.getElementById('cfg-hero-subtitle').value = settings.heroSubtitle || 'Seleção com as melhores ofertas do dia';
   document.getElementById('cfg-hero-disclosure').value = settings.heroDisclosure || '';
@@ -1290,17 +1419,17 @@ function openCustomizeModal() {
   setColorInput('cfg-hero-subtitle-color', settings.heroSubtitleColor || '#374151');
   setColorInput('cfg-disclosure-bg', settings.heroDisclosureBg || '#fef08a');
   setColorInput('cfg-disclosure-text', settings.heroDisclosureTextColor || '#713f12');
-  
+
   document.getElementById('cfg-footer-text').value = settings.footerText;
   document.getElementById('cfg-footer-copyright').value = settings.footerCopyright || '© 2026 Banana Doce. Todos os direitos reservados.';
   setColorInput('cfg-footer-text-color', settings.footerTextColor || '#facc15');
   setColorInput('cfg-footer-copyright-color', settings.footerCopyrightColor || '#ca8a04');
   setColorInput('cfg-footer-bg', settings.footerBg || '#111827');
-  
+
   renderTemplates();
   renderSocialList();
   renderCategoriesList();
-  
+
   const modal = document.getElementById('customize-modal');
   modal.classList.remove('hidden');
   modal.classList.add('flex');
@@ -1327,8 +1456,6 @@ function closeCustomizeModal() {
 }
 
 function saveSettings() {
-  if (!isAdmin) return;
-  
   settings.logoUrl = document.getElementById('cfg-logo').value.trim() || settings.logoUrl;
   settings.ogImageUrl = document.getElementById('cfg-og-image').value.trim() || '';
   settings.pageTitle = document.getElementById('cfg-page-title').value.trim() || 'Banana Doce | Vitrine de Ofertas';
@@ -1348,7 +1475,7 @@ function saveSettings() {
   settings.footerCopyright = document.getElementById('cfg-footer-copyright').value.trim() || '© 2026 Banana Doce. Todos os direitos reservados.';
   settings.footerCopyrightColor = getColorFromInput('cfg-footer-copyright-color');
   settings.footerBg = getColorFromInput('cfg-footer-bg');
-  
+
   saveSettingsToStorage();
   applySettings();
   renderCategoryButtons();
@@ -1370,16 +1497,9 @@ function setupColorSync(baseId) {
   const colorInput = document.getElementById(baseId);
   const textInput = document.getElementById(baseId + '-text');
   if (!colorInput || !textInput) return;
-  
-  colorInput.addEventListener('input', (e) => {
-    textInput.value = e.target.value;
-    applySettings();
-  });
+  colorInput.addEventListener('input', (e) => { textInput.value = e.target.value; applySettings(); });
   textInput.addEventListener('input', (e) => {
-    if (isValidHexColor(e.target.value)) {
-      colorInput.value = e.target.value;
-      applySettings();
-    }
+    if (isValidHexColor(e.target.value)) { colorInput.value = e.target.value; applySettings(); }
   });
 }
 
@@ -1413,9 +1533,7 @@ document.getElementById('cfg-og-file').addEventListener('change', (e) => {
   reader.readAsDataURL(file);
 });
 
-// ============ APAGAR OFERTA ============
 function confirmDeleteOffer(id) {
-  if (!isAdmin) return;
   const offer = offers.find(o => o.id === id);
   if (!offer) return;
   pendingDeleteId = id;
@@ -1424,17 +1542,19 @@ function confirmDeleteOffer(id) {
   modal.classList.remove('hidden');
   modal.classList.add('flex');
 }
+
 function closeConfirmModal() {
   pendingDeleteId = null;
   const modal = document.getElementById('confirm-modal');
   modal.classList.add('hidden');
   modal.classList.remove('flex');
 }
+
 document.getElementById('confirm-delete-btn').addEventListener('click', () => {
   if (pendingDeleteId !== null) { deleteOffer(pendingDeleteId); closeConfirmModal(); }
 });
+
 function deleteOffer(id) {
-  if (!isAdmin) return;
   const offer = offers.find(o => o.id === id);
   offers = offers.filter(o => o.id !== id);
   saveOffers();
@@ -1442,9 +1562,7 @@ function deleteOffer(id) {
   showToast(`"${offer ? offer.titulo : 'Oferta'}" apagada!`, 'success');
 }
 
-// ============ RESTAURAR OFERTAS PADRÃO ============
 function resetOffersToDefault() {
-  if (!isAdmin) { showToast('Acesso restrito', 'error'); return; }
   if (!confirm('⚠️ Restaurar o quadro de ofertas para o padrão?\n\nTodas as ofertas atuais serão substituídas pelas ofertas padrão iniciais.\n\nEsta ação não pode ser desfeita.')) return;
   offers = JSON.parse(JSON.stringify(defaultOffers));
   saveOffers();
@@ -1452,9 +1570,7 @@ function resetOffersToDefault() {
   showToast('Quadro de ofertas restaurado com sucesso!', 'success');
 }
 
-// ============ EXPORT/IMPORT JSON ============
 function exportJSON() {
-  if (!isAdmin) return;
   if (offers.length === 0) { showToast('Nenhuma oferta', 'error'); return; }
   const data = JSON.stringify({ offers, settings, exportDate: new Date().toISOString() }, null, 2);
   const blob = new Blob([data], { type: 'application/json' });
@@ -1468,7 +1584,6 @@ function exportJSON() {
 }
 
 function importJSON(event) {
-  if (!isAdmin) return;
   const file = event.target.files[0];
   if (!file) return;
   const reader = new FileReader();
@@ -1494,7 +1609,6 @@ function importJSON(event) {
 }
 
 function clearAllOffers() {
-  if (!isAdmin) return;
   if (!confirm('⚠️ Apagar TODAS as ofertas? Esta ação não pode ser desfeita.')) return;
   offers = [];
   saveOffers();
@@ -1502,18 +1616,325 @@ function clearAllOffers() {
   showToast('Todas as ofertas removidas', 'success');
 }
 
+// ============ BAIXAR PDF (CATÁLOGO A4 COM LINKS CLICÁVEIS) ============
+function showPdfLoading(message, sub, progress) {
+  let overlay = document.querySelector('.pdf-loading-overlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.className = 'pdf-loading-overlay';
+    overlay.innerHTML = `
+      <div class="spinner"></div>
+      <div class="progress-text" id="pdf-progress-text">Gerando catálogo...</div>
+      <div class="progress-bar"><div class="progress-bar-fill" id="pdf-progress-bar"></div></div>
+      <div class="progress-sub" id="pdf-progress-sub">Preparando ofertas</div>
+    `;
+    document.body.appendChild(overlay);
+  }
+  overlay.style.display = 'flex';
+  const t = document.getElementById('pdf-progress-text');
+  const s = document.getElementById('pdf-progress-sub');
+  const bar = document.getElementById('pdf-progress-bar');
+  if (t) t.textContent = message || 'Gerando catálogo...';
+  if (s) s.textContent = sub || '';
+  if (bar) bar.style.width = (progress || 0) + '%';
+  return overlay;
+}
+
+function hidePdfLoading() {
+  const overlay = document.querySelector('.pdf-loading-overlay');
+  if (overlay) overlay.remove();
+}
+
+function updatePdfProgress(message, sub, progress) {
+  const t = document.getElementById('pdf-progress-text');
+  const s = document.getElementById('pdf-progress-sub');
+  const bar = document.getElementById('pdf-progress-bar');
+  if (t) t.textContent = message;
+  if (s) s.textContent = sub || '';
+  if (bar && progress !== undefined) bar.style.width = progress + '%';
+}
+
+// Converte imagem para dataURL (evita problemas CORS no html2canvas).
+// Retorna null em caso de falha (CORS, timeout, 404) para o chamador usar fallback.
+function imageToDataUrl(url, timeoutMs = 12000) {
+  return new Promise((resolve) => {
+    if (!url || url === '#' || url === '') { resolve(null); return; }
+    if (url.startsWith('data:')) { resolve(url); return; }
+
+    let settled = false;
+    const done = (val) => { if (!settled) { settled = true; resolve(val); } };
+    const timer = setTimeout(() => done(null), timeoutMs);
+
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.referrerPolicy = 'no-referrer';
+    img.onload = () => {
+      clearTimeout(timer);
+      try {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.naturalWidth;
+        canvas.height = img.naturalHeight;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0);
+        try {
+          done(canvas.toDataURL('image/jpeg', 0.92));
+        } catch (e) {
+          done(null); // canvas "tainted" por CORS
+        }
+      } catch (e) { done(null); }
+    };
+    img.onerror = () => { clearTimeout(timer); done(null); };
+    img.src = url;
+  });
+}
+
+// Aguarda todas as imagens do elemento carregarem (com timeout global)
+function waitForImages(container, timeoutMs = 20000) {
+  const imgs = container.querySelectorAll('img');
+  const all = Promise.all(Array.from(imgs).map(img => {
+    if (img.complete && img.naturalWidth > 0) return Promise.resolve();
+    return new Promise(resolve => {
+      img.addEventListener('load', resolve, { once: true });
+      img.addEventListener('error', resolve, { once: true });
+    });
+  }));
+  return Promise.race([all, new Promise(r => setTimeout(r, timeoutMs))]);
+}
+
+async function downloadPDF() {
+  if (offers.length === 0) { showToast('Nenhuma oferta para gerar o PDF', 'error'); return; }
+
+  showPdfLoading('Preparando catálogo PDF...', 'Filtrando ofertas', 5);
+
+  try {
+    // ===== 1. Filtra e ordena (descarta ofertas sem link válido) =====
+    let filtered = offers.filter(o => {
+      const matchCategory = currentCategory === 'all' || o.categoria === currentCategory;
+      const haystack = (o.titulo + ' ' + (o.descricao || '')).toLowerCase();
+      const matchSearch = haystack.includes(currentSearch.toLowerCase());
+      const hasLink = o.link && o.link !== '#' && isValidUrl(o.link);
+      return matchCategory && matchSearch && hasLink;
+    });
+    filtered = getSortedOffers(filtered);
+
+    if (filtered.length === 0) {
+      hidePdfLoading();
+      showToast('Nenhuma oferta com link válido para gerar o PDF', 'error');
+      return;
+    }
+
+    // ===== 2. Pré-carrega imagens com fallback garantido =====
+    updatePdfProgress('Carregando imagens...', `0 de ${filtered.length}`, 10);
+
+    const imageMap = {};
+    for (let i = 0; i < filtered.length; i++) {
+      const offer = filtered[i];
+      const fallback = getFallbackImage(offer.titulo, offer.categoria);
+      let dataUrl = await imageToDataUrl(offer.imagem || fallback);
+      if (!dataUrl) dataUrl = await imageToDataUrl(fallback);
+      imageMap[offer.id] = dataUrl || fallback;
+
+      const progress = 10 + Math.round(((i + 1) / filtered.length) * 30);
+      updatePdfProgress('Carregando imagens...', `${i + 1} de ${filtered.length}`, progress);
+    }
+
+    // Logo: tenta, mas não bloqueia se falhar
+    let logoDataUrl = await imageToDataUrl(settings.logoUrl);
+    if (!logoDataUrl && settings.logoUrl) {
+      logoDataUrl = await imageToDataUrl(getFallbackImage('Logo', ''));
+    }
+
+    updatePdfProgress('Montando layout A4...', '', 45);
+
+    // ===== 3. Monta o HTML dos cards =====
+    const t = TEMPLATES.find(x => x.id === settings.template) || TEMPLATES[0];
+
+    const cardsHtml = filtered.map(offer => {
+      const discount = calculateDiscount(offer.preco, offer.preco_original);
+      const imgSrc = imageMap[offer.id] || getFallbackImage(offer.titulo, offer.categoria);
+      const cat = settings.categories.find(c => c.name === offer.categoria);
+      const icon = cat ? cat.icon : 'fa-tag';
+      const btnBg = categoryColorsPdf[offer.categoria] || defaultBtnGradient;
+
+      return `
+        <div class="pdf-card" data-link="${escapeHtml(offer.link)}">
+          <div class="img-wrap">
+            <img src="${escapeHtml(imgSrc)}" alt="${escapeHtml(offer.titulo)}" crossorigin="anonymous">
+            ${discount > 0 ? `<div class="discount-badge" style="background: ${t.discountGradient}">-${discount}%</div>` : ''}
+            <div class="cat-badge"><i class="fas ${icon}" style="margin-right:4px"></i>${escapeHtml(offer.categoria)}</div>
+            ${offer.loja ? `<div class="store-badge"><i class="fas fa-store" style="margin-right:4px"></i>${escapeHtml(offer.loja)}</div>` : ''}
+          </div>
+          <div class="card-body">
+            <h4>${escapeHtml(offer.titulo)}</h4>
+            ${offer.descricao ? `<p class="desc">${escapeHtml(offer.descricao)}</p>` : '<p class="desc">&nbsp;</p>'}
+            <div class="price-area">
+              <div>
+                ${offer.preco_original && offer.preco_original > offer.preco ? `<p class="old-price">${formatCurrency(offer.preco_original)}</p>` : ''}
+                <p class="new-price">${formatCurrency(offer.preco)}</p>
+              </div>
+              ${discount > 0 ? `<div class="save">Economize ${formatCurrency(offer.preco_original - offer.preco)}</div>` : ''}
+            </div>
+            <a href="${escapeHtml(offer.link)}" class="btn-offer" style="background: ${btnBg}">
+              <i class="fas fa-external-link-alt" style="margin-right:6px"></i>Ver Oferta
+            </a>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    const heroColorMap = {
+      'yellow':  { bg: '#fefce8', text: '#111827' },
+      'sky':     { bg: '#f0f9ff', text: '#0c4a6e' },
+      'green':   { bg: '#f0fdf4', text: '#14532d' },
+      'pink':    { bg: '#fdf2f8', text: '#831843' },
+      'purple':  { bg: '#faf5ff', text: '#581c87' },
+      'orange':  { bg: '#fff7ed', text: '#7c2d12' },
+      'red':     { bg: '#fef2f2', text: '#7f1d1d' },
+      'gray':    { bg: '#fafafa', text: '#111827' },
+      'emerald': { bg: '#ecfdf5', text: '#064e3b' }
+    };
+    const heroKey = Object.keys(heroColorMap).find(k => t.heroFrom.includes(k)) || 'yellow';
+    const heroColor = heroColorMap[heroKey];
+
+    const renderArea = document.getElementById('pdf-render-area');
+    renderArea.innerHTML = `
+      <div class="pdf-page">
+        <div class="pdf-header" style="background: ${t.headerGradient}; color: ${t.headerTextColor}">
+          ${logoDataUrl ? `<img src="${escapeHtml(logoDataUrl)}" alt="Logo">` : ''}
+          <h1 style="color: ${settings.headerTitleColor || t.headerTextColor}">${escapeHtml(settings.headerTitle)}</h1>
+          <p style="color: ${settings.headerSubtitleColor || t.headerSubtitleColor}">${escapeHtml(settings.headerSubtitle)}</p>
+        </div>
+        <div class="pdf-hero" style="background: ${heroColor.bg}; color: ${heroColor.text}">
+          <h2 style="color: ${settings.heroTitleColor || heroColor.text}">${escapeHtml(settings.heroTitle || '🏆 As Melhores Ofertas do Dia')}</h2>
+          <p style="color: ${settings.heroSubtitleColor || heroColor.text}">${escapeHtml(settings.heroSubtitle || 'Seleção com as melhores ofertas do dia')}</p>
+        </div>
+        ${settings.heroDisclosure ? `<div style="text-align:center"><div class="pdf-disclosure" style="background: ${settings.heroDisclosureBg || '#fef08a'}; color: ${settings.heroDisclosureTextColor || '#713f12'}"><i class="fas fa-info-circle" style="margin-right:6px"></i>${escapeHtml(settings.heroDisclosure)}</div></div>` : ''}
+        <div class="pdf-grid">
+          ${cardsHtml}
+        </div>
+        <div class="pdf-footer" style="background: ${settings.footerBg || '#111827'}">
+          <p class="ft-title" style="color: ${settings.footerTextColor || '#facc15'}">${escapeHtml(settings.footerText)}</p>
+          <p class="ft-copy" style="color: ${settings.footerCopyrightColor || '#ca8a04'}">${escapeHtml(settings.footerCopyright || '© 2026 Banana Doce. Todos os direitos reservados.')}</p>
+        </div>
+      </div>
+    `;
+
+    // ===== 4. Aguarda imagens + fontes + 2 frames de renderização =====
+    updatePdfProgress('Aguardando renderização...', '', 55);
+    await waitForImages(renderArea, 20000);
+    try { await document.fonts.ready; } catch (e) {}
+
+    const rect = renderArea.getBoundingClientRect();
+    console.log('[PDF DEBUG] Container:', {
+      width: rect.width, height: rect.height, top: rect.top, left: rect.left,
+      children: renderArea.children.length,
+      cardsFound: renderArea.querySelectorAll('.pdf-card').length,
+      imgsFound: renderArea.querySelectorAll('img').length
+    });
+
+    if (rect.height === 0 || renderArea.children.length === 0) {
+      throw new Error('Container do PDF está vazio');
+    }
+
+    await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+    await new Promise(r => setTimeout(r, 300));
+
+    updatePdfProgress('Gerando PDF A4...', 'Isso pode levar alguns segundos', 60);
+
+    // ===== 5. Gera o PDF UMA única vez =====
+    const opt = {
+      margin: [10, 10, 10, 10],
+      filename: `catalogo_banana_doce_${new Date().toISOString().slice(0,10)}.pdf`,
+      image: { type: 'jpeg', quality: 0.95 },
+      html2canvas: {
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+        logging: false,
+        letterRendering: true,
+        backgroundColor: '#ffffff',
+        windowWidth: 794,
+        width: 794
+      },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait', compress: true },
+      pagebreak: { mode: ['css', 'legacy'], avoid: ['.pdf-card', '.pdf-header', '.pdf-hero', '.pdf-footer'] }
+    };
+
+    const worker = html2pdf().set(opt).from(renderArea).toPdf();
+    const pdf = await worker.get('pdf');
+
+    // ===== 6. Adiciona links clicáveis =====
+    updatePdfProgress('Adicionando links clicáveis...', '', 90);
+
+    const pageWidth = pdf.internal.pageSize.getWidth();
+    const pageHeight = pdf.internal.pageSize.getHeight();
+    const marginMm = 10;
+    const pdfWidthMm = pageWidth - marginMm * 2;
+    const renderWidthPx = 794;
+    const pxToMm = pdfWidthMm / renderWidthPx;
+    const pdfHeightMm = pageHeight - marginMm * 2;
+    const pxPerPage = pdfHeightMm / pxToMm;
+
+    const totalPages = pdf.internal.getNumberOfPages();
+    const cards = renderArea.querySelectorAll('.pdf-card');
+    let processed = 0;
+
+    cards.forEach(card => {
+      const btn = card.querySelector('.btn-offer');
+      const link = card.getAttribute('data-link');
+      if (!btn || !link || link === '#' || !isValidUrl(link)) return;
+
+      const btnRect = btn.getBoundingClientRect();
+      const renderRect = renderArea.getBoundingClientRect();
+      const relTop = btnRect.top - renderRect.top;
+      const relLeft = btnRect.left - renderRect.left;
+      const relWidth = btnRect.width;
+      const relHeight = btnRect.height;
+
+      const pageNum = Math.floor(relTop / pxPerPage) + 1;
+      const topInPage = relTop - (pageNum - 1) * pxPerPage;
+
+      const xMm = marginMm + relLeft * pxToMm;
+      const yMm = marginMm + topInPage * pxToMm;
+      const wMm = relWidth * pxToMm;
+      const hMm = relHeight * pxToMm;
+
+      if (pageNum >= 1 && pageNum <= totalPages &&
+          yMm >= 0 && yMm + hMm <= pageHeight &&
+          xMm >= 0 && xMm + wMm <= pageWidth) {
+        try { pdf.setPage(pageNum); pdf.link(xMm, yMm, wMm, hMm, { url: link }); } catch (e) {}
+      }
+      processed++;
+      const progress = 90 + Math.round((processed / Math.max(cards.length, 1)) * 8);
+      updatePdfProgress('Adicionando links...', `${processed} de ${cards.length}`, progress);
+    });
+
+    // ===== 7. Salva e limpa =====
+    updatePdfProgress('Finalizando...', '', 98);
+    await pdf.save(opt.filename);
+
+    renderArea.innerHTML = '';
+    hidePdfLoading();
+    showToast(`PDF gerado: ${filtered.length} oferta(s) em ${totalPages} página(s)!`, 'success');
+  } catch (err) {
+    console.error('Erro ao gerar PDF:', err);
+    hidePdfLoading();
+    const renderArea = document.getElementById('pdf-render-area');
+    if (renderArea) renderArea.innerHTML = '';
+    showToast('Erro ao gerar PDF: ' + err.message, 'error');
+  }
+}
+
 // ============ DOWNLOAD HTML ============
 function downloadUpdatedHTML() {
-  if (!isAdmin) return;
   if (offers.length === 0) { showToast('Nenhuma oferta', 'error'); return; }
 
   try {
     const clone = document.documentElement.cloneNode(true);
-    ['btn-import-excel','btn-new-offer','auth-btn','admin-panel','login-modal','upload-modal','add-modal','customize-modal','confirm-modal','toast'].forEach(id => {
+    ['btn-import-excel','btn-new-offer','admin-panel','upload-modal','add-modal','customize-modal','confirm-modal','toast','pdf-render-area'].forEach(id => {
       const el = clone.querySelector('#' + id);
       if (el) el.remove();
     });
-    clone.querySelectorAll('.admin-only').forEach(el => el.remove());
 
     let htmlContent = '<!DOCTYPE html>\n' + clone.outerHTML;
     const offersJSON = JSON.stringify(offers, null, 2);
@@ -1536,26 +1957,16 @@ let currentSearch = '';
 let currentSort = 'date-desc';
 
 function escapeHtml(text) {
-  if (!text) return '';
-  const div = document.createElement('div');
-  div.textContent = String(text);
-  return div.innerHTML;
+  if (text === null || text === undefined) return '';
+  return String(text).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
 }
 
-function isValidHexColor(color) {
-  return /^#[0-9A-Fa-f]{6}$/.test(color);
-}
+function isValidHexColor(color) { return /^#[0-9A-Fa-f]{6}$/.test(color); }
 
 function renderSocialIcon(iconName) {
-  if (iconName === 'fa-x-twitter-custom') {
-    return '<span class="fa-x-twitter-custom" style="font-size: 1.25em;"></span>';
-  }
-  if (iconName === 'fa-threads-custom') {
-    return '<span class="fa-threads-custom" style="font-size: 1.25em;"></span>';
-  }
-  if (iconName.startsWith('fa-')) {
-    return '<i class="fab ' + iconName + ' text-white text-xl"></i>';
-  }
+  if (iconName === 'fa-x-twitter-custom') return '<span class="fa-x-twitter-custom" style="font-size: 1.25em;"></span>';
+  if (iconName === 'fa-threads-custom') return '<span class="fa-threads-custom" style="font-size: 1.25em;"></span>';
+  if (iconName.startsWith('fa-')) return '<i class="fab ' + iconName + ' text-white text-xl"></i>';
   return '<i class="' + iconName + ' text-white text-xl"></i>';
 }
 
@@ -1634,11 +2045,8 @@ function renderSocialIcons() {
   const container = document.getElementById('social-icons');
   if (!container) return;
   const activeSocials = (settings.socials || []).filter(s => s.url && s.url.trim() !== '');
-  if (activeSocials.length === 0) {
-    container.innerHTML = '<p class="text-xs text-yellow-600">Redes sociais em breve</p>';
-    return;
-  }
-  container.innerHTML = activeSocials.map(s => 
+  if (activeSocials.length === 0) { container.innerHTML = '<p class="text-xs text-yellow-600">Redes sociais em breve</p>'; return; }
+  container.innerHTML = activeSocials.map(s =>
     '<a href="' + escapeHtml(s.url) + '" target="_blank" rel="noopener noreferrer" class="social-icon-btn w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl" style="background-color: ' + escapeHtml(s.color) + '; color: white;" title="' + escapeHtml(s.name) + '" aria-label="' + escapeHtml(s.name) + '">' + renderSocialIcon(s.icon) + '</a>'
   ).join('');
 }
@@ -1651,11 +2059,7 @@ function renderCategoryButtons() {
     return '<button class="category-btn px-5 py-2.5 rounded-full font-bold whitespace-nowrap transition-all bg-white text-gray-700 shadow ' + (isActive ? 'active' : '') + '" data-category="' + (cat.isAll ? 'all' : cat.name) + '"><i class="fas ' + cat.icon + ' mr-2"></i>' + escapeHtml(cat.name) + '</button>';
   }).join('');
   container.querySelectorAll('.category-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      currentCategory = btn.dataset.category;
-      renderCategoryButtons();
-      renderOffers();
-    });
+    btn.addEventListener('click', () => { currentCategory = btn.dataset.category; renderCategoryButtons(); renderOffers(); });
   });
 }
 
@@ -1668,10 +2072,7 @@ function getFallbackImage(t, c) {
   return 'https://placehold.co/400x400/' + color + '/ffffff?text=' + encodeURIComponent(String(t).substring(0, 20));
 }
 
-function sortOffers() {
-  currentSort = document.getElementById('sort-select').value;
-  renderOffers();
-}
+function sortOffers() { currentSort = document.getElementById('sort-select').value; renderOffers(); }
 
 function getSortedOffers(list) {
   const sorted = [...list];
@@ -1745,48 +2146,7 @@ renderOffers();
     document.body.appendChild(a); a.click(); document.body.removeChild(a);
     URL.revokeObjectURL(url);
     showToast(`HTML publicado baixado! (${offers.length} ofertas)`, 'success');
-    setTimeout(() => {
-      alert(`✅ Arquivo baixado!\n\n📋 Inclui:\n• Template de cores\n• Logo redondo + Favicon\n• Título personalizado da página\n• Imagem de compartilhamento (OG)\n• Cores personalizadas\n• Textos do cabeçalho, hero e rodapé\n• Ícones de redes sociais (incluindo X e Threads)\n• Categorias personalizadas\n• Todas as ofertas\n\n🚀 Renomeie para "index.html" e publique.`);
-    }, 500);
   } catch (err) { showToast('Erro: ' + err.message, 'error'); }
-}
-
-// ============ RENDERIZAÇÃO DE OFERTAS ============
-const categoryColors = { 'Celulares': 'from-blue-400 to-blue-600', 'Eletrônicos': 'from-purple-400 to-purple-600', 'Beleza': 'from-pink-400 to-pink-600', 'Moda': 'from-orange-400 to-orange-600', 'Casa': 'from-green-400 to-green-600', 'Games': 'from-red-400 to-red-600' };
-
-function calculateDiscount(preco, preco_original) {
-  if (!preco_original || preco_original <= preco) return 0;
-  return Math.round(((preco_original - preco) / preco_original) * 100);
-}
-function formatCurrency(value) {
-  return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
-}
-function getFallbackImage(titulo, categoria) {
-  const colors = { 'Celulares': '3b82f6', 'Eletrônicos': '8b5cf6', 'Beleza': 'ec4899', 'Moda': 'f97316', 'Casa': '22c55e', 'Games': 'ef4444' };
-  const color = colors[categoria] || 'eab308';
-  return `https://placehold.co/400x400/${color}/ffffff?text=${encodeURIComponent(String(titulo).substring(0, 20))}`;
-}
-
-function sortOffers() {
-  currentSort = document.getElementById('sort-select').value;
-  renderOffers();
-}
-
-function getSortedOffers(list) {
-  const sorted = [...list];
-  switch(currentSort) {
-    case 'date-desc': sorted.sort((a, b) => new Date(b.dateAdded || 0) - new Date(a.dateAdded || 0)); break;
-    case 'date-asc': sorted.sort((a, b) => new Date(a.dateAdded || 0) - new Date(b.dateAdded || 0)); break;
-    case 'price-asc': sorted.sort((a, b) => a.preco - b.preco); break;
-    case 'price-desc': sorted.sort((a, b) => b.preco - a.preco); break;
-    case 'discount-desc': sorted.sort((a, b) => calculateDiscount(b.preco, b.preco_original) - calculateDiscount(a.preco, a.preco_original)); break;
-    case 'discount-asc': sorted.sort((a, b) => calculateDiscount(a.preco, a.preco_original) - calculateDiscount(b.preco, b.preco_original)); break;
-    case 'name-asc': sorted.sort((a, b) => a.titulo.localeCompare(b.titulo)); break;
-    case 'name-desc': sorted.sort((a, b) => b.titulo.localeCompare(a.titulo)); break;
-    case 'category': sorted.sort((a, b) => a.categoria.localeCompare(b.categoria)); break;
-    case 'store': sorted.sort((a, b) => (a.loja || '').localeCompare(b.loja || '')); break;
-  }
-  return sorted;
 }
 
 function renderOffers() {
@@ -1802,16 +2162,11 @@ function renderOffers() {
   });
 
   filtered = getSortedOffers(filtered);
-
   countEl.textContent = `${filtered.length} oferta${filtered.length !== 1 ? 's' : ''}`;
 
-  if (filtered.length === 0) {
-    grid.innerHTML = '';
-    emptyState.classList.remove('hidden');
-    return;
-  }
-
+  if (filtered.length === 0) { grid.innerHTML = ''; emptyState.classList.remove('hidden'); return; }
   emptyState.classList.add('hidden');
+
   grid.innerHTML = filtered.map((offer, idx) => {
     const discount = calculateDiscount(offer.preco, offer.preco_original);
     const imgSrc = offer.imagem || getFallbackImage(offer.titulo, offer.categoria);
@@ -1819,31 +2174,21 @@ function renderOffers() {
     const icon = cat ? cat.icon : 'fa-tag';
     const colorClass = categoryColors[offer.categoria] || 'from-yellow-400 to-yellow-600';
 
-    const deleteButton = isAdmin ? `
-      <button onclick="confirmDeleteOffer(${offer.id})" class="admin-only visible delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg items-center justify-center" title="Apagar oferta">
-        <i class="fas fa-trash-alt text-sm"></i>
-      </button>
-    ` : '';
-
-    const editButton = isAdmin ? `
-      <button onclick="editOffer(${offer.id})" class="admin-only visible edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg items-center justify-center" title="Editar oferta">
-        <i class="fas fa-edit text-sm"></i>
-      </button>
-    ` : '';
-
-    const categoryBadgePos = isAdmin ? 'top-14 right-3' : 'top-3 right-3';
-
     return `
       <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: ${idx * 0.05}s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
-          ${editButton}
-          ${deleteButton}
-          <img src="${escapeHtml(imgSrc)}" alt="${escapeHtml(offer.titulo)}" 
+          <button onclick="editOffer(${offer.id})" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(${offer.id})" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="${escapeHtml(imgSrc)}" alt="${escapeHtml(offer.titulo)}"
                class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                onerror="this.src='${getFallbackImage(offer.titulo, offer.categoria)}'"
                loading="lazy">
           ${discount > 0 ? `<div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-${discount}%</div>` : ''}
-          <div class="absolute ${categoryBadgePos} bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
             <i class="fas ${icon} mr-1"></i>${escapeHtml(offer.categoria)}
           </div>
           ${offer.loja ? `<div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
@@ -1870,10 +2215,9 @@ function renderOffers() {
 }
 
 function editOffer(id) {
-  if (!isAdmin) return;
   const offer = offers.find(o => o.id === id);
   if (!offer) return;
-  
+
   editingOfferId = id;
   document.getElementById('f-edit-id').value = id;
   document.getElementById('f-titulo').value = offer.titulo;
@@ -1884,37 +2228,35 @@ function editOffer(id) {
   document.getElementById('f-link').value = offer.link;
   document.getElementById('f-loja').value = offer.loja || '';
   document.getElementById('f-descricao').value = offer.descricao || '';
-  
+
   document.getElementById('modal-title').textContent = 'Editar Oferta';
   document.getElementById('modal-subtitle').textContent = 'Alterar dados da oferta';
   document.getElementById('modal-btn-text').textContent = 'Atualizar Oferta';
   document.getElementById('modal-icon').className = 'fas fa-edit text-yellow-600 text-2xl';
-  
+
   const modal = document.getElementById('add-modal');
   modal.classList.remove('hidden');
   modal.classList.add('flex');
 }
 
-// ============ FILTROS ============
 document.getElementById('search-input').addEventListener('input', (e) => {
   currentSearch = e.target.value;
   renderOffers();
 });
 
-// ============ MODAIS ============
 function openUploadModal() {
-  if (!isAdmin) { showToast('Acesso restrito', 'error'); return; }
   const modal = document.getElementById('upload-modal');
   modal.classList.remove('hidden');
   modal.classList.add('flex');
 }
+
 function closeUploadModal() {
   const modal = document.getElementById('upload-modal');
   modal.classList.add('hidden');
   modal.classList.remove('flex');
 }
+
 function openAddModal() {
-  if (!isAdmin) { showToast('Acesso restrito', 'error'); return; }
   editingOfferId = null;
   document.getElementById('f-edit-id').value = '';
   document.getElementById('f-titulo').value = '';
@@ -1924,23 +2266,23 @@ function openAddModal() {
   document.getElementById('f-link').value = '';
   document.getElementById('f-loja').value = '';
   document.getElementById('f-descricao').value = '';
-  
+
   document.getElementById('modal-title').textContent = 'Nova Oferta';
   document.getElementById('modal-subtitle').textContent = 'Adicionar manualmente';
   document.getElementById('modal-btn-text').textContent = 'Salvar Oferta';
   document.getElementById('modal-icon').className = 'fas fa-plus-circle text-yellow-600 text-2xl';
-  
+
   const modal = document.getElementById('add-modal');
   modal.classList.remove('hidden');
   modal.classList.add('flex');
 }
+
 function closeAddModal() {
   const modal = document.getElementById('add-modal');
   modal.classList.add('hidden');
   modal.classList.remove('flex');
 }
 
-// ============ UPLOAD EXCEL ============
 const uploadZone = document.getElementById('upload-zone');
 const fileInput = document.getElementById('file-input');
 
@@ -1963,7 +2305,7 @@ function handleFile(file) {
       const jsonData = XLSX.utils.sheet_to_json(firstSheet);
       let imported = 0;
       let errors = 0;
-      jsonData.forEach(row => {
+      jsonData.forEach((row, i) => {
         const titulo = row.titulo || row.Titulo || row.TÍTULO || row.name || row.nome;
         const preco = parseFloat(row.preco || row.Preco || row.PREÇO || row.price);
         const preco_original = parseFloat(row.preco_original || row.precoOriginal || row['Preço Original'] || row.original_price);
@@ -1973,7 +2315,9 @@ function handleFile(file) {
         const loja = row.loja || row.Loja || row.LOJA || row.store || '';
         const descricao = row.descricao || row.Descricao || row.DESCRICAO || row.description || '';
         if (titulo && !isNaN(preco)) {
-          offers.push({ id: Date.now() + Math.random(), titulo: String(titulo), preco, preco_original: isNaN(preco_original) ? null : preco_original, categoria: String(categoria), imagem: String(imagem), link: String(link), loja: String(loja), descricao: String(descricao), dateAdded: new Date().toISOString() });
+          // Escalona datas para a ordenação "mais recentes" fazer sentido
+          const offset = (jsonData.length - i) * 1000;
+          offers.push({ id: Date.now() + Math.floor(Math.random() * 1000), titulo: String(titulo), preco, preco_original: isNaN(preco_original) ? null : preco_original, categoria: String(categoria), imagem: String(imagem), link: String(link), loja: String(loja), descricao: String(descricao), dateAdded: new Date(Date.now() - offset).toISOString() });
           imported++;
         } else { errors++; }
       });
@@ -1999,7 +2343,6 @@ function downloadTemplate() {
 }
 
 function saveOffer() {
-  if (!isAdmin) { showToast('Acesso restrito', 'error'); return; }
   const titulo = document.getElementById('f-titulo').value.trim();
   const preco = parseFloat(document.getElementById('f-preco').value);
   const preco_original = parseFloat(document.getElementById('f-preco-original').value);
@@ -2008,13 +2351,13 @@ function saveOffer() {
   const link = document.getElementById('f-link').value.trim();
   const loja = document.getElementById('f-loja').value.trim();
   const descricao = document.getElementById('f-descricao').value.trim();
-  
+
   if (!titulo || isNaN(preco) || !link) { showToast('Preencha os campos obrigatórios!', 'error'); return; }
-  if (link && !isValidUrl(link)) { showToast('Link de compra inválido!', 'error'); return; }
+  if (link && !isValidUrl(link)) { showToast('Link de compra inválido (use http:// ou https://)', 'error'); return; }
   if (imagem && !isValidUrl(imagem) && !imagem.startsWith('data:')) { showToast('URL da imagem inválida!', 'error'); return; }
-  
+
   const offerData = { titulo, preco, preco_original: isNaN(preco_original) ? null : preco_original, categoria, imagem, link, loja, descricao };
-  
+
   if (editingOfferId !== null) {
     const idx = offers.findIndex(o => o.id === editingOfferId);
     if (idx !== -1) { offers[idx] = { ...offers[idx], ...offerData }; showToast('Oferta atualizada com sucesso!', 'success'); }
@@ -2023,7 +2366,7 @@ function saveOffer() {
     offers.push({ id: Date.now(), ...offerData, dateAdded: new Date().toISOString() });
     showToast('Oferta adicionada!', 'success');
   }
-  
+
   saveOffers();
   ['f-titulo','f-preco','f-preco-original','f-imagem','f-link','f-loja','f-descricao','f-edit-id'].forEach(id => document.getElementById(id).value = '');
   closeAddModal();
@@ -2042,57 +2385,25 @@ function showToast(msg, type = 'success') {
 
 document.querySelectorAll('.modal-overlay').forEach(modal => {
   modal.addEventListener('click', (e) => {
-    if (e.target === modal) { modal.classList.add('hidden'); modal.classList.remove('flex'); }
+    if (e.target === modal) {
+      // Se for o confirm, precisa resetar o ID pendente
+      if (modal.id === 'confirm-modal') { closeConfirmModal(); }
+      else { modal.classList.add('hidden'); modal.classList.remove('flex'); }
+    }
   });
 });
 
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
-    ['login-modal', 'upload-modal', 'add-modal', 'customize-modal', 'confirm-modal'].forEach(id => {
+    ['upload-modal', 'add-modal', 'customize-modal', 'confirm-modal'].forEach(id => {
       const modal = document.getElementById(id);
       if (modal && !modal.classList.contains('hidden')) {
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
+        if (id === 'confirm-modal') { closeConfirmModal(); }
+        else { modal.classList.add('hidden'); modal.classList.remove('flex'); }
       }
     });
   }
 });
-
-// ============ MEDIDAS DE SEGURANÇA ANTI-CÓPIA ============
-(function() {
-  document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'F12') { e.preventDefault(); return false; }
-    if (e.ctrlKey && e.shiftKey && e.key === 'I') { e.preventDefault(); return false; }
-    if (e.ctrlKey && e.shiftKey && e.key === 'J') { e.preventDefault(); return false; }
-    if (e.ctrlKey && e.shiftKey && e.key === 'C') { e.preventDefault(); return false; }
-    if (e.ctrlKey && e.key === 'u') { e.preventDefault(); return false; }
-    if (e.ctrlKey && e.key === 's') { e.preventDefault(); return false; }
-    if (e.ctrlKey && e.key === 'a' && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') { e.preventDefault(); return false; }
-    if (e.ctrlKey && e.key === 'c' && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') { e.preventDefault(); return false; }
-  });
-  let devtoolsOpen = false;
-  const threshold = 160;
-  setInterval(() => {
-    const widthThreshold = window.outerWidth - window.innerWidth > threshold;
-    const heightThreshold = window.outerHeight - window.innerHeight > threshold;
-    if (widthThreshold || heightThreshold) {
-      if (!devtoolsOpen) {
-        devtoolsOpen = true;
-        console.clear();
-        console.log('%c⚠️ Atenção!', 'color: red; font-size: 30px; font-weight: bold;');
-        console.log('%cEsta ferramenta é destinada a desenvolvedores.', 'color: orange; font-size: 16px;');
-      }
-    } else { devtoolsOpen = false; }
-  }, 1000);
-  document.addEventListener('dragstart', (e) => { if (e.target.tagName === 'IMG') e.preventDefault(); });
-  Object.defineProperty(window, 'adminPassword', {
-    get: function() { return undefined; },
-    set: function() {},
-    enumerable: false,
-    configurable: false
-  });
-})();
 
 // ============ INICIALIZAÇÃO ============
 loadSettings();
@@ -2103,7 +2414,6 @@ loadOffers();
 applySettings();
 renderCategoryButtons();
 populateCategorySelect();
-checkAuth();
 renderOffers();
 updateSavedCount();
 </script>
