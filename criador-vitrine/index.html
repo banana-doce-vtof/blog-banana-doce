@@ -1714,8 +1714,7 @@ async function downloadPDF() {
     alert(
       '⚠️ Não é possível gerar o PDF abrindo o arquivo direto (file://).\n\n' +
       'Use um servidor local (Live Server, python -m http.server 8000, npx serve .) ' +
-      'ou publique o site.\n\n' +
-      'Acesse via http://localhost:... e clique novamente.'
+      'ou publique o site.'
     );
     return;
   }
@@ -1759,10 +1758,40 @@ async function downloadPDF() {
 
     updatePdfProgress('Montando layout A4...', '', 45);
 
-    // ===== 3. Monta o HTML dos cards =====
+    // ===== 3. Divide as ofertas em "chunks" (páginas) =====
+    // Página 1: 2 cards (por causa do header + hero)
+    // Demais páginas: 4 cards cada
+    const FIRST_PAGE_CARDS = 2;
+    const OTHER_PAGE_CARDS = 4;
+    const chunks = [];
+
+    chunks.push(filtered.slice(0, FIRST_PAGE_CARDS));
+    let cursor = FIRST_PAGE_CARDS;
+    while (cursor < filtered.length) {
+      chunks.push(filtered.slice(cursor, cursor + OTHER_PAGE_CARDS));
+      cursor += OTHER_PAGE_CARDS;
+    }
+
+    console.log('[PDF DEBUG] Páginas:', chunks.length, chunks.map(c => c.length));
+
     const t = TEMPLATES.find(x => x.id === settings.template) || TEMPLATES[0];
 
-    const cardsHtml = filtered.map(offer => {
+    const heroColorMap = {
+      'yellow':  { bg: '#fefce8', text: '#111827' },
+      'sky':     { bg: '#f0f9ff', text: '#0c4a6e' },
+      'green':   { bg: '#f0fdf4', text: '#14532d' },
+      'pink':    { bg: '#fdf2f8', text: '#831843' },
+      'purple':  { bg: '#faf5ff', text: '#581c87' },
+      'orange':  { bg: '#fff7ed', text: '#7c2d12' },
+      'red':     { bg: '#fef2f2', text: '#7f1d1d' },
+      'gray':    { bg: '#fafafa', text: '#111827' },
+      'emerald': { bg: '#ecfdf5', text: '#064e3b' }
+    };
+    const heroKey = Object.keys(heroColorMap).find(k => t.heroFrom.includes(k)) || 'yellow';
+    const heroColor = heroColorMap[heroKey];
+
+    // Helper: HTML de um único card
+    const buildCardHtml = (offer) => {
       const discount = calculateDiscount(offer.preco, offer.preco_original);
       const imgSrc = imageMap[offer.id] || getFallbackImage(offer.titulo, offer.categoria);
       const cat = settings.categories.find(c => c.name === offer.categoria);
@@ -1793,164 +1822,152 @@ async function downloadPDF() {
           </div>
         </div>
       `;
+    };
+
+    // ===== 4. Monta uma .pdf-page para cada chunk =====
+    const renderArea = document.getElementById('pdf-render-area');
+    renderArea.innerHTML = chunks.map((chunk, idx) => {
+      const isFirst = idx === 0;
+      const isLast = idx === chunks.length - 1;
+
+      return `
+        <div class="pdf-page" data-page-index="${idx}">
+          ${isFirst ? `
+            <div class="pdf-header" style="background: ${t.headerGradient}; color: ${t.headerTextColor}">
+              ${logoDataUrl ? `<img src="${escapeHtml(logoDataUrl)}" alt="Logo">` : ''}
+              <h1 style="color: ${settings.headerTitleColor || t.headerTextColor}">${escapeHtml(settings.headerTitle)}</h1>
+              <p style="color: ${settings.headerSubtitleColor || t.headerSubtitleColor}">${escapeHtml(settings.headerSubtitle)}</p>
+            </div>
+            <div class="pdf-hero" style="background: ${heroColor.bg}; color: ${heroColor.text}">
+              <h2 style="color: ${settings.heroTitleColor || heroColor.text}">${escapeHtml(settings.heroTitle || '🏆 As Melhores Ofertas do Dia')}</h2>
+              <p style="color: ${settings.heroSubtitleColor || heroColor.text}">${escapeHtml(settings.heroSubtitle || 'Seleção com as melhores ofertas do dia')}</p>
+            </div>
+            ${settings.heroDisclosure ? `<div style="text-align:center"><div class="pdf-disclosure" style="background: ${settings.heroDisclosureBg || '#fef08a'}; color: ${settings.heroDisclosureTextColor || '#713f12'}"><i class="fas fa-info-circle" style="margin-right:6px"></i>${escapeHtml(settings.heroDisclosure)}</div></div>` : ''}
+          ` : ''}
+
+          <div class="pdf-grid">
+            ${chunk.map(buildCardHtml).join('')}
+          </div>
+
+          ${isLast ? `
+            <div class="pdf-footer" style="background: ${settings.footerBg || '#111827'}">
+              <p class="ft-title" style="color: ${settings.footerTextColor || '#facc15'}">${escapeHtml(settings.footerText)}</p>
+              <p class="ft-copy" style="color: ${settings.footerCopyrightColor || '#ca8a04'}">${escapeHtml(settings.footerCopyright || '© 2026 Banana Doce. Todos os direitos reservados.')}</p>
+            </div>
+          ` : ''}
+        </div>
+      `;
     }).join('');
 
-    const heroColorMap = {
-      'yellow':  { bg: '#fefce8', text: '#111827' },
-      'sky':     { bg: '#f0f9ff', text: '#0c4a6e' },
-      'green':   { bg: '#f0fdf4', text: '#14532d' },
-      'pink':    { bg: '#fdf2f8', text: '#831843' },
-      'purple':  { bg: '#faf5ff', text: '#581c87' },
-      'orange':  { bg: '#fff7ed', text: '#7c2d12' },
-      'red':     { bg: '#fef2f2', text: '#7f1d1d' },
-      'gray':    { bg: '#fafafa', text: '#111827' },
-      'emerald': { bg: '#ecfdf5', text: '#064e3b' }
-    };
-    const heroKey = Object.keys(heroColorMap).find(k => t.heroFrom.includes(k)) || 'yellow';
-    const heroColor = heroColorMap[heroKey];
-
-    const renderArea = document.getElementById('pdf-render-area');
-    renderArea.innerHTML = `
-      <div class="pdf-page" id="pdf-page-root">
-        <div class="pdf-header" style="background: ${t.headerGradient}; color: ${t.headerTextColor}">
-          ${logoDataUrl ? `<img src="${escapeHtml(logoDataUrl)}" alt="Logo">` : ''}
-          <h1 style="color: ${settings.headerTitleColor || t.headerTextColor}">${escapeHtml(settings.headerTitle)}</h1>
-          <p style="color: ${settings.headerSubtitleColor || t.headerSubtitleColor}">${escapeHtml(settings.headerSubtitle)}</p>
-        </div>
-        <div class="pdf-hero" style="background: ${heroColor.bg}; color: ${heroColor.text}">
-          <h2 style="color: ${settings.heroTitleColor || heroColor.text}">${escapeHtml(settings.heroTitle || '🏆 As Melhores Ofertas do Dia')}</h2>
-          <p style="color: ${settings.heroSubtitleColor || heroColor.text}">${escapeHtml(settings.heroSubtitle || 'Seleção com as melhores ofertas do dia')}</p>
-        </div>
-        ${settings.heroDisclosure ? `<div style="text-align:center"><div class="pdf-disclosure" style="background: ${settings.heroDisclosureBg || '#fef08a'}; color: ${settings.heroDisclosureTextColor || '#713f12'}"><i class="fas fa-info-circle" style="margin-right:6px"></i>${escapeHtml(settings.heroDisclosure)}</div></div>` : ''}
-        <div class="pdf-grid">
-          ${cardsHtml}
-        </div>
-        <div class="pdf-footer" style="background: ${settings.footerBg || '#111827'}">
-          <p class="ft-title" style="color: ${settings.footerTextColor || '#facc15'}">${escapeHtml(settings.footerText)}</p>
-          <p class="ft-copy" style="color: ${settings.footerCopyrightColor || '#ca8a04'}">${escapeHtml(settings.footerCopyright || '© 2026 Banana Doce. Todos os direitos reservados.')}</p>
-        </div>
-      </div>
-    `;
-
-    // ===== 4. Aguarda renderização =====
+    // ===== 5. Aguarda renderização =====
     updatePdfProgress('Aguardando renderização...', '', 55);
     await waitForImages(renderArea, 20000);
     try { await document.fonts.ready; } catch (e) {}
     await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
     await new Promise(r => setTimeout(r, 300));
 
-    const pageRoot = document.getElementById('pdf-page-root');
-    if (!pageRoot) throw new Error('Container do PDF não encontrado');
-
-    const rect = pageRoot.getBoundingClientRect();
-    console.log('[PDF DEBUG] Vou rasterizar:', {
-      width: rect.width, height: rect.height,
-      cardsFound: pageRoot.querySelectorAll('.pdf-card').length
-    });
-
-    if (rect.height < 100) throw new Error('Container do PDF está vazio');
-
-    // ===== 5. Rasteriza TUDO com html2canvas (direto, sem html2pdf) =====
-    updatePdfProgress('Rasterizando catálogo...', 'Isso pode levar alguns segundos', 60);
-
-    const SCALE = 2;
-    const canvas = await html2canvas(pageRoot, {
-      scale: SCALE,
-      useCORS: true,
-      allowTaint: true,
-      logging: false,
-      backgroundColor: '#ffffff',
-      windowWidth: 794,
-      width: 794,
-      height: pageRoot.scrollHeight
-    });
-
-    console.log('[PDF DEBUG] Canvas:', { w: canvas.width, h: canvas.height });
-
+    // ===== 6. Rasteriza CADA PÁGINA separadamente =====
     const { jsPDF } = window.jspdf;
     const pdf = new jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait', compress: true });
 
-    // Dimensões
     const pageWidthMm  = 210;
     const pageHeightMm = 297;
     const marginMm     = 10;
-    const contentWidthMm  = pageWidthMm  - marginMm * 2; // 190
+    const contentWidthMm = pageWidthMm - marginMm * 2;   // 190
     const contentHeightMm = pageHeightMm - marginMm * 2; // 277
 
-    // 1 px CSS  ->  quantos mm
-    const cssWidth = pageRoot.offsetWidth;                    // ~794
-    const mmPerCssPx = contentWidthMm / cssWidth;
-    const cssPxPerPage = contentHeightMm / mmPerCssPx;        // altura útil em px CSS
+    const pages = renderArea.querySelectorAll('.pdf-page');
+    const totalPages = pages.length;
+    const pageInfos = [];
 
-    // Canvas tem SCALE multiplicador
-    const canvasPxPerPage = Math.floor(cssPxPerPage * SCALE);
-    const totalPages = Math.ceil(canvas.height / canvasPxPerPage);
+    for (let p = 0; p < pages.length; p++) {
+      const pageEl = pages[p];
+      updatePdfProgress('Rasterizando página...', `${p + 1} de ${totalPages}`, 60 + Math.round(((p + 0.4) / totalPages) * 25));
 
-    // Recorta o canvas em fatias (uma por página) e adiciona cada uma
-    for (let p = 0; p < totalPages; p++) {
-      const yStart = p * canvasPxPerPage;
-      const sliceH = Math.min(canvasPxPerPage, canvas.height - yStart);
+      // Descobre a largura/altura reais em mm
+      const cssWidth  = pageEl.offsetWidth;   // 794
+      const cssHeight = pageEl.offsetHeight;
 
-      const slice = document.createElement('canvas');
-      slice.width = canvas.width;
-      slice.height = sliceH;
-      const sctx = slice.getContext('2d');
-      sctx.fillStyle = '#ffffff';
-      sctx.fillRect(0, 0, slice.width, slice.height);
-      sctx.drawImage(canvas, 0, yStart, canvas.width, sliceH, 0, 0, canvas.width, sliceH);
+      const mmPerCssPx = contentWidthMm / cssWidth;
+      let imgWidthMm  = contentWidthMm;
+      let imgHeightMm = cssHeight * mmPerCssPx;
 
-      const sliceData = slice.toDataURL('image/jpeg', 0.92);
-      const sliceHeightMm = sliceH / SCALE * mmPerCssPx;
-
-      if (p > 0) pdf.addPage();
-      pdf.addImage(sliceData, 'JPEG', marginMm, marginMm, contentWidthMm, sliceHeightMm, undefined, 'FAST');
-
-      const progress = 60 + Math.round(((p + 1) / totalPages) * 28);
-      updatePdfProgress('Montando páginas...', `${p + 1} de ${totalPages}`, progress);
-    }
-
-    // ===== 6. Adiciona links clicáveis em cada botão "Ver Oferta" =====
-    updatePdfProgress('Adicionando links clicáveis...', '', 90);
-
-    const cards = pageRoot.querySelectorAll('.pdf-card');
-    let processed = 0;
-
-    cards.forEach(card => {
-      const btn = card.querySelector('.btn-offer');
-      const link = card.getAttribute('data-link');
-      if (!btn || !link || link === '#' || !isValidUrl(link)) return;
-
-      const btnRect = btn.getBoundingClientRect();
-      const rootRect = pageRoot.getBoundingClientRect();
-      const relTop = btnRect.top - rootRect.top;
-      const relLeft = btnRect.left - rootRect.left;
-      const relW = btnRect.width;
-      const relH = btnRect.height;
-
-      // Em qual página caiu esse botão?
-      const pageNum = Math.floor(relTop / cssPxPerPage) + 1;
-      const topInPage = relTop - (pageNum - 1) * cssPxPerPage;
-
-      const xMm = marginMm + relLeft * mmPerCssPx;
-      const yMm = marginMm + topInPage * mmPerCssPx;
-      const wMm = relW * mmPerCssPx;
-      const hMm = relH * mmPerCssPx;
-
-      if (pageNum >= 1 && pageNum <= totalPages &&
-          yMm >= 0 && yMm + hMm <= pageHeightMm &&
-          xMm >= 0 && xMm + wMm <= pageWidthMm) {
-        try {
-          pdf.setPage(pageNum);
-          pdf.link(xMm, yMm, wMm, hMm, { url: link });
-        } catch (e) { /* ignora */ }
+      // Segurança: se por acaso passar da altura útil, reduz proporcionalmente
+      if (imgHeightMm > contentHeightMm) {
+        const ratio = contentHeightMm / imgHeightMm;
+        imgHeightMm = contentHeightMm;
+        imgWidthMm  = contentWidthMm * ratio;
       }
 
-      processed++;
-      const progress = 90 + Math.round((processed / Math.max(cards.length, 1)) * 7);
-      updatePdfProgress('Adicionando links...', `${processed} de ${cards.length}`, progress);
+      const canvas = await html2canvas(pageEl, {
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+        logging: false,
+        backgroundColor: '#ffffff',
+        windowWidth: 794,
+        width: 794,
+        height: cssHeight
+      });
+
+      const imgData = canvas.toDataURL('image/jpeg', 0.92);
+
+      // Centraliza horizontalmente caso imgWidthMm < contentWidthMm
+      const xMm = marginMm + (contentWidthMm - imgWidthMm) / 2;
+      const yMm = marginMm;
+
+      if (p > 0) pdf.addPage();
+      pdf.addImage(imgData, 'JPEG', xMm, yMm, imgWidthMm, imgHeightMm, undefined, 'FAST');
+
+      // Guarda info para os links clicáveis
+      pageInfos.push({
+        pageEl,
+        pageNum: p + 1,
+        mmPerCssPx,
+        offsetX: xMm,
+        offsetY: yMm
+      });
+
+      const progress = 60 + Math.round(((p + 1) / totalPages) * 25);
+      updatePdfProgress('Rasterizando...', `${p + 1} de ${totalPages}`, progress);
+    }
+
+    // ===== 7. Adiciona links clicáveis =====
+    updatePdfProgress('Adicionando links clicáveis...', '', 90);
+
+    let totalLinks = 0, processedLinks = 0;
+    pageInfos.forEach(info => {
+      totalLinks += info.pageEl.querySelectorAll('.pdf-card .btn-offer').length;
     });
 
-    // ===== 7. Salva =====
+    pageInfos.forEach(info => {
+      const pageRect = info.pageEl.getBoundingClientRect();
+      info.pageEl.querySelectorAll('.pdf-card').forEach(card => {
+        const btn = card.querySelector('.btn-offer');
+        const link = card.getAttribute('data-link');
+        if (!btn || !link || link === '#' || !isValidUrl(link)) return;
+
+        const btnRect = btn.getBoundingClientRect();
+        const relLeft = btnRect.left - pageRect.left;
+        const relTop  = btnRect.top  - pageRect.top;
+
+        const xMm = info.offsetX + relLeft * info.mmPerCssPx;
+        const yMm = info.offsetY + relTop  * info.mmPerCssPx;
+        const wMm = btnRect.width  * info.mmPerCssPx;
+        const hMm = btnRect.height * info.mmPerCssPx;
+
+        try {
+          pdf.setPage(info.pageNum);
+          pdf.link(xMm, yMm, wMm, hMm, { url: link });
+        } catch (e) {}
+
+        processedLinks++;
+        const progress = 90 + Math.round((processedLinks / Math.max(totalLinks, 1)) * 7);
+        updatePdfProgress('Adicionando links...', `${processedLinks} de ${totalLinks}`, progress);
+      });
+    });
+
+    // ===== 8. Salva =====
     updatePdfProgress('Finalizando...', '', 98);
     pdf.save(`catalogo_banana_doce_${new Date().toISOString().slice(0,10)}.pdf`);
 
