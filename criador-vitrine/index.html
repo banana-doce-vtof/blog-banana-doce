@@ -11,15 +11,8 @@
 <meta property="og:description" content="As melhores ofertas do dia">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-
-<!-- ⬇️⬇️ ESTAS DUAS LINHAS ⬇️⬇️ -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<!-- ⬆️⬆️ ESTAS DUAS LINHAS ⬆️⬆️ -->
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.0/index.min.css">
-
 <style>
   * { font-family: 'Inter', sans-serif; }
   body { background: var(--bg-color, #fefce8); }
@@ -62,7 +55,7 @@
   .delete-btn:hover { transform: scale(1.1); background: #dc2626 !important; }
   .edit-btn { transition: all 0.2s; }
   .edit-btn:hover { transform: scale(1.1); background: #2563eb !important; }
-
+  
   .template-card {
     cursor: pointer;
     transition: all 0.3s;
@@ -167,334 +160,6 @@
     -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath d='M331.5 225.5c.6 6 1 12.3 1 18.7 0 98-72.5 144.3-153.8 144.3-83 0-144.3-65.7-144.3-154.8 0-95.4 66.8-157.7 154.8-157.7 48 0 81 12.5 110 37.5L275 131.3c-24.5-21.5-54-31.8-91-31.8-62 0-108.5 45.5-108.5 111.5 0 63.5 43 109.5 105 109.5 53.5 0 92.5-30.5 92.5-81.5 0-4.5-.3-8.8-.8-13H225v-45h152c1.8 9.8 2.8 20.5 2.8 31.5h-48.3z'/%3E%3C/svg%3E") no-repeat center;
     mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath d='M331.5 225.5c.6 6 1 12.3 1 18.7 0 98-72.5 144.3-153.8 144.3-83 0-144.3-65.7-144.3-154.8 0-95.4 66.8-157.7 154.8-157.7 48 0 81 12.5 110 37.5L275 131.3c-24.5-21.5-54-31.8-91-31.8-62 0-108.5 45.5-108.5 111.5 0 63.5 43 109.5 105 109.5 53.5 0 92.5-30.5 92.5-81.5 0-4.5-.3-8.8-.8-13H225v-45h152c1.8 9.8 2.8 20.5 2.8 31.5h-48.3z'/%3E%3C/svg%3E") no-repeat center;
   }
-
-    /* ===== PDF RENDER AREA (usado apenas para gerar o PDF) ===== */
-  #pdf-render-area {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 794px;
-    background: #ffffff;
-    z-index: -9999;
-    pointer-events: none;
-    font-family: 'Inter', sans-serif;
-  }
-  #pdf-render-area * { box-sizing: border-box; }
-
-  /* Página A4 em px (794 × 1157px ≈ 210 × 297mm na proporção correta) */
-  #pdf-render-area .pdf-page {
-    width: 794px;
-    height: 1157px;
-    padding: 28px 24px;
-    background: #ffffff;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
-  #pdf-render-area .pdf-page + .pdf-page {
-    margin-top: 20px;
-  }
-
-  /* ---------- HEADER ---------- */
-  #pdf-render-area .pdf-header {
-    text-align: center;
-    padding: 18px 20px 20px;
-    margin-bottom: 14px;
-    border-radius: 14px;
-    flex-shrink: 0;
-  }
-  #pdf-render-area .pdf-header img {
-    width: 72px;
-    height: 72px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin: 0 auto 8px;
-    display: block;
-    border: 4px solid rgba(255,255,255,0.5);
-  }
-  #pdf-render-area .pdf-header h1 {
-    font-size: 26px;
-    font-weight: 900;
-    margin: 0 0 2px;
-    line-height: 1.15;
-  }
-  #pdf-render-area .pdf-header p {
-    font-size: 13px;
-    font-weight: 600;
-    margin: 0;
-    line-height: 1.2;
-  }
-
-  /* ---------- HERO ---------- */
-  #pdf-render-area .pdf-hero {
-    text-align: center;
-    padding: 14px 20px;
-    margin-bottom: 10px;
-    border-radius: 12px;
-    flex-shrink: 0;
-  }
-  #pdf-render-area .pdf-hero h2 {
-    font-size: 19px;
-    font-weight: 900;
-    margin: 0 0 4px;
-    line-height: 1.2;
-  }
-  #pdf-render-area .pdf-hero p {
-    font-size: 12px;
-    margin: 0;
-    line-height: 1.3;
-  }
-
-  /* ---------- DISCLOSURE ---------- */
-  #pdf-render-area .pdf-disclosure {
-    text-align: center;
-    padding: 6px 14px;
-    border-radius: 999px;
-    font-size: 10px;
-    font-weight: 600;
-    display: inline-block;
-    margin: 0 auto 14px;
-    line-height: 1.4;
-    max-width: 92%;
-  }
-  #pdf-render-area .pdf-page > div[style*="text-align:center"] {
-    flex-shrink: 0;
-    text-align: center;
-  }
-
-  /* ---------- GRID ---------- */
-  /* flex: 1 faz o grid ocupar todo o espaço vertical restante;
-     align-content: center centraliza as linhas quando sobra espaço (ex: página 1 com 2 cards). */
-  #pdf-render-area .pdf-grid {
-    flex: 1;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-    align-content: center;
-  }
-
-  /* ---------- CARD ---------- */
-  #pdf-render-area .pdf-card {
-    background: #ffffff;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    border: 1px solid #e5e7eb;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    max-height: 480px;
-    break-inside: avoid;
-    page-break-inside: avoid;
-  }
-
-  /* Área da imagem com altura fixa — garante que todas as linhas fiquem simétricas */
-  #pdf-render-area .pdf-card .img-wrap {
-    position: relative;
-    width: 100%;
-    height: 240px;
-    background: #f3f4f6;
-    overflow: hidden;
-    flex-shrink: 0;
-  }
-  #pdf-render-area .pdf-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  #pdf-render-area .pdf-card .discount-badge {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    color: white;
-    font-weight: 900;
-    padding: 5px 11px;
-    border-radius: 999px;
-    font-size: 12px;
-    line-height: 1;
-  }
-  #pdf-render-area .pdf-card .cat-badge {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: rgba(255,255,255,0.95);
-    padding: 5px 10px;
-    border-radius: 999px;
-    font-size: 10px;
-    font-weight: 700;
-    color: #374151;
-    line-height: 1;
-  }
-  #pdf-render-area .pdf-card .store-badge {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    background: rgba(17,24,39,0.9);
-    color: #facc15;
-    padding: 5px 10px;
-    border-radius: 999px;
-    font-size: 10px;
-    font-weight: 700;
-    line-height: 1;
-  }
-
-  /* Corpo com flex column + gap consistente */
-  #pdf-render-area .pdf-card .card-body {
-    padding: 12px 14px 14px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    flex: 1;
-    min-height: 0;
-  }
-
-  #pdf-render-area .pdf-card h4 {
-    font-size: 13px;
-    font-weight: 700;
-    color: #111827;
-    margin: 0;
-    min-height: 32px;
-    line-height: 1.25;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  #pdf-render-area .pdf-card .desc {
-    font-size: 10px;
-    color: #6b7280;
-    margin: 0;
-    min-height: 26px;
-    line-height: 1.3;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  /* Preço empurrado para baixo (margin-top:auto) — alinha todos os preços na mesma linha */
-  #pdf-render-area .pdf-card .price-area {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    margin-top: auto;
-    padding-top: 4px;
-    gap: 6px;
-  }
-  #pdf-render-area .pdf-card .old-price {
-    font-size: 10px;
-    color: #9ca3af;
-    text-decoration: line-through;
-    margin: 0 0 1px;
-    line-height: 1.2;
-  }
-  #pdf-render-area .pdf-card .new-price {
-    font-size: 17px;
-    font-weight: 900;
-    color: #111827;
-    margin: 0;
-    line-height: 1.1;
-  }
-  #pdf-render-area .pdf-card .save {
-    font-size: 9px;
-    font-weight: 700;
-    color: #16a34a;
-    background: #f0fdf4;
-    padding: 3px 7px;
-    border-radius: 6px;
-    line-height: 1.2;
-    white-space: nowrap;
-  }
-
-  #pdf-render-area .pdf-card .btn-offer {
-    display: block;
-    width: 100%;
-    padding: 9px;
-    border-radius: 10px;
-    color: white;
-    font-weight: 700;
-    text-align: center;
-    text-decoration: none;
-    font-size: 12px;
-    border: none;
-    cursor: default;
-    line-height: 1.2;
-    margin-top: 2px;
-    flex-shrink: 0;
-  }
-
-  /* ---------- FOOTER ---------- */
-  #pdf-render-area .pdf-footer {
-    margin-top: 14px;
-    padding: 16px;
-    border-radius: 12px;
-    text-align: center;
-    flex-shrink: 0;
-  }
-  #pdf-render-area .pdf-footer .ft-title {
-    font-size: 15px;
-    font-weight: 700;
-    color: white;
-    margin: 0 0 4px;
-    line-height: 1.2;
-  }
-  #pdf-render-area .pdf-footer .ft-copy {
-    font-size: 10px;
-    margin: 6px 0 0;
-    line-height: 1.3;
-  }
-  
-  /* Loading overlay do PDF */
-  .pdf-loading-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.85);
-    backdrop-filter: blur(6px);
-    z-index: 99999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 20px;
-  }
-  .pdf-loading-overlay .spinner {
-    width: 70px;
-    height: 70px;
-    border: 6px solid rgba(255,255,255,0.2);
-    border-top-color: #facc15;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
-  .pdf-loading-overlay .progress-text {
-    color: white;
-    font-weight: 700;
-    font-size: 16px;
-    text-align: center;
-  }
-  .pdf-loading-overlay .progress-sub {
-    color: #facc15;
-    font-size: 13px;
-    text-align: center;
-    max-width: 320px;
-  }
-  .pdf-loading-overlay .progress-bar {
-    width: 280px;
-    height: 6px;
-    background: rgba(255,255,255,0.2);
-    border-radius: 3px;
-    overflow: hidden;
-  }
-  .pdf-loading-overlay .progress-bar-fill {
-    height: 100%;
-    background: linear-gradient(90deg, #facc15, #eab308);
-    border-radius: 3px;
-    transition: width 0.3s;
-    width: 0%;
-  }
 </style>
 </head>
 <body class="min-h-screen protected-content">
@@ -559,14 +224,10 @@
       <h3 class="text-lg font-black text-gray-900">Painel do Administrador</h3>
       <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full font-bold" id="saved-count">0 ofertas salvas</span>
     </div>
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-8 gap-3">
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3">
       <button onclick="openCustomizeModal()" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-xl transition-all shadow flex items-center justify-center gap-2">
         <i class="fas fa-palette"></i>
         <span class="text-xs sm:text-sm">Personalizar</span>
-      </button>
-      <button onclick="downloadPDF()" class="bg-rose-600 hover:bg-rose-700 text-white font-bold py-3 px-4 rounded-xl transition-all shadow flex items-center justify-center gap-2">
-        <i class="fas fa-file-pdf"></i>
-        <span class="text-xs sm:text-sm">Baixar PDF</span>
       </button>
       <button onclick="exportJSON()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl transition-all shadow flex items-center justify-center gap-2">
         <i class="fas fa-file-export"></i>
@@ -634,9 +295,6 @@
     <p id="footer-copyright" class="text-xs mt-4">© 2026 Banana Doce. Todos os direitos reservados.</p>
   </div>
 </footer>
-
-<!-- CONTAINER OCULTO PARA RENDERIZAÇÃO DO PDF -->
-<div id="pdf-render-area"></div>
 
 <!-- UPLOAD EXCEL MODAL -->
 <div id="upload-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 modal-overlay">
@@ -763,7 +421,7 @@
       </button>
     </div>
     <div class="p-6 space-y-8">
-
+      
       <div>
         <h4 class="text-lg font-black text-gray-900 mb-3 flex items-center gap-2">
           <i class="fas fa-swatchbook text-purple-600"></i> 1. Escolha um Template de Cores
@@ -1106,17 +764,6 @@ let currentSort = 'date-desc';
 let pendingDeleteId = null;
 let editingOfferId = null;
 
-const categoryColors = { 'Celulares': 'from-blue-400 to-blue-600', 'Eletrônicos': 'from-purple-400 to-purple-600', 'Beleza': 'from-pink-400 to-pink-600', 'Moda': 'from-orange-400 to-orange-600', 'Casa': 'from-green-400 to-green-600', 'Games': 'from-red-400 to-red-600' };
-const categoryColorsPdf = {
-  'Celulares': 'linear-gradient(135deg, #60a5fa, #2563eb)',
-  'Eletrônicos': 'linear-gradient(135deg, #a78bfa, #7c3aed)',
-  'Beleza': 'linear-gradient(135deg, #f472b6, #db2777)',
-  'Moda': 'linear-gradient(135deg, #fb923c, #ea580c)',
-  'Casa': 'linear-gradient(135deg, #4ade80, #16a34a)',
-  'Games': 'linear-gradient(135deg, #f87171, #dc2626)'
-};
-const defaultBtnGradient = 'linear-gradient(135deg, #facc15, #eab308)';
-
 // ============ PERSISTÊNCIA ============
 function loadOffers() {
   try {
@@ -1140,7 +787,7 @@ function loadSettings() {
       settings = { ...JSON.parse(JSON.stringify(defaultSettings)), ...parsed };
       if (!settings.socials) settings.socials = JSON.parse(JSON.stringify(defaultSocials));
       if (!settings.categories) settings.categories = JSON.parse(JSON.stringify(defaultCategories));
-
+      
       const hasX = settings.socials.some(s => s.icon === 'fa-x-twitter-custom' || s.icon === 'fa-x-twitter' || s.name === 'X (Twitter)' || s.name === 'X');
       const hasThreads = settings.socials.some(s => s.icon === 'fa-threads-custom' || s.icon === 'fa-threads' || s.name === 'Threads');
       if (!hasX) settings.socials.push({ name: 'X (Twitter)', icon: 'fa-x-twitter-custom', color: '#000000', url: '' });
@@ -1168,7 +815,7 @@ function renderSocialIcon(iconName) {
 function applySettings() {
   const t = TEMPLATES.find(x => x.id === settings.template) || TEMPLATES[0];
   const root = document.documentElement;
-
+  
   root.style.setProperty('--header-gradient', t.headerGradient);
   root.style.setProperty('--bg-color', t.bgColor);
   root.style.setProperty('--discount-gradient', t.discountGradient);
@@ -1177,29 +824,29 @@ function applySettings() {
   root.style.setProperty('--border-color', t.borderColor);
   root.style.setProperty('--border-hover', t.borderHover);
   root.style.setProperty('--upload-hover', t.uploadHover);
-
+  
   const titleEl = document.getElementById('header-title');
   const subtitleEl = document.getElementById('header-subtitle');
   if (titleEl) { titleEl.style.color = settings.headerTitleColor || t.headerTextColor; titleEl.textContent = settings.headerTitle; }
   if (subtitleEl) { subtitleEl.style.color = settings.headerSubtitleColor || t.headerSubtitleColor; subtitleEl.textContent = settings.headerSubtitle; }
-
+  
   const logoEl = document.getElementById('logo-img');
   const footerLogoEl = document.getElementById('footer-logo');
   if (logoEl) logoEl.src = settings.logoUrl;
   if (footerLogoEl) footerLogoEl.src = settings.logoUrl;
-
+  
   updateFavicon(settings.logoUrl);
   updateOgImage(settings.ogImageUrl || settings.logoUrl);
-
+  
   document.title = settings.pageTitle || `${settings.headerTitle} | ${settings.headerSubtitle}`;
   const ogTitle = document.querySelector('meta[property="og:title"]');
   if (ogTitle) ogTitle.setAttribute('content', settings.pageTitle || `${settings.headerTitle} | ${settings.headerSubtitle}`);
-
+  
   const heroTitleEl = document.getElementById('hero-title');
   const heroSubtitleEl = document.getElementById('hero-subtitle');
   const heroDisclosureEl = document.getElementById('hero-disclosure-text');
   const heroDisclosure = document.getElementById('hero-disclosure');
-
+  
   if (heroTitleEl) { heroTitleEl.textContent = settings.heroTitle || '🏆 As Melhores Ofertas do Dia'; heroTitleEl.style.color = settings.heroTitleColor || '#111827'; }
   if (heroSubtitleEl) { heroSubtitleEl.textContent = settings.heroSubtitle || 'Seleção com as melhores ofertas do dia'; heroSubtitleEl.style.color = settings.heroSubtitleColor || '#374151'; }
   if (heroDisclosureEl) heroDisclosureEl.textContent = settings.heroDisclosure || '';
@@ -1210,23 +857,23 @@ function applySettings() {
       heroDisclosure.style.color = settings.heroDisclosureTextColor || '#713f12';
     } else heroDisclosure.style.display = 'none';
   }
-
+  
   const footerTextEl = document.getElementById('footer-text');
   const footerCopyrightEl = document.getElementById('footer-copyright');
   const siteFooter = document.getElementById('site-footer');
   if (footerTextEl) { footerTextEl.textContent = settings.footerText; footerTextEl.style.color = settings.footerTextColor || '#facc15'; }
   if (footerCopyrightEl) { footerCopyrightEl.textContent = settings.footerCopyright || '© 2026 Banana Doce. Todos os direitos reservados.'; footerCopyrightEl.style.color = settings.footerCopyrightColor || '#ca8a04'; }
   if (siteFooter) siteFooter.style.backgroundColor = settings.footerBg || '#111827';
-
+  
   const hero = document.getElementById('hero-section');
   if (hero) hero.className = `bg-gradient-to-b ${t.heroFrom} ${t.heroTo} py-8 md:py-12`;
-
+  
   const searchInput = document.getElementById('search-input');
   if (searchInput) searchInput.className = `w-full pl-12 pr-4 py-3.5 rounded-2xl border-2 ${t.searchBorder} ${t.searchFocus} focus:outline-none shadow-sm bg-white text-gray-800`;
-
+  
   const sortSelect = document.getElementById('sort-select');
   if (sortSelect) sortSelect.className = `px-4 py-2 rounded-xl border-2 ${t.searchBorder} ${t.searchFocus} focus:outline-none shadow-sm bg-white text-gray-800 font-semibold text-sm`;
-
+  
   renderSocialIcons();
 }
 
@@ -1257,73 +904,28 @@ function renderSocialIcons() {
     return;
   }
   container.innerHTML = activeSocials.map(s => `
-    <a href="${escapeHtml(s.url)}" target="_blank" rel="noopener noreferrer"
+    <a href="${escapeHtml(s.url)}" target="_blank" rel="noopener noreferrer" 
        class="social-icon-btn w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl"
-       style="background-color: ${escapeHtml(s.color)}; color: white;"
+       style="background-color: ${escapeHtml(s.color)}; color: white;" 
        title="${escapeHtml(s.name)}" aria-label="${escapeHtml(s.name)}">
       ${renderSocialIcon(s.icon)}
     </a>
   `).join('');
 }
 
-// Escapa HTML com segurança para uso em atributos e conteúdo
 function escapeHtml(text) {
-  if (text === null || text === undefined) return '';
-  return String(text)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
+  if (!text) return '';
+  const div = document.createElement('div');
+  div.textContent = String(text);
+  return div.innerHTML;
 }
 
-// Só aceita http(s):// — bloqueia javascript:, data:, file:, etc.
 function isValidUrl(url) {
-  try {
-    const u = new URL(url);
-    return u.protocol === 'http:' || u.protocol === 'https:';
-  } catch { return false; }
+  try { new URL(url); return true; } catch { return false; }
 }
 
 function isValidHexColor(color) {
   return /^#[0-9A-Fa-f]{6}$/.test(color);
-}
-
-function calculateDiscount(preco, preco_original) {
-  if (!preco_original || preco_original <= preco) return 0;
-  return Math.round(((preco_original - preco) / preco_original) * 100);
-}
-
-function formatCurrency(value) {
-  return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
-}
-
-function getFallbackImage(titulo, categoria) {
-  const colors = { 'Celulares': '3b82f6', 'Eletrônicos': '8b5cf6', 'Beleza': 'ec4899', 'Moda': 'f97316', 'Casa': '22c55e', 'Games': 'ef4444' };
-  const color = colors[categoria] || 'eab308';
-  return `https://placehold.co/400x400/${color}/ffffff?text=${encodeURIComponent(String(titulo).substring(0, 20))}`;
-}
-
-function sortOffers() {
-  currentSort = document.getElementById('sort-select').value;
-  renderOffers();
-}
-
-function getSortedOffers(list) {
-  const sorted = [...list];
-  switch(currentSort) {
-    case 'date-desc': sorted.sort((a, b) => new Date(b.dateAdded || 0) - new Date(a.dateAdded || 0)); break;
-    case 'date-asc': sorted.sort((a, b) => new Date(a.dateAdded || 0) - new Date(b.dateAdded || 0)); break;
-    case 'price-asc': sorted.sort((a, b) => a.preco - b.preco); break;
-    case 'price-desc': sorted.sort((a, b) => b.preco - a.preco); break;
-    case 'discount-desc': sorted.sort((a, b) => calculateDiscount(b.preco, b.preco_original) - calculateDiscount(a.preco, a.preco_original)); break;
-    case 'discount-asc': sorted.sort((a, b) => calculateDiscount(a.preco, a.preco_original) - calculateDiscount(b.preco, b.preco_original)); break;
-    case 'name-asc': sorted.sort((a, b) => a.titulo.localeCompare(b.titulo)); break;
-    case 'name-desc': sorted.sort((a, b) => b.titulo.localeCompare(a.titulo)); break;
-    case 'category': sorted.sort((a, b) => a.categoria.localeCompare(b.categoria)); break;
-    case 'store': sorted.sort((a, b) => (a.loja || '').localeCompare(b.loja || '')); break;
-  }
-  return sorted;
 }
 
 function renderTemplates() {
@@ -1415,7 +1017,7 @@ function renderCategoriesList() {
       <i class="fas ${cat.icon} text-gray-500"></i>
       <input type="text" value="${escapeHtml(cat.name)}" onchange="updateCategory(${idx}, 'name', this.value)" placeholder="Nome">
       <select onchange="updateCategory(${idx}, 'icon', this.value)">
-        ${['fa-th-large','fa-mobile-alt','fa-laptop','fa-spa','fa-tshirt','fa-home','fa-gamepad','fa-book','fa-car','fa-utensils','fa-dumbbell','fa-baby','fa-paw','fa-music','fa-camera','fa-tools','fa-heart','fa-star','fa-gem','fa-gift'].map(ic =>
+        ${['fa-th-large','fa-mobile-alt','fa-laptop','fa-spa','fa-tshirt','fa-home','fa-gamepad','fa-book','fa-car','fa-utensils','fa-dumbbell','fa-baby','fa-paw','fa-music','fa-camera','fa-tools','fa-heart','fa-star','fa-gem','fa-gift'].map(ic => 
           `<option value="${ic}" ${cat.icon === ic ? 'selected' : ''}>${ic.replace('fa-','')}</option>`
         ).join('')}
       </select>
@@ -1476,18 +1078,18 @@ function openCustomizeModal() {
   const logoPreview = document.getElementById('logo-preview');
   logoPreview.src = settings.logoUrl;
   logoPreview.style.display = 'block';
-
+  
   document.getElementById('cfg-og-image').value = settings.ogImageUrl || '';
   const ogPreview = document.getElementById('og-preview');
   if (settings.ogImageUrl) { ogPreview.src = settings.ogImageUrl; ogPreview.style.display = 'block'; }
   else ogPreview.style.display = 'none';
-
+  
   document.getElementById('cfg-page-title').value = settings.pageTitle || 'Banana Doce | Vitrine de Ofertas';
   document.getElementById('cfg-header-title').value = settings.headerTitle;
   document.getElementById('cfg-header-subtitle').value = settings.headerSubtitle;
   setColorInput('cfg-header-title-color', settings.headerTitleColor || '#111827');
   setColorInput('cfg-header-subtitle-color', settings.headerSubtitleColor || '#1f2937');
-
+  
   document.getElementById('cfg-hero-title').value = settings.heroTitle || '🏆 As Melhores Ofertas do Dia';
   document.getElementById('cfg-hero-subtitle').value = settings.heroSubtitle || 'Seleção com as melhores ofertas do dia';
   document.getElementById('cfg-hero-disclosure').value = settings.heroDisclosure || '';
@@ -1495,17 +1097,17 @@ function openCustomizeModal() {
   setColorInput('cfg-hero-subtitle-color', settings.heroSubtitleColor || '#374151');
   setColorInput('cfg-disclosure-bg', settings.heroDisclosureBg || '#fef08a');
   setColorInput('cfg-disclosure-text', settings.heroDisclosureTextColor || '#713f12');
-
+  
   document.getElementById('cfg-footer-text').value = settings.footerText;
   document.getElementById('cfg-footer-copyright').value = settings.footerCopyright || '© 2026 Banana Doce. Todos os direitos reservados.';
   setColorInput('cfg-footer-text-color', settings.footerTextColor || '#facc15');
   setColorInput('cfg-footer-copyright-color', settings.footerCopyrightColor || '#ca8a04');
   setColorInput('cfg-footer-bg', settings.footerBg || '#111827');
-
+  
   renderTemplates();
   renderSocialList();
   renderCategoriesList();
-
+  
   const modal = document.getElementById('customize-modal');
   modal.classList.remove('hidden');
   modal.classList.add('flex');
@@ -1551,7 +1153,7 @@ function saveSettings() {
   settings.footerCopyright = document.getElementById('cfg-footer-copyright').value.trim() || '© 2026 Banana Doce. Todos os direitos reservados.';
   settings.footerCopyrightColor = getColorFromInput('cfg-footer-copyright-color');
   settings.footerBg = getColorFromInput('cfg-footer-bg');
-
+  
   saveSettingsToStorage();
   applySettings();
   renderCategoryButtons();
@@ -1692,375 +1294,12 @@ function clearAllOffers() {
   showToast('Todas as ofertas removidas', 'success');
 }
 
-// ============ BAIXAR PDF (CATÁLOGO A4 COM LINKS CLICÁVEIS) ============
-function showPdfLoading(message, sub, progress) {
-  let overlay = document.querySelector('.pdf-loading-overlay');
-  if (!overlay) {
-    overlay = document.createElement('div');
-    overlay.className = 'pdf-loading-overlay';
-    overlay.innerHTML = `
-      <div class="spinner"></div>
-      <div class="progress-text" id="pdf-progress-text">Gerando catálogo...</div>
-      <div class="progress-bar"><div class="progress-bar-fill" id="pdf-progress-bar"></div></div>
-      <div class="progress-sub" id="pdf-progress-sub">Preparando ofertas</div>
-    `;
-    document.body.appendChild(overlay);
-  }
-  overlay.style.display = 'flex';
-  const t = document.getElementById('pdf-progress-text');
-  const s = document.getElementById('pdf-progress-sub');
-  const bar = document.getElementById('pdf-progress-bar');
-  if (t) t.textContent = message || 'Gerando catálogo...';
-  if (s) s.textContent = sub || '';
-  if (bar) bar.style.width = (progress || 0) + '%';
-  return overlay;
-}
-
-function hidePdfLoading() {
-  const overlay = document.querySelector('.pdf-loading-overlay');
-  if (overlay) overlay.remove();
-}
-
-function updatePdfProgress(message, sub, progress) {
-  const t = document.getElementById('pdf-progress-text');
-  const s = document.getElementById('pdf-progress-sub');
-  const bar = document.getElementById('pdf-progress-bar');
-  if (t) t.textContent = message;
-  if (s) s.textContent = sub || '';
-  if (bar && progress !== undefined) bar.style.width = progress + '%';
-}
-
-// Converte imagem para dataURL (evita problemas CORS no html2canvas).
-// Retorna null em caso de falha (CORS, timeout, 404) para o chamador usar fallback.
-function imageToDataUrl(url, timeoutMs = 12000) {
-  return new Promise((resolve) => {
-    if (!url || url === '#' || url === '') { resolve(null); return; }
-    if (url.startsWith('data:')) { resolve(url); return; }
-
-    let settled = false;
-    const done = (val) => { if (!settled) { settled = true; resolve(val); } };
-    const timer = setTimeout(() => done(null), timeoutMs);
-
-    const img = new Image();
-    img.crossOrigin = 'anonymous';
-    img.referrerPolicy = 'no-referrer';
-    img.onload = () => {
-      clearTimeout(timer);
-      try {
-        const canvas = document.createElement('canvas');
-        canvas.width = img.naturalWidth;
-        canvas.height = img.naturalHeight;
-        const ctx = canvas.getContext('2d');
-        ctx.drawImage(img, 0, 0);
-        try {
-          done(canvas.toDataURL('image/jpeg', 0.92));
-        } catch (e) {
-          done(null); // canvas "tainted" por CORS
-        }
-      } catch (e) { done(null); }
-    };
-    img.onerror = () => { clearTimeout(timer); done(null); };
-    img.src = url;
-  });
-}
-
-// Aguarda todas as imagens do elemento carregarem (com timeout global)
-function waitForImages(container, timeoutMs = 20000) {
-  const imgs = container.querySelectorAll('img');
-  const all = Promise.all(Array.from(imgs).map(img => {
-    if (img.complete && img.naturalWidth > 0) return Promise.resolve();
-    return new Promise(resolve => {
-      img.addEventListener('load', resolve, { once: true });
-      img.addEventListener('error', resolve, { once: true });
-    });
-  }));
-  return Promise.race([all, new Promise(r => setTimeout(r, timeoutMs))]);
-}
-
-async function downloadPDF() {
-  if (offers.length === 0) { showToast('Nenhuma oferta para gerar o PDF', 'error'); return; }
-
-  if (location.protocol === 'file:') {
-    alert(
-      '⚠️ Não é possível gerar o PDF abrindo o arquivo direto (file://).\n\n' +
-      'Use um servidor local (Live Server, python -m http.server 8000, npx serve .) ' +
-      'ou publique o site.'
-    );
-    return;
-  }
-
-  showPdfLoading('Preparando catálogo PDF...', 'Filtrando ofertas', 5);
-
-  try {
-    // ===== 1. Filtra e ordena =====
-    let filtered = offers.filter(o => {
-      const matchCategory = currentCategory === 'all' || o.categoria === currentCategory;
-      const haystack = (o.titulo + ' ' + (o.descricao || '')).toLowerCase();
-      const matchSearch = haystack.includes(currentSearch.toLowerCase());
-      const hasLink = o.link && o.link !== '#' && isValidUrl(o.link);
-      return matchCategory && matchSearch && hasLink;
-    });
-    filtered = getSortedOffers(filtered);
-
-    if (filtered.length === 0) {
-      hidePdfLoading();
-      showToast('Nenhuma oferta com link válido para gerar o PDF', 'error');
-      return;
-    }
-
-    // ===== 2. Pré-carrega imagens =====
-    updatePdfProgress('Carregando imagens...', `0 de ${filtered.length}`, 10);
-    const imageMap = {};
-    for (let i = 0; i < filtered.length; i++) {
-      const offer = filtered[i];
-      const fallback = getFallbackImage(offer.titulo, offer.categoria);
-      let dataUrl = await imageToDataUrl(offer.imagem || fallback);
-      if (!dataUrl) dataUrl = await imageToDataUrl(fallback);
-      imageMap[offer.id] = dataUrl || fallback;
-      const progress = 10 + Math.round(((i + 1) / filtered.length) * 30);
-      updatePdfProgress('Carregando imagens...', `${i + 1} de ${filtered.length}`, progress);
-    }
-
-    let logoDataUrl = await imageToDataUrl(settings.logoUrl);
-    if (!logoDataUrl && settings.logoUrl) {
-      logoDataUrl = await imageToDataUrl(getFallbackImage('Logo', ''));
-    }
-
-    updatePdfProgress('Montando layout A4...', '', 45);
-
-    // ===== 3. Divide as ofertas em "chunks" (páginas) =====
-    // Página 1: 2 cards (por causa do header + hero)
-    // Demais páginas: 4 cards cada
-    const FIRST_PAGE_CARDS = 2;
-    const OTHER_PAGE_CARDS = 4;
-    const chunks = [];
-
-    chunks.push(filtered.slice(0, FIRST_PAGE_CARDS));
-    let cursor = FIRST_PAGE_CARDS;
-    while (cursor < filtered.length) {
-      chunks.push(filtered.slice(cursor, cursor + OTHER_PAGE_CARDS));
-      cursor += OTHER_PAGE_CARDS;
-    }
-
-    console.log('[PDF DEBUG] Páginas:', chunks.length, chunks.map(c => c.length));
-
-    const t = TEMPLATES.find(x => x.id === settings.template) || TEMPLATES[0];
-
-    const heroColorMap = {
-      'yellow':  { bg: '#fefce8', text: '#111827' },
-      'sky':     { bg: '#f0f9ff', text: '#0c4a6e' },
-      'green':   { bg: '#f0fdf4', text: '#14532d' },
-      'pink':    { bg: '#fdf2f8', text: '#831843' },
-      'purple':  { bg: '#faf5ff', text: '#581c87' },
-      'orange':  { bg: '#fff7ed', text: '#7c2d12' },
-      'red':     { bg: '#fef2f2', text: '#7f1d1d' },
-      'gray':    { bg: '#fafafa', text: '#111827' },
-      'emerald': { bg: '#ecfdf5', text: '#064e3b' }
-    };
-    const heroKey = Object.keys(heroColorMap).find(k => t.heroFrom.includes(k)) || 'yellow';
-    const heroColor = heroColorMap[heroKey];
-
-    // Helper: HTML de um único card
-    const buildCardHtml = (offer) => {
-      const discount = calculateDiscount(offer.preco, offer.preco_original);
-      const imgSrc = imageMap[offer.id] || getFallbackImage(offer.titulo, offer.categoria);
-      const cat = settings.categories.find(c => c.name === offer.categoria);
-      const icon = cat ? cat.icon : 'fa-tag';
-      const btnBg = categoryColorsPdf[offer.categoria] || defaultBtnGradient;
-
-      return `
-        <div class="pdf-card" data-link="${escapeHtml(offer.link)}">
-          <div class="img-wrap">
-            <img src="${escapeHtml(imgSrc)}" alt="${escapeHtml(offer.titulo)}" crossorigin="anonymous">
-            ${discount > 0 ? `<div class="discount-badge" style="background: ${t.discountGradient}">-${discount}%</div>` : ''}
-            <div class="cat-badge"><i class="fas ${icon}" style="margin-right:4px"></i>${escapeHtml(offer.categoria)}</div>
-            ${offer.loja ? `<div class="store-badge"><i class="fas fa-store" style="margin-right:4px"></i>${escapeHtml(offer.loja)}</div>` : ''}
-          </div>
-          <div class="card-body">
-            <h4>${escapeHtml(offer.titulo)}</h4>
-            ${offer.descricao ? `<p class="desc">${escapeHtml(offer.descricao)}</p>` : '<p class="desc">&nbsp;</p>'}
-            <div class="price-area">
-              <div>
-                ${offer.preco_original && offer.preco_original > offer.preco ? `<p class="old-price">${formatCurrency(offer.preco_original)}</p>` : ''}
-                <p class="new-price">${formatCurrency(offer.preco)}</p>
-              </div>
-              ${discount > 0 ? `<div class="save">Economize ${formatCurrency(offer.preco_original - offer.preco)}</div>` : ''}
-            </div>
-            <a href="${escapeHtml(offer.link)}" class="btn-offer" style="background: ${btnBg}">
-              <i class="fas fa-external-link-alt" style="margin-right:6px"></i>Ver Oferta
-            </a>
-          </div>
-        </div>
-      `;
-    };
-
-    // ===== 4. Monta uma .pdf-page para cada chunk =====
-    const renderArea = document.getElementById('pdf-render-area');
-    renderArea.innerHTML = chunks.map((chunk, idx) => {
-      const isFirst = idx === 0;
-      const isLast = idx === chunks.length - 1;
-
-      return `
-        <div class="pdf-page" data-page-index="${idx}">
-          ${isFirst ? `
-            <div class="pdf-header" style="background: ${t.headerGradient}; color: ${t.headerTextColor}">
-              ${logoDataUrl ? `<img src="${escapeHtml(logoDataUrl)}" alt="Logo">` : ''}
-              <h1 style="color: ${settings.headerTitleColor || t.headerTextColor}">${escapeHtml(settings.headerTitle)}</h1>
-              <p style="color: ${settings.headerSubtitleColor || t.headerSubtitleColor}">${escapeHtml(settings.headerSubtitle)}</p>
-            </div>
-            <div class="pdf-hero" style="background: ${heroColor.bg}; color: ${heroColor.text}">
-              <h2 style="color: ${settings.heroTitleColor || heroColor.text}">${escapeHtml(settings.heroTitle || '🏆 As Melhores Ofertas do Dia')}</h2>
-              <p style="color: ${settings.heroSubtitleColor || heroColor.text}">${escapeHtml(settings.heroSubtitle || 'Seleção com as melhores ofertas do dia')}</p>
-            </div>
-            ${settings.heroDisclosure ? `<div style="text-align:center"><div class="pdf-disclosure" style="background: ${settings.heroDisclosureBg || '#fef08a'}; color: ${settings.heroDisclosureTextColor || '#713f12'}"><i class="fas fa-info-circle" style="margin-right:6px"></i>${escapeHtml(settings.heroDisclosure)}</div></div>` : ''}
-          ` : ''}
-
-          <div class="pdf-grid">
-            ${chunk.map(buildCardHtml).join('')}
-          </div>
-
-          ${isLast ? `
-            <div class="pdf-footer" style="background: ${settings.footerBg || '#111827'}">
-              <p class="ft-title" style="color: ${settings.footerTextColor || '#facc15'}">${escapeHtml(settings.footerText)}</p>
-              <p class="ft-copy" style="color: ${settings.footerCopyrightColor || '#ca8a04'}">${escapeHtml(settings.footerCopyright || '© 2026 Banana Doce. Todos os direitos reservados.')}</p>
-            </div>
-          ` : ''}
-        </div>
-      `;
-    }).join('');
-
-    // ===== 5. Aguarda renderização =====
-    updatePdfProgress('Aguardando renderização...', '', 55);
-    await waitForImages(renderArea, 20000);
-    try { await document.fonts.ready; } catch (e) {}
-    await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
-    await new Promise(r => setTimeout(r, 300));
-
-    // ===== 6. Rasteriza CADA PÁGINA separadamente =====
-    const { jsPDF } = window.jspdf;
-    const pdf = new jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait', compress: true });
-
-    const pageWidthMm  = 210;
-    const pageHeightMm = 297;
-    const marginMm     = 10;
-    const contentWidthMm = pageWidthMm - marginMm * 2;   // 190
-    const contentHeightMm = pageHeightMm - marginMm * 2; // 277
-
-    const pages = renderArea.querySelectorAll('.pdf-page');
-    const totalPages = pages.length;
-    const pageInfos = [];
-
-    for (let p = 0; p < pages.length; p++) {
-      const pageEl = pages[p];
-      updatePdfProgress('Rasterizando página...', `${p + 1} de ${totalPages}`, 60 + Math.round(((p + 0.4) / totalPages) * 25));
-
-      // Descobre a largura/altura reais em mm
-      const cssWidth  = pageEl.offsetWidth;   // 794
-      const cssHeight = pageEl.offsetHeight;
-
-      const mmPerCssPx = contentWidthMm / cssWidth;
-      let imgWidthMm  = contentWidthMm;
-      let imgHeightMm = cssHeight * mmPerCssPx;
-
-      // Segurança: se por acaso passar da altura útil, reduz proporcionalmente
-      if (imgHeightMm > contentHeightMm) {
-        const ratio = contentHeightMm / imgHeightMm;
-        imgHeightMm = contentHeightMm;
-        imgWidthMm  = contentWidthMm * ratio;
-      }
-
-      const canvas = await html2canvas(pageEl, {
-        scale: 2,
-        useCORS: true,
-        allowTaint: true,
-        logging: false,
-        backgroundColor: '#ffffff',
-        windowWidth: 794,
-        width: 794,
-        height: cssHeight
-      });
-
-      const imgData = canvas.toDataURL('image/jpeg', 0.92);
-
-      // Centraliza horizontalmente caso imgWidthMm < contentWidthMm
-      const xMm = marginMm + (contentWidthMm - imgWidthMm) / 2;
-      const yMm = marginMm;
-
-      if (p > 0) pdf.addPage();
-      pdf.addImage(imgData, 'JPEG', xMm, yMm, imgWidthMm, imgHeightMm, undefined, 'FAST');
-
-      // Guarda info para os links clicáveis
-      pageInfos.push({
-        pageEl,
-        pageNum: p + 1,
-        mmPerCssPx,
-        offsetX: xMm,
-        offsetY: yMm
-      });
-
-      const progress = 60 + Math.round(((p + 1) / totalPages) * 25);
-      updatePdfProgress('Rasterizando...', `${p + 1} de ${totalPages}`, progress);
-    }
-
-    // ===== 7. Adiciona links clicáveis =====
-    updatePdfProgress('Adicionando links clicáveis...', '', 90);
-
-    let totalLinks = 0, processedLinks = 0;
-    pageInfos.forEach(info => {
-      totalLinks += info.pageEl.querySelectorAll('.pdf-card .btn-offer').length;
-    });
-
-    pageInfos.forEach(info => {
-      const pageRect = info.pageEl.getBoundingClientRect();
-      info.pageEl.querySelectorAll('.pdf-card').forEach(card => {
-        const btn = card.querySelector('.btn-offer');
-        const link = card.getAttribute('data-link');
-        if (!btn || !link || link === '#' || !isValidUrl(link)) return;
-
-        const btnRect = btn.getBoundingClientRect();
-        const relLeft = btnRect.left - pageRect.left;
-        const relTop  = btnRect.top  - pageRect.top;
-
-        const xMm = info.offsetX + relLeft * info.mmPerCssPx;
-        const yMm = info.offsetY + relTop  * info.mmPerCssPx;
-        const wMm = btnRect.width  * info.mmPerCssPx;
-        const hMm = btnRect.height * info.mmPerCssPx;
-
-        try {
-          pdf.setPage(info.pageNum);
-          pdf.link(xMm, yMm, wMm, hMm, { url: link });
-        } catch (e) {}
-
-        processedLinks++;
-        const progress = 90 + Math.round((processedLinks / Math.max(totalLinks, 1)) * 7);
-        updatePdfProgress('Adicionando links...', `${processedLinks} de ${totalLinks}`, progress);
-      });
-    });
-
-    // ===== 8. Salva =====
-    updatePdfProgress('Finalizando...', '', 98);
-    pdf.save(`catalogo_banana_doce_${new Date().toISOString().slice(0,10)}.pdf`);
-
-    renderArea.innerHTML = '';
-    hidePdfLoading();
-    showToast(`PDF gerado: ${filtered.length} oferta(s) em ${totalPages} página(s)!`, 'success');
-
-  } catch (err) {
-    console.error('Erro ao gerar PDF:', err);
-    hidePdfLoading();
-    const renderArea = document.getElementById('pdf-render-area');
-    if (renderArea) renderArea.innerHTML = '';
-    showToast('Erro ao gerar PDF: ' + err.message, 'error');
-  }
-}
-
-// ============ DOWNLOAD HTML ============
 function downloadUpdatedHTML() {
   if (offers.length === 0) { showToast('Nenhuma oferta', 'error'); return; }
 
   try {
     const clone = document.documentElement.cloneNode(true);
-    ['btn-import-excel','btn-new-offer','admin-panel','upload-modal','add-modal','customize-modal','confirm-modal','toast','pdf-render-area'].forEach(id => {
+    ['btn-import-excel','btn-new-offer','admin-panel','upload-modal','add-modal','customize-modal','confirm-modal','toast'].forEach(id => {
       const el = clone.querySelector('#' + id);
       if (el) el.remove();
     });
@@ -2086,11 +1325,15 @@ let currentSearch = '';
 let currentSort = 'date-desc';
 
 function escapeHtml(text) {
-  if (text === null || text === undefined) return '';
-  return String(text).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+  if (!text) return '';
+  const div = document.createElement('div');
+  div.textContent = String(text);
+  return div.innerHTML;
 }
 
-function isValidHexColor(color) { return /^#[0-9A-Fa-f]{6}$/.test(color); }
+function isValidHexColor(color) {
+  return /^#[0-9A-Fa-f]{6}$/.test(color);
+}
 
 function renderSocialIcon(iconName) {
   if (iconName === 'fa-x-twitter-custom') return '<span class="fa-x-twitter-custom" style="font-size: 1.25em;"></span>';
@@ -2175,7 +1418,7 @@ function renderSocialIcons() {
   if (!container) return;
   const activeSocials = (settings.socials || []).filter(s => s.url && s.url.trim() !== '');
   if (activeSocials.length === 0) { container.innerHTML = '<p class="text-xs text-yellow-600">Redes sociais em breve</p>'; return; }
-  container.innerHTML = activeSocials.map(s =>
+  container.innerHTML = activeSocials.map(s => 
     '<a href="' + escapeHtml(s.url) + '" target="_blank" rel="noopener noreferrer" class="social-icon-btn w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl" style="background-color: ' + escapeHtml(s.color) + '; color: white;" title="' + escapeHtml(s.name) + '" aria-label="' + escapeHtml(s.name) + '">' + renderSocialIcon(s.icon) + '</a>'
   ).join('');
 }
@@ -2275,7 +1518,49 @@ renderOffers();
     document.body.appendChild(a); a.click(); document.body.removeChild(a);
     URL.revokeObjectURL(url);
     showToast(`HTML publicado baixado! (${offers.length} ofertas)`, 'success');
+    setTimeout(() => {
+      alert(`✅ Arquivo baixado!\n\n📋 Inclui:\n• Template de cores\n• Logo redondo + Favicon\n• Título personalizado da página\n• Imagem de compartilhamento (OG)\n• Cores personalizadas\n• Textos do cabeçalho, hero e rodapé\n• Ícones de redes sociais (incluindo X e Threads)\n• Categorias personalizadas\n• Todas as ofertas\n\n🚀 Renomeie para "index.html" e publique.`);
+    }, 500);
   } catch (err) { showToast('Erro: ' + err.message, 'error'); }
+}
+
+const categoryColors = { 'Celulares': 'from-blue-400 to-blue-600', 'Eletrônicos': 'from-purple-400 to-purple-600', 'Beleza': 'from-pink-400 to-pink-600', 'Moda': 'from-orange-400 to-orange-600', 'Casa': 'from-green-400 to-green-600', 'Games': 'from-red-400 to-red-600' };
+
+function calculateDiscount(preco, preco_original) {
+  if (!preco_original || preco_original <= preco) return 0;
+  return Math.round(((preco_original - preco) / preco_original) * 100);
+}
+
+function formatCurrency(value) {
+  return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
+}
+
+function getFallbackImage(titulo, categoria) {
+  const colors = { 'Celulares': '3b82f6', 'Eletrônicos': '8b5cf6', 'Beleza': 'ec4899', 'Moda': 'f97316', 'Casa': '22c55e', 'Games': 'ef4444' };
+  const color = colors[categoria] || 'eab308';
+  return `https://placehold.co/400x400/${color}/ffffff?text=${encodeURIComponent(String(titulo).substring(0, 20))}`;
+}
+
+function sortOffers() {
+  currentSort = document.getElementById('sort-select').value;
+  renderOffers();
+}
+
+function getSortedOffers(list) {
+  const sorted = [...list];
+  switch(currentSort) {
+    case 'date-desc': sorted.sort((a, b) => new Date(b.dateAdded || 0) - new Date(a.dateAdded || 0)); break;
+    case 'date-asc': sorted.sort((a, b) => new Date(a.dateAdded || 0) - new Date(b.dateAdded || 0)); break;
+    case 'price-asc': sorted.sort((a, b) => a.preco - b.preco); break;
+    case 'price-desc': sorted.sort((a, b) => b.preco - a.preco); break;
+    case 'discount-desc': sorted.sort((a, b) => calculateDiscount(b.preco, b.preco_original) - calculateDiscount(a.preco, a.preco_original)); break;
+    case 'discount-asc': sorted.sort((a, b) => calculateDiscount(a.preco, a.preco_original) - calculateDiscount(b.preco, b.preco_original)); break;
+    case 'name-asc': sorted.sort((a, b) => a.titulo.localeCompare(b.titulo)); break;
+    case 'name-desc': sorted.sort((a, b) => b.titulo.localeCompare(a.titulo)); break;
+    case 'category': sorted.sort((a, b) => a.categoria.localeCompare(b.categoria)); break;
+    case 'store': sorted.sort((a, b) => (a.loja || '').localeCompare(b.loja || '')); break;
+  }
+  return sorted;
 }
 
 function renderOffers() {
@@ -2312,7 +1597,7 @@ function renderOffers() {
           <button onclick="confirmDeleteOffer(${offer.id})" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
             <i class="fas fa-trash-alt text-sm"></i>
           </button>
-          <img src="${escapeHtml(imgSrc)}" alt="${escapeHtml(offer.titulo)}"
+          <img src="${escapeHtml(imgSrc)}" alt="${escapeHtml(offer.titulo)}" 
                class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                onerror="this.src='${getFallbackImage(offer.titulo, offer.categoria)}'"
                loading="lazy">
@@ -2346,7 +1631,7 @@ function renderOffers() {
 function editOffer(id) {
   const offer = offers.find(o => o.id === id);
   if (!offer) return;
-
+  
   editingOfferId = id;
   document.getElementById('f-edit-id').value = id;
   document.getElementById('f-titulo').value = offer.titulo;
@@ -2357,12 +1642,12 @@ function editOffer(id) {
   document.getElementById('f-link').value = offer.link;
   document.getElementById('f-loja').value = offer.loja || '';
   document.getElementById('f-descricao').value = offer.descricao || '';
-
+  
   document.getElementById('modal-title').textContent = 'Editar Oferta';
   document.getElementById('modal-subtitle').textContent = 'Alterar dados da oferta';
   document.getElementById('modal-btn-text').textContent = 'Atualizar Oferta';
   document.getElementById('modal-icon').className = 'fas fa-edit text-yellow-600 text-2xl';
-
+  
   const modal = document.getElementById('add-modal');
   modal.classList.remove('hidden');
   modal.classList.add('flex');
@@ -2395,12 +1680,12 @@ function openAddModal() {
   document.getElementById('f-link').value = '';
   document.getElementById('f-loja').value = '';
   document.getElementById('f-descricao').value = '';
-
+  
   document.getElementById('modal-title').textContent = 'Nova Oferta';
   document.getElementById('modal-subtitle').textContent = 'Adicionar manualmente';
   document.getElementById('modal-btn-text').textContent = 'Salvar Oferta';
   document.getElementById('modal-icon').className = 'fas fa-plus-circle text-yellow-600 text-2xl';
-
+  
   const modal = document.getElementById('add-modal');
   modal.classList.remove('hidden');
   modal.classList.add('flex');
@@ -2434,7 +1719,7 @@ function handleFile(file) {
       const jsonData = XLSX.utils.sheet_to_json(firstSheet);
       let imported = 0;
       let errors = 0;
-      jsonData.forEach((row, i) => {
+      jsonData.forEach(row => {
         const titulo = row.titulo || row.Titulo || row.TÍTULO || row.name || row.nome;
         const preco = parseFloat(row.preco || row.Preco || row.PREÇO || row.price);
         const preco_original = parseFloat(row.preco_original || row.precoOriginal || row['Preço Original'] || row.original_price);
@@ -2444,9 +1729,7 @@ function handleFile(file) {
         const loja = row.loja || row.Loja || row.LOJA || row.store || '';
         const descricao = row.descricao || row.Descricao || row.DESCRICAO || row.description || '';
         if (titulo && !isNaN(preco)) {
-          // Escalona datas para a ordenação "mais recentes" fazer sentido
-          const offset = (jsonData.length - i) * 1000;
-          offers.push({ id: Date.now() + Math.floor(Math.random() * 1000), titulo: String(titulo), preco, preco_original: isNaN(preco_original) ? null : preco_original, categoria: String(categoria), imagem: String(imagem), link: String(link), loja: String(loja), descricao: String(descricao), dateAdded: new Date(Date.now() - offset).toISOString() });
+          offers.push({ id: Date.now() + Math.floor(Math.random() * 1000), titulo: String(titulo), preco, preco_original: isNaN(preco_original) ? null : preco_original, categoria: String(categoria), imagem: String(imagem), link: String(link), loja: String(loja), descricao: String(descricao), dateAdded: new Date().toISOString() });
           imported++;
         } else { errors++; }
       });
@@ -2480,13 +1763,13 @@ function saveOffer() {
   const link = document.getElementById('f-link').value.trim();
   const loja = document.getElementById('f-loja').value.trim();
   const descricao = document.getElementById('f-descricao').value.trim();
-
+  
   if (!titulo || isNaN(preco) || !link) { showToast('Preencha os campos obrigatórios!', 'error'); return; }
-  if (link && !isValidUrl(link)) { showToast('Link de compra inválido (use http:// ou https://)', 'error'); return; }
+  if (link && !isValidUrl(link)) { showToast('Link de compra inválido!', 'error'); return; }
   if (imagem && !isValidUrl(imagem) && !imagem.startsWith('data:')) { showToast('URL da imagem inválida!', 'error'); return; }
-
+  
   const offerData = { titulo, preco, preco_original: isNaN(preco_original) ? null : preco_original, categoria, imagem, link, loja, descricao };
-
+  
   if (editingOfferId !== null) {
     const idx = offers.findIndex(o => o.id === editingOfferId);
     if (idx !== -1) { offers[idx] = { ...offers[idx], ...offerData }; showToast('Oferta atualizada com sucesso!', 'success'); }
@@ -2495,7 +1778,7 @@ function saveOffer() {
     offers.push({ id: Date.now(), ...offerData, dateAdded: new Date().toISOString() });
     showToast('Oferta adicionada!', 'success');
   }
-
+  
   saveOffers();
   ['f-titulo','f-preco','f-preco-original','f-imagem','f-link','f-loja','f-descricao','f-edit-id'].forEach(id => document.getElementById(id).value = '');
   closeAddModal();
@@ -2514,11 +1797,7 @@ function showToast(msg, type = 'success') {
 
 document.querySelectorAll('.modal-overlay').forEach(modal => {
   modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      // Se for o confirm, precisa resetar o ID pendente
-      if (modal.id === 'confirm-modal') { closeConfirmModal(); }
-      else { modal.classList.add('hidden'); modal.classList.remove('flex'); }
-    }
+    if (e.target === modal) { modal.classList.add('hidden'); modal.classList.remove('flex'); }
   });
 });
 
@@ -2527,8 +1806,8 @@ document.addEventListener('keydown', (e) => {
     ['upload-modal', 'add-modal', 'customize-modal', 'confirm-modal'].forEach(id => {
       const modal = document.getElementById(id);
       if (modal && !modal.classList.contains('hidden')) {
-        if (id === 'confirm-modal') { closeConfirmModal(); }
-        else { modal.classList.add('hidden'); modal.classList.remove('flex'); }
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
       }
     });
   }
