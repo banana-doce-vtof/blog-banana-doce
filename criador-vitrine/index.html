@@ -56,7 +56,7 @@
   .delete-btn:hover { transform: scale(1.1); background: #dc2626 !important; }
   .edit-btn { transition: all 0.2s; }
   .edit-btn:hover { transform: scale(1.1); background: #2563eb !important; }
-
+  
   .template-card {
     cursor: pointer;
     transition: all 0.3s;
@@ -162,7 +162,8 @@
     mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath d='M331.5 225.5c.6 6 1 12.3 1 18.7 0 98-72.5 144.3-153.8 144.3-83 0-144.3-65.7-144.3-154.8 0-95.4 66.8-157.7 154.8-157.7 48 0 81 12.5 110 37.5L275 131.3c-24.5-21.5-54-31.8-91-31.8-62 0-108.5 45.5-108.5 111.5 0 63.5 43 109.5 105 109.5 53.5 0 92.5-30.5 92.5-81.5 0-4.5-.3-8.8-.8-13H225v-45h152c1.8 9.8 2.8 20.5 2.8 31.5h-48.3z'/%3E%3C/svg%3E") no-repeat center;
   }
 
-  /* ===== PDF RENDER AREA (usado apenas para gerar o PDF) ===== */
+  /* ===== PDF RENDER AREA - CORREÇÃO CRÍTICA ===== */
+  /* Container DENTRO da viewport, invisível ao usuário mas visível ao html2canvas */
   #pdf-render-area {
     position: fixed;
     top: 0;
@@ -170,8 +171,15 @@
     width: 794px;
     background: #ffffff;
     z-index: -9999;
+    opacity: 0;
     pointer-events: none;
     font-family: 'Inter', sans-serif;
+    transform: translateZ(0); /* força camada de renderização */
+  }
+  #pdf-render-area.pdf-rendering {
+    z-index: 99999;
+    opacity: 1;
+    pointer-events: auto;
   }
   #pdf-render-area * { box-sizing: border-box; }
   #pdf-render-area .pdf-page {
@@ -266,6 +274,7 @@
     padding: 5px 11px;
     border-radius: 999px;
     font-size: 12px;
+    z-index: 2;
   }
   #pdf-render-area .pdf-card .cat-badge {
     position: absolute;
@@ -277,6 +286,7 @@
     font-size: 10px;
     font-weight: 700;
     color: #374151;
+    z-index: 2;
   }
   #pdf-render-area .pdf-card .store-badge {
     position: absolute;
@@ -288,6 +298,7 @@
     border-radius: 999px;
     font-size: 10px;
     font-weight: 700;
+    z-index: 2;
   }
   #pdf-render-area .pdf-card .card-body {
     padding: 12px;
@@ -351,7 +362,6 @@
     text-decoration: none;
     font-size: 12px;
     border: none;
-    cursor: default;
   }
   #pdf-render-area .pdf-footer {
     margin-top: 24px;
@@ -377,7 +387,7 @@
     inset: 0;
     background: rgba(0,0,0,0.85);
     backdrop-filter: blur(6px);
-    z-index: 99999;
+    z-index: 999999;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -449,12 +459,8 @@
 <!-- HERO -->
 <section class="bg-gradient-to-b from-yellow-50 to-yellow-100 py-8 md:py-12" id="hero-section">
   <div class="max-w-7xl mx-auto px-4 text-center">
-    <h2 id="hero-title" class="text-3xl md:text-5xl font-black mb-3">
-      🏆 As Melhores Ofertas do Dia
-    </h2>
-    <p id="hero-subtitle" class="text-lg md:text-xl max-w-2xl mx-auto">
-      Seleção com as melhores ofertas do dia
-    </p>
+    <h2 id="hero-title" class="text-3xl md:text-5xl font-black mb-3">🏆 As Melhores Ofertas do Dia</h2>
+    <p id="hero-subtitle" class="text-lg md:text-xl max-w-2xl mx-auto">Seleção com as melhores ofertas do dia</p>
     <div id="hero-disclosure" class="mt-4 inline-flex items-center gap-2 bg-yellow-200 text-yellow-900 px-4 py-2 rounded-full text-sm font-semibold">
       <i class="fas fa-info-circle"></i>
       <span id="hero-disclosure-text">Transparência: Comprando através dos nossos links, podemos receber uma comissão sem custo adicional para você.</span>
@@ -507,11 +513,11 @@
       </button>
       <button onclick="resetOffersToDefault()" class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-4 rounded-xl transition-all shadow flex items-center justify-center gap-2">
         <i class="fas fa-rotate-left"></i>
-        <span class="text-xs sm:text-sm">Restaurar Ofertas</span>
+        <span class="text-xs sm:text-sm">Restaurar</span>
       </button>
       <button onclick="clearAllOffers()" class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-4 rounded-xl transition-all shadow flex items-center justify-center gap-2">
         <i class="fas fa-trash-alt"></i>
-        <span class="text-xs sm:text-sm">Limpar Tudo</span>
+        <span class="text-xs sm:text-sm">Limpar</span>
       </button>
     </div>
   </div>
@@ -559,7 +565,7 @@
   </div>
 </footer>
 
-<!-- CONTAINER OCULTO PARA RENDERIZAÇÃO DO PDF -->
+<!-- CONTAINER DO PDF - CORREÇÃO: dentro da viewport com opacity:0 -->
 <div id="pdf-render-area"></div>
 
 <!-- UPLOAD EXCEL MODAL -->
@@ -687,42 +693,33 @@
       </button>
     </div>
     <div class="p-6 space-y-8">
-
       <div>
-        <h4 class="text-lg font-black text-gray-900 mb-3 flex items-center gap-2">
-          <i class="fas fa-swatchbook text-purple-600"></i> 1. Escolha um Template de Cores
-        </h4>
+        <h4 class="text-lg font-black text-gray-900 mb-3 flex items-center gap-2"><i class="fas fa-swatchbook text-purple-600"></i> 1. Template de Cores</h4>
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3" id="templates-grid"></div>
       </div>
-
       <div>
-        <h4 class="text-lg font-black text-gray-900 mb-3 flex items-center gap-2">
-          <i class="fas fa-image text-purple-600"></i> 2. Logotipo e Favicon
-        </h4>
+        <h4 class="text-lg font-black text-gray-900 mb-3 flex items-center gap-2"><i class="fas fa-image text-purple-600"></i> 2. Logotipo e Favicon</h4>
         <div class="bg-gray-50 p-4 rounded-xl space-y-3">
           <div>
             <label class="block text-sm font-bold text-gray-700 mb-1">URL do Logotipo</label>
             <input type="url" id="cfg-logo" placeholder="https://..." class="w-full px-4 py-2.5 rounded-xl border-2 border-gray-200 focus:border-purple-500 focus:outline-none">
           </div>
           <div>
-            <label class="block text-sm font-bold text-gray-700 mb-1">Ou faça upload de uma imagem</label>
+            <label class="block text-sm font-bold text-gray-700 mb-1">Ou faça upload</label>
             <input type="file" id="cfg-logo-file" accept="image/*" class="w-full px-4 py-2 rounded-xl border-2 border-gray-200 bg-white">
           </div>
           <div class="flex items-center gap-3">
             <img id="logo-preview" src="" class="h-16 w-16 rounded-full object-cover bg-white p-1 shadow ring-2 ring-gray-200" onerror="this.style.display='none'">
-            <span class="text-xs text-gray-500">Pré-visualização do logo em formato redondo (será usado também como favicon na guia do navegador)</span>
+            <span class="text-xs text-gray-500">Pré-visualização (usado também como favicon)</span>
           </div>
         </div>
       </div>
-
       <div>
-        <h4 class="text-lg font-black text-gray-900 mb-3 flex items-center gap-2">
-          <i class="fas fa-share-alt text-purple-600"></i> 3. Imagem de Compartilhamento (Link da Página)
-        </h4>
+        <h4 class="text-lg font-black text-gray-900 mb-3 flex items-center gap-2"><i class="fas fa-share-alt text-purple-600"></i> 3. Imagem de Compartilhamento</h4>
         <div class="bg-gray-50 p-4 rounded-xl space-y-3">
-          <p class="text-sm text-gray-600">Esta imagem aparece quando você compartilha o link da página no WhatsApp, Facebook, Telegram, etc.</p>
+          <p class="text-sm text-gray-600">Aparece ao compartilhar o link no WhatsApp, Facebook, etc.</p>
           <div>
-            <label class="block text-sm font-bold text-gray-700 mb-1">URL da Imagem de Compartilhamento</label>
+            <label class="block text-sm font-bold text-gray-700 mb-1">URL da Imagem</label>
             <input type="url" id="cfg-og-image" placeholder="https://..." class="w-full px-4 py-2.5 rounded-xl border-2 border-gray-200 focus:border-purple-500 focus:outline-none">
           </div>
           <div>
@@ -731,34 +728,27 @@
           </div>
           <div class="flex items-center gap-3">
             <img id="og-preview" src="" class="h-20 w-auto bg-white p-2 rounded-lg shadow border border-gray-200" onerror="this.style.display='none'">
-            <span class="text-xs text-gray-500">Pré-visualização da imagem de compartilhamento</span>
+            <span class="text-xs text-gray-500">Pré-visualização</span>
           </div>
         </div>
       </div>
-
       <div>
-        <h4 class="text-lg font-black text-gray-900 mb-3 flex items-center gap-2">
-          <i class="fas fa-heading text-purple-600"></i> 4. Cabeçalho e Título da Página
-        </h4>
+        <h4 class="text-lg font-black text-gray-900 mb-3 flex items-center gap-2"><i class="fas fa-heading text-purple-600"></i> 4. Cabeçalho</h4>
         <div class="bg-gray-50 p-4 rounded-xl space-y-3">
-          <div class="bg-blue-50 border-l-4 border-blue-500 p-3 rounded-lg">
-            <p class="text-sm text-blue-800"><i class="fas fa-info-circle mr-1"></i> O <b>Título da Página</b> é o texto que aparece na <b>guia do navegador</b> e nos resultados de busca.</p>
-          </div>
           <div>
             <label class="block text-sm font-bold text-gray-700 mb-1">🌐 Título da Página (Guia do Navegador)</label>
             <input type="text" id="cfg-page-title" placeholder="Ex: Banana Doce | Vitrine de Ofertas" class="w-full px-4 py-2.5 rounded-xl border-2 border-blue-300 focus:border-blue-500 focus:outline-none bg-blue-50">
-            <p class="text-xs text-gray-500 mt-1">💡 Exemplo: "Banana Doce | Ofertas do Dia" ou "Melhores Promoções - Banana Doce"</p>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
-              <label class="block text-sm font-bold text-gray-700 mb-1">Título Principal (Header)</label>
+              <label class="block text-sm font-bold text-gray-700 mb-1">Título Principal</label>
               <input type="text" id="cfg-header-title" class="w-full px-4 py-2.5 rounded-xl border-2 border-gray-200 focus:border-purple-500 focus:outline-none">
             </div>
             <div>
               <label class="block text-sm font-bold text-gray-700 mb-1">Cor do Título</label>
               <div class="color-input-wrapper">
                 <input type="color" id="cfg-header-title-color" value="#111827">
-                <input type="text" id="cfg-header-title-color-text" value="#111827" maxlength="7" placeholder="#000000">
+                <input type="text" id="cfg-header-title-color-text" value="#111827" maxlength="7">
               </div>
             </div>
           </div>
@@ -771,17 +761,14 @@
               <label class="block text-sm font-bold text-gray-700 mb-1">Cor do Subtítulo</label>
               <div class="color-input-wrapper">
                 <input type="color" id="cfg-header-subtitle-color" value="#1f2937">
-                <input type="text" id="cfg-header-subtitle-color-text" value="#1f2937" maxlength="7" placeholder="#000000">
+                <input type="text" id="cfg-header-subtitle-color-text" value="#1f2937" maxlength="7">
               </div>
             </div>
           </div>
         </div>
       </div>
-
       <div>
-        <h4 class="text-lg font-black text-gray-900 mb-3 flex items-center gap-2">
-          <i class="fas fa-trophy text-purple-600"></i> 5. Seção Hero (Destaque)
-        </h4>
+        <h4 class="text-lg font-black text-gray-900 mb-3 flex items-center gap-2"><i class="fas fa-trophy text-purple-600"></i> 5. Seção Hero</h4>
         <div class="bg-gray-50 p-4 rounded-xl space-y-3">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
@@ -792,7 +779,7 @@
               <label class="block text-sm font-bold text-gray-700 mb-1">Cor do Título</label>
               <div class="color-input-wrapper">
                 <input type="color" id="cfg-hero-title-color" value="#111827">
-                <input type="text" id="cfg-hero-title-color-text" value="#111827" maxlength="7" placeholder="#000000">
+                <input type="text" id="cfg-hero-title-color-text" value="#111827" maxlength="7">
               </div>
             </div>
           </div>
@@ -805,7 +792,7 @@
               <label class="block text-sm font-bold text-gray-700 mb-1">Cor do Subtítulo</label>
               <div class="color-input-wrapper">
                 <input type="color" id="cfg-hero-subtitle-color" value="#374151">
-                <input type="text" id="cfg-hero-subtitle-color-text" value="#374151" maxlength="7" placeholder="#000000">
+                <input type="text" id="cfg-hero-subtitle-color-text" value="#374151" maxlength="7">
               </div>
             </div>
           </div>
@@ -818,24 +805,21 @@
               <label class="block text-sm font-bold text-gray-700 mb-1">Cor de Fundo do Badge</label>
               <div class="color-input-wrapper">
                 <input type="color" id="cfg-disclosure-bg" value="#fef08a">
-                <input type="text" id="cfg-disclosure-bg-text" value="#fef08a" maxlength="7" placeholder="#fef08a">
+                <input type="text" id="cfg-disclosure-bg-text" value="#fef08a" maxlength="7">
               </div>
             </div>
             <div>
               <label class="block text-sm font-bold text-gray-700 mb-1">Cor do Texto do Badge</label>
               <div class="color-input-wrapper">
                 <input type="color" id="cfg-disclosure-text" value="#713f12">
-                <input type="text" id="cfg-disclosure-text-text" value="#713f12" maxlength="7" placeholder="#713f12">
+                <input type="text" id="cfg-disclosure-text-text" value="#713f12" maxlength="7">
               </div>
             </div>
           </div>
         </div>
       </div>
-
       <div>
-        <h4 class="text-lg font-black text-gray-900 mb-3 flex items-center gap-2">
-          <i class="fas fa-shoe-prints text-purple-600"></i> 6. Rodapé
-        </h4>
+        <h4 class="text-lg font-black text-gray-900 mb-3 flex items-center gap-2"><i class="fas fa-shoe-prints text-purple-600"></i> 6. Rodapé</h4>
         <div class="bg-gray-50 p-4 rounded-xl space-y-3">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
@@ -846,20 +830,20 @@
               <label class="block text-sm font-bold text-gray-700 mb-1">Cor do Texto</label>
               <div class="color-input-wrapper">
                 <input type="color" id="cfg-footer-text-color" value="#facc15">
-                <input type="text" id="cfg-footer-text-color-text" value="#facc15" maxlength="7" placeholder="#facc15">
+                <input type="text" id="cfg-footer-text-color-text" value="#facc15" maxlength="7">
               </div>
             </div>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
-              <label class="block text-sm font-bold text-gray-700 mb-1">Texto de Copyright</label>
+              <label class="block text-sm font-bold text-gray-700 mb-1">Copyright</label>
               <input type="text" id="cfg-footer-copyright" class="w-full px-4 py-2.5 rounded-xl border-2 border-gray-200 focus:border-purple-500 focus:outline-none">
             </div>
             <div>
               <label class="block text-sm font-bold text-gray-700 mb-1">Cor do Copyright</label>
               <div class="color-input-wrapper">
                 <input type="color" id="cfg-footer-copyright-color" value="#ca8a04">
-                <input type="text" id="cfg-footer-copyright-color-text" value="#ca8a04" maxlength="7" placeholder="#ca8a04">
+                <input type="text" id="cfg-footer-copyright-color-text" value="#ca8a04" maxlength="7">
               </div>
             </div>
           </div>
@@ -867,41 +851,27 @@
             <label class="block text-sm font-bold text-gray-700 mb-1">Cor de Fundo do Rodapé</label>
             <div class="color-input-wrapper">
               <input type="color" id="cfg-footer-bg" value="#111827">
-              <input type="text" id="cfg-footer-bg-text" value="#111827" maxlength="7" placeholder="#111827">
+              <input type="text" id="cfg-footer-bg-text" value="#111827" maxlength="7">
             </div>
           </div>
         </div>
       </div>
-
       <div>
-        <h4 class="text-lg font-black text-gray-900 mb-3 flex items-center gap-2">
-          <i class="fas fa-share-alt text-purple-600"></i> 7. Redes Sociais
-        </h4>
+        <h4 class="text-lg font-black text-gray-900 mb-3 flex items-center gap-2"><i class="fas fa-share-alt text-purple-600"></i> 7. Redes Sociais</h4>
         <div class="bg-gray-50 p-4 rounded-xl space-y-3">
-          <p class="text-sm text-gray-600 mb-2">Preencha a URL de cada rede social. Deixe em branco para ocultar o ícone.</p>
-          <div class="bg-blue-50 border-l-4 border-blue-500 p-3 rounded-lg mb-3">
-            <p class="text-xs text-blue-800"><i class="fas fa-info-circle mr-1"></i> <b>Novo!</b> Agora disponíveis: <b>X (Twitter)</b> e <b>Threads</b> com ícones oficiais.</p>
-          </div>
+          <p class="text-sm text-gray-600 mb-2">Preencha a URL. Deixe em branco para ocultar.</p>
           <div id="social-list" class="space-y-2"></div>
         </div>
       </div>
-
       <div>
-        <h4 class="text-lg font-black text-gray-900 mb-3 flex items-center gap-2">
-          <i class="fas fa-tags text-purple-600"></i> 8. Categorias
-        </h4>
+        <h4 class="text-lg font-black text-gray-900 mb-3 flex items-center gap-2"><i class="fas fa-tags text-purple-600"></i> 8. Categorias</h4>
         <div class="bg-gray-50 p-4 rounded-xl space-y-3">
           <div id="categories-list"></div>
           <button onclick="addCategory()" class="w-full bg-purple-100 hover:bg-purple-200 text-purple-700 font-bold py-2.5 rounded-xl transition-all flex items-center justify-center gap-2">
             <i class="fas fa-plus"></i> Adicionar Categoria
           </button>
-          <div class="text-xs text-gray-500 bg-white p-3 rounded-lg border border-gray-200">
-            <p class="font-bold mb-1"><i class="fas fa-info-circle mr-1"></i> Ícones disponíveis (Font Awesome):</p>
-            <p class="font-mono">fa-mobile-alt, fa-laptop, fa-spa, fa-tshirt, fa-home, fa-gamepad, fa-book, fa-car, fa-utensils, fa-dumbbell, fa-baby, fa-paw, fa-music, fa-camera, fa-tools</p>
-          </div>
         </div>
       </div>
-
       <div class="flex flex-col sm:flex-row gap-3 sticky bottom-0 bg-white pt-4 border-t">
         <button onclick="resetSettings()" class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 rounded-xl transition-all">
           <i class="fas fa-undo mr-2"></i>Restaurar Padrão
@@ -951,7 +921,6 @@
 const OFFERS_STORAGE_KEY = 'banana_doce_offers';
 const SETTINGS_STORAGE_KEY = 'banana_doce_settings';
 
-// ============ 10 TEMPLATES DE CORES ============
 const TEMPLATES = [
   { id: 'default', name: 'Amarelo Banana', icon: '🍌', headerGradient: 'linear-gradient(135deg, #fde047 0%, #facc15 50%, #eab308 100%)', bgColor: '#fefce8', headerTextColor: '#111827', headerSubtitleColor: '#1f2937', discountGradient: 'linear-gradient(135deg, #ef4444, #dc2626)', activeCategoryBg: 'linear-gradient(135deg, #facc15, #eab308)', activeCategoryText: '#1a1a1a', borderColor: '#eab308', borderHover: '#ca8a04', uploadHover: '#fef9c3', heroFrom: 'from-yellow-50', heroTo: 'to-yellow-100', searchBorder: 'border-yellow-200', searchFocus: 'focus:border-yellow-500' },
   { id: 'ocean', name: 'Azul Oceano', icon: '🌊', headerGradient: 'linear-gradient(135deg, #38bdf8 0%, #0ea5e9 50%, #0284c7 100%)', bgColor: '#f0f9ff', headerTextColor: '#ffffff', headerSubtitleColor: '#f0f9ff', discountGradient: 'linear-gradient(135deg, #ef4444, #dc2626)', activeCategoryBg: 'linear-gradient(135deg, #0ea5e9, #0284c7)', activeCategoryText: '#ffffff', borderColor: '#0ea5e9', borderHover: '#0284c7', uploadHover: '#e0f2fe', heroFrom: 'from-sky-50', heroTo: 'to-sky-100', searchBorder: 'border-sky-200', searchFocus: 'focus:border-sky-500' },
@@ -1064,9 +1033,8 @@ function loadSettings() {
       settings = { ...JSON.parse(JSON.stringify(defaultSettings)), ...parsed };
       if (!settings.socials) settings.socials = JSON.parse(JSON.stringify(defaultSocials));
       if (!settings.categories) settings.categories = JSON.parse(JSON.stringify(defaultCategories));
-
-      const hasX = settings.socials.some(s => s.icon === 'fa-x-twitter-custom' || s.icon === 'fa-x-twitter' || s.name === 'X (Twitter)' || s.name === 'X');
-      const hasThreads = settings.socials.some(s => s.icon === 'fa-threads-custom' || s.icon === 'fa-threads' || s.name === 'Threads');
+      const hasX = settings.socials.some(s => s.icon === 'fa-x-twitter-custom' || s.name === 'X (Twitter)');
+      const hasThreads = settings.socials.some(s => s.icon === 'fa-threads-custom' || s.name === 'Threads');
       if (!hasX) settings.socials.push({ name: 'X (Twitter)', icon: 'fa-x-twitter-custom', color: '#000000', url: '' });
       if (!hasThreads) settings.socials.push({ name: 'Threads', icon: 'fa-threads-custom', color: '#000000', url: '' });
     }
@@ -1092,7 +1060,6 @@ function renderSocialIcon(iconName) {
 function applySettings() {
   const t = TEMPLATES.find(x => x.id === settings.template) || TEMPLATES[0];
   const root = document.documentElement;
-
   root.style.setProperty('--header-gradient', t.headerGradient);
   root.style.setProperty('--bg-color', t.bgColor);
   root.style.setProperty('--discount-gradient', t.discountGradient);
@@ -1101,29 +1068,28 @@ function applySettings() {
   root.style.setProperty('--border-color', t.borderColor);
   root.style.setProperty('--border-hover', t.borderHover);
   root.style.setProperty('--upload-hover', t.uploadHover);
-
+  
   const titleEl = document.getElementById('header-title');
   const subtitleEl = document.getElementById('header-subtitle');
   if (titleEl) { titleEl.style.color = settings.headerTitleColor || t.headerTextColor; titleEl.textContent = settings.headerTitle; }
   if (subtitleEl) { subtitleEl.style.color = settings.headerSubtitleColor || t.headerSubtitleColor; subtitleEl.textContent = settings.headerSubtitle; }
-
+  
   const logoEl = document.getElementById('logo-img');
   const footerLogoEl = document.getElementById('footer-logo');
   if (logoEl) logoEl.src = settings.logoUrl;
   if (footerLogoEl) footerLogoEl.src = settings.logoUrl;
-
+  
   updateFavicon(settings.logoUrl);
   updateOgImage(settings.ogImageUrl || settings.logoUrl);
-
+  
   document.title = settings.pageTitle || `${settings.headerTitle} | ${settings.headerSubtitle}`;
   const ogTitle = document.querySelector('meta[property="og:title"]');
   if (ogTitle) ogTitle.setAttribute('content', settings.pageTitle || `${settings.headerTitle} | ${settings.headerSubtitle}`);
-
+  
   const heroTitleEl = document.getElementById('hero-title');
   const heroSubtitleEl = document.getElementById('hero-subtitle');
   const heroDisclosureEl = document.getElementById('hero-disclosure-text');
   const heroDisclosure = document.getElementById('hero-disclosure');
-
   if (heroTitleEl) { heroTitleEl.textContent = settings.heroTitle || '🏆 As Melhores Ofertas do Dia'; heroTitleEl.style.color = settings.heroTitleColor || '#111827'; }
   if (heroSubtitleEl) { heroSubtitleEl.textContent = settings.heroSubtitle || 'Seleção com as melhores ofertas do dia'; heroSubtitleEl.style.color = settings.heroSubtitleColor || '#374151'; }
   if (heroDisclosureEl) heroDisclosureEl.textContent = settings.heroDisclosure || '';
@@ -1134,23 +1100,17 @@ function applySettings() {
       heroDisclosure.style.color = settings.heroDisclosureTextColor || '#713f12';
     } else heroDisclosure.style.display = 'none';
   }
-
+  
   const footerTextEl = document.getElementById('footer-text');
   const footerCopyrightEl = document.getElementById('footer-copyright');
   const siteFooter = document.getElementById('site-footer');
   if (footerTextEl) { footerTextEl.textContent = settings.footerText; footerTextEl.style.color = settings.footerTextColor || '#facc15'; }
   if (footerCopyrightEl) { footerCopyrightEl.textContent = settings.footerCopyright || '© 2026 Banana Doce. Todos os direitos reservados.'; footerCopyrightEl.style.color = settings.footerCopyrightColor || '#ca8a04'; }
   if (siteFooter) siteFooter.style.backgroundColor = settings.footerBg || '#111827';
-
+  
   const hero = document.getElementById('hero-section');
   if (hero) hero.className = `bg-gradient-to-b ${t.heroFrom} ${t.heroTo} py-8 md:py-12`;
-
-  const searchInput = document.getElementById('search-input');
-  if (searchInput) searchInput.className = `w-full pl-12 pr-4 py-3.5 rounded-2xl border-2 ${t.searchBorder} ${t.searchFocus} focus:outline-none shadow-sm bg-white text-gray-800`;
-
-  const sortSelect = document.getElementById('sort-select');
-  if (sortSelect) sortSelect.className = `px-4 py-2 rounded-xl border-2 ${t.searchBorder} ${t.searchFocus} focus:outline-none shadow-sm bg-white text-gray-800 font-semibold text-sm`;
-
+  
   renderSocialIcons();
 }
 
@@ -1181,32 +1141,24 @@ function renderSocialIcons() {
     return;
   }
   container.innerHTML = activeSocials.map(s => `
-    <a href="${escapeHtml(s.url)}" target="_blank" rel="noopener noreferrer"
+    <a href="${escapeHtml(s.url)}" target="_blank" rel="noopener noreferrer" 
        class="social-icon-btn w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl"
-       style="background-color: ${escapeHtml(s.color)}; color: white;"
+       style="background-color: ${escapeHtml(s.color)}; color: white;" 
        title="${escapeHtml(s.name)}" aria-label="${escapeHtml(s.name)}">
       ${renderSocialIcon(s.icon)}
     </a>
   `).join('');
 }
 
-// Escapa HTML com segurança para uso em atributos e conteúdo
 function escapeHtml(text) {
-  if (text === null || text === undefined) return '';
-  return String(text)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
+  if (!text) return '';
+  const div = document.createElement('div');
+  div.textContent = String(text);
+  return div.innerHTML;
 }
 
-// Só aceita http(s):// — bloqueia javascript:, data:, file:, etc.
 function isValidUrl(url) {
-  try {
-    const u = new URL(url);
-    return u.protocol === 'http:' || u.protocol === 'https:';
-  } catch { return false; }
+  try { new URL(url); return true; } catch { return false; }
 }
 
 function isValidHexColor(color) {
@@ -1274,21 +1226,18 @@ function renderSocialList() {
   const list = document.getElementById('social-list');
   if (!list) return;
   const icons = [
-    { value: 'fa-x-twitter-custom', label: '✖ X (Twitter) [Oficial]' },
-    { value: 'fa-threads-custom', label: '@ Threads [Oficial]' },
+    { value: 'fa-x-twitter-custom', label: '✖ X (Twitter)' },
+    { value: 'fa-threads-custom', label: '@ Threads' },
     { value: 'fa-instagram', label: 'Instagram' },
     { value: 'fa-facebook-f', label: 'Facebook' },
     { value: 'fa-telegram-plane', label: 'Telegram' },
     { value: 'fa-tiktok', label: 'TikTok' },
     { value: 'fa-youtube', label: 'YouTube' },
     { value: 'fa-whatsapp', label: 'WhatsApp' },
-    { value: 'fa-twitter', label: 'Twitter (antigo)' },
     { value: 'fa-linkedin-in', label: 'LinkedIn' },
     { value: 'fa-pinterest-p', label: 'Pinterest' },
-    { value: 'fa-snapchat-ghost', label: 'Snapchat' },
     { value: 'fa-discord', label: 'Discord' },
-    { value: 'fa-twitch', label: 'Twitch' },
-    { value: 'fa-reddit-alien', label: 'Reddit' }
+    { value: 'fa-twitch', label: 'Twitch' }
   ];
   list.innerHTML = (settings.socials || []).map((s, idx) => `
     <div class="bg-white p-3 rounded-lg border border-gray-200 flex items-center gap-2 flex-wrap">
@@ -1302,10 +1251,8 @@ function renderSocialList() {
       <select onchange="updateSocial(${idx}, 'icon', this.value)" class="px-2 py-1 text-sm border border-gray-200 rounded">
         ${icons.map(ic => `<option value="${ic.value}" ${s.icon === ic.value ? 'selected' : ''}>${ic.label}</option>`).join('')}
       </select>
-      <input type="color" value="${s.color}" onchange="updateSocial(${idx}, 'color', this.value)" class="w-10 h-10 rounded cursor-pointer border border-gray-200" title="Cor do ícone">
-      <button onclick="removeSocial(${idx})" class="text-red-500 hover:text-red-700 px-2" title="Remover">
-        <i class="fas fa-times"></i>
-      </button>
+      <input type="color" value="${s.color}" onchange="updateSocial(${idx}, 'color', this.value)" class="w-10 h-10 rounded cursor-pointer border border-gray-200">
+      <button onclick="removeSocial(${idx})" class="text-red-500 hover:text-red-700 px-2"><i class="fas fa-times"></i></button>
     </div>
   `).join('') + `
     <button onclick="addSocial()" class="w-full bg-purple-100 hover:bg-purple-200 text-purple-700 font-bold py-2 rounded-lg transition-all flex items-center justify-center gap-2 mt-2">
@@ -1339,7 +1286,7 @@ function renderCategoriesList() {
       <i class="fas ${cat.icon} text-gray-500"></i>
       <input type="text" value="${escapeHtml(cat.name)}" onchange="updateCategory(${idx}, 'name', this.value)" placeholder="Nome">
       <select onchange="updateCategory(${idx}, 'icon', this.value)">
-        ${['fa-th-large','fa-mobile-alt','fa-laptop','fa-spa','fa-tshirt','fa-home','fa-gamepad','fa-book','fa-car','fa-utensils','fa-dumbbell','fa-baby','fa-paw','fa-music','fa-camera','fa-tools','fa-heart','fa-star','fa-gem','fa-gift'].map(ic =>
+        ${['fa-th-large','fa-mobile-alt','fa-laptop','fa-spa','fa-tshirt','fa-home','fa-gamepad','fa-book','fa-car','fa-utensils','fa-dumbbell','fa-baby','fa-paw','fa-music','fa-camera','fa-tools','fa-heart','fa-star','fa-gem','fa-gift'].map(ic => 
           `<option value="${ic}" ${cat.icon === ic ? 'selected' : ''}>${ic.replace('fa-','')}</option>`
         ).join('')}
       </select>
@@ -1400,18 +1347,15 @@ function openCustomizeModal() {
   const logoPreview = document.getElementById('logo-preview');
   logoPreview.src = settings.logoUrl;
   logoPreview.style.display = 'block';
-
   document.getElementById('cfg-og-image').value = settings.ogImageUrl || '';
   const ogPreview = document.getElementById('og-preview');
   if (settings.ogImageUrl) { ogPreview.src = settings.ogImageUrl; ogPreview.style.display = 'block'; }
   else ogPreview.style.display = 'none';
-
   document.getElementById('cfg-page-title').value = settings.pageTitle || 'Banana Doce | Vitrine de Ofertas';
   document.getElementById('cfg-header-title').value = settings.headerTitle;
   document.getElementById('cfg-header-subtitle').value = settings.headerSubtitle;
   setColorInput('cfg-header-title-color', settings.headerTitleColor || '#111827');
   setColorInput('cfg-header-subtitle-color', settings.headerSubtitleColor || '#1f2937');
-
   document.getElementById('cfg-hero-title').value = settings.heroTitle || '🏆 As Melhores Ofertas do Dia';
   document.getElementById('cfg-hero-subtitle').value = settings.heroSubtitle || 'Seleção com as melhores ofertas do dia';
   document.getElementById('cfg-hero-disclosure').value = settings.heroDisclosure || '';
@@ -1419,17 +1363,14 @@ function openCustomizeModal() {
   setColorInput('cfg-hero-subtitle-color', settings.heroSubtitleColor || '#374151');
   setColorInput('cfg-disclosure-bg', settings.heroDisclosureBg || '#fef08a');
   setColorInput('cfg-disclosure-text', settings.heroDisclosureTextColor || '#713f12');
-
   document.getElementById('cfg-footer-text').value = settings.footerText;
   document.getElementById('cfg-footer-copyright').value = settings.footerCopyright || '© 2026 Banana Doce. Todos os direitos reservados.';
   setColorInput('cfg-footer-text-color', settings.footerTextColor || '#facc15');
   setColorInput('cfg-footer-copyright-color', settings.footerCopyrightColor || '#ca8a04');
   setColorInput('cfg-footer-bg', settings.footerBg || '#111827');
-
   renderTemplates();
   renderSocialList();
   renderCategoriesList();
-
   const modal = document.getElementById('customize-modal');
   modal.classList.remove('hidden');
   modal.classList.add('flex');
@@ -1475,7 +1416,6 @@ function saveSettings() {
   settings.footerCopyright = document.getElementById('cfg-footer-copyright').value.trim() || '© 2026 Banana Doce. Todos os direitos reservados.';
   settings.footerCopyrightColor = getColorFromInput('cfg-footer-copyright-color');
   settings.footerBg = getColorFromInput('cfg-footer-bg');
-
   saveSettingsToStorage();
   applySettings();
   renderCategoryButtons();
@@ -1563,11 +1503,11 @@ function deleteOffer(id) {
 }
 
 function resetOffersToDefault() {
-  if (!confirm('⚠️ Restaurar o quadro de ofertas para o padrão?\n\nTodas as ofertas atuais serão substituídas pelas ofertas padrão iniciais.\n\nEsta ação não pode ser desfeita.')) return;
+  if (!confirm('⚠️ Restaurar ofertas para o padrão?')) return;
   offers = JSON.parse(JSON.stringify(defaultOffers));
   saveOffers();
   renderOffers();
-  showToast('Quadro de ofertas restaurado com sucesso!', 'success');
+  showToast('Ofertas restauradas!', 'success');
 }
 
 function exportJSON() {
@@ -1601,7 +1541,7 @@ function importJSON(event) {
         populateCategorySelect();
       }
       renderOffers();
-      showToast('Backup importado com sucesso!', 'success');
+      showToast('Backup importado!', 'success');
     } catch (err) { showToast('Erro ao importar: ' + err.message, 'error'); }
   };
   reader.readAsText(file);
@@ -1609,14 +1549,17 @@ function importJSON(event) {
 }
 
 function clearAllOffers() {
-  if (!confirm('⚠️ Apagar TODAS as ofertas? Esta ação não pode ser desfeita.')) return;
+  if (!confirm('⚠️ Apagar TODAS as ofertas?')) return;
   offers = [];
   saveOffers();
   renderOffers();
   showToast('Todas as ofertas removidas', 'success');
 }
 
-// ============ BAIXAR PDF (CATÁLOGO A4 COM LINKS CLICÁVEIS) ============
+// ============================================================
+// BAIXAR PDF - VERSÃO CORRIGIDA (baseada na análise técnica)
+// ============================================================
+
 function showPdfLoading(message, sub, progress) {
   let overlay = document.querySelector('.pdf-loading-overlay');
   if (!overlay) {
@@ -1637,7 +1580,6 @@ function showPdfLoading(message, sub, progress) {
   if (t) t.textContent = message || 'Gerando catálogo...';
   if (s) s.textContent = sub || '';
   if (bar) bar.style.width = (progress || 0) + '%';
-  return overlay;
 }
 
 function hidePdfLoading() {
@@ -1654,112 +1596,162 @@ function updatePdfProgress(message, sub, progress) {
   if (bar && progress !== undefined) bar.style.width = progress + '%';
 }
 
-// Converte imagem para dataURL (evita problemas CORS no html2canvas).
-// Retorna null em caso de falha (CORS, timeout, 404) para o chamador usar fallback.
-function imageToDataUrl(url, timeoutMs = 12000) {
+// Proxy CORS para imagens de lojas (Amazon, ML, etc.)
+function proxiedImageUrl(url) {
+  if (!url || url.startsWith('data:') || url === '#' || url === '') return url;
+  // Usa weserv.nl como proxy CORS confiável
+  return `https://images.weserv.nl/?url=${encodeURIComponent(url)}&w=600&h=600&fit=cover&output=jpg&q=85`;
+}
+
+// Converte imagem para dataURL com fallback automático
+function imageToDataUrl(url, fallbackUrl) {
   return new Promise((resolve) => {
-    if (!url || url === '#' || url === '') { resolve(null); return; }
-    if (url.startsWith('data:')) { resolve(url); return; }
-
-    let settled = false;
-    const done = (val) => { if (!settled) { settled = true; resolve(val); } };
-    const timer = setTimeout(() => done(null), timeoutMs);
-
+    if (!url || url === '#' || url === '') {
+      // Se URL inválida, usa fallback
+      if (fallbackUrl) {
+        imageToDataUrl(fallbackUrl, null).then(resolve);
+      } else {
+        resolve(null);
+      }
+      return;
+    }
+    if (url.startsWith('data:')) {
+      resolve(url);
+      return;
+    }
+    
     const img = new Image();
     img.crossOrigin = 'anonymous';
-    img.referrerPolicy = 'no-referrer';
+    
+    // Timeout de 8s para não travar
+    const timeoutId = setTimeout(() => {
+      img.src = '';
+      if (fallbackUrl) {
+        imageToDataUrl(fallbackUrl, null).then(resolve);
+      } else {
+        resolve(null);
+      }
+    }, 8000);
+    
     img.onload = () => {
-      clearTimeout(timer);
+      clearTimeout(timeoutId);
       try {
         const canvas = document.createElement('canvas');
-        canvas.width = img.naturalWidth;
-        canvas.height = img.naturalHeight;
+        canvas.width = img.naturalWidth || 400;
+        canvas.height = img.naturalHeight || 400;
         const ctx = canvas.getContext('2d');
         ctx.drawImage(img, 0, 0);
         try {
-          done(canvas.toDataURL('image/jpeg', 0.92));
+          const dataUrl = canvas.toDataURL('image/jpeg', 0.92);
+          resolve(dataUrl);
         } catch (e) {
-          done(null); // canvas "tainted" por CORS
+          // Canvas "tainted" - CORS bloqueou
+          if (fallbackUrl) {
+            imageToDataUrl(fallbackUrl, null).then(resolve);
+          } else {
+            resolve(null);
+          }
         }
-      } catch (e) { done(null); }
+      } catch (e) {
+        if (fallbackUrl) {
+          imageToDataUrl(fallbackUrl, null).then(resolve);
+        } else {
+          resolve(null);
+        }
+      }
     };
-    img.onerror = () => { clearTimeout(timer); done(null); };
-    img.src = url;
+    
+    img.onerror = () => {
+      clearTimeout(timeoutId);
+      if (fallbackUrl) {
+        imageToDataUrl(fallbackUrl, null).then(resolve);
+      } else {
+        resolve(null);
+      }
+    };
+    
+    // Tenta primeiro com proxy CORS
+    img.src = proxiedImageUrl(url);
   });
 }
 
-// Aguarda todas as imagens do elemento carregarem (com timeout global)
-function waitForImages(container, timeoutMs = 20000) {
-  const imgs = container.querySelectorAll('img');
-  const all = Promise.all(Array.from(imgs).map(img => {
+// Aguarda imagens com timeout global
+function waitForImages(container, timeoutMs = 15000) {
+  const imgs = Array.from(container.querySelectorAll('img'));
+  const promises = imgs.map(img => {
     if (img.complete && img.naturalWidth > 0) return Promise.resolve();
     return new Promise(resolve => {
       img.addEventListener('load', resolve, { once: true });
       img.addEventListener('error', resolve, { once: true });
     });
-  }));
-  return Promise.race([all, new Promise(r => setTimeout(r, timeoutMs))]);
+  });
+  return Promise.race([
+    Promise.all(promises),
+    new Promise(resolve => setTimeout(resolve, timeoutMs))
+  ]);
 }
 
 async function downloadPDF() {
   if (offers.length === 0) { showToast('Nenhuma oferta para gerar o PDF', 'error'); return; }
 
+  const renderArea = document.getElementById('pdf-render-area');
+  
+  // ✅ CORREÇÃO 1: Torna o container VISÍVEL (opacity:1) durante geração
+  renderArea.classList.add('pdf-rendering');
+
   showPdfLoading('Preparando catálogo PDF...', 'Filtrando ofertas', 5);
 
   try {
-    // ===== 1. Filtra e ordena (descarta ofertas sem link válido) =====
+    // ✅ CORREÇÃO 9: Filtra ofertas sem link válido
     let filtered = offers.filter(o => {
-      const matchCategory = currentCategory === 'all' || o.categoria === currentCategory;
-      const haystack = (o.titulo + ' ' + (o.descricao || '')).toLowerCase();
-      const matchSearch = haystack.includes(currentSearch.toLowerCase());
-      const hasLink = o.link && o.link !== '#' && isValidUrl(o.link);
-      return matchCategory && matchSearch && hasLink;
+      const mc = currentCategory === 'all' || o.categoria === currentCategory;
+      const ms = (o.titulo + ' ' + (o.descricao || '')).toLowerCase()
+                 .includes(currentSearch.toLowerCase());
+      const mv = o.link && o.link !== '#' && o.link !== '';
+      return mc && ms && mv;
     });
     filtered = getSortedOffers(filtered);
 
     if (filtered.length === 0) {
       hidePdfLoading();
-      showToast('Nenhuma oferta com link válido para gerar o PDF', 'error');
+      renderArea.classList.remove('pdf-rendering');
+      showToast('Nenhuma oferta válida para gerar o PDF', 'error');
       return;
     }
 
-    // ===== 2. Pré-carrega imagens com fallback garantido =====
     updatePdfProgress('Carregando imagens...', `0 de ${filtered.length}`, 10);
 
+    // ✅ CORREÇÃO 2: Pré-carrega imagens com fallback garantido
     const imageMap = {};
     for (let i = 0; i < filtered.length; i++) {
       const offer = filtered[i];
       const fallback = getFallbackImage(offer.titulo, offer.categoria);
-      let dataUrl = await imageToDataUrl(offer.imagem || fallback);
-      if (!dataUrl) dataUrl = await imageToDataUrl(fallback);
+      const imgSrc = offer.imagem || fallback;
+      const dataUrl = await imageToDataUrl(imgSrc, fallback);
       imageMap[offer.id] = dataUrl || fallback;
-
-      const progress = 10 + Math.round(((i + 1) / filtered.length) * 30);
+      const progress = 10 + Math.round((i + 1) / filtered.length * 30);
       updatePdfProgress('Carregando imagens...', `${i + 1} de ${filtered.length}`, progress);
     }
 
-    // Logo: tenta, mas não bloqueia se falhar
-    let logoDataUrl = await imageToDataUrl(settings.logoUrl);
-    if (!logoDataUrl && settings.logoUrl) {
-      logoDataUrl = await imageToDataUrl(getFallbackImage('Logo', ''));
-    }
+    // Logo com fallback
+    const logoFallback = 'https://placehold.co/200x200/facc15/1a1a1a?text=Logo';
+    const logoDataUrl = await imageToDataUrl(settings.logoUrl, logoFallback);
 
     updatePdfProgress('Montando layout A4...', '', 45);
 
-    // ===== 3. Monta o HTML dos cards =====
     const t = TEMPLATES.find(x => x.id === settings.template) || TEMPLATES[0];
 
     const cardsHtml = filtered.map(offer => {
       const discount = calculateDiscount(offer.preco, offer.preco_original);
-      const imgSrc = imageMap[offer.id] || getFallbackImage(offer.titulo, offer.categoria);
+      const imgSrc = imageMap[offer.id];
       const cat = settings.categories.find(c => c.name === offer.categoria);
       const icon = cat ? cat.icon : 'fa-tag';
       const btnBg = categoryColorsPdf[offer.categoria] || defaultBtnGradient;
-
+      
       return `
         <div class="pdf-card" data-link="${escapeHtml(offer.link)}">
           <div class="img-wrap">
-            <img src="${escapeHtml(imgSrc)}" alt="${escapeHtml(offer.titulo)}" crossorigin="anonymous">
+            <img src="${escapeHtml(imgSrc)}" alt="${escapeHtml(offer.titulo)}">
             ${discount > 0 ? `<div class="discount-badge" style="background: ${t.discountGradient}">-${discount}%</div>` : ''}
             <div class="cat-badge"><i class="fas ${icon}" style="margin-right:4px"></i>${escapeHtml(offer.categoria)}</div>
             ${offer.loja ? `<div class="store-badge"><i class="fas fa-store" style="margin-right:4px"></i>${escapeHtml(offer.loja)}</div>` : ''}
@@ -1783,24 +1775,25 @@ async function downloadPDF() {
     }).join('');
 
     const heroColorMap = {
-      'yellow':  { bg: '#fefce8', text: '#111827' },
-      'sky':     { bg: '#f0f9ff', text: '#0c4a6e' },
-      'green':   { bg: '#f0fdf4', text: '#14532d' },
-      'pink':    { bg: '#fdf2f8', text: '#831843' },
-      'purple':  { bg: '#faf5ff', text: '#581c87' },
-      'orange':  { bg: '#fff7ed', text: '#7c2d12' },
-      'red':     { bg: '#fef2f2', text: '#7f1d1d' },
-      'gray':    { bg: '#fafafa', text: '#111827' },
+      'yellow': { bg: '#fefce8', text: '#111827' },
+      'sky': { bg: '#f0f9ff', text: '#0c4a6e' },
+      'green': { bg: '#f0fdf4', text: '#14532d' },
+      'pink': { bg: '#fdf2f8', text: '#831843' },
+      'purple': { bg: '#faf5ff', text: '#581c87' },
+      'orange': { bg: '#fff7ed', text: '#7c2d12' },
+      'red': { bg: '#fef2f2', text: '#7f1d1d' },
+      'gray': { bg: '#fafafa', text: '#111827' },
       'emerald': { bg: '#ecfdf5', text: '#064e3b' }
     };
     const heroKey = Object.keys(heroColorMap).find(k => t.heroFrom.includes(k)) || 'yellow';
     const heroColor = heroColorMap[heroKey];
 
-    const renderArea = document.getElementById('pdf-render-area');
+    const logoSrc = logoDataUrl || logoFallback;
+
     renderArea.innerHTML = `
       <div class="pdf-page">
         <div class="pdf-header" style="background: ${t.headerGradient}; color: ${t.headerTextColor}">
-          ${logoDataUrl ? `<img src="${escapeHtml(logoDataUrl)}" alt="Logo">` : ''}
+          <img src="${escapeHtml(logoSrc)}" alt="Logo">
           <h1 style="color: ${settings.headerTitleColor || t.headerTextColor}">${escapeHtml(settings.headerTitle)}</h1>
           <p style="color: ${settings.headerSubtitleColor || t.headerSubtitleColor}">${escapeHtml(settings.headerSubtitle)}</p>
         </div>
@@ -1819,108 +1812,127 @@ async function downloadPDF() {
       </div>
     `;
 
-    // ===== 4. Aguarda imagens + fontes + 2 frames de renderização =====
-    updatePdfProgress('Aguardando renderização...', '', 55);
-    await waitForImages(renderArea, 20000);
-    try { await document.fonts.ready; } catch (e) {}
-
-    const rect = renderArea.getBoundingClientRect();
-    console.log('[PDF DEBUG] Container:', {
-      width: rect.width, height: rect.height, top: rect.top, left: rect.left,
-      children: renderArea.children.length,
-      cardsFound: renderArea.querySelectorAll('.pdf-card').length,
-      imgsFound: renderArea.querySelectorAll('img').length
-    });
-
-    if (rect.height === 0 || renderArea.children.length === 0) {
-      throw new Error('Container do PDF está vazio');
+    updatePdfProgress('Aguardando imagens...', '', 55);
+    
+    // ✅ CORREÇÃO 5: Aguarda imagens + fontes + 2x RAF
+    await waitForImages(renderArea, 15000);
+    if (document.fonts && document.fonts.ready) {
+      await document.fonts.ready;
     }
-
     await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
-    await new Promise(r => setTimeout(r, 300));
 
     updatePdfProgress('Gerando PDF A4...', 'Isso pode levar alguns segundos', 60);
 
-    // ===== 5. Gera o PDF UMA única vez =====
+    // ✅ CORREÇÃO 6: Configuração html2canvas correta
+    const renderHeight = renderArea.scrollHeight;
     const opt = {
       margin: [10, 10, 10, 10],
       filename: `catalogo_banana_doce_${new Date().toISOString().slice(0,10)}.pdf`,
       image: { type: 'jpeg', quality: 0.95 },
-      html2canvas: {
+      html2canvas: { 
         scale: 2,
         useCORS: true,
-        allowTaint: true,
+        allowTaint: false,
         logging: false,
         letterRendering: true,
         backgroundColor: '#ffffff',
+        scrollX: 0,
+        scrollY: 0,
         windowWidth: 794,
-        width: 794
+        windowHeight: renderHeight,
+        width: 794,
+        height: renderHeight,
+        x: 0,
+        y: 0
       },
-      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait', compress: true },
-      pagebreak: { mode: ['css', 'legacy'], avoid: ['.pdf-card', '.pdf-header', '.pdf-hero', '.pdf-footer'] }
+      jsPDF: { 
+        unit: 'mm', 
+        format: 'a4', 
+        orientation: 'portrait',
+        compress: true
+      },
+      pagebreak: { 
+        mode: ['css', 'legacy'],
+        avoid: ['.pdf-card', '.pdf-header', '.pdf-hero', '.pdf-footer']
+      }
     };
 
-    const worker = html2pdf().set(opt).from(renderArea).toPdf();
+    // ✅ CORREÇÃO 4: Gera o PDF UMA vez, sem .then redundante
+    const worker = html2pdf().set(opt).from(renderArea);
     const pdf = await worker.get('pdf');
 
-    // ===== 6. Adiciona links clicáveis =====
-    updatePdfProgress('Adicionando links clicáveis...', '', 90);
-
+    // Adiciona links clicáveis
+    updatePdfProgress('Adicionando links...', '', 90);
+    
     const pageWidth = pdf.internal.pageSize.getWidth();
     const pageHeight = pdf.internal.pageSize.getHeight();
+    const totalPages = pdf.internal.getNumberOfPages();
+    
     const marginMm = 10;
-    const pdfWidthMm = pageWidth - marginMm * 2;
+    const pdfWidthMm = pageWidth - (marginMm * 2);
     const renderWidthPx = 794;
     const pxToMm = pdfWidthMm / renderWidthPx;
-    const pdfHeightMm = pageHeight - marginMm * 2;
-    const pxPerPage = pdfHeightMm / pxToMm;
-
-    const totalPages = pdf.internal.getNumberOfPages();
+    const pageHeightMm = pageHeight - (marginMm * 2);
+    const pxPerPage = pageHeightMm / pxToMm;
+    
     const cards = renderArea.querySelectorAll('.pdf-card');
-    let processed = 0;
+    let processedLinks = 0;
 
     cards.forEach(card => {
       const btn = card.querySelector('.btn-offer');
       const link = card.getAttribute('data-link');
-      if (!btn || !link || link === '#' || !isValidUrl(link)) return;
+      if (!btn || !link || link === '#' || link === '') return;
 
       const btnRect = btn.getBoundingClientRect();
       const renderRect = renderArea.getBoundingClientRect();
+
       const relTop = btnRect.top - renderRect.top;
       const relLeft = btnRect.left - renderRect.left;
       const relWidth = btnRect.width;
       const relHeight = btnRect.height;
 
       const pageNum = Math.floor(relTop / pxPerPage) + 1;
-      const topInPage = relTop - (pageNum - 1) * pxPerPage;
-
-      const xMm = marginMm + relLeft * pxToMm;
-      const yMm = marginMm + topInPage * pxToMm;
+      const topInPage = relTop - ((pageNum - 1) * pxPerPage);
+      
+      const xMm = marginMm + (relLeft * pxToMm);
+      const yMm = marginMm + (topInPage * pxToMm);
       const wMm = relWidth * pxToMm;
       const hMm = relHeight * pxToMm;
 
-      if (pageNum >= 1 && pageNum <= totalPages &&
+      if (pageNum <= totalPages && 
           yMm >= 0 && yMm + hMm <= pageHeight &&
           xMm >= 0 && xMm + wMm <= pageWidth) {
-        try { pdf.setPage(pageNum); pdf.link(xMm, yMm, wMm, hMm, { url: link }); } catch (e) {}
+        try {
+          pdf.setPage(pageNum);
+          pdf.link(xMm, yMm, wMm, hMm, { url: link });
+        } catch (e) {}
       }
-      processed++;
-      const progress = 90 + Math.round((processed / Math.max(cards.length, 1)) * 8);
-      updatePdfProgress('Adicionando links...', `${processed} de ${cards.length}`, progress);
+      
+      processedLinks++;
+      const progress = 90 + Math.round((processedLinks / Math.max(cards.length, 1)) * 8);
+      updatePdfProgress('Adicionando links...', `${processedLinks} de ${cards.length}`, progress);
     });
 
-    // ===== 7. Salva e limpa =====
     updatePdfProgress('Finalizando...', '', 98);
+    
+    // ✅ CORREÇÃO 4: Salva direto do objeto pdf
     await pdf.save(opt.filename);
 
+    // ✅ CORREÇÃO 13: Limpa em todos os caminhos
+    renderArea.classList.remove('pdf-rendering');
     renderArea.innerHTML = '';
+
     hidePdfLoading();
     showToast(`PDF gerado: ${filtered.length} oferta(s) em ${totalPages} página(s)!`, 'success');
+    setTimeout(() => {
+      alert(`✅ Catálogo PDF gerado com sucesso!\n\n📄 ${filtered.length} oferta(s)\n📑 ${totalPages} página(s) A4\n🔗 ${processedLinks} link(s) clicável(is)\n🎨 Aparência mantida\n\n💡 Os botões "Ver Oferta" são clicáveis no PDF.`);
+    }, 400);
+
   } catch (err) {
     console.error('Erro ao gerar PDF:', err);
     hidePdfLoading();
-    const renderArea = document.getElementById('pdf-render-area');
-    if (renderArea) renderArea.innerHTML = '';
+    renderArea.classList.remove('pdf-rendering');
+    renderArea.innerHTML = '';
     showToast('Erro ao gerar PDF: ' + err.message, 'error');
   }
 }
@@ -1949,187 +1961,26 @@ const TEMPLATES = ${templatesJSON};
 const defaultCategories = ${defaultCategoriesJSON};
 const defaultSocials = ${defaultSocialsJSON};
 const defaultSettings = ${settingsJSON};
-
 let offers = ${offersJSON};
 let settings = JSON.parse(JSON.stringify(defaultSettings));
 let currentCategory = 'all';
 let currentSearch = '';
 let currentSort = 'date-desc';
-
-function escapeHtml(text) {
-  if (text === null || text === undefined) return '';
-  return String(text).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
-}
-
+function escapeHtml(text) { if (!text) return ''; const div = document.createElement('div'); div.textContent = String(text); return div.innerHTML; }
 function isValidHexColor(color) { return /^#[0-9A-Fa-f]{6}$/.test(color); }
-
-function renderSocialIcon(iconName) {
-  if (iconName === 'fa-x-twitter-custom') return '<span class="fa-x-twitter-custom" style="font-size: 1.25em;"></span>';
-  if (iconName === 'fa-threads-custom') return '<span class="fa-threads-custom" style="font-size: 1.25em;"></span>';
-  if (iconName.startsWith('fa-')) return '<i class="fab ' + iconName + ' text-white text-xl"></i>';
-  return '<i class="' + iconName + ' text-white text-xl"></i>';
-}
-
-function updateFavicon(url) {
-  if (!url) return;
-  const faviconLink = document.getElementById('favicon-link');
-  const faviconLinkSvg = document.getElementById('favicon-link-svg');
-  if (url.endsWith('.svg')) {
-    if (faviconLinkSvg) faviconLinkSvg.href = url;
-    if (faviconLink) faviconLink.href = '';
-  } else {
-    if (faviconLink) faviconLink.href = url;
-    if (faviconLinkSvg) faviconLinkSvg.href = '';
-  }
-}
-
-function updateOgImage(url) {
-  const ogMeta = document.querySelector('meta[property="og:image"]');
-  if (ogMeta && url) ogMeta.setAttribute('content', url);
-}
-
-function applySettings() {
-  const t = TEMPLATES.find(x => x.id === settings.template) || TEMPLATES[0];
-  const root = document.documentElement;
-  root.style.setProperty('--header-gradient', t.headerGradient);
-  root.style.setProperty('--bg-color', t.bgColor);
-  root.style.setProperty('--discount-gradient', t.discountGradient);
-  root.style.setProperty('--active-category-bg', t.activeCategoryBg);
-  root.style.setProperty('--active-category-text', t.activeCategoryText);
-  root.style.setProperty('--border-color', t.borderColor);
-  root.style.setProperty('--border-hover', t.borderHover);
-  root.style.setProperty('--upload-hover', t.uploadHover);
-  const titleEl = document.getElementById('header-title');
-  const subtitleEl = document.getElementById('header-subtitle');
-  if (titleEl) { titleEl.style.color = settings.headerTitleColor || t.headerTextColor; titleEl.textContent = settings.headerTitle; }
-  if (subtitleEl) { subtitleEl.style.color = settings.headerSubtitleColor || t.headerSubtitleColor; subtitleEl.textContent = settings.headerSubtitle; }
-  const logoEl = document.getElementById('logo-img');
-  const footerLogoEl = document.getElementById('footer-logo');
-  if (logoEl) logoEl.src = settings.logoUrl;
-  if (footerLogoEl) footerLogoEl.src = settings.logoUrl;
-  updateFavicon(settings.logoUrl);
-  updateOgImage(settings.ogImageUrl || settings.logoUrl);
-  document.title = settings.pageTitle || (settings.headerTitle + ' | ' + settings.headerSubtitle);
-  const ogTitle = document.querySelector('meta[property="og:title"]');
-  if (ogTitle) ogTitle.setAttribute('content', settings.pageTitle || (settings.headerTitle + ' | ' + settings.headerSubtitle));
-  const heroTitleEl = document.getElementById('hero-title');
-  const heroSubtitleEl = document.getElementById('hero-subtitle');
-  const heroDisclosureEl = document.getElementById('hero-disclosure-text');
-  const heroDisclosure = document.getElementById('hero-disclosure');
-  if (heroTitleEl) { heroTitleEl.textContent = settings.heroTitle || '🏆 As Melhores Ofertas do Dia'; heroTitleEl.style.color = settings.heroTitleColor || '#111827'; }
-  if (heroSubtitleEl) { heroSubtitleEl.textContent = settings.heroSubtitle || 'Seleção com as melhores ofertas do dia'; heroSubtitleEl.style.color = settings.heroSubtitleColor || '#374151'; }
-  if (heroDisclosureEl) heroDisclosureEl.textContent = settings.heroDisclosure || '';
-  if (heroDisclosure) {
-    if (settings.heroDisclosure && settings.heroDisclosure.trim()) {
-      heroDisclosure.style.display = 'inline-flex';
-      heroDisclosure.style.backgroundColor = settings.heroDisclosureBg || '#fef08a';
-      heroDisclosure.style.color = settings.heroDisclosureTextColor || '#713f12';
-    } else { heroDisclosure.style.display = 'none'; }
-  }
-  const footerTextEl = document.getElementById('footer-text');
-  const footerCopyrightEl = document.getElementById('footer-copyright');
-  const siteFooter = document.getElementById('site-footer');
-  if (footerTextEl) { footerTextEl.textContent = settings.footerText; footerTextEl.style.color = settings.footerTextColor || '#facc15'; }
-  if (footerCopyrightEl) { footerCopyrightEl.textContent = settings.footerCopyright || '© 2026 Banana Doce. Todos os direitos reservados.'; footerCopyrightEl.style.color = settings.footerCopyrightColor || '#ca8a04'; }
-  if (siteFooter) siteFooter.style.backgroundColor = settings.footerBg || '#111827';
-  const hero = document.getElementById('hero-section');
-  if (hero) hero.className = 'bg-gradient-to-b ' + t.heroFrom + ' ' + t.heroTo + ' py-8 md:py-12';
-  const searchInput = document.getElementById('search-input');
-  if (searchInput) searchInput.className = 'w-full pl-12 pr-4 py-3.5 rounded-2xl border-2 ' + t.searchBorder + ' ' + t.searchFocus + ' focus:outline-none shadow-sm bg-white text-gray-800';
-  const sortSelect = document.getElementById('sort-select');
-  if (sortSelect) sortSelect.className = 'px-4 py-2 rounded-xl border-2 ' + t.searchBorder + ' ' + t.searchFocus + ' focus:outline-none shadow-sm bg-white text-gray-800 font-semibold text-sm';
-  renderSocialIcons();
-}
-
-function renderSocialIcons() {
-  const container = document.getElementById('social-icons');
-  if (!container) return;
-  const activeSocials = (settings.socials || []).filter(s => s.url && s.url.trim() !== '');
-  if (activeSocials.length === 0) { container.innerHTML = '<p class="text-xs text-yellow-600">Redes sociais em breve</p>'; return; }
-  container.innerHTML = activeSocials.map(s =>
-    '<a href="' + escapeHtml(s.url) + '" target="_blank" rel="noopener noreferrer" class="social-icon-btn w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl" style="background-color: ' + escapeHtml(s.color) + '; color: white;" title="' + escapeHtml(s.name) + '" aria-label="' + escapeHtml(s.name) + '">' + renderSocialIcon(s.icon) + '</a>'
-  ).join('');
-}
-
-function renderCategoryButtons() {
-  const container = document.getElementById('category-container');
-  if (!container) return;
-  container.innerHTML = settings.categories.map(cat => {
-    const isActive = (cat.isAll && currentCategory === 'all') || (!cat.isAll && currentCategory === cat.name);
-    return '<button class="category-btn px-5 py-2.5 rounded-full font-bold whitespace-nowrap transition-all bg-white text-gray-700 shadow ' + (isActive ? 'active' : '') + '" data-category="' + (cat.isAll ? 'all' : cat.name) + '"><i class="fas ' + cat.icon + ' mr-2"></i>' + escapeHtml(cat.name) + '</button>';
-  }).join('');
-  container.querySelectorAll('.category-btn').forEach(btn => {
-    btn.addEventListener('click', () => { currentCategory = btn.dataset.category; renderCategoryButtons(); renderOffers(); });
-  });
-}
-
+function renderSocialIcon(iconName) { if (iconName === 'fa-x-twitter-custom') return '<span class="fa-x-twitter-custom" style="font-size: 1.25em;"></span>'; if (iconName === 'fa-threads-custom') return '<span class="fa-threads-custom" style="font-size: 1.25em;"></span>'; if (iconName.startsWith('fa-')) return '<i class="fab ' + iconName + ' text-white text-xl"></i>'; return '<i class="' + iconName + ' text-white text-xl"></i>'; }
+function updateFavicon(url) { if (!url) return; const faviconLink = document.getElementById('favicon-link'); const faviconLinkSvg = document.getElementById('favicon-link-svg'); if (url.endsWith('.svg')) { if (faviconLinkSvg) faviconLinkSvg.href = url; if (faviconLink) faviconLink.href = ''; } else { if (faviconLink) faviconLink.href = url; if (faviconLinkSvg) faviconLinkSvg.href = ''; } }
+function updateOgImage(url) { const ogMeta = document.querySelector('meta[property="og:image"]'); if (ogMeta && url) ogMeta.setAttribute('content', url); }
+function applySettings() { const t = TEMPLATES.find(x => x.id === settings.template) || TEMPLATES[0]; const root = document.documentElement; root.style.setProperty('--header-gradient', t.headerGradient); root.style.setProperty('--bg-color', t.bgColor); root.style.setProperty('--discount-gradient', t.discountGradient); root.style.setProperty('--active-category-bg', t.activeCategoryBg); root.style.setProperty('--active-category-text', t.activeCategoryText); root.style.setProperty('--border-color', t.borderColor); root.style.setProperty('--border-hover', t.borderHover); root.style.setProperty('--upload-hover', t.uploadHover); const titleEl = document.getElementById('header-title'); const subtitleEl = document.getElementById('header-subtitle'); if (titleEl) { titleEl.style.color = settings.headerTitleColor || t.headerTextColor; titleEl.textContent = settings.headerTitle; } if (subtitleEl) { subtitleEl.style.color = settings.headerSubtitleColor || t.headerSubtitleColor; subtitleEl.textContent = settings.headerSubtitle; } const logoEl = document.getElementById('logo-img'); const footerLogoEl = document.getElementById('footer-logo'); if (logoEl) logoEl.src = settings.logoUrl; if (footerLogoEl) footerLogoEl.src = settings.logoUrl; updateFavicon(settings.logoUrl); updateOgImage(settings.ogImageUrl || settings.logoUrl); document.title = settings.pageTitle || (settings.headerTitle + ' | ' + settings.headerSubtitle); const ogTitle = document.querySelector('meta[property="og:title"]'); if (ogTitle) ogTitle.setAttribute('content', settings.pageTitle || (settings.headerTitle + ' | ' + settings.headerSubtitle)); const heroTitleEl = document.getElementById('hero-title'); const heroSubtitleEl = document.getElementById('hero-subtitle'); const heroDisclosureEl = document.getElementById('hero-disclosure-text'); const heroDisclosure = document.getElementById('hero-disclosure'); if (heroTitleEl) { heroTitleEl.textContent = settings.heroTitle || '🏆 As Melhores Ofertas do Dia'; heroTitleEl.style.color = settings.heroTitleColor || '#111827'; } if (heroSubtitleEl) { heroSubtitleEl.textContent = settings.heroSubtitle || 'Seleção com as melhores ofertas do dia'; heroSubtitleEl.style.color = settings.heroSubtitleColor || '#374151'; } if (heroDisclosureEl) heroDisclosureEl.textContent = settings.heroDisclosure || ''; if (heroDisclosure) { if (settings.heroDisclosure && settings.heroDisclosure.trim()) { heroDisclosure.style.display = 'inline-flex'; heroDisclosure.style.backgroundColor = settings.heroDisclosureBg || '#fef08a'; heroDisclosure.style.color = settings.heroDisclosureTextColor || '#713f12'; } else { heroDisclosure.style.display = 'none'; } } const footerTextEl = document.getElementById('footer-text'); const footerCopyrightEl = document.getElementById('footer-copyright'); const siteFooter = document.getElementById('site-footer'); if (footerTextEl) { footerTextEl.textContent = settings.footerText; footerTextEl.style.color = settings.footerTextColor || '#facc15'; } if (footerCopyrightEl) { footerCopyrightEl.textContent = settings.footerCopyright || '© 2026 Banana Doce. Todos os direitos reservados.'; footerCopyrightEl.style.color = settings.footerCopyrightColor || '#ca8a04'; } if (siteFooter) siteFooter.style.backgroundColor = settings.footerBg || '#111827'; const hero = document.getElementById('hero-section'); if (hero) hero.className = 'bg-gradient-to-b ' + t.heroFrom + ' ' + t.heroTo + ' py-8 md:py-12'; renderSocialIcons(); }
+function renderSocialIcons() { const container = document.getElementById('social-icons'); if (!container) return; const activeSocials = (settings.socials || []).filter(s => s.url && s.url.trim() !== ''); if (activeSocials.length === 0) { container.innerHTML = '<p class="text-xs text-yellow-600">Redes sociais em breve</p>'; return; } container.innerHTML = activeSocials.map(s => '<a href="' + escapeHtml(s.url) + '" target="_blank" rel="noopener noreferrer" class="social-icon-btn w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl" style="background-color: ' + escapeHtml(s.color) + '; color: white;" title="' + escapeHtml(s.name) + '" aria-label="' + escapeHtml(s.name) + '">' + renderSocialIcon(s.icon) + '</a>').join(''); }
+function renderCategoryButtons() { const container = document.getElementById('category-container'); if (!container) return; container.innerHTML = settings.categories.map(cat => { const isActive = (cat.isAll && currentCategory === 'all') || (!cat.isAll && currentCategory === cat.name); return '<button class="category-btn px-5 py-2.5 rounded-full font-bold whitespace-nowrap transition-all bg-white text-gray-700 shadow ' + (isActive ? 'active' : '') + '" data-category="' + (cat.isAll ? 'all' : cat.name) + '"><i class="fas ' + cat.icon + ' mr-2"></i>' + escapeHtml(cat.name) + '</button>'; }).join(''); container.querySelectorAll('.category-btn').forEach(btn => { btn.addEventListener('click', () => { currentCategory = btn.dataset.category; renderCategoryButtons(); renderOffers(); }); }); }
 const categoryColors = { 'Celulares': 'from-blue-400 to-blue-600', 'Eletrônicos': 'from-purple-400 to-purple-600', 'Beleza': 'from-pink-400 to-pink-600', 'Moda': 'from-orange-400 to-orange-600', 'Casa': 'from-green-400 to-green-600', 'Games': 'from-red-400 to-red-600' };
 function calculateDiscount(p, po) { if (!po || po <= p) return 0; return Math.round(((po - p) / po) * 100); }
 function formatCurrency(v) { return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(v); }
-function getFallbackImage(t, c) {
-  const colors = { 'Celulares': '3b82f6', 'Eletrônicos': '8b5cf6', 'Beleza': 'ec4899', 'Moda': 'f97316', 'Casa': '22c55e', 'Games': 'ef4444' };
-  const color = colors[c] || 'eab308';
-  return 'https://placehold.co/400x400/' + color + '/ffffff?text=' + encodeURIComponent(String(t).substring(0, 20));
-}
-
+function getFallbackImage(t, c) { const colors = { 'Celulares': '3b82f6', 'Eletrônicos': '8b5cf6', 'Beleza': 'ec4899', 'Moda': 'f97316', 'Casa': '22c55e', 'Games': 'ef4444' }; const color = colors[c] || 'eab308'; return 'https://placehold.co/400x400/' + color + '/ffffff?text=' + encodeURIComponent(String(t).substring(0, 20)); }
 function sortOffers() { currentSort = document.getElementById('sort-select').value; renderOffers(); }
-
-function getSortedOffers(list) {
-  const sorted = [...list];
-  switch(currentSort) {
-    case 'date-desc': sorted.sort((a, b) => new Date(b.dateAdded || 0) - new Date(a.dateAdded || 0)); break;
-    case 'date-asc': sorted.sort((a, b) => new Date(a.dateAdded || 0) - new Date(b.dateAdded || 0)); break;
-    case 'price-asc': sorted.sort((a, b) => a.preco - b.preco); break;
-    case 'price-desc': sorted.sort((a, b) => b.preco - a.preco); break;
-    case 'discount-desc': sorted.sort((a, b) => calculateDiscount(b.preco, b.preco_original) - calculateDiscount(a.preco, a.preco_original)); break;
-    case 'discount-asc': sorted.sort((a, b) => calculateDiscount(a.preco, a.preco_original) - calculateDiscount(b.preco, b.preco_original)); break;
-    case 'name-asc': sorted.sort((a, b) => a.titulo.localeCompare(b.titulo)); break;
-    case 'name-desc': sorted.sort((a, b) => b.titulo.localeCompare(a.titulo)); break;
-    case 'category': sorted.sort((a, b) => a.categoria.localeCompare(b.categoria)); break;
-    case 'store': sorted.sort((a, b) => (a.loja || '').localeCompare(b.loja || '')); break;
-  }
-  return sorted;
-}
-
-function renderOffers() {
-  const grid = document.getElementById('offers-grid');
-  const emptyState = document.getElementById('empty-state');
-  const countEl = document.getElementById('offer-count');
-  let filtered = offers.filter(o => {
-    const mc = currentCategory === 'all' || o.categoria === currentCategory;
-    const ms = o.titulo.toLowerCase().includes(currentSearch.toLowerCase()) || (o.descricao && o.descricao.toLowerCase().includes(currentSearch.toLowerCase()));
-    return mc && ms;
-  });
-  filtered = getSortedOffers(filtered);
-  countEl.textContent = filtered.length + ' oferta' + (filtered.length !== 1 ? 's' : '');
-  if (filtered.length === 0) { grid.innerHTML = ''; emptyState.classList.remove('hidden'); return; }
-  emptyState.classList.add('hidden');
-  grid.innerHTML = filtered.map((offer, idx) => {
-    const discount = calculateDiscount(offer.preco, offer.preco_original);
-    const imgSrc = offer.imagem || getFallbackImage(offer.titulo, offer.categoria);
-    const cat = settings.categories.find(c => c.name === offer.categoria);
-    const icon = cat ? cat.icon : 'fa-tag';
-    const colorClass = categoryColors[offer.categoria] || 'from-yellow-400 to-yellow-600';
-    return '<div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in" style="animation-delay:' + (idx*0.05) + 's">' +
-      '<div class="relative aspect-square overflow-hidden bg-gray-100">' +
-        '<img src="' + escapeHtml(imgSrc) + '" alt="' + escapeHtml(offer.titulo) + '" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src=\\'' + getFallbackImage(offer.titulo, offer.categoria) + '\\'" loading="lazy">' +
-        (discount > 0 ? '<div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-' + discount + '%</div>' : '') +
-        '<div class="absolute top-3 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow"><i class="fas ' + icon + ' mr-1"></i>' + escapeHtml(offer.categoria) + '</div>' +
-        (offer.loja ? '<div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow"><i class="fas fa-store mr-1"></i>' + escapeHtml(offer.loja) + '</div>' : '') +
-      '</div>' +
-      '<div class="p-4">' +
-        '<h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">' + escapeHtml(offer.titulo) + '</h4>' +
-        (offer.descricao ? '<p class="text-xs text-gray-500 mb-3 line-clamp-2">' + escapeHtml(offer.descricao) + '</p>' : '<div class="mb-3"></div>') +
-        '<div class="flex items-end justify-between mb-3">' +
-          '<div>' + (offer.preco_original && offer.preco_original > offer.preco ? '<p class="text-xs text-gray-400 line-through">' + formatCurrency(offer.preco_original) + '</p>' : '') +
-          '<p class="text-xl font-black text-gray-900">' + formatCurrency(offer.preco) + '</p></div>' +
-          (discount > 0 ? '<div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize ' + formatCurrency(offer.preco_original - offer.preco) + '</div>' : '') +
-        '</div>' +
-        '<a href="' + escapeHtml(offer.link) + '" target="_blank" class="block w-full bg-gradient-to-r ' + colorClass + ' text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md"><i class="fas fa-external-link-alt mr-2"></i>Ver Oferta</a>' +
-      '</div></div>';
-  }).join('');
-}
-
+function getSortedOffers(list) { const sorted = [...list]; switch(currentSort) { case 'date-desc': sorted.sort((a, b) => new Date(b.dateAdded || 0) - new Date(a.dateAdded || 0)); break; case 'date-asc': sorted.sort((a, b) => new Date(a.dateAdded || 0) - new Date(b.dateAdded || 0)); break; case 'price-asc': sorted.sort((a, b) => a.preco - b.preco); break; case 'price-desc': sorted.sort((a, b) => b.preco - a.preco); break; case 'discount-desc': sorted.sort((a, b) => calculateDiscount(b.preco, b.preco_original) - calculateDiscount(a.preco, a.preco_original)); break; case 'discount-asc': sorted.sort((a, b) => calculateDiscount(a.preco, a.preco_original) - calculateDiscount(b.preco, b.preco_original)); break; case 'name-asc': sorted.sort((a, b) => a.titulo.localeCompare(b.titulo)); break; case 'name-desc': sorted.sort((a, b) => b.titulo.localeCompare(a.titulo)); break; case 'category': sorted.sort((a, b) => a.categoria.localeCompare(b.categoria)); break; case 'store': sorted.sort((a, b) => (a.loja || '').localeCompare(b.loja || '')); break; } return sorted; }
+function renderOffers() { const grid = document.getElementById('offers-grid'); const emptyState = document.getElementById('empty-state'); const countEl = document.getElementById('offer-count'); let filtered = offers.filter(o => { const mc = currentCategory === 'all' || o.categoria === currentCategory; const ms = o.titulo.toLowerCase().includes(currentSearch.toLowerCase()) || (o.descricao && o.descricao.toLowerCase().includes(currentSearch.toLowerCase())); return mc && ms; }); filtered = getSortedOffers(filtered); countEl.textContent = filtered.length + ' oferta' + (filtered.length !== 1 ? 's' : ''); if (filtered.length === 0) { grid.innerHTML = ''; emptyState.classList.remove('hidden'); return; } emptyState.classList.add('hidden'); grid.innerHTML = filtered.map((offer, idx) => { const discount = calculateDiscount(offer.preco, offer.preco_original); const imgSrc = offer.imagem || getFallbackImage(offer.titulo, offer.categoria); const cat = settings.categories.find(c => c.name === offer.categoria); const icon = cat ? cat.icon : 'fa-tag'; const colorClass = categoryColors[offer.categoria] || 'from-yellow-400 to-yellow-600'; return '<div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in" style="animation-delay:' + (idx*0.05) + 's"><div class="relative aspect-square overflow-hidden bg-gray-100"><img src="' + escapeHtml(imgSrc) + '" alt="' + escapeHtml(offer.titulo) + '" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src=\\'' + getFallbackImage(offer.titulo, offer.categoria) + '\\'" loading="lazy">' + (discount > 0 ? '<div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-' + discount + '%</div>' : '') + '<div class="absolute top-3 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow"><i class="fas ' + icon + ' mr-1"></i>' + escapeHtml(offer.categoria) + '</div>' + (offer.loja ? '<div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow"><i class="fas fa-store mr-1"></i>' + escapeHtml(offer.loja) + '</div>' : '') + '</div><div class="p-4"><h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">' + escapeHtml(offer.titulo) + '</h4>' + (offer.descricao ? '<p class="text-xs text-gray-500 mb-3 line-clamp-2">' + escapeHtml(offer.descricao) + '</p>' : '<div class="mb-3"></div>') + '<div class="flex items-end justify-between mb-3"><div>' + (offer.preco_original && offer.preco_original > offer.preco ? '<p class="text-xs text-gray-400 line-through">' + formatCurrency(offer.preco_original) + '</p>' : '') + '<p class="text-xl font-black text-gray-900">' + formatCurrency(offer.preco) + '</p></div>' + (discount > 0 ? '<div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize ' + formatCurrency(offer.preco_original - offer.preco) + '</div>' : '') + '</div><a href="' + escapeHtml(offer.link) + '" target="_blank" class="block w-full bg-gradient-to-r ' + colorClass + ' text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md"><i class="fas fa-external-link-alt mr-2"></i>Ver Oferta</a></div></div>'; }).join(''); }
 document.getElementById('search-input').addEventListener('input', (e) => { currentSearch = e.target.value; renderOffers(); });
 applySettings();
 renderCategoryButtons();
@@ -2145,7 +1996,7 @@ renderOffers();
     a.download = `index_banana_doce_${date}.html`;
     document.body.appendChild(a); a.click(); document.body.removeChild(a);
     URL.revokeObjectURL(url);
-    showToast(`HTML publicado baixado! (${offers.length} ofertas)`, 'success');
+    showToast(`HTML baixado! (${offers.length} ofertas)`, 'success');
   } catch (err) { showToast('Erro: ' + err.message, 'error'); }
 }
 
@@ -2183,7 +2034,7 @@ function renderOffers() {
           <button onclick="confirmDeleteOffer(${offer.id})" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
             <i class="fas fa-trash-alt text-sm"></i>
           </button>
-          <img src="${escapeHtml(imgSrc)}" alt="${escapeHtml(offer.titulo)}"
+          <img src="${escapeHtml(imgSrc)}" alt="${escapeHtml(offer.titulo)}" 
                class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                onerror="this.src='${getFallbackImage(offer.titulo, offer.categoria)}'"
                loading="lazy">
@@ -2217,7 +2068,6 @@ function renderOffers() {
 function editOffer(id) {
   const offer = offers.find(o => o.id === id);
   if (!offer) return;
-
   editingOfferId = id;
   document.getElementById('f-edit-id').value = id;
   document.getElementById('f-titulo').value = offer.titulo;
@@ -2228,12 +2078,10 @@ function editOffer(id) {
   document.getElementById('f-link').value = offer.link;
   document.getElementById('f-loja').value = offer.loja || '';
   document.getElementById('f-descricao').value = offer.descricao || '';
-
   document.getElementById('modal-title').textContent = 'Editar Oferta';
   document.getElementById('modal-subtitle').textContent = 'Alterar dados da oferta';
   document.getElementById('modal-btn-text').textContent = 'Atualizar Oferta';
   document.getElementById('modal-icon').className = 'fas fa-edit text-yellow-600 text-2xl';
-
   const modal = document.getElementById('add-modal');
   modal.classList.remove('hidden');
   modal.classList.add('flex');
@@ -2266,12 +2114,10 @@ function openAddModal() {
   document.getElementById('f-link').value = '';
   document.getElementById('f-loja').value = '';
   document.getElementById('f-descricao').value = '';
-
   document.getElementById('modal-title').textContent = 'Nova Oferta';
   document.getElementById('modal-subtitle').textContent = 'Adicionar manualmente';
   document.getElementById('modal-btn-text').textContent = 'Salvar Oferta';
   document.getElementById('modal-icon').className = 'fas fa-plus-circle text-yellow-600 text-2xl';
-
   const modal = document.getElementById('add-modal');
   modal.classList.remove('hidden');
   modal.classList.add('flex');
@@ -2305,6 +2151,8 @@ function handleFile(file) {
       const jsonData = XLSX.utils.sheet_to_json(firstSheet);
       let imported = 0;
       let errors = 0;
+      // ✅ CORREÇÃO 14: Offset em dateAdded para ordenação correta
+      const totalRows = jsonData.length;
       jsonData.forEach((row, i) => {
         const titulo = row.titulo || row.Titulo || row.TÍTULO || row.name || row.nome;
         const preco = parseFloat(row.preco || row.Preco || row.PREÇO || row.price);
@@ -2315,9 +2163,18 @@ function handleFile(file) {
         const loja = row.loja || row.Loja || row.LOJA || row.store || '';
         const descricao = row.descricao || row.Descricao || row.DESCRICAO || row.description || '';
         if (titulo && !isNaN(preco)) {
-          // Escalona datas para a ordenação "mais recentes" fazer sentido
-          const offset = (jsonData.length - i) * 1000;
-          offers.push({ id: Date.now() + Math.floor(Math.random() * 1000), titulo: String(titulo), preco, preco_original: isNaN(preco_original) ? null : preco_original, categoria: String(categoria), imagem: String(imagem), link: String(link), loja: String(loja), descricao: String(descricao), dateAdded: new Date(Date.now() - offset).toISOString() });
+          offers.push({ 
+            id: Date.now() + Math.floor(Math.random() * 1000) + i, 
+            titulo: String(titulo), 
+            preco, 
+            preco_original: isNaN(preco_original) ? null : preco_original, 
+            categoria: String(categoria), 
+            imagem: String(imagem), 
+            link: String(link), 
+            loja: String(loja), 
+            descricao: String(descricao), 
+            dateAdded: new Date(Date.now() - (totalRows - i) * 1000).toISOString()
+          });
           imported++;
         } else { errors++; }
       });
@@ -2351,22 +2208,18 @@ function saveOffer() {
   const link = document.getElementById('f-link').value.trim();
   const loja = document.getElementById('f-loja').value.trim();
   const descricao = document.getElementById('f-descricao').value.trim();
-
   if (!titulo || isNaN(preco) || !link) { showToast('Preencha os campos obrigatórios!', 'error'); return; }
-  if (link && !isValidUrl(link)) { showToast('Link de compra inválido (use http:// ou https://)', 'error'); return; }
+  if (link && !isValidUrl(link)) { showToast('Link de compra inválido!', 'error'); return; }
   if (imagem && !isValidUrl(imagem) && !imagem.startsWith('data:')) { showToast('URL da imagem inválida!', 'error'); return; }
-
   const offerData = { titulo, preco, preco_original: isNaN(preco_original) ? null : preco_original, categoria, imagem, link, loja, descricao };
-
   if (editingOfferId !== null) {
     const idx = offers.findIndex(o => o.id === editingOfferId);
-    if (idx !== -1) { offers[idx] = { ...offers[idx], ...offerData }; showToast('Oferta atualizada com sucesso!', 'success'); }
+    if (idx !== -1) { offers[idx] = { ...offers[idx], ...offerData }; showToast('Oferta atualizada!', 'success'); }
     editingOfferId = null;
   } else {
     offers.push({ id: Date.now(), ...offerData, dateAdded: new Date().toISOString() });
     showToast('Oferta adicionada!', 'success');
   }
-
   saveOffers();
   ['f-titulo','f-preco','f-preco-original','f-imagem','f-link','f-loja','f-descricao','f-edit-id'].forEach(id => document.getElementById(id).value = '');
   closeAddModal();
@@ -2385,11 +2238,7 @@ function showToast(msg, type = 'success') {
 
 document.querySelectorAll('.modal-overlay').forEach(modal => {
   modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      // Se for o confirm, precisa resetar o ID pendente
-      if (modal.id === 'confirm-modal') { closeConfirmModal(); }
-      else { modal.classList.add('hidden'); modal.classList.remove('flex'); }
-    }
+    if (e.target === modal) { modal.classList.add('hidden'); modal.classList.remove('flex'); }
   });
 });
 
@@ -2398,8 +2247,8 @@ document.addEventListener('keydown', (e) => {
     ['upload-modal', 'add-modal', 'customize-modal', 'confirm-modal'].forEach(id => {
       const modal = document.getElementById(id);
       if (modal && !modal.classList.contains('hidden')) {
-        if (id === 'confirm-modal') { closeConfirmModal(); }
-        else { modal.classList.add('hidden'); modal.classList.remove('flex'); }
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
       }
     });
   }
