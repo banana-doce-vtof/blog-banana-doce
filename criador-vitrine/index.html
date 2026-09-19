@@ -298,55 +298,6 @@
     display: inline-block;
   }
   @keyframes spin { to { transform: rotate(360deg); } }
-  .user-chip {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: rgba(255,255,255,0.2);
-    backdrop-filter: blur(10px);
-    padding: 0.5rem 0.875rem;
-    border-radius: 999px;
-    color: #1a1a1a;
-    font-weight: 600;
-    font-size: 0.875rem;
-    border: 1px solid rgba(255,255,255,0.3);
-  }
-  .user-chip img {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    object-fit: cover;
-    background: white;
-  }
-  .user-chip .user-avatar-fallback {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: #1a1a1a;
-    color: #facc15;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 900;
-    font-size: 0.75rem;
-  }
-  .logout-btn {
-    background: rgba(255,255,255,0.9);
-    color: #dc2626;
-    padding: 0.5rem 0.875rem;
-    border-radius: 999px;
-    font-weight: 700;
-    font-size: 0.875rem;
-    transition: all 0.2s;
-    display: flex;
-    align-items: center;
-    gap: 0.375rem;
-  }
-  .logout-btn:hover {
-    background: white;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  }
   .loading-screen {
     min-height: 100vh;
     display: flex;
@@ -449,34 +400,15 @@
 <!-- ============ MAIN SITE (hidden until auth) ============ -->
 <div id="main-site" style="display: none;">
 
-<!-- HEADER -->
+<!-- HEADER - APENAS LOGOTIPO E TITULOS -->
 <header class="gradient-header shadow-lg sticky top-0 z-40">
-  <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between flex-wrap gap-3">
+  <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-center">
     <div class="flex items-center gap-4">
       <img id="logo-img" src="" alt="Logo" class="h-20 md:h-24 w-20 md:w-24 rounded-full object-cover drop-shadow-lg ring-4 ring-white/50" onerror="this.src='https://placehold.co/120x120/facc15/1a1a1a?text='">
       <div>
         <h1 id="header-title" class="text-2xl md:text-3xl font-black tracking-tight">Banana Doce</h1>
         <p id="header-subtitle" class="text-sm md:text-base font-semibold">Vitrine de Ofertas</p>
       </div>
-    </div>
-    <div class="flex items-center gap-2 sm:gap-3 flex-wrap">
-      <!-- User info (when logged in) -->
-      <div id="user-info-chip" class="user-chip" style="display: none;">
-        <div id="user-avatar-container"></div>
-        <span id="user-display-name" class="hidden sm:inline max-w-[120px] truncate"></span>
-      </div>
-      <button id="btn-logout" onclick="handleLogout()" class="logout-btn" style="display: none;" title="Sair">
-        <i class="fas fa-sign-out-alt"></i>
-        <span class="hidden sm:inline">Sair</span>
-      </button>
-      <button id="btn-import-excel" onclick="openUploadModal()" class="bg-gray-900 hover:bg-gray-800 text-yellow-400 px-4 py-2.5 rounded-xl font-bold flex items-center gap-2 transition-all shadow-lg hover:shadow-xl" style="display: none;">
-        <i class="fas fa-file-excel"></i>
-        <span class="hidden sm:inline">Importar Excel</span>
-      </button>
-      <button id="btn-new-offer" onclick="openAddModal()" class="bg-white hover:bg-gray-100 text-gray-900 px-4 py-2.5 rounded-xl font-bold flex items-center gap-2 transition-all shadow-lg hover:shadow-xl" style="display: none;">
-        <i class="fas fa-plus"></i>
-        <span class="hidden sm:inline">Nova Oferta</span>
-      </button>
     </div>
   </div>
 </header>
@@ -517,11 +449,23 @@
       <i class="fas fa-cog text-yellow-600 text-xl"></i>
       <h3 class="text-lg font-black text-gray-900">Painel do Administrador</h3>
       <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full font-bold" id="saved-count">0 ofertas salvas</span>
+      <button onclick="handleLogout()" class="ml-auto bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-xl transition-all shadow flex items-center gap-2 text-sm">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Sair</span>
+      </button>
     </div>
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3">
       <button onclick="openCustomizeModal()" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-xl transition-all shadow flex items-center justify-center gap-2">
         <i class="fas fa-palette"></i>
         <span class="text-xs sm:text-sm">Personalizar</span>
+      </button>
+      <button id="btn-import-excel" onclick="openUploadModal()" class="bg-gray-900 hover:bg-gray-800 text-yellow-400 font-bold py-3 px-4 rounded-xl transition-all shadow flex items-center justify-center gap-2">
+        <i class="fas fa-file-excel"></i>
+        <span class="text-xs sm:text-sm">Importar Excel</span>
+      </button>
+      <button id="btn-new-offer" onclick="openAddModal()" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-xl transition-all shadow flex items-center justify-center gap-2">
+        <i class="fas fa-plus"></i>
+        <span class="text-xs sm:text-sm">Nova Oferta</span>
       </button>
       <button onclick="exportJSON()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl transition-all shadow flex items-center justify-center gap-2">
         <i class="fas fa-file-export"></i>
@@ -1019,7 +963,6 @@ const firebaseConfig = {
   appId: "1:823267601256:web:ecb90ae9bc8695e2cc44dd"
 };
 
-// Inicializa Firebase
 let firebaseApp = null;
 let firebaseAuth = null;
 let firebaseAvailable = false;
@@ -1035,12 +978,10 @@ try {
   console.error('❌ Erro ao inicializar Firebase:', err);
 }
 
-// ============ CONFIGURAÇÃO ============
 const OFFERS_STORAGE_KEY = 'banana_doce_offers';
 const SETTINGS_STORAGE_KEY = 'banana_doce_settings';
 const AUTH_STATE_KEY = 'banana_doce_auth_state';
 
-// ============ 10 TEMPLATES DE CORES ============
 const TEMPLATES = [
   { id: 'default', name: 'Amarelo Banana', icon: '🍌', headerGradient: 'linear-gradient(135deg, #fde047 0%, #facc15 50%, #eab308 100%)', bgColor: '#fefce8', headerTextColor: '#111827', headerSubtitleColor: '#1f2937', discountGradient: 'linear-gradient(135deg, #ef4444, #dc2626)', activeCategoryBg: 'linear-gradient(135deg, #facc15, #eab308)', activeCategoryText: '#1a1a1a', borderColor: '#eab308', borderHover: '#ca8a04', uploadHover: '#fef9c3', heroFrom: 'from-yellow-50', heroTo: 'to-yellow-100', searchBorder: 'border-yellow-200', searchFocus: 'focus:border-yellow-500' },
   { id: 'ocean', name: 'Azul Oceano', icon: '🌊', headerGradient: 'linear-gradient(135deg, #38bdf8 0%, #0ea5e9 50%, #0284c7 100%)', bgColor: '#f0f9ff', headerTextColor: '#ffffff', headerSubtitleColor: '#f0f9ff', discountGradient: 'linear-gradient(135deg, #ef4444, #dc2626)', activeCategoryBg: 'linear-gradient(135deg, #0ea5e9, #0284c7)', activeCategoryText: '#ffffff', borderColor: '#0ea5e9', borderHover: '#0284c7', uploadHover: '#e0f2fe', heroFrom: 'from-sky-50', heroTo: 'to-sky-100', searchBorder: 'border-sky-200', searchFocus: 'focus:border-sky-500' },
@@ -1118,13 +1059,10 @@ let currentSearch = '';
 let currentSort = 'date-desc';
 let pendingDeleteId = null;
 let editingOfferId = null;
-
-// ============ AUTH STATE ============
 let currentUser = null;
 let authMode = 'login';
 let isGuest = false;
 
-// ============ PERSISTÊNCIA ============
 function loadOffers() {
   try {
     const saved = localStorage.getItem(OFFERS_STORAGE_KEY);
@@ -1165,7 +1103,6 @@ function updateSavedCount() {
   if (el) el.textContent = `${offers.length} oferta${offers.length !== 1 ? 's' : ''} salva${offers.length !== 1 ? 's' : ''}`;
 }
 
-// ============ AUTHENTICATION ============
 function translateFirebaseError(code) {
   const messages = {
     'auth/email-already-in-use': 'Este e-mail já está cadastrado.',
@@ -1378,58 +1315,11 @@ function showMainSite() {
 function updateUIForAuthState() {
   const isAdmin = currentUser !== null && !isGuest;
   
-  const adminElements = ['admin-panel', 'btn-import-excel', 'btn-new-offer'];
+  const adminElements = ['admin-panel'];
   adminElements.forEach(id => {
     const el = document.getElementById(id);
     if (el) el.style.display = isAdmin ? '' : 'none';
   });
-  
-  const userChip = document.getElementById('user-info-chip');
-  const logoutBtn = document.getElementById('btn-logout');
-  const avatarContainer = document.getElementById('user-avatar-container');
-  const displayNameEl = document.getElementById('user-display-name');
-  
-  if (currentUser) {
-    const name = currentUser.displayName || currentUser.email.split('@')[0];
-    const photo = currentUser.photoURL;
-    
-    if (userChip) userChip.style.display = 'flex';
-    if (logoutBtn) {
-      logoutBtn.style.display = 'flex';
-      logoutBtn.innerHTML = '<i class="fas fa-sign-out-alt"></i><span class="hidden sm:inline">Sair</span>';
-      logoutBtn.onclick = handleLogout;
-    }
-    if (displayNameEl) displayNameEl.textContent = name;
-    
-    if (avatarContainer) {
-      if (photo) {
-        avatarContainer.innerHTML = `<img src="${escapeHtml(photo)}" alt="${escapeHtml(name)}">`;
-      } else {
-        const initial = name.charAt(0).toUpperCase();
-        avatarContainer.innerHTML = `<div class="user-avatar-fallback">${escapeHtml(initial)}</div>`;
-      }
-    }
-  } else if (isGuest) {
-    if (userChip) {
-      userChip.style.display = 'flex';
-      const displayNameEl2 = document.getElementById('user-display-name');
-      const avatarContainer2 = document.getElementById('user-avatar-container');
-      if (displayNameEl2) displayNameEl2.textContent = 'Visitante';
-      if (avatarContainer2) avatarContainer2.innerHTML = '<div class="user-avatar-fallback"><i class="fas fa-eye" style="font-size: 12px;"></i></div>';
-    }
-    if (logoutBtn) {
-      logoutBtn.style.display = 'flex';
-      logoutBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i><span class="hidden sm:inline">Entrar</span>';
-      logoutBtn.onclick = () => {
-        localStorage.removeItem(AUTH_STATE_KEY);
-        isGuest = false;
-        showLoginScreen();
-      };
-    }
-  } else {
-    if (userChip) userChip.style.display = 'none';
-    if (logoutBtn) logoutBtn.style.display = 'none';
-  }
 }
 
 function setupAuthListener() {
@@ -1508,7 +1398,7 @@ async function sendPasswordReset() {
     showToast('E-mail de recuperação enviado!', 'success');
   } catch (error) {
     msgEl.className = 'auth-message error';
-    msgEl.innerHTML = `<i class="fas fa-exclamation-circle"></i><span>${translateFirebaseError(error.code)}</span>`;
+    msgEl.innerHTML = '<i class="fas fa-exclamation-circle"></i><span>' + translateFirebaseError(error.code) + '</span>';
     msgEl.style.display = 'flex';
   } finally {
     submitBtn.disabled = false;
@@ -1516,12 +1406,11 @@ async function sendPasswordReset() {
   }
 }
 
-// ============ RENDERIZAÇÃO ============
 function renderSocialIcon(iconName) {
   if (iconName === 'fa-x-twitter-custom') return '<span class="fa-x-twitter-custom" style="font-size: 1.25em;"></span>';
   if (iconName === 'fa-threads-custom') return '<span class="fa-threads-custom" style="font-size: 1.25em;"></span>';
-  if (iconName.startsWith('fa-')) return `<i class="fab ${iconName} text-white text-xl"></i>`;
-  return `<i class="${iconName} text-white text-xl"></i>`;
+  if (iconName.startsWith('fa-')) return '<i class="fab ' + iconName + ' text-white text-xl"></i>';
+  return '<i class="' + iconName + ' text-white text-xl"></i>';
 }
 
 function applySettings() {
@@ -2307,7 +2196,6 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// ============ DOWNLOAD HTML ============
 function downloadUpdatedHTML() {
   if (offers.length === 0) { showToast('Nenhuma oferta', 'error'); return; }
 
@@ -2538,7 +2426,6 @@ renderOffers();
   } catch (err) { showToast('Erro: ' + err.message, 'error'); }
 }
 
-// ============ INICIALIZAÇÃO ============
 loadSettings();
 loadOffers();
 
@@ -2550,7 +2437,6 @@ populateCategorySelect();
 renderOffers();
 updateSavedCount();
 
-// Setup Firebase auth listener
 if (firebaseAvailable) {
   setupAuthListener();
 } else {
