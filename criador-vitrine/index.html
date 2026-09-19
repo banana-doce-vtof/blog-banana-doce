@@ -400,15 +400,25 @@
 <!-- ============ MAIN SITE (hidden until auth) ============ -->
 <div id="main-site" style="display: none;">
 
-<!-- HEADER - APENAS LOGOTIPO E TITULOS -->
+<!-- HEADER - LOGO/TÍTULOS À ESQUERDA | BOTÕES À DIREITA -->
 <header class="gradient-header shadow-lg sticky top-0 z-40">
-  <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-center">
+  <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between flex-wrap gap-3">
     <div class="flex items-center gap-4">
       <img id="logo-img" src="" alt="Logo" class="h-20 md:h-24 w-20 md:w-24 rounded-full object-cover drop-shadow-lg ring-4 ring-white/50" onerror="this.src='https://placehold.co/120x120/facc15/1a1a1a?text='">
       <div>
         <h1 id="header-title" class="text-2xl md:text-3xl font-black tracking-tight">Banana Doce</h1>
         <p id="header-subtitle" class="text-sm md:text-base font-semibold">Vitrine de Ofertas</p>
       </div>
+    </div>
+    <div class="flex items-center gap-2 sm:gap-3 flex-wrap">
+      <button id="btn-new-offer" onclick="openAddModal()" class="bg-white hover:bg-gray-100 text-gray-900 px-4 py-2.5 rounded-xl font-bold flex items-center gap-2 transition-all shadow-lg hover:shadow-xl" style="display: none;">
+        <i class="fas fa-plus"></i>
+        <span class="hidden sm:inline">Nova Oferta</span>
+      </button>
+      <button id="btn-logout" onclick="handleLogout()" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2.5 rounded-xl font-bold flex items-center gap-2 transition-all shadow-lg hover:shadow-xl" style="display: none;">
+        <i class="fas fa-sign-out-alt"></i>
+        <span class="hidden sm:inline">Sair</span>
+      </button>
     </div>
   </div>
 </header>
@@ -449,12 +459,8 @@
       <i class="fas fa-cog text-yellow-600 text-xl"></i>
       <h3 class="text-lg font-black text-gray-900">Painel do Administrador</h3>
       <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full font-bold" id="saved-count">0 ofertas salvas</span>
-      <button onclick="handleLogout()" class="ml-auto bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-xl transition-all shadow flex items-center gap-2 text-sm">
-        <i class="fas fa-sign-out-alt"></i>
-        <span>Sair</span>
-      </button>
     </div>
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3">
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
       <button onclick="openCustomizeModal()" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-xl transition-all shadow flex items-center justify-center gap-2">
         <i class="fas fa-palette"></i>
         <span class="text-xs sm:text-sm">Personalizar</span>
@@ -462,10 +468,6 @@
       <button id="btn-import-excel" onclick="openUploadModal()" class="bg-gray-900 hover:bg-gray-800 text-yellow-400 font-bold py-3 px-4 rounded-xl transition-all shadow flex items-center justify-center gap-2">
         <i class="fas fa-file-excel"></i>
         <span class="text-xs sm:text-sm">Importar Excel</span>
-      </button>
-      <button id="btn-new-offer" onclick="openAddModal()" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-xl transition-all shadow flex items-center justify-center gap-2">
-        <i class="fas fa-plus"></i>
-        <span class="text-xs sm:text-sm">Nova Oferta</span>
       </button>
       <button onclick="exportJSON()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl transition-all shadow flex items-center justify-center gap-2">
         <i class="fas fa-file-export"></i>
@@ -1315,11 +1317,16 @@ function showMainSite() {
 function updateUIForAuthState() {
   const isAdmin = currentUser !== null && !isGuest;
   
-  const adminElements = ['admin-panel'];
-  adminElements.forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.style.display = isAdmin ? '' : 'none';
-  });
+  // Mostrar/ocultar painel admin
+  const adminPanel = document.getElementById('admin-panel');
+  if (adminPanel) adminPanel.style.display = isAdmin ? '' : 'none';
+  
+  // Mostrar/ocultar botões do cabeçalho (apenas para admin logado)
+  const btnNewOffer = document.getElementById('btn-new-offer');
+  const btnLogout = document.getElementById('btn-logout');
+  
+  if (btnNewOffer) btnNewOffer.style.display = isAdmin ? 'flex' : 'none';
+  if (btnLogout) btnLogout.style.display = isAdmin ? 'flex' : 'none';
 }
 
 function setupAuthListener() {
@@ -2201,7 +2208,7 @@ function downloadUpdatedHTML() {
 
   try {
     const clone = document.documentElement.cloneNode(true);
-    ['btn-import-excel','btn-new-offer','admin-panel','upload-modal','add-modal','customize-modal','confirm-modal','toast','login-screen','loading-screen','forgot-modal'].forEach(id => {
+    ['btn-import-excel','btn-new-offer','btn-logout','admin-panel','upload-modal','add-modal','customize-modal','confirm-modal','toast','login-screen','loading-screen','forgot-modal'].forEach(id => {
       const el = clone.querySelector('#' + id);
       if (el) el.remove();
     });
