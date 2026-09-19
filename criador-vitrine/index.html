@@ -55,7 +55,6 @@
   .delete-btn:hover { transform: scale(1.1); background: #dc2626 !important; }
   .edit-btn { transition: all 0.2s; }
   .edit-btn:hover { transform: scale(1.1); background: #2563eb !important; }
-  
   .template-card {
     cursor: pointer;
     transition: all 0.3s;
@@ -71,7 +70,6 @@
     border-radius: 8px;
     margin-bottom: 8px;
   }
-
   .category-item {
     display: flex;
     align-items: center;
@@ -94,17 +92,14 @@
     border-radius: 6px;
     font-size: 14px;
   }
-
   .social-icon-btn { transition: all 0.3s; }
   .social-icon-btn:hover { transform: translateY(-4px) scale(1.1); }
-
   .line-clamp-2 {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-
   .protected-content {
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -112,7 +107,6 @@
     user-select: none;
     -webkit-touch-callout: none;
   }
-
   .color-input-wrapper {
     display: flex;
     align-items: center;
@@ -138,7 +132,6 @@
     font-size: 13px;
     text-transform: uppercase;
   }
-
   .fa-x-twitter-custom {
     display: inline-block;
     width: 1em;
@@ -147,7 +140,6 @@
     -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z'/%3E%3C/svg%3E") no-repeat center;
     mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z'/%3E%3C/svg%3E") no-repeat center;
   }
-
   .fa-threads-custom {
     display: inline-block;
     width: 1em;
@@ -156,8 +148,6 @@
     -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath d='M331.5 225.5c.6 6 1 12.3 1 18.7 0 98-72.5 144.3-153.8 144.3-83 0-144.3-65.7-144.3-154.8 0-95.4 66.8-157.7 154.8-157.7 48 0 81 12.5 110 37.5L275 131.3c-24.5-21.5-54-31.8-91-31.8-62 0-108.5 45.5-108.5 111.5 0 63.5 43 109.5 105 109.5 53.5 0 92.5-30.5 92.5-81.5 0-4.5-.3-8.8-.8-13H225v-45h152c1.8 9.8 2.8 20.5 2.8 31.5h-48.3z'/%3E%3C/svg%3E") no-repeat center;
     mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath d='M331.5 225.5c.6 6 1 12.3 1 18.7 0 98-72.5 144.3-153.8 144.3-83 0-144.3-65.7-144.3-154.8 0-95.4 66.8-157.7 154.8-157.7 48 0 81 12.5 110 37.5L275 131.3c-24.5-21.5-54-31.8-91-31.8-62 0-108.5 45.5-108.5 111.5 0 63.5 43 109.5 105 109.5 53.5 0 92.5-30.5 92.5-81.5 0-4.5-.3-8.8-.8-13H225v-45h152c1.8 9.8 2.8 20.5 2.8 31.5h-48.3z'/%3E%3C/svg%3E") no-repeat center;
   }
-
-  /* Login Screen */
   .login-screen {
     background: linear-gradient(135deg, #fde047 0%, #facc15 50%, #eab308 100%);
     min-height: 100vh;
@@ -281,7 +271,6 @@
   .user-menu-item.danger { color: #dc2626; }
   .user-menu-item.danger:hover { background: #fee2e2; }
   .user-menu-divider { height: 1px; background: #e5e7eb; margin: 6px 0; }
-
   .user-badge {
     display: inline-flex;
     align-items: center;
@@ -294,46 +283,18 @@
   }
   .user-badge.admin { background: #fef3c7; color: #92400e; }
   .user-badge.viewer { background: #dbeafe; color: #1e40af; }
-
   .shake { animation: shake 0.4s; }
   @keyframes shake {
     0%, 100% { transform: translateX(0); }
     25% { transform: translateX(-8px); }
     75% { transform: translateX(8px); }
   }
-
-  .loading-screen {
-    position: fixed;
-    inset: 0;
-    background: linear-gradient(135deg, #fde047 0%, #facc15 50%, #eab308 100%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    transition: opacity 0.3s;
-  }
-  .loading-spinner {
-    width: 60px;
-    height: 60px;
-    border: 5px solid rgba(255,255,255,0.3);
-    border-top-color: #fff;
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
 </style>
 </head>
 <body class="min-h-screen protected-content">
 
-<!-- LOADING SCREEN -->
-<div id="loading-screen" class="loading-screen">
-  <div class="loading-spinner mb-4"></div>
-  <p class="text-white font-black text-xl">Carregando...</p>
-</div>
-
 <!-- LOGIN SCREEN -->
-<div id="login-screen" class="login-screen" style="display: none;">
+<div id="login-screen" class="login-screen">
   <div class="login-card">
     <div class="login-header">
       <img id="login-logo" src="" alt="Logo" class="login-logo" onerror="this.src='https://placehold.co/120x120/facc15/1a1a1a?text=%F0%9F%8D%8C'">
@@ -346,10 +307,10 @@
       
       <form id="login-form" onsubmit="handleLogin(event)">
         <div class="mb-4">
-          <label class="block text-sm font-bold text-gray-700 mb-2">Usuário</label>
+          <label class="block text-sm font-bold text-gray-700 mb-2">E-mail</label>
           <div class="relative">
-            <i class="fas fa-user login-input-icon"></i>
-            <input type="text" id="login-username" class="login-input" placeholder="Digite seu usuário" autocomplete="username" required>
+            <i class="fas fa-envelope login-input-icon"></i>
+            <input type="email" id="login-email" class="login-input" placeholder="seu@email.com" autocomplete="email" required>
           </div>
         </div>
         
@@ -373,33 +334,20 @@
 
         <div id="login-error" class="hidden bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl mb-4 text-sm flex items-center gap-2">
           <i class="fas fa-exclamation-circle"></i>
-          <span id="login-error-msg">Usuário ou senha inválidos</span>
+          <span id="login-error-msg">E-mail ou senha inválidos</span>
         </div>
 
         <button type="submit" id="login-submit-btn" class="login-btn">
           <i class="fas fa-sign-in-alt mr-2"></i>Entrar
         </button>
       </form>
-
-      <div class="mt-6 pt-6 border-t border-gray-100">
-        <div class="bg-blue-50 border border-blue-200 rounded-xl p-3 text-xs text-blue-800">
-          <p class="font-bold mb-1"><i class="fas fa-info-circle mr-1"></i>Credenciais padrão do administrador:</p>
-          <p class="font-mono">Usuário: <b>admin</b> | Senha: <b>admin123</b></p>
-          <p class="mt-1 text-blue-700">⚠️ Altere a senha após o primeiro acesso!</p>
-        </div>
-        <button type="button" onclick="resetAdminCredentials()" class="w-full mt-3 bg-amber-50 hover:bg-amber-100 border border-amber-300 text-amber-800 font-bold py-2.5 rounded-xl transition-all text-xs flex items-center justify-center gap-2">
-          <i class="fas fa-undo"></i>
-          Esqueci minhas credenciais — Restaurar admin padrão
-        </button>
-      </div>
     </div>
   </div>
 </div>
 
-<!-- MAIN APP (hidden until login) -->
+<!-- MAIN APP -->
 <div id="main-app" class="hidden">
 
-<!-- HEADER -->
 <header class="gradient-header shadow-lg sticky top-0 z-40">
   <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between flex-wrap gap-3">
     <div class="flex items-center gap-4">
@@ -434,7 +382,7 @@
         </button>
         <div id="user-menu-dropdown" class="user-menu-dropdown">
           <div class="px-3 py-2 border-b border-gray-100 mb-1">
-            <div class="text-sm font-bold text-gray-900" id="dropdown-username">admin</div>
+            <div class="text-sm font-bold text-gray-900" id="dropdown-email">email@example.com</div>
             <div class="text-xs text-gray-500" id="dropdown-role">Administrador</div>
           </div>
           <div id="admin-menu-items">
@@ -448,11 +396,6 @@
             </div>
             <div class="user-menu-divider"></div>
           </div>
-          <div class="user-menu-item" onclick="openChangePasswordModal(); closeUserMenu();">
-            <i class="fas fa-key text-amber-600 w-5"></i>
-            <span>Alterar Minha Senha</span>
-          </div>
-          <div class="user-menu-divider"></div>
           <div class="user-menu-item danger" onclick="handleLogout()">
             <i class="fas fa-sign-out-alt w-5"></i>
             <span>Sair</span>
@@ -463,7 +406,6 @@
   </div>
 </header>
 
-<!-- HERO -->
 <section class="bg-gradient-to-b from-yellow-50 to-yellow-100 py-8 md:py-12" id="hero-section">
   <div class="max-w-7xl mx-auto px-4 text-center">
     <h2 id="hero-title" class="text-3xl md:text-5xl font-black mb-3">🏆 As Melhores Ofertas do Dia</h2>
@@ -507,9 +449,6 @@
         <i class="fas fa-file-import"></i><span class="text-xs sm:text-sm">Importar JSON</span>
       </button>
       <input type="file" id="json-input" accept=".json" class="hidden" onchange="importJSON(event)">
-      <button onclick="downloadUpdatedHTML()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-xl transition-all shadow flex items-center justify-center gap-2">
-        <i class="fas fa-file-code"></i><span class="text-xs sm:text-sm">Baixar HTML</span>
-      </button>
       <button onclick="resetOffersToDefault()" class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-4 rounded-xl transition-all shadow flex items-center justify-center gap-2">
         <i class="fas fa-rotate-left"></i><span class="text-xs sm:text-sm">Restaurar</span>
       </button>
@@ -686,7 +625,7 @@
     </div>
     <div class="p-6">
       <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-lg mb-6">
-        <p class="text-sm text-amber-900"><i class="fas fa-shield-alt mr-2"></i><b>Segurança:</b> As senhas são armazenadas com hash SHA-256. Em sites estáticos (GitHub Pages), a segurança é básica — use senhas fortes.</p>
+        <p class="text-sm text-amber-900"><i class="fas fa-shield-alt mr-2"></i><b>Segurança:</b> Usuários gerenciados via Firebase Authentication. Senhas são criptografadas e armazenadas com segurança.</p>
       </div>
 
       <div class="bg-gray-50 p-4 rounded-xl mb-4">
@@ -699,14 +638,14 @@
             <input type="text" id="new-user-name" placeholder="Ex: João Silva" class="w-full px-3 py-2 rounded-lg border border-gray-300 text-sm">
           </div>
           <div>
-            <label class="block text-xs font-bold text-gray-700 mb-1">Usuário (login)</label>
-            <input type="text" id="new-user-username" placeholder="Ex: joao" class="w-full px-3 py-2 rounded-lg border border-gray-300 text-sm font-mono">
+            <label class="block text-xs font-bold text-gray-700 mb-1">E-mail</label>
+            <input type="email" id="new-user-email" placeholder="Ex: joao@email.com" class="w-full px-3 py-2 rounded-lg border border-gray-300 text-sm">
           </div>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
           <div>
             <label class="block text-xs font-bold text-gray-700 mb-1">Senha</label>
-            <input type="password" id="new-user-password" placeholder="Mínimo 4 caracteres" class="w-full px-3 py-2 rounded-lg border border-gray-300 text-sm">
+            <input type="password" id="new-user-password" placeholder="Mínimo 6 caracteres" class="w-full px-3 py-2 rounded-lg border border-gray-300 text-sm">
           </div>
           <div>
             <label class="block text-xs font-bold text-gray-700 mb-1">Tipo de acesso</label>
@@ -726,44 +665,6 @@
         <span id="users-count" class="text-xs bg-gray-200 text-gray-700 px-2 py-0.5 rounded-full">0</span>
       </h4>
       <div id="users-list" class="space-y-2"></div>
-    </div>
-  </div>
-</div>
-
-<!-- CHANGE PASSWORD MODAL -->
-<div id="change-password-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 modal-overlay">
-  <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full">
-    <div class="gradient-header p-6 rounded-t-3xl flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center">
-          <i class="fas fa-key text-amber-600 text-2xl"></i>
-        </div>
-        <div>
-          <h3 class="text-xl font-black text-gray-900">Alterar Senha</h3>
-          <p class="text-sm text-gray-700">Atualize sua senha de acesso</p>
-        </div>
-      </div>
-      <button onclick="closeChangePasswordModal()" class="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-all">
-        <i class="fas fa-times text-gray-700"></i>
-      </button>
-    </div>
-    <div class="p-6 space-y-4">
-      <div>
-        <label class="block text-sm font-bold text-gray-700 mb-1">Senha Atual</label>
-        <input type="password" id="cp-current" class="w-full px-4 py-2.5 rounded-xl border-2 border-gray-200 focus:border-yellow-500 focus:outline-none">
-      </div>
-      <div>
-        <label class="block text-sm font-bold text-gray-700 mb-1">Nova Senha</label>
-        <input type="password" id="cp-new" class="w-full px-4 py-2.5 rounded-xl border-2 border-gray-200 focus:border-yellow-500 focus:outline-none">
-        <p class="text-xs text-gray-500 mt-1">Mínimo 4 caracteres</p>
-      </div>
-      <div>
-        <label class="block text-sm font-bold text-gray-700 mb-1">Confirmar Nova Senha</label>
-        <input type="password" id="cp-confirm" class="w-full px-4 py-2.5 rounded-xl border-2 border-gray-200 focus:border-yellow-500 focus:outline-none">
-      </div>
-      <button onclick="changePassword()" class="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-gray-900 font-black py-3 rounded-xl transition-all shadow-lg">
-        <i class="fas fa-save mr-2"></i>Alterar Senha
-      </button>
     </div>
   </div>
 </div>
@@ -952,518 +853,64 @@
   </div>
 </div>
 
+<!-- Firebase SDKs -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged, createUserWithEmailAndPassword, deleteUser } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getFirestore, collection, doc, setDoc, getDoc, getDocs, deleteDoc, onSnapshot, query, where, updateDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDF9Qk26plFmab3UXUykthfiKLvdpqRGqM",
+  authDomain: "banana-doce-f6b9a.firebaseapp.com",
+  projectId: "banana-doce-f6b9a",
+  storageBucket: "banana-doce-f6b9a.firebasestorage.app",
+  messagingSenderId: "823267601256",
+  appId: "1:823267601256:web:ecb90ae9bc8695e2cc44dd"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+// Exportar para uso global
+window.firebaseAuth = auth;
+window.firebaseDb = db;
+window.firebaseAuthFunctions = {
+  signInWithEmailAndPassword,
+  signOut,
+  createUserWithEmailAndPassword,
+  deleteUser
+};
+window.firebaseFirestoreFunctions = {
+  collection,
+  doc,
+  setDoc,
+  getDoc,
+  getDocs,
+  deleteDoc,
+  onSnapshot,
+  query,
+  where,
+  updateDoc,
+  serverTimestamp
+};
+
+// Disparar evento quando Firebase estiver pronto
+window.dispatchEvent(new Event('firebase-ready'));
+</script>
+
 <script>
-// ============ CONFIGURAÇÃO ============
-const OFFERS_STORAGE_KEY = 'banana_doce_offers';
-const SETTINGS_STORAGE_KEY = 'banana_doce_settings';
-const USERS_STORAGE_KEY = 'banana_doce_users';
-const SESSION_STORAGE_KEY = 'banana_doce_session';
-const ADMIN_USERNAME = 'admin';
-const ADMIN_DEFAULT_PASSWORD = 'admin123';
-
-// ============ AUTENTICAÇÃO ============
+// ============ VARIÁVEIS GLOBAIS ============
 let currentUser = null;
-let users = [];
-let appReady = false;
-
-async function hashPassword(password) {
-  const encoder = new TextEncoder();
-  const data = encoder.encode(password);
-  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-  const hashArray = Array.from(new Uint8Array(hashBuffer));
-  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-}
-
-async function initializeUsers() {
-  const saved = localStorage.getItem(USERS_STORAGE_KEY);
-  
-  if (saved) {
-    try {
-      users = JSON.parse(saved);
-      if (!Array.isArray(users)) users = [];
-    } catch (e) {
-      users = [];
-    }
-  } else {
-    users = [];
-  }
-
-  // GARANTIR que exista pelo menos um admin
-  const adminUser = users.find(u => u.username === ADMIN_USERNAME);
-  
-  if (!adminUser) {
-    // Criar admin padrão
-    const adminHash = await hashPassword(ADMIN_DEFAULT_PASSWORD);
-    users.push({
-      username: ADMIN_USERNAME,
-      displayName: 'Administrador',
-      passwordHash: adminHash,
-      role: 'admin',
-      createdAt: new Date().toISOString()
-    });
-    saveUsers();
-    console.log('✅ Usuário admin padrão criado:', ADMIN_USERNAME);
-  } else {
-    console.log('✅ Usuário admin encontrado:', adminUser.username);
-  }
-  
-  // Garantir que pelo menos um usuário tenha role admin
-  const hasAdmin = users.some(u => u.role === 'admin');
-  if (!hasAdmin && users.length > 0) {
-    users[0].role = 'admin';
-    saveUsers();
-    console.log('✅ Primeiro usuário promovido a admin');
-  }
-  
-  console.log('📋 Total de usuários:', users.length, users.map(u => u.username + '(' + u.role + ')').join(', '));
-}
-
-function saveUsers() {
-  try {
-    localStorage.setItem(USERS_STORAGE_KEY, JSON.stringify(users));
-  } catch (e) {
-    console.error('Erro ao salvar usuários', e);
-  }
-}
-
-function saveSession(username, remember) {
-  const session = { 
-    username, 
-    expiresAt: remember ? Date.now() + (7 * 24 * 60 * 60 * 1000) : Date.now() + (8 * 60 * 60 * 1000) 
-  };
-  localStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(session));
-}
-
-function loadSession() {
-  try {
-    const saved = localStorage.getItem(SESSION_STORAGE_KEY);
-    if (!saved) return null;
-    const session = JSON.parse(saved);
-    if (Date.now() > session.expiresAt) {
-      localStorage.removeItem(SESSION_STORAGE_KEY);
-      return null;
-    }
-    return session;
-  } catch (e) { return null; }
-}
-
-function clearSession() {
-  localStorage.removeItem(SESSION_STORAGE_KEY);
-}
-
-async function handleLogin(event) {
-  event.preventDefault();
-  
-  if (!appReady) {
-    showLoginError('Sistema ainda carregando. Aguarde...');
-    return;
-  }
-  
-  const username = document.getElementById('login-username').value.trim().toLowerCase();
-  const password = document.getElementById('login-password').value;
-  const remember = document.getElementById('login-remember').checked;
-  const submitBtn = document.getElementById('login-submit-btn');
-
-  if (!username || !password) {
-    showLoginError('Preencha usuário e senha');
-    return;
-  }
-
-  submitBtn.disabled = true;
-  submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Entrando...';
-
-  await new Promise(r => setTimeout(r, 300));
-
-  // Debug info
-  console.log('🔐 Tentativa de login:', username);
-  console.log('📋 Usuários disponíveis:', users.map(u => u.username));
-
-  const user = users.find(u => u.username.toLowerCase() === username.toLowerCase());
-  
-  if (!user) {
-    showLoginError('Usuário não encontrado. Verifique se digitou corretamente.');
-    resetLoginBtn();
-    return;
-  }
-
-  const hash = await hashPassword(password);
-  if (hash !== user.passwordHash) {
-    showLoginError('Senha incorreta. Tente novamente.');
-    resetLoginBtn();
-    return;
-  }
-
-  // Login bem-sucedido
-  currentUser = { username: user.username, displayName: user.displayName, role: user.role };
-  saveSession(user.username, remember);
-  document.getElementById('login-error').classList.add('hidden');
-  showMainApp();
-  showToast(`Bem-vindo, ${user.displayName}!`, 'success');
-}
-
-function showLoginError(msg) {
-  const errorBox = document.getElementById('login-error');
-  const errorMsg = document.getElementById('login-error-msg');
-  errorMsg.textContent = msg;
-  errorBox.classList.remove('hidden');
-  const card = document.querySelector('.login-card');
-  if (card) {
-    card.classList.add('shake');
-    setTimeout(() => card.classList.remove('shake'), 400);
-  }
-}
-
-function resetLoginBtn() {
-  const submitBtn = document.getElementById('login-submit-btn');
-  submitBtn.disabled = false;
-  submitBtn.innerHTML = '<i class="fas fa-sign-in-alt mr-2"></i>Entrar';
-}
-
-function toggleLoginPassword() {
-  const input = document.getElementById('login-password');
-  const icon = document.getElementById('login-password-icon');
-  if (input.type === 'password') {
-    input.type = 'text';
-    icon.className = 'fas fa-eye-slash';
-  } else {
-    input.type = 'password';
-    icon.className = 'fas fa-eye';
-  }
-}
-
-function showMainApp() {
-  document.getElementById('login-screen').style.display = 'none';
-  document.getElementById('main-app').classList.remove('hidden');
-  updateUserUI();
-  applyPermissions();
-}
-
-function showLoginScreen() {
-  document.getElementById('login-screen').style.display = 'flex';
-  document.getElementById('main-app').classList.add('hidden');
-  document.getElementById('login-password').value = '';
-  document.getElementById('login-error').classList.add('hidden');
-  resetLoginBtn();
-}
-
-function hideLoadingScreen() {
-  const loading = document.getElementById('loading-screen');
-  if (loading) {
-    loading.style.opacity = '0';
-    setTimeout(() => loading.remove(), 300);
-  }
-}
-
-function updateUserUI() {
-  if (!currentUser) return;
-  const initial = (currentUser.displayName || currentUser.username).charAt(0).toUpperCase();
-  document.getElementById('user-avatar').textContent = initial;
-  document.getElementById('user-display-name').textContent = currentUser.displayName || currentUser.username;
-  document.getElementById('dropdown-username').textContent = currentUser.username;
-  
-  const roleBadge = document.getElementById('user-role-badge');
-  const roleText = document.getElementById('user-role-text');
-  const dropdownRole = document.getElementById('dropdown-role');
-  
-  if (currentUser.role === 'admin') {
-    roleBadge.className = 'user-badge admin';
-    roleText.innerHTML = '<i class="fas fa-shield-alt text-[10px]"></i> Admin';
-    dropdownRole.textContent = 'Administrador';
-  } else {
-    roleBadge.className = 'user-badge viewer';
-    roleText.innerHTML = '<i class="fas fa-eye text-[10px]"></i> Visualizador';
-    dropdownRole.textContent = 'Visualizador';
-  }
-}
-
-function applyPermissions() {
-  const isAdmin = currentUser && currentUser.role === 'admin';
-  const adminButtons = document.getElementById('admin-buttons');
-  if (adminButtons) adminButtons.style.display = isAdmin ? 'flex' : 'none';
-  const adminPanel = document.getElementById('admin-panel');
-  if (adminPanel) adminPanel.style.display = isAdmin ? 'block' : 'none';
-  const adminMenuItems = document.getElementById('admin-menu-items');
-  if (adminMenuItems) adminMenuItems.style.display = isAdmin ? 'block' : 'none';
-  renderOffers();
-}
-
-function toggleUserMenu() {
-  document.getElementById('user-menu-dropdown').classList.toggle('show');
-}
-
-function closeUserMenu() {
-  document.getElementById('user-menu-dropdown').classList.remove('show');
-}
-
-document.addEventListener('click', (e) => {
-  const menu = document.querySelector('.user-menu');
-  if (menu && !menu.contains(e.target)) closeUserMenu();
-});
-
-function handleLogout() {
-  if (!confirm('Deseja realmente sair?')) return;
-  currentUser = null;
-  clearSession();
-  closeUserMenu();
-  showLoginScreen();
-  showToast('Você saiu com sucesso', 'success');
-}
-
-// ============ RESET ADMIN (esqueci minhas credenciais) ============
-async function resetAdminCredentials() {
-  if (!confirm('⚠️ Isso irá restaurar o usuário admin padrão:\n\nUsuário: admin\nSenha: admin123\n\nOs outros usuários NÃO serão afetados.\n\nContinuar?')) return;
-  
-  const adminHash = await hashPassword(ADMIN_DEFAULT_PASSWORD);
-  const existingAdmin = users.find(u => u.username === ADMIN_USERNAME);
-  
-  if (existingAdmin) {
-    existingAdmin.passwordHash = adminHash;
-    existingAdmin.role = 'admin';
-    existingAdmin.displayName = 'Administrador';
-  } else {
-    users.push({
-      username: ADMIN_USERNAME,
-      displayName: 'Administrador',
-      passwordHash: adminHash,
-      role: 'admin',
-      createdAt: new Date().toISOString()
-    });
-  }
-  
-  saveUsers();
-  clearSession();
-  showToast('✅ Credenciais restauradas! Use admin / admin123', 'success');
-  document.getElementById('login-password').value = '';
-  document.getElementById('login-username').value = '';
-  document.getElementById('login-username').focus();
-}
-
-// ============ GERENCIAMENTO DE USUÁRIOS ============
-function openUsersModal() {
-  if (!currentUser || currentUser.role !== 'admin') {
-    showToast('Acesso negado', 'error');
-    return;
-  }
-  renderUsersList();
-  const modal = document.getElementById('users-modal');
-  modal.classList.remove('hidden');
-  modal.classList.add('flex');
-}
-
-function closeUsersModal() {
-  const modal = document.getElementById('users-modal');
-  modal.classList.add('hidden');
-  modal.classList.remove('flex');
-}
-
-async function addUser() {
-  const name = document.getElementById('new-user-name').value.trim();
-  const username = document.getElementById('new-user-username').value.trim().toLowerCase();
-  const password = document.getElementById('new-user-password').value;
-  const role = document.getElementById('new-user-role').value;
-
-  if (!name || !username || !password) {
-    showToast('Preencha todos os campos', 'error');
-    return;
-  }
-  if (username.length < 3) {
-    showToast('Usuário deve ter no mínimo 3 caracteres', 'error');
-    return;
-  }
-  if (password.length < 4) {
-    showToast('Senha deve ter no mínimo 4 caracteres', 'error');
-    return;
-  }
-  if (users.some(u => u.username === username)) {
-    showToast('Este usuário já existe', 'error');
-    return;
-  }
-
-  const passwordHash = await hashPassword(password);
-  users.push({
-    username,
-    displayName: name,
-    passwordHash,
-    role,
-    createdAt: new Date().toISOString()
-  });
-  saveUsers();
-  
-  document.getElementById('new-user-name').value = '';
-  document.getElementById('new-user-username').value = '';
-  document.getElementById('new-user-password').value = '';
-  
-  renderUsersList();
-  showToast('Usuário adicionado com sucesso!', 'success');
-}
-
-function renderUsersList() {
-  const list = document.getElementById('users-list');
-  const count = document.getElementById('users-count');
-  if (!list) return;
-  
-  count.textContent = users.length;
-  
-  list.innerHTML = users.map((u, idx) => {
-    const isCurrentUser = currentUser && u.username === currentUser.username;
-    const isLastAdmin = u.role === 'admin' && users.filter(x => x.role === 'admin').length === 1;
-    const roleBadge = u.role === 'admin' 
-      ? '<span class="user-badge admin"><i class="fas fa-shield-alt text-[10px]"></i> Admin</span>'
-      : '<span class="user-badge viewer"><i class="fas fa-eye text-[10px]"></i> Visualizador</span>';
-    
-    return `
-      <div class="bg-white border ${isCurrentUser ? 'border-yellow-400 ring-2 ring-yellow-200' : 'border-gray-200'} rounded-xl p-4 flex items-center gap-3 flex-wrap">
-        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center text-white font-black text-lg flex-shrink-0">
-          ${u.displayName.charAt(0).toUpperCase()}
-        </div>
-        <div class="flex-1 min-w-[150px]">
-          <div class="flex items-center gap-2 flex-wrap">
-            <span class="font-bold text-gray-900">${escapeHtml(u.displayName)}</span>
-            ${isCurrentUser ? '<span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded-full font-bold">Você</span>' : ''}
-          </div>
-          <div class="text-xs text-gray-500 font-mono">@${escapeHtml(u.username)}</div>
-          <div class="mt-1">${roleBadge}</div>
-        </div>
-        <div class="flex items-center gap-2">
-          ${!isCurrentUser ? `
-            <button onclick="toggleUserRole(${idx})" class="w-9 h-9 bg-blue-100 hover:bg-blue-200 text-blue-700 rounded-lg flex items-center justify-center transition-all" title="${u.role === 'admin' ? 'Rebaixar' : 'Promover'}">
-              <i class="fas ${u.role === 'admin' ? 'fa-arrow-down' : 'fa-arrow-up'} text-sm"></i>
-            </button>
-            <button onclick="resetUserPassword(${idx})" class="w-9 h-9 bg-amber-100 hover:bg-amber-200 text-amber-700 rounded-lg flex items-center justify-center transition-all" title="Resetar senha">
-              <i class="fas fa-key text-sm"></i>
-            </button>
-            ${!isLastAdmin ? `
-              <button onclick="deleteUser(${idx})" class="w-9 h-9 bg-red-100 hover:bg-red-200 text-red-700 rounded-lg flex items-center justify-center transition-all" title="Excluir">
-                <i class="fas fa-trash text-sm"></i>
-              </button>
-            ` : ''}
-          ` : `<span class="text-xs text-gray-400 italic">Sessão ativa</span>`}
-        </div>
-      </div>
-    `;
-  }).join('');
-}
-
-function toggleUserRole(idx) {
-  const user = users[idx];
-  if (!user || user.username === currentUser.username) return;
-  
-  if (user.role === 'admin') {
-    user.role = 'viewer';
-    showToast(`${user.displayName} agora é visualizador`, 'success');
-  } else {
-    user.role = 'admin';
-    showToast(`${user.displayName} agora é administrador`, 'success');
-  }
-  saveUsers();
-  renderUsersList();
-}
-
-async function resetUserPassword(idx) {
-  const user = users[idx];
-  if (!user) return;
-  const newPass = prompt(`Digite a nova senha para ${user.displayName}:`);
-  if (!newPass) return;
-  if (newPass.length < 4) {
-    showToast('Senha deve ter no mínimo 4 caracteres', 'error');
-    return;
-  }
-  user.passwordHash = await hashPassword(newPass);
-  saveUsers();
-  showToast('Senha resetada com sucesso!', 'success');
-}
-
-function deleteUser(idx) {
-  const user = users[idx];
-  if (!user) return;
-  if (user.username === currentUser.username) {
-    showToast('Você não pode excluir sua própria conta', 'error');
-    return;
-  }
-  if (user.role === 'admin' && users.filter(x => x.role === 'admin').length === 1) {
-    showToast('Deve haver pelo menos um administrador', 'error');
-    return;
-  }
-  if (!confirm(`Excluir o usuário "${user.displayName}"?`)) return;
-  users.splice(idx, 1);
-  saveUsers();
-  renderUsersList();
-  showToast('Usuário excluído', 'success');
-}
-
-// ============ ALTERAR PRÓPRIA SENHA ============
-function openChangePasswordModal() {
-  document.getElementById('cp-current').value = '';
-  document.getElementById('cp-new').value = '';
-  document.getElementById('cp-confirm').value = '';
-  const modal = document.getElementById('change-password-modal');
-  modal.classList.remove('hidden');
-  modal.classList.add('flex');
-}
-
-function closeChangePasswordModal() {
-  const modal = document.getElementById('change-password-modal');
-  modal.classList.add('hidden');
-  modal.classList.remove('flex');
-}
-
-async function changePassword() {
-  const current = document.getElementById('cp-current').value;
-  const newPass = document.getElementById('cp-new').value;
-  const confirm = document.getElementById('cp-confirm').value;
-
-  if (!current || !newPass || !confirm) {
-    showToast('Preencha todos os campos', 'error');
-    return;
-  }
-  if (newPass.length < 4) {
-    showToast('Nova senha deve ter no mínimo 4 caracteres', 'error');
-    return;
-  }
-  if (newPass !== confirm) {
-    showToast('As senhas não coincidem', 'error');
-    return;
-  }
-
-  const user = users.find(u => u.username === currentUser.username);
-  if (!user) return;
-
-  const currentHash = await hashPassword(current);
-  if (currentHash !== user.passwordHash) {
-    showToast('Senha atual incorreta', 'error');
-    return;
-  }
-
-  user.passwordHash = await hashPassword(newPass);
-  saveUsers();
-  closeChangePasswordModal();
-  showToast('Senha alterada com sucesso!', 'success');
-}
-
-// ============ TEMPLATES ============
-const TEMPLATES = [
-  { id: 'default', name: 'Amarelo Banana', icon: '🍌', headerGradient: 'linear-gradient(135deg, #fde047 0%, #facc15 50%, #eab308 100%)', bgColor: '#fefce8', headerTextColor: '#111827', headerSubtitleColor: '#1f2937', discountGradient: 'linear-gradient(135deg, #ef4444, #dc2626)', activeCategoryBg: 'linear-gradient(135deg, #facc15, #eab308)', activeCategoryText: '#1a1a1a', borderColor: '#eab308', borderHover: '#ca8a04', uploadHover: '#fef9c3', heroFrom: 'from-yellow-50', heroTo: 'to-yellow-100', searchBorder: 'border-yellow-200', searchFocus: 'focus:border-yellow-500' },
-  { id: 'ocean', name: 'Azul Oceano', icon: '🌊', headerGradient: 'linear-gradient(135deg, #38bdf8 0%, #0ea5e9 50%, #0284c7 100%)', bgColor: '#f0f9ff', headerTextColor: '#ffffff', headerSubtitleColor: '#f0f9ff', discountGradient: 'linear-gradient(135deg, #ef4444, #dc2626)', activeCategoryBg: 'linear-gradient(135deg, #0ea5e9, #0284c7)', activeCategoryText: '#ffffff', borderColor: '#0ea5e9', borderHover: '#0284c7', uploadHover: '#e0f2fe', heroFrom: 'from-sky-50', heroTo: 'to-sky-100', searchBorder: 'border-sky-200', searchFocus: 'focus:border-sky-500' },
-  { id: 'forest', name: 'Verde Floresta', icon: '🌲', headerGradient: 'linear-gradient(135deg, #86efac 0%, #22c55e 50%, #16a34a 100%)', bgColor: '#f0fdf4', headerTextColor: '#111827', headerSubtitleColor: '#1f2937', discountGradient: 'linear-gradient(135deg, #ef4444, #dc2626)', activeCategoryBg: 'linear-gradient(135deg, #22c55e, #16a34a)', activeCategoryText: '#ffffff', borderColor: '#22c55e', borderHover: '#16a34a', uploadHover: '#dcfce7', heroFrom: 'from-green-50', heroTo: 'to-green-100', searchBorder: 'border-green-200', searchFocus: 'focus:border-green-500' },
-  { id: 'pink', name: 'Rosa Pink', icon: '💖', headerGradient: 'linear-gradient(135deg, #f9a8d4 0%, #ec4899 50%, #db2777 100%)', bgColor: '#fdf2f8', headerTextColor: '#ffffff', headerSubtitleColor: '#fdf2f8', discountGradient: 'linear-gradient(135deg, #ef4444, #dc2626)', activeCategoryBg: 'linear-gradient(135deg, #ec4899, #db2777)', activeCategoryText: '#ffffff', borderColor: '#ec4899', borderHover: '#db2777', uploadHover: '#fce7f3', heroFrom: 'from-pink-50', heroTo: 'to-pink-100', searchBorder: 'border-pink-200', searchFocus: 'focus:border-pink-500' },
-  { id: 'royal', name: 'Roxo Royal', icon: '👑', headerGradient: 'linear-gradient(135deg, #c4b5fd 0%, #8b5cf6 50%, #7c3aed 100%)', bgColor: '#faf5ff', headerTextColor: '#ffffff', headerSubtitleColor: '#faf5ff', discountGradient: 'linear-gradient(135deg, #ef4444, #dc2626)', activeCategoryBg: 'linear-gradient(135deg, #8b5cf6, #7c3aed)', activeCategoryText: '#ffffff', borderColor: '#8b5cf6', borderHover: '#7c3aed', uploadHover: '#f3e8ff', heroFrom: 'from-purple-50', heroTo: 'to-purple-100', searchBorder: 'border-purple-200', searchFocus: 'focus:border-purple-500' },
-  { id: 'sunset', name: 'Laranja Sunset', icon: '🌅', headerGradient: 'linear-gradient(135deg, #fdba74 0%, #f97316 50%, #ea580c 100%)', bgColor: '#fff7ed', headerTextColor: '#ffffff', headerSubtitleColor: '#fff7ed', discountGradient: 'linear-gradient(135deg, #ef4444, #dc2626)', activeCategoryBg: 'linear-gradient(135deg, #f97316, #ea580c)', activeCategoryText: '#ffffff', borderColor: '#f97316', borderHover: '#ea580c', uploadHover: '#ffedd5', heroFrom: 'from-orange-50', heroTo: 'to-orange-100', searchBorder: 'border-orange-200', searchFocus: 'focus:border-orange-500' },
-  { id: 'cherry', name: 'Vermelho Cherry', icon: '🍒', headerGradient: 'linear-gradient(135deg, #fca5a5 0%, #ef4444 50%, #dc2626 100%)', bgColor: '#fef2f2', headerTextColor: '#ffffff', headerSubtitleColor: '#fef2f2', discountGradient: 'linear-gradient(135deg, #7c2d12, #991b1b)', activeCategoryBg: 'linear-gradient(135deg, #ef4444, #dc2626)', activeCategoryText: '#ffffff', borderColor: '#ef4444', borderHover: '#dc2626', uploadHover: '#fee2e2', heroFrom: 'from-red-50', heroTo: 'to-red-100', searchBorder: 'border-red-200', searchFocus: 'focus:border-red-500' },
-  { id: 'elegant', name: 'Preto Elegante', icon: '🖤', headerGradient: 'linear-gradient(135deg, #525252 0%, #262626 50%, #171717 100%)', bgColor: '#fafafa', headerTextColor: '#facc15', headerSubtitleColor: '#fde047', discountGradient: 'linear-gradient(135deg, #facc15, #eab308)', activeCategoryBg: 'linear-gradient(135deg, #262626, #171717)', activeCategoryText: '#facc15', borderColor: '#262626', borderHover: '#171717', uploadHover: '#f5f5f5', heroFrom: 'from-gray-50', heroTo: 'to-gray-100', searchBorder: 'border-gray-300', searchFocus: 'focus:border-gray-600' },
-  { id: 'minimal', name: 'Cinza Minimalista', icon: '⚪', headerGradient: 'linear-gradient(135deg, #e5e7eb 0%, #9ca3af 50%, #6b7280 100%)', bgColor: '#ffffff', headerTextColor: '#ffffff', headerSubtitleColor: '#f3f4f6', discountGradient: 'linear-gradient(135deg, #3b82f6, #2563eb)', activeCategoryBg: 'linear-gradient(135deg, #6b7280, #4b5563)', activeCategoryText: '#ffffff', borderColor: '#9ca3af', borderHover: '#6b7280', uploadHover: '#f3f4f6', heroFrom: 'from-gray-50', heroTo: 'to-gray-100', searchBorder: 'border-gray-200', searchFocus: 'focus:border-gray-500' },
-  { id: 'tropical', name: 'Tropical', icon: '🌴', headerGradient: 'linear-gradient(135deg, #06b6d4 0%, #10b981 50%, #84cc16 100%)', bgColor: '#ecfdf5', headerTextColor: '#ffffff', headerSubtitleColor: '#ecfdf5', discountGradient: 'linear-gradient(135deg, #f97316, #ef4444)', activeCategoryBg: 'linear-gradient(135deg, #10b981, #059669)', activeCategoryText: '#ffffff', borderColor: '#10b981', borderHover: '#059669', uploadHover: '#d1fae5', heroFrom: 'from-emerald-50', heroTo: 'to-teal-100', searchBorder: 'border-emerald-200', searchFocus: 'focus:border-emerald-500' }
-];
-
-const defaultSocials = [
-  { name: 'Instagram', icon: 'fa-instagram', color: '#E1306C', url: '' },
-  { name: 'Facebook', icon: 'fa-facebook-f', color: '#1877F2', url: '' },
-  { name: 'X (Twitter)', icon: 'fa-x-twitter-custom', color: '#000000', url: '' },
-  { name: 'Threads', icon: 'fa-threads-custom', color: '#000000', url: '' },
-  { name: 'Telegram', icon: 'fa-telegram-plane', color: '#0088cc', url: '' },
-  { name: 'TikTok', icon: 'fa-tiktok', color: '#000000', url: '' },
-  { name: 'YouTube', icon: 'fa-youtube', color: '#FF0000', url: '' },
-  { name: 'WhatsApp', icon: 'fa-whatsapp', color: '#25D366', url: '' }
-];
+let currentUserRole = null;
+let offers = [];
+let settings = {};
+let currentCategory = 'all';
+let currentSearch = '';
+let currentSort = 'date-desc';
+let pendingDeleteId = null;
+let editingOfferId = null;
+let firebaseReady = false;
 
 const defaultCategories = [
   { name: 'Todos', icon: 'fa-th-large', isAll: true },
@@ -1473,17 +920,6 @@ const defaultCategories = [
   { name: 'Moda', icon: 'fa-tshirt' },
   { name: 'Casa', icon: 'fa-home' },
   { name: 'Games', icon: 'fa-gamepad' }
-];
-
-const defaultOffers = [
-  { id: 1, titulo: "iPhone 15 Pro Max 256GB", preco: 7499.00, preco_original: 9999.00, categoria: "Celulares", imagem: "", link: "#", loja: "Amazon", descricao: "O mais avançado iPhone com chip A17 Pro", dateAdded: new Date().toISOString() },
-  { id: 2, titulo: "Samsung Galaxy S24 Ultra", preco: 5999.00, preco_original: 8499.00, categoria: "Celulares", imagem: "", link: "#", loja: "Magazine Luiza", descricao: "Galaxy AI e câmera de 200MP", dateAdded: new Date().toISOString() },
-  { id: 3, titulo: "Notebook Gamer ASUS ROG", preco: 6499.00, preco_original: 8999.00, categoria: "Eletrônicos", imagem: "", link: "#", loja: "Kabum", descricao: "RTX 4060, i7 13ª geração, 16GB RAM", dateAdded: new Date().toISOString() },
-  { id: 4, titulo: "Fone Bluetooth Sony WH-1000XM5", preco: 1899.00, preco_original: 2799.00, categoria: "Eletrônicos", imagem: "", link: "#", loja: "Amazon", descricao: "Cancelamento de ruído premium", dateAdded: new Date().toISOString() },
-  { id: 5, titulo: "Kit Maquiagem MAC Profissional", preco: 299.00, preco_original: 599.00, categoria: "Beleza", imagem: "", link: "#", loja: "Sephora", descricao: "Paleta completa com 24 cores", dateAdded: new Date().toISOString() },
-  { id: 6, titulo: "Tênis Nike Air Max 270", preco: 449.00, preco_original: 799.00, categoria: "Moda", imagem: "", link: "#", loja: "Netshoes", descricao: "Conforto e estilo para o dia a dia", dateAdded: new Date().toISOString() },
-  { id: 7, titulo: "Smart TV LG 55\" 4K OLED", preco: 3299.00, preco_original: 4999.00, categoria: "Eletrônicos", imagem: "", link: "#", loja: "Casas Bahia", descricao: "Cores vibrantes e contraste perfeito", dateAdded: new Date().toISOString() },
-  { id: 8, titulo: "Console PS5 Slim Digital", preco: 2799.00, preco_original: 3499.00, categoria: "Games", imagem: "", link: "#", loja: "Amazon", descricao: "Nova geração de games", dateAdded: new Date().toISOString() }
 ];
 
 const defaultSettings = {
@@ -1508,45 +944,207 @@ const defaultSettings = {
   footerCopyrightColor: '#ca8a04',
   footerBg: '#111827',
   categories: JSON.parse(JSON.stringify(defaultCategories)),
-  socials: JSON.parse(JSON.stringify(defaultSocials))
+  socials: []
 };
 
-let offers = [];
-let settings = JSON.parse(JSON.stringify(defaultSettings));
-let currentCategory = 'all';
-let currentSearch = '';
-let currentSort = 'date-desc';
-let pendingDeleteId = null;
-let editingOfferId = null;
+// ============ TEMPLATES ============
+const TEMPLATES = [
+  { id: 'default', name: 'Amarelo Banana', icon: '🍌', headerGradient: 'linear-gradient(135deg, #fde047 0%, #facc15 50%, #eab308 100%)', bgColor: '#fefce8', headerTextColor: '#111827', headerSubtitleColor: '#1f2937', discountGradient: 'linear-gradient(135deg, #ef4444, #dc2626)', activeCategoryBg: 'linear-gradient(135deg, #facc15, #eab308)', activeCategoryText: '#1a1a1a', borderColor: '#eab308', borderHover: '#ca8a04', uploadHover: '#fef9c3', heroFrom: 'from-yellow-50', heroTo: 'to-yellow-100', searchBorder: 'border-yellow-200', searchFocus: 'focus:border-yellow-500' },
+  { id: 'ocean', name: 'Azul Oceano', icon: '🌊', headerGradient: 'linear-gradient(135deg, #38bdf8 0%, #0ea5e9 50%, #0284c7 100%)', bgColor: '#f0f9ff', headerTextColor: '#ffffff', headerSubtitleColor: '#f0f9ff', discountGradient: 'linear-gradient(135deg, #ef4444, #dc2626)', activeCategoryBg: 'linear-gradient(135deg, #0ea5e9, #0284c7)', activeCategoryText: '#ffffff', borderColor: '#0ea5e9', borderHover: '#0284c7', uploadHover: '#e0f2fe', heroFrom: 'from-sky-50', heroTo: 'to-sky-100', searchBorder: 'border-sky-200', searchFocus: 'focus:border-sky-500' },
+  { id: 'forest', name: 'Verde Floresta', icon: '🌲', headerGradient: 'linear-gradient(135deg, #86efac 0%, #22c55e 50%, #16a34a 100%)', bgColor: '#f0fdf4', headerTextColor: '#111827', headerSubtitleColor: '#1f2937', discountGradient: 'linear-gradient(135deg, #ef4444, #dc2626)', activeCategoryBg: 'linear-gradient(135deg, #22c55e, #16a34a)', activeCategoryText: '#ffffff', borderColor: '#22c55e', borderHover: '#16a34a', uploadHover: '#dcfce7', heroFrom: 'from-green-50', heroTo: 'to-green-100', searchBorder: 'border-green-200', searchFocus: 'focus:border-green-500' }
+];
 
-function loadOffers() {
-  try {
-    const saved = localStorage.getItem(OFFERS_STORAGE_KEY);
-    offers = saved ? JSON.parse(saved) : JSON.parse(JSON.stringify(defaultOffers));
-  } catch (e) { offers = JSON.parse(JSON.stringify(defaultOffers)); }
-}
-
-function saveOffers() {
-  try {
-    localStorage.setItem(OFFERS_STORAGE_KEY, JSON.stringify(offers));
-    updateSavedCount();
-  } catch (e) { showToast('Erro ao salvar', 'error'); }
-}
-
-function loadSettings() {
-  try {
-    const saved = localStorage.getItem(SETTINGS_STORAGE_KEY);
-    if (saved) {
-      const parsed = JSON.parse(saved);
-      settings = { ...JSON.parse(JSON.stringify(defaultSettings)), ...parsed };
-      if (!settings.socials) settings.socials = JSON.parse(JSON.stringify(defaultSocials));
-      if (!settings.categories) settings.categories = JSON.parse(JSON.stringify(defaultCategories));
+// ============ FUNÇÕES DE ESPERA DO FIREBASE ============
+function waitForFirebase() {
+  return new Promise((resolve) => {
+    if (firebaseReady) {
+      resolve();
+      return;
     }
-  } catch (e) { settings = JSON.parse(JSON.stringify(defaultSettings)); }
+    window.addEventListener('firebase-ready', () => {
+      firebaseReady = true;
+      resolve();
+    });
+  });
 }
 
-function saveSettingsToStorage() {
-  try { localStorage.setItem(SETTINGS_STORAGE_KEY, JSON.stringify(settings)); } catch (e) {}
+// ============ AUTENTICAÇÃO ============
+async function handleLogin(event) {
+  event.preventDefault();
+  
+  const email = document.getElementById('login-email').value.trim();
+  const password = document.getElementById('login-password').value;
+  const submitBtn = document.getElementById('login-submit-btn');
+
+  if (!email || !password) {
+    showLoginError('Preencha e-mail e senha');
+    return;
+  }
+
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Entrando...';
+
+  try {
+    const userCredential = await window.firebaseAuthFunctions.signInWithEmailAndPassword(window.firebaseAuth, email, password);
+    const user = userCredential.user;
+    
+    // Buscar role do usuário no Firestore
+    const userDoc = await window.firebaseFirestoreFunctions.getDoc(
+      window.firebaseFirestoreFunctions.doc(window.firebaseDb, 'users', user.uid)
+    );
+    
+    if (userDoc.exists()) {
+      currentUser = user;
+      currentUserRole = userDoc.data().role || 'viewer';
+    } else {
+      // Se não existir documento, criar como viewer
+      await window.firebaseFirestoreFunctions.setDoc(
+        window.firebaseFirestoreFunctions.doc(window.firebaseDb, 'users', user.uid),
+        { email: user.email, role: 'viewer', createdAt: window.firebaseFirestoreFunctions.serverTimestamp() }
+      );
+      currentUser = user;
+      currentUserRole = 'viewer';
+    }
+    
+    document.getElementById('login-error').classList.add('hidden');
+    showMainApp();
+    showToast(`Bem-vindo, ${user.email}!`, 'success');
+    
+  } catch (error) {
+    console.error('Erro no login:', error);
+    let errorMsg = 'E-mail ou senha inválidos';
+    if (error.code === 'auth/user-not-found') errorMsg = 'Usuário não encontrado';
+    if (error.code === 'auth/wrong-password') errorMsg = 'Senha incorreta';
+    if (error.code === 'auth/invalid-email') errorMsg = 'E-mail inválido';
+    showLoginError(errorMsg);
+  }
+  
+  submitBtn.disabled = false;
+  submitBtn.innerHTML = '<i class="fas fa-sign-in-alt mr-2"></i>Entrar';
+}
+
+function showLoginError(msg) {
+  const errorBox = document.getElementById('login-error');
+  const errorMsg = document.getElementById('login-error-msg');
+  errorMsg.textContent = msg;
+  errorBox.classList.remove('hidden');
+  const card = document.querySelector('.login-card');
+  if (card) {
+    card.classList.add('shake');
+    setTimeout(() => card.classList.remove('shake'), 400);
+  }
+}
+
+function toggleLoginPassword() {
+  const input = document.getElementById('login-password');
+  const icon = document.getElementById('login-password-icon');
+  if (input.type === 'password') {
+    input.type = 'text';
+    icon.className = 'fas fa-eye-slash';
+  } else {
+    input.type = 'password';
+    icon.className = 'fas fa-eye';
+  }
+}
+
+function showMainApp() {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('main-app').classList.remove('hidden');
+  updateUserUI();
+  applyPermissions();
+  startRealtimeListeners();
+}
+
+function showLoginScreen() {
+  document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('main-app').classList.add('hidden');
+  document.getElementById('login-password').value = '';
+  document.getElementById('login-error').classList.add('hidden');
+}
+
+function updateUserUI() {
+  if (!currentUser) return;
+  const initial = (currentUser.email || 'U').charAt(0).toUpperCase();
+  document.getElementById('user-avatar').textContent = initial;
+  document.getElementById('user-display-name').textContent = currentUser.email;
+  document.getElementById('dropdown-email').textContent = currentUser.email;
+  
+  const roleBadge = document.getElementById('user-role-badge');
+  const roleText = document.getElementById('user-role-text');
+  const dropdownRole = document.getElementById('dropdown-role');
+  
+  if (currentUserRole === 'admin') {
+    roleBadge.className = 'user-badge admin';
+    roleText.innerHTML = '<i class="fas fa-shield-alt text-[10px]"></i> Admin';
+    dropdownRole.textContent = 'Administrador';
+  } else {
+    roleBadge.className = 'user-badge viewer';
+    roleText.innerHTML = '<i class="fas fa-eye text-[10px]"></i> Visualizador';
+    dropdownRole.textContent = 'Visualizador';
+  }
+}
+
+function applyPermissions() {
+  const isAdmin = currentUserRole === 'admin';
+  const adminButtons = document.getElementById('admin-buttons');
+  if (adminButtons) adminButtons.style.display = isAdmin ? 'flex' : 'none';
+  const adminPanel = document.getElementById('admin-panel');
+  if (adminPanel) adminPanel.style.display = isAdmin ? 'block' : 'none';
+  const adminMenuItems = document.getElementById('admin-menu-items');
+  if (adminMenuItems) adminMenuItems.style.display = isAdmin ? 'block' : 'none';
+  renderOffers();
+}
+
+function toggleUserMenu() {
+  document.getElementById('user-menu-dropdown').classList.toggle('show');
+}
+
+function closeUserMenu() {
+  document.getElementById('user-menu-dropdown').classList.remove('show');
+}
+
+document.addEventListener('click', (e) => {
+  const menu = document.querySelector('.user-menu');
+  if (menu && !menu.contains(e.target)) closeUserMenu();
+});
+
+async function handleLogout() {
+  if (!confirm('Deseja realmente sair?')) return;
+  try {
+    await window.firebaseAuthFunctions.signOut(window.firebaseAuth);
+    currentUser = null;
+    currentUserRole = null;
+    closeUserMenu();
+    showLoginScreen();
+    showToast('Você saiu com sucesso', 'success');
+  } catch (error) {
+    console.error('Erro ao sair:', error);
+    showToast('Erro ao sair', 'error');
+  }
+}
+
+// ============ LISTENERS EM TEMPO REAL ============
+function startRealtimeListeners() {
+  // Listener de ofertas
+  const offersRef = window.firebaseFirestoreFunctions.collection(window.firebaseDb, 'offers');
+  window.firebaseFirestoreFunctions.onSnapshot(offersRef, (snapshot) => {
+    offers = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    renderOffers();
+    updateSavedCount();
+  });
+
+  // Listener de configurações
+  const settingsRef = window.firebaseFirestoreFunctions.doc(window.firebaseDb, 'settings', 'global');
+  window.firebaseFirestoreFunctions.onSnapshot(settingsRef, (doc) => {
+    if (doc.exists()) {
+      settings = { ...defaultSettings, ...doc.data() };
+    } else {
+      settings = JSON.parse(JSON.stringify(defaultSettings));
+    }
+    applySettings();
+    renderCategoryButtons();
+    populateCategorySelect();
+  });
 }
 
 function updateSavedCount() {
@@ -1554,294 +1152,308 @@ function updateSavedCount() {
   if (el) el.textContent = `${offers.length} oferta${offers.length !== 1 ? 's' : ''} salva${offers.length !== 1 ? 's' : ''}`;
 }
 
-function renderSocialIcon(iconName) {
-  if (iconName === 'fa-x-twitter-custom') return '<span class="fa-x-twitter-custom" style="font-size: 1.25em;"></span>';
-  if (iconName === 'fa-threads-custom') return '<span class="fa-threads-custom" style="font-size: 1.25em;"></span>';
-  if (iconName.startsWith('fa-')) return `<i class="fab ${iconName} text-white text-xl"></i>`;
-  return `<i class="${iconName} text-white text-xl"></i>`;
-}
-
-function applySettings() {
-  const t = TEMPLATES.find(x => x.id === settings.template) || TEMPLATES[0];
-  const root = document.documentElement;
-  root.style.setProperty('--header-gradient', t.headerGradient);
-  root.style.setProperty('--bg-color', t.bgColor);
-  root.style.setProperty('--discount-gradient', t.discountGradient);
-  root.style.setProperty('--active-category-bg', t.activeCategoryBg);
-  root.style.setProperty('--active-category-text', t.activeCategoryText);
-  root.style.setProperty('--border-color', t.borderColor);
-  root.style.setProperty('--border-hover', t.borderHover);
-  root.style.setProperty('--upload-hover', t.uploadHover);
-  
-  const titleEl = document.getElementById('header-title');
-  const subtitleEl = document.getElementById('header-subtitle');
-  if (titleEl) { titleEl.style.color = settings.headerTitleColor || t.headerTextColor; titleEl.textContent = settings.headerTitle; }
-  if (subtitleEl) { subtitleEl.style.color = settings.headerSubtitleColor || t.headerSubtitleColor; subtitleEl.textContent = settings.headerSubtitle; }
-  
-  const logoEl = document.getElementById('logo-img');
-  const footerLogoEl = document.getElementById('footer-logo');
-  const loginLogo = document.getElementById('login-logo');
-  if (logoEl) logoEl.src = settings.logoUrl || '';
-  if (footerLogoEl) footerLogoEl.src = settings.logoUrl || '';
-  if (loginLogo) loginLogo.src = settings.logoUrl || '';
-  
-  const loginTitle = document.getElementById('login-title');
-  const loginSubtitle = document.getElementById('login-subtitle');
-  if (loginTitle) loginTitle.textContent = settings.headerTitle;
-  if (loginSubtitle) loginSubtitle.textContent = settings.headerSubtitle;
-  
-  updateFavicon(settings.logoUrl);
-  updateOgImage(settings.ogImageUrl || settings.logoUrl);
-  
-  document.title = settings.pageTitle || `${settings.headerTitle} | ${settings.headerSubtitle}`;
-  
-  const heroTitleEl = document.getElementById('hero-title');
-  const heroSubtitleEl = document.getElementById('hero-subtitle');
-  const heroDisclosureEl = document.getElementById('hero-disclosure-text');
-  const heroDisclosure = document.getElementById('hero-disclosure');
-  if (heroTitleEl) { heroTitleEl.textContent = settings.heroTitle; heroTitleEl.style.color = settings.heroTitleColor || '#111827'; }
-  if (heroSubtitleEl) { heroSubtitleEl.textContent = settings.heroSubtitle; heroSubtitleEl.style.color = settings.heroSubtitleColor || '#374151'; }
-  if (heroDisclosureEl) heroDisclosureEl.textContent = settings.heroDisclosure || '';
-  if (heroDisclosure) {
-    if (settings.heroDisclosure && settings.heroDisclosure.trim()) {
-      heroDisclosure.style.display = 'inline-flex';
-      heroDisclosure.style.backgroundColor = settings.heroDisclosureBg || '#fef08a';
-      heroDisclosure.style.color = settings.heroDisclosureTextColor || '#713f12';
-    } else heroDisclosure.style.display = 'none';
-  }
-  
-  const footerTextEl = document.getElementById('footer-text');
-  const footerCopyrightEl = document.getElementById('footer-copyright');
-  const siteFooter = document.getElementById('site-footer');
-  if (footerTextEl) { footerTextEl.textContent = settings.footerText; footerTextEl.style.color = settings.footerTextColor || '#facc15'; }
-  if (footerCopyrightEl) { footerCopyrightEl.textContent = settings.footerCopyright; footerCopyrightEl.style.color = settings.footerCopyrightColor || '#ca8a04'; }
-  if (siteFooter) siteFooter.style.backgroundColor = settings.footerBg || '#111827';
-  
-  const hero = document.getElementById('hero-section');
-  if (hero) hero.className = `bg-gradient-to-b ${t.heroFrom} ${t.heroTo} py-8 md:py-12`;
-  
-  renderSocialIcons();
-}
-
-function updateFavicon(url) {
-  if (!url) return;
-  const faviconLink = document.getElementById('favicon-link');
-  const faviconLinkSvg = document.getElementById('favicon-link-svg');
-  if (url.endsWith('.svg')) {
-    if (faviconLinkSvg) faviconLinkSvg.href = url;
-    if (faviconLink) faviconLink.href = '';
-  } else {
-    if (faviconLink) faviconLink.href = url;
-    if (faviconLinkSvg) faviconLinkSvg.href = '';
-  }
-}
-
-function updateOgImage(url) {
-  const ogMeta = document.querySelector('meta[property="og:image"]');
-  if (ogMeta && url) ogMeta.setAttribute('content', url);
-}
-
-function renderSocialIcons() {
-  const container = document.getElementById('social-icons');
-  if (!container) return;
-  const activeSocials = (settings.socials || []).filter(s => s.url && s.url.trim() !== '');
-  if (activeSocials.length === 0) {
-    container.innerHTML = '<p class="text-xs text-yellow-600">Redes sociais em breve</p>';
-    return;
-  }
-  container.innerHTML = activeSocials.map(s => `
-    <a href="${escapeHtml(s.url)}" target="_blank" rel="noopener noreferrer" 
-       class="social-icon-btn w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl"
-       style="background-color: ${escapeHtml(s.color)}; color: white;" 
-       title="${escapeHtml(s.name)}" aria-label="${escapeHtml(s.name)}">
-      ${renderSocialIcon(s.icon)}
-    </a>
-  `).join('');
-}
-
-function escapeHtml(text) {
-  if (!text) return '';
-  const div = document.createElement('div');
-  div.textContent = String(text);
-  return div.innerHTML;
-}
-
-function isValidUrl(url) {
-  try { new URL(url); return true; } catch { return false; }
-}
-
-function isValidHexColor(color) {
-  return /^#[0-9A-Fa-f]{6}$/.test(color);
-}
-
-function renderTemplates() {
-  const grid = document.getElementById('templates-grid');
-  if (!grid) return;
-  grid.innerHTML = TEMPLATES.map(t => `
-    <div class="template-card bg-white p-3 rounded-xl shadow ${settings.template === t.id ? 'selected' : ''}" onclick="selectTemplate('${t.id}')">
-      <div class="template-preview" style="background: ${t.headerGradient}"></div>
-      <div class="flex items-center gap-2">
-        <span class="text-xl">${t.icon}</span>
-        <span class="text-xs font-bold text-gray-800">${t.name}</span>
-      </div>
-    </div>
-  `).join('');
-}
-
-function selectTemplate(id) {
-  settings.template = id;
-  renderTemplates();
-  applySettings();
-}
-
-function renderSocialList() {
-  const list = document.getElementById('social-list');
-  if (!list) return;
-  const icons = [
-    { value: 'fa-x-twitter-custom', label: '✖ X (Twitter)' },
-    { value: 'fa-threads-custom', label: '@ Threads' },
-    { value: 'fa-instagram', label: 'Instagram' },
-    { value: 'fa-facebook-f', label: 'Facebook' },
-    { value: 'fa-telegram-plane', label: 'Telegram' },
-    { value: 'fa-tiktok', label: 'TikTok' },
-    { value: 'fa-youtube', label: 'YouTube' },
-    { value: 'fa-whatsapp', label: 'WhatsApp' }
-  ];
-  list.innerHTML = (settings.socials || []).map((s, idx) => `
-    <div class="bg-white p-3 rounded-lg border border-gray-200 flex items-center gap-2 flex-wrap">
-      <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background-color: ${s.color}; color: white;">
-        ${renderSocialIcon(s.icon)}
-      </div>
-      <div class="flex-1 min-w-[150px]">
-        <input type="text" value="${escapeHtml(s.name)}" onchange="updateSocial(${idx}, 'name', this.value)" class="w-full px-2 py-1 text-sm border border-gray-200 rounded mb-1">
-        <input type="url" value="${escapeHtml(s.url)}" onchange="updateSocial(${idx}, 'url', this.value)" class="w-full px-2 py-1 text-sm border border-gray-200 rounded" placeholder="URL">
-      </div>
-      <select onchange="updateSocial(${idx}, 'icon', this.value)" class="px-2 py-1 text-sm border border-gray-200 rounded">
-        ${icons.map(ic => `<option value="${ic.value}" ${s.icon === ic.value ? 'selected' : ''}>${ic.label}</option>`).join('')}
-      </select>
-      <input type="color" value="${s.color}" onchange="updateSocial(${idx}, 'color', this.value)" class="w-10 h-10 rounded cursor-pointer border border-gray-200">
-      <button onclick="removeSocial(${idx})" class="text-red-500 hover:text-red-700 px-2"><i class="fas fa-times"></i></button>
-    </div>
-  `).join('') + `
-    <button onclick="addSocial()" class="w-full bg-purple-100 hover:bg-purple-200 text-purple-700 font-bold py-2 rounded-lg transition-all flex items-center justify-center gap-2 mt-2">
-      <i class="fas fa-plus"></i> Adicionar Rede Social
-    </button>
-  `;
-}
-
-function updateSocial(idx, field, value) {
-  if (!settings.socials[idx]) return;
-  settings.socials[idx][field] = value;
-  if (field === 'url' || field === 'icon' || field === 'color') applySettings();
-}
-
-function addSocial() {
-  settings.socials.push({ name: 'Nova Rede', icon: 'fa-share-alt', color: '#6b7280', url: '' });
-  renderSocialList();
-}
-
-function removeSocial(idx) {
-  settings.socials.splice(idx, 1);
-  renderSocialList();
-  applySettings();
-}
-
-function renderCategoriesList() {
-  const list = document.getElementById('categories-list');
-  if (!list) return;
-  list.innerHTML = settings.categories.map((cat, idx) => `
-    <div class="category-item">
-      <i class="fas ${cat.icon} text-gray-500"></i>
-      <input type="text" value="${escapeHtml(cat.name)}" onchange="updateCategory(${idx}, 'name', this.value)" placeholder="Nome">
-      <select onchange="updateCategory(${idx}, 'icon', this.value)">
-        ${['fa-th-large','fa-mobile-alt','fa-laptop','fa-spa','fa-tshirt','fa-home','fa-gamepad','fa-book','fa-car','fa-utensils','fa-dumbbell','fa-baby','fa-paw','fa-music','fa-camera','fa-tools','fa-heart','fa-star','fa-gem','fa-gift'].map(ic => 
-          `<option value="${ic}" ${cat.icon === ic ? 'selected' : ''}>${ic.replace('fa-','')}</option>`
-        ).join('')}
-      </select>
-      ${!cat.isAll ? `<button onclick="removeCategory(${idx})" class="text-red-500 hover:text-red-700 px-2"><i class="fas fa-times"></i></button>` : '<span class="text-xs text-gray-400 px-2">Fixa</span>'}
-    </div>
-  `).join('');
-}
-
-function updateCategory(idx, field, value) {
-  settings.categories[idx][field] = value;
-  renderCategoryButtons();
-  renderOffers();
-  populateCategorySelect();
-}
-
-function addCategory() {
-  settings.categories.push({ name: 'Nova Categoria', icon: 'fa-tag' });
-  renderCategoriesList();
-  renderCategoryButtons();
-  populateCategorySelect();
-}
-
-function removeCategory(idx) {
-  const cat = settings.categories[idx];
-  settings.categories.splice(idx, 1);
-  if (currentCategory === cat.name) currentCategory = 'all';
-  renderCategoriesList();
-  renderCategoryButtons();
-  renderOffers();
-  populateCategorySelect();
-}
-
-function renderCategoryButtons() {
-  const container = document.getElementById('category-container');
-  if (!container) return;
-  container.innerHTML = settings.categories.map(cat => {
-    const isActive = (cat.isAll && currentCategory === 'all') || (!cat.isAll && currentCategory === cat.name);
-    return `<button class="category-btn px-5 py-2.5 rounded-full font-bold whitespace-nowrap transition-all bg-white text-gray-700 shadow ${isActive ? 'active' : ''}" data-category="${cat.isAll ? 'all' : cat.name}"><i class="fas ${cat.icon} mr-2"></i>${escapeHtml(cat.name)}</button>`;
-  }).join('');
-  container.querySelectorAll('.category-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      currentCategory = btn.dataset.category;
-      renderCategoryButtons();
-      renderOffers();
-    });
-  });
-}
-
-function populateCategorySelect() {
-  const select = document.getElementById('f-categoria');
-  if (!select) return;
-  const nonAll = settings.categories.filter(c => !c.isAll);
-  select.innerHTML = nonAll.map(c => `<option>${escapeHtml(c.name)}</option>`).join('');
-}
-
-function openCustomizeModal() {
-  if (!currentUser || currentUser.role !== 'admin') {
+// ============ FUNÇÕES DE OFERTAS ============
+async function saveOffer() {
+  if (currentUserRole !== 'admin') {
     showToast('Acesso negado', 'error');
     return;
   }
-  document.getElementById('cfg-logo').value = settings.logoUrl;
-  document.getElementById('cfg-og-image').value = settings.ogImageUrl || '';
-  document.getElementById('cfg-page-title').value = settings.pageTitle;
-  document.getElementById('cfg-header-title').value = settings.headerTitle;
-  document.getElementById('cfg-header-subtitle').value = settings.headerSubtitle;
-  document.getElementById('cfg-hero-title').value = settings.heroTitle;
-  document.getElementById('cfg-hero-subtitle').value = settings.heroSubtitle;
-  document.getElementById('cfg-hero-disclosure').value = settings.heroDisclosure || '';
-  document.getElementById('cfg-footer-text').value = settings.footerText;
-  document.getElementById('cfg-footer-copyright').value = settings.footerCopyright;
   
-  renderTemplates();
-  renderSocialList();
-  renderCategoriesList();
+  const titulo = document.getElementById('f-titulo').value.trim();
+  const preco = parseFloat(document.getElementById('f-preco').value);
+  const preco_original = parseFloat(document.getElementById('f-preco-original').value);
+  const categoria = document.getElementById('f-categoria').value;
+  const imagem = document.getElementById('f-imagem').value.trim();
+  const link = document.getElementById('f-link').value.trim();
+  const loja = document.getElementById('f-loja').value.trim();
+  const descricao = document.getElementById('f-descricao').value.trim();
   
-  const modal = document.getElementById('customize-modal');
+  if (!titulo || isNaN(preco) || !link) { showToast('Preencha os campos obrigatórios!', 'error'); return; }
+  
+  const offerData = { 
+    titulo, 
+    preco, 
+    preco_original: isNaN(preco_original) ? null : preco_original, 
+    categoria, 
+    imagem, 
+    link, 
+    loja, 
+    descricao,
+    dateAdded: new Date().toISOString()
+  };
+  
+  try {
+    if (editingOfferId !== null) {
+      await window.firebaseFirestoreFunctions.updateDoc(
+        window.firebaseFirestoreFunctions.doc(window.firebaseDb, 'offers', editingOfferId),
+        offerData
+      );
+      showToast('Oferta atualizada!', 'success');
+      editingOfferId = null;
+    } else {
+      const newDocRef = window.firebaseFirestoreFunctions.doc(window.firebaseFirestoreFunctions.collection(window.firebaseDb, 'offers'));
+      await window.firebaseFirestoreFunctions.setDoc(newDocRef, offerData);
+      showToast('Oferta adicionada!', 'success');
+    }
+    
+    ['f-titulo','f-preco','f-preco-original','f-imagem','f-link','f-loja','f-descricao','f-edit-id'].forEach(id => document.getElementById(id).value = '');
+    closeAddModal();
+    
+  } catch (error) {
+    console.error('Erro ao salvar oferta:', error);
+    showToast('Erro ao salvar: ' + error.message, 'error');
+  }
+}
+
+async function deleteOffer(id) {
+  try {
+    await window.firebaseFirestoreFunctions.deleteDoc(
+      window.firebaseFirestoreFunctions.doc(window.firebaseDb, 'offers', id)
+    );
+    showToast('Oferta apagada!', 'success');
+  } catch (error) {
+    console.error('Erro ao apagar oferta:', error);
+    showToast('Erro ao apagar: ' + error.message, 'error');
+  }
+}
+
+async function resetOffersToDefault() {
+  if (currentUserRole !== 'admin') {
+    showToast('Acesso negado', 'error');
+    return;
+  }
+  if (!confirm('⚠️ Restaurar ofertas para o padrão?')) return;
+  
+  const defaultOffers = [
+    { titulo: "iPhone 15 Pro Max 256GB", preco: 7499.00, preco_original: 9999.00, categoria: "Celulares", imagem: "", link: "#", loja: "Amazon", descricao: "O mais avançado iPhone com chip A17 Pro", dateAdded: new Date().toISOString() },
+    { titulo: "Samsung Galaxy S24 Ultra", preco: 5999.00, preco_original: 8499.00, categoria: "Celulares", imagem: "", link: "#", loja: "Magazine Luiza", descricao: "Galaxy AI e câmera de 200MP", dateAdded: new Date().toISOString() }
+  ];
+  
+  try {
+    // Apagar todas as ofertas existentes
+    const snapshot = await window.firebaseFirestoreFunctions.getDocs(
+      window.firebaseFirestoreFunctions.collection(window.firebaseDb, 'offers')
+    );
+    const deletePromises = snapshot.docs.map(doc => window.firebaseFirestoreFunctions.deleteDoc(doc.ref));
+    await Promise.all(deletePromises);
+    
+    // Criar ofertas padrão
+    const createPromises = defaultOffers.map(offer => {
+      const newDocRef = window.firebaseFirestoreFunctions.doc(window.firebaseFirestoreFunctions.collection(window.firebaseDb, 'offers'));
+      return window.firebaseFirestoreFunctions.setDoc(newDocRef, offer);
+    });
+    await Promise.all(createPromises);
+    
+    showToast('Ofertas restauradas!', 'success');
+  } catch (error) {
+    console.error('Erro ao restaurar ofertas:', error);
+    showToast('Erro: ' + error.message, 'error');
+  }
+}
+
+async function clearAllOffers() {
+  if (currentUserRole !== 'admin') {
+    showToast('Acesso negado', 'error');
+    return;
+  }
+  if (!confirm('⚠️ Apagar TODAS as ofertas?')) return;
+  
+  try {
+    const snapshot = await window.firebaseFirestoreFunctions.getDocs(
+      window.firebaseFirestoreFunctions.collection(window.firebaseDb, 'offers')
+    );
+    const deletePromises = snapshot.docs.map(doc => window.firebaseFirestoreFunctions.deleteDoc(doc.ref));
+    await Promise.all(deletePromises);
+    showToast('Todas as ofertas removidas', 'success');
+  } catch (error) {
+    console.error('Erro ao limpar ofertas:', error);
+    showToast('Erro: ' + error.message, 'error');
+  }
+}
+
+// ============ GERENCIAMENTO DE USUÁRIOS ============
+function openUsersModal() {
+  if (currentUserRole !== 'admin') {
+    showToast('Acesso negado', 'error');
+    return;
+  }
+  renderUsersList();
+  const modal = document.getElementById('users-modal');
   modal.classList.remove('hidden');
   modal.classList.add('flex');
 }
 
-function closeCustomizeModal() {
-  const modal = document.getElementById('customize-modal');
+function closeUsersModal() {
+  const modal = document.getElementById('users-modal');
   modal.classList.add('hidden');
   modal.classList.remove('flex');
 }
 
-function saveSettings() {
+async function addUser() {
+  if (currentUserRole !== 'admin') {
+    showToast('Acesso negado', 'error');
+    return;
+  }
+  
+  const name = document.getElementById('new-user-name').value.trim();
+  const email = document.getElementById('new-user-email').value.trim();
+  const password = document.getElementById('new-user-password').value;
+  const role = document.getElementById('new-user-role').value;
+
+  if (!name || !email || !password) {
+    showToast('Preencha todos os campos', 'error');
+    return;
+  }
+  if (password.length < 6) {
+    showToast('Senha deve ter no mínimo 6 caracteres', 'error');
+    return;
+  }
+
+  try {
+    const userCredential = await window.firebaseAuthFunctions.createUserWithEmailAndPassword(window.firebaseAuth, email, password);
+    const user = userCredential.user;
+    
+    await window.firebaseFirestoreFunctions.setDoc(
+      window.firebaseFirestoreFunctions.doc(window.firebaseDb, 'users', user.uid),
+      { 
+        email: email, 
+        displayName: name,
+        role: role,
+        createdAt: window.firebaseFirestoreFunctions.serverTimestamp()
+      }
+    );
+    
+    document.getElementById('new-user-name').value = '';
+    document.getElementById('new-user-email').value = '';
+    document.getElementById('new-user-password').value = '';
+    
+    renderUsersList();
+    showToast('Usuário adicionado com sucesso!', 'success');
+    
+  } catch (error) {
+    console.error('Erro ao criar usuário:', error);
+    let errorMsg = 'Erro ao criar usuário';
+    if (error.code === 'auth/email-already-in-use') errorMsg = 'Este e-mail já está em uso';
+    if (error.code === 'auth/invalid-email') errorMsg = 'E-mail inválido';
+    if (error.code === 'auth/weak-password') errorMsg = 'Senha muito fraca';
+    showToast(errorMsg, 'error');
+  }
+}
+
+async function renderUsersList() {
+  const list = document.getElementById('users-list');
+  const count = document.getElementById('users-count');
+  if (!list) return;
+  
+  try {
+    const snapshot = await window.firebaseFirestoreFunctions.getDocs(
+      window.firebaseFirestoreFunctions.collection(window.firebaseDb, 'users')
+    );
+    
+    const users = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    count.textContent = users.length;
+    
+    list.innerHTML = users.map((u, idx) => {
+      const isCurrentUser = currentUser && u.id === currentUser.uid;
+      const isLastAdmin = u.role === 'admin' && users.filter(x => x.role === 'admin').length === 1;
+      const roleBadge = u.role === 'admin' 
+        ? '<span class="user-badge admin"><i class="fas fa-shield-alt text-[10px]"></i> Admin</span>'
+        : '<span class="user-badge viewer"><i class="fas fa-eye text-[10px]"></i> Visualizador</span>';
+      
+      const displayName = u.displayName || u.email || 'Usuário';
+      
+      return `
+        <div class="bg-white border ${isCurrentUser ? 'border-yellow-400 ring-2 ring-yellow-200' : 'border-gray-200'} rounded-xl p-4 flex items-center gap-3 flex-wrap">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center text-white font-black text-lg flex-shrink-0">
+            ${displayName.charAt(0).toUpperCase()}
+          </div>
+          <div class="flex-1 min-w-[150px]">
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="font-bold text-gray-900">${escapeHtml(displayName)}</span>
+              ${isCurrentUser ? '<span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded-full font-bold">Você</span>' : ''}
+            </div>
+            <div class="text-xs text-gray-500">${escapeHtml(u.email || '')}</div>
+            <div class="mt-1">${roleBadge}</div>
+          </div>
+          <div class="flex items-center gap-2">
+            ${!isCurrentUser ? `
+              <button onclick="toggleUserRole('${u.id}', '${u.role}')" class="w-9 h-9 bg-blue-100 hover:bg-blue-200 text-blue-700 rounded-lg flex items-center justify-center transition-all" title="${u.role === 'admin' ? 'Rebaixar' : 'Promover'}">
+                <i class="fas ${u.role === 'admin' ? 'fa-arrow-down' : 'fa-arrow-up'} text-sm"></i>
+              </button>
+              <button onclick="resetUserPassword('${u.id}')" class="w-9 h-9 bg-amber-100 hover:bg-amber-200 text-amber-700 rounded-lg flex items-center justify-center transition-all" title="Resetar senha">
+                <i class="fas fa-key text-sm"></i>
+              </button>
+              ${!isLastAdmin ? `
+                <button onclick="deleteUser('${u.id}')" class="w-9 h-9 bg-red-100 hover:bg-red-200 text-red-700 rounded-lg flex items-center justify-center transition-all" title="Excluir">
+                  <i class="fas fa-trash text-sm"></i>
+                </button>
+              ` : ''}
+            ` : `<span class="text-xs text-gray-400 italic">Sessão ativa</span>`}
+          </div>
+        </div>
+      `;
+    }).join('');
+    
+  } catch (error) {
+    console.error('Erro ao carregar usuários:', error);
+    list.innerHTML = '<p class="text-red-500">Erro ao carregar usuários</p>';
+  }
+}
+
+async function toggleUserRole(userId, currentRole) {
+  try {
+    const newRole = currentRole === 'admin' ? 'viewer' : 'admin';
+    await window.firebaseFirestoreFunctions.updateDoc(
+      window.firebaseFirestoreFunctions.doc(window.firebaseDb, 'users', userId),
+      { role: newRole }
+    );
+    renderUsersList();
+    showToast('Permissão atualizada!', 'success');
+  } catch (error) {
+    console.error('Erro ao alterar permissão:', error);
+    showToast('Erro: ' + error.message, 'error');
+  }
+}
+
+async function resetUserPassword(userId) {
+  const newPass = prompt('Digite a nova senha (mínimo 6 caracteres):');
+  if (!newPass || newPass.length < 6) {
+    showToast('Senha deve ter no mínimo 6 caracteres', 'error');
+    return;
+  }
+  
+  try {
+    // Nota: Reset de senha de outros usuários requer autenticação no Firebase Admin SDK
+    // Por enquanto, apenas mostrar mensagem
+    showToast('Reset de senha requer configuração adicional no Firebase Console', 'error');
+  } catch (error) {
+    console.error('Erro ao resetar senha:', error);
+    showToast('Erro: ' + error.message, 'error');
+  }
+}
+
+async function deleteUser(userId) {
+  if (!confirm('Excluir este usuário?')) return;
+  
+  try {
+    await window.firebaseFirestoreFunctions.deleteDoc(
+      window.firebaseFirestoreFunctions.doc(window.firebaseDb, 'users', userId)
+    );
+    renderUsersList();
+    showToast('Usuário excluído', 'success');
+  } catch (error) {
+    console.error('Erro ao excluir usuário:', error);
+    showToast('Erro: ' + error.message, 'error');
+  }
+}
+
+// ============ CONFIGURAÇÕES ============
+async function saveSettings() {
+  if (currentUserRole !== 'admin') {
+    showToast('Acesso negado', 'error');
+    return;
+  }
+  
   settings.logoUrl = document.getElementById('cfg-logo').value.trim();
   settings.ogImageUrl = document.getElementById('cfg-og-image').value.trim();
   settings.pageTitle = document.getElementById('cfg-page-title').value.trim() || 'Banana Doce | Vitrine de Ofertas';
@@ -1853,178 +1465,42 @@ function saveSettings() {
   settings.footerText = document.getElementById('cfg-footer-text').value.trim() || 'Banana Doce Vitrine de Ofertas';
   settings.footerCopyright = document.getElementById('cfg-footer-copyright').value.trim() || '© 2026 Banana Doce. Todos os direitos reservados.';
   
-  saveSettingsToStorage();
-  applySettings();
-  renderCategoryButtons();
-  populateCategorySelect();
-  closeCustomizeModal();
-  showToast('Personalização salva!', 'success');
+  try {
+    await window.firebaseFirestoreFunctions.setDoc(
+      window.firebaseFirestoreFunctions.doc(window.firebaseDb, 'settings', 'global'),
+      settings
+    );
+    closeCustomizeModal();
+    showToast('Personalização salva!', 'success');
+  } catch (error) {
+    console.error('Erro ao salvar configurações:', error);
+    showToast('Erro: ' + error.message, 'error');
+  }
 }
 
-function resetSettings() {
+async function resetSettings() {
   if (!confirm('Restaurar todas as configurações para o padrão?')) return;
-  settings = JSON.parse(JSON.stringify(defaultSettings));
-  saveSettingsToStorage();
-  applySettings();
-  openCustomizeModal();
-  showToast('Configurações restauradas!', 'success');
-}
-
-function confirmDeleteOffer(id) {
-  if (!currentUser || currentUser.role !== 'admin') {
-    showToast('Acesso negado', 'error');
-    return;
+  
+  try {
+    await window.firebaseFirestoreFunctions.setDoc(
+      window.firebaseFirestoreFunctions.doc(window.firebaseDb, 'settings', 'global'),
+      defaultSettings
+    );
+    showToast('Configurações restauradas!', 'success');
+  } catch (error) {
+    console.error('Erro ao restaurar configurações:', error);
+    showToast('Erro: ' + error.message, 'error');
   }
-  const offer = offers.find(o => o.id === id);
-  if (!offer) return;
-  pendingDeleteId = id;
-  document.getElementById('confirm-title').textContent = 'Apagar esta oferta?';
-  document.getElementById('confirm-message').textContent = 'Esta ação não pode ser desfeita.';
-  document.getElementById('confirm-offer-name').textContent = offer.titulo;
-  const modal = document.getElementById('confirm-modal');
-  modal.classList.remove('hidden');
-  modal.classList.add('flex');
 }
 
-function closeConfirmModal() {
-  pendingDeleteId = null;
-  const modal = document.getElementById('confirm-modal');
-  modal.classList.add('hidden');
-  modal.classList.remove('flex');
-}
-
-document.getElementById('confirm-delete-btn').addEventListener('click', () => {
-  if (pendingDeleteId !== null) { 
-    deleteOffer(pendingDeleteId); 
-    closeConfirmModal(); 
-  }
-});
-
-function deleteOffer(id) {
-  const offer = offers.find(o => o.id === id);
-  offers = offers.filter(o => o.id !== id);
-  saveOffers();
-  renderOffers();
-  showToast(`"${offer ? offer.titulo : 'Oferta'}" apagada!`, 'success');
-}
-
-function resetOffersToDefault() {
-  if (!currentUser || currentUser.role !== 'admin') {
-    showToast('Acesso negado', 'error');
-    return;
-  }
-  if (!confirm('⚠️ Restaurar ofertas para o padrão?')) return;
-  offers = JSON.parse(JSON.stringify(defaultOffers));
-  saveOffers();
-  renderOffers();
-  showToast('Ofertas restauradas!', 'success');
-}
-
-function exportJSON() {
-  if (!currentUser || currentUser.role !== 'admin') {
-    showToast('Acesso negado', 'error');
-    return;
-  }
-  const data = JSON.stringify({ offers, settings, exportDate: new Date().toISOString() }, null, 2);
-  const blob = new Blob([data], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = `backup_banana_doce_${new Date().toISOString().slice(0,10)}.json`;
-  document.body.appendChild(a); a.click(); document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-  showToast('Backup exportado!', 'success');
-}
-
-function importJSON(event) {
-  if (!currentUser || currentUser.role !== 'admin') {
-    showToast('Acesso negado', 'error');
-    return;
-  }
-  const file = event.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = (e) => {
-    try {
-      const data = JSON.parse(e.target.result);
-      if (data.offers && Array.isArray(data.offers)) { offers = data.offers; saveOffers(); }
-      if (data.settings) {
-        settings = { ...JSON.parse(JSON.stringify(defaultSettings)), ...data.settings };
-        saveSettingsToStorage();
-        applySettings();
-        renderCategoryButtons();
-        populateCategorySelect();
-      }
-      renderOffers();
-      showToast('Backup importado!', 'success');
-    } catch (err) { showToast('Erro: ' + err.message, 'error'); }
-  };
-  reader.readAsText(file);
-  event.target.value = '';
-}
-
-function clearAllOffers() {
-  if (!currentUser || currentUser.role !== 'admin') {
-    showToast('Acesso negado', 'error');
-    return;
-  }
-  if (!confirm('⚠️ Apagar TODAS as ofertas?')) return;
-  offers = [];
-  saveOffers();
-  renderOffers();
-  showToast('Todas as ofertas removidas', 'success');
-}
-
-function downloadUpdatedHTML() {
-  showToast('Use o arquivo original com sistema de login', 'success');
-}
-
-const categoryColors = { 'Celulares': 'from-blue-400 to-blue-600', 'Eletrônicos': 'from-purple-400 to-purple-600', 'Beleza': 'from-pink-400 to-pink-600', 'Moda': 'from-orange-400 to-orange-600', 'Casa': 'from-green-400 to-green-600', 'Games': 'from-red-400 to-red-600' };
-
-function calculateDiscount(preco, preco_original) {
-  if (!preco_original || preco_original <= preco) return 0;
-  return Math.round(((preco_original - preco) / preco_original) * 100);
-}
-
-function formatCurrency(value) {
-  return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
-}
-
-function getFallbackImage(titulo, categoria) {
-  const colors = { 'Celulares': '3b82f6', 'Eletrônicos': '8b5cf6', 'Beleza': 'ec4899', 'Moda': 'f97316', 'Casa': '22c55e', 'Games': 'ef4444' };
-  const color = colors[categoria] || 'eab308';
-  return `https://placehold.co/400x400/${color}/ffffff?text=${encodeURIComponent(String(titulo).substring(0, 20))}`;
-}
-
-function sortOffers() {
-  currentSort = document.getElementById('sort-select').value;
-  renderOffers();
-}
-
-function getSortedOffers(list) {
-  const sorted = [...list];
-  switch(currentSort) {
-    case 'date-desc': sorted.sort((a, b) => new Date(b.dateAdded || 0) - new Date(a.dateAdded || 0)); break;
-    case 'date-asc': sorted.sort((a, b) => new Date(a.dateAdded || 0) - new Date(b.dateAdded || 0)); break;
-    case 'price-asc': sorted.sort((a, b) => a.preco - b.preco); break;
-    case 'price-desc': sorted.sort((a, b) => b.preco - a.preco); break;
-    case 'discount-desc': sorted.sort((a, b) => calculateDiscount(b.preco, b.preco_original) - calculateDiscount(a.preco, a.preco_original)); break;
-    case 'discount-asc': sorted.sort((a, b) => calculateDiscount(a.preco, a.preco_original) - calculateDiscount(b.preco, b.preco_original)); break;
-    case 'name-asc': sorted.sort((a, b) => a.titulo.localeCompare(b.titulo)); break;
-    case 'name-desc': sorted.sort((a, b) => b.titulo.localeCompare(a.titulo)); break;
-    case 'category': sorted.sort((a, b) => a.categoria.localeCompare(b.categoria)); break;
-    case 'store': sorted.sort((a, b) => (a.loja || '').localeCompare(b.loja || '')); break;
-  }
-  return sorted;
-}
-
+// ============ FUNÇÕES AUXILIARES ============
 function renderOffers() {
   const grid = document.getElementById('offers-grid');
   const emptyState = document.getElementById('empty-state');
   const countEl = document.getElementById('offer-count');
   if (!grid) return;
 
-  const isAdmin = currentUser && currentUser.role === 'admin';
+  const isAdmin = currentUserRole === 'admin';
 
   let filtered = offers.filter(o => {
     const matchCategory = currentCategory === 'all' || o.categoria === currentCategory;
@@ -2042,15 +1518,15 @@ function renderOffers() {
   grid.innerHTML = filtered.map((offer, idx) => {
     const discount = calculateDiscount(offer.preco, offer.preco_original);
     const imgSrc = offer.imagem || getFallbackImage(offer.titulo, offer.categoria);
-    const cat = settings.categories.find(c => c.name === offer.categoria);
+    const cat = settings.categories?.find(c => c.name === offer.categoria);
     const icon = cat ? cat.icon : 'fa-tag';
     const colorClass = categoryColors[offer.categoria] || 'from-yellow-400 to-yellow-600';
 
     const adminButtons = isAdmin ? `
-      <button onclick="editOffer(${offer.id})" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar">
+      <button onclick="editOffer('${offer.id}')" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar">
         <i class="fas fa-edit text-sm"></i>
       </button>
-      <button onclick="confirmDeleteOffer(${offer.id})" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar">
+      <button onclick="confirmDeleteOffer('${offer.id}')" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar">
         <i class="fas fa-trash-alt text-sm"></i>
       </button>
     ` : '';
@@ -2091,7 +1567,7 @@ function renderOffers() {
 }
 
 function editOffer(id) {
-  if (!currentUser || currentUser.role !== 'admin') {
+  if (currentUserRole !== 'admin') {
     showToast('Acesso negado', 'error');
     return;
   }
@@ -2119,13 +1595,70 @@ function editOffer(id) {
   modal.classList.add('flex');
 }
 
-document.getElementById('search-input').addEventListener('input', (e) => {
-  currentSearch = e.target.value;
-  renderOffers();
+function confirmDeleteOffer(id) {
+  if (currentUserRole !== 'admin') {
+    showToast('Acesso negado', 'error');
+    return;
+  }
+  const offer = offers.find(o => o.id === id);
+  if (!offer) return;
+  pendingDeleteId = id;
+  document.getElementById('confirm-title').textContent = 'Apagar esta oferta?';
+  document.getElementById('confirm-message').textContent = 'Esta ação não pode ser desfeita.';
+  document.getElementById('confirm-offer-name').textContent = offer.titulo;
+  const modal = document.getElementById('confirm-modal');
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+}
+
+function closeConfirmModal() {
+  pendingDeleteId = null;
+  const modal = document.getElementById('confirm-modal');
+  modal.classList.add('hidden');
+  modal.classList.remove('flex');
+}
+
+document.getElementById('confirm-delete-btn').addEventListener('click', () => {
+  if (pendingDeleteId !== null) { 
+    deleteOffer(pendingDeleteId); 
+    closeConfirmModal(); 
+  }
 });
 
+// ============ FUNÇÕES DE UI ============
+function openCustomizeModal() {
+  if (currentUserRole !== 'admin') {
+    showToast('Acesso negado', 'error');
+    return;
+  }
+  document.getElementById('cfg-logo').value = settings.logoUrl || '';
+  document.getElementById('cfg-og-image').value = settings.ogImageUrl || '';
+  document.getElementById('cfg-page-title').value = settings.pageTitle || '';
+  document.getElementById('cfg-header-title').value = settings.headerTitle || '';
+  document.getElementById('cfg-header-subtitle').value = settings.headerSubtitle || '';
+  document.getElementById('cfg-hero-title').value = settings.heroTitle || '';
+  document.getElementById('cfg-hero-subtitle').value = settings.heroSubtitle || '';
+  document.getElementById('cfg-hero-disclosure').value = settings.heroDisclosure || '';
+  document.getElementById('cfg-footer-text').value = settings.footerText || '';
+  document.getElementById('cfg-footer-copyright').value = settings.footerCopyright || '';
+  
+  renderTemplates();
+  renderSocialList();
+  renderCategoriesList();
+  
+  const modal = document.getElementById('customize-modal');
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+}
+
+function closeCustomizeModal() {
+  const modal = document.getElementById('customize-modal');
+  modal.classList.add('hidden');
+  modal.classList.remove('flex');
+}
+
 function openUploadModal() {
-  if (!currentUser || currentUser.role !== 'admin') {
+  if (currentUserRole !== 'admin') {
     showToast('Acesso negado', 'error');
     return;
   }
@@ -2141,7 +1674,7 @@ function closeUploadModal() {
 }
 
 function openAddModal() {
-  if (!currentUser || currentUser.role !== 'admin') {
+  if (currentUserRole !== 'admin') {
     showToast('Acesso negado', 'error');
     return;
   }
@@ -2169,6 +1702,145 @@ function closeAddModal() {
   const modal = document.getElementById('add-modal');
   modal.classList.add('hidden');
   modal.classList.remove('flex');
+}
+
+// ============ FUNÇÕES HELPER ============
+const categoryColors = { 'Celulares': 'from-blue-400 to-blue-600', 'Eletrônicos': 'from-purple-400 to-purple-600', 'Beleza': 'from-pink-400 to-pink-600', 'Moda': 'from-orange-400 to-orange-600', 'Casa': 'from-green-400 to-green-600', 'Games': 'from-red-400 to-red-600' };
+
+function calculateDiscount(preco, preco_original) {
+  if (!preco_original || preco_original <= preco) return 0;
+  return Math.round(((preco_original - preco) / preco_original) * 100);
+}
+
+function formatCurrency(value) {
+  return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
+}
+
+function getFallbackImage(titulo, categoria) {
+  const colors = { 'Celulares': '3b82f6', 'Eletrônicos': '8b5cf6', 'Beleza': 'ec4899', 'Moda': 'f97316', 'Casa': '22c55e', 'Games': 'ef4444' };
+  const color = colors[categoria] || 'eab308';
+  return `https://placehold.co/400x400/${color}/ffffff?text=${encodeURIComponent(String(titulo).substring(0, 20))}`;
+}
+
+function sortOffers() {
+  currentSort = document.getElementById('sort-select').value;
+  renderOffers();
+}
+
+function getSortedOffers(list) {
+  const sorted = [...list];
+  switch(currentSort) {
+    case 'date-desc': sorted.sort((a, b) => new Date(b.dateAdded || 0) - new Date(a.dateAdded || 0)); break;
+    case 'date-asc': sorted.sort((a, b) => new Date(a.dateAdded || 0) - new Date(b.dateAdded || 0)); break;
+    case 'price-asc': sorted.sort((a, b) => a.preco - b.preco); break;
+    case 'price-desc': sorted.sort((a, b) => b.preco - a.preco); break;
+    case 'discount-desc': sorted.sort((a, b) => calculateDiscount(b.preco, b.preco_original) - calculateDiscount(a.preco, a.preco_original)); break;
+    case 'discount-asc': sorted.sort((a, b) => calculateDiscount(a.preco, a.preco_original) - calculateDiscount(b.preco, b.preco_original)); break;
+    case 'name-asc': sorted.sort((a, b) => a.titulo.localeCompare(b.titulo)); break;
+    case 'name-desc': sorted.sort((a, b) => b.titulo.localeCompare(a.titulo)); break;
+    case 'category': sorted.sort((a, b) => a.categoria.localeCompare(b.categoria)); break;
+    case 'store': sorted.sort((a, b) => (a.loja || '').localeCompare(b.loja || '')); break;
+  }
+  return sorted;
+}
+
+document.getElementById('search-input').addEventListener('input', (e) => {
+  currentSearch = e.target.value;
+  renderOffers();
+});
+
+function escapeHtml(text) {
+  if (!text) return '';
+  const div = document.createElement('div');
+  div.textContent = String(text);
+  return div.innerHTML;
+}
+
+function showToast(msg, type = 'success') {
+  const toast = document.getElementById('toast');
+  const icon = document.getElementById('toast-icon');
+  const msgEl = document.getElementById('toast-msg');
+  msgEl.textContent = msg;
+  icon.className = type === 'success' ? 'fas fa-check-circle text-green-400' : 'fas fa-exclamation-circle text-red-400';
+  toast.classList.remove('hidden');
+  setTimeout(() => toast.classList.add('hidden'), 3000);
+}
+
+function exportJSON() {
+  if (currentUserRole !== 'admin') {
+    showToast('Acesso negado', 'error');
+    return;
+  }
+  const data = JSON.stringify({ offers, settings, exportDate: new Date().toISOString() }, null, 2);
+  const blob = new Blob([data], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `backup_banana_doce_${new Date().toISOString().slice(0,10)}.json`;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  showToast('Backup exportado!', 'success');
+}
+
+async function importJSON(event) {
+  if (currentUserRole !== 'admin') {
+    showToast('Acesso negado', 'error');
+    return;
+  }
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = async (e) => {
+    try {
+      const data = JSON.parse(e.target.result);
+      
+      if (data.offers && Array.isArray(data.offers)) {
+        // Apagar ofertas existentes
+        const snapshot = await window.firebaseFirestoreFunctions.getDocs(
+          window.firebaseFirestoreFunctions.collection(window.firebaseDb, 'offers')
+        );
+        const deletePromises = snapshot.docs.map(doc => window.firebaseFirestoreFunctions.deleteDoc(doc.ref));
+        await Promise.all(deletePromises);
+        
+        // Criar novas ofertas
+        const createPromises = data.offers.map(offer => {
+          const newDocRef = window.firebaseFirestoreFunctions.doc(window.firebaseFirestoreFunctions.collection(window.firebaseDb, 'offers'));
+          return window.firebaseFirestoreFunctions.setDoc(newDocRef, offer);
+        });
+        await Promise.all(createPromises);
+      }
+      
+      if (data.settings) {
+        await window.firebaseFirestoreFunctions.setDoc(
+          window.firebaseFirestoreFunctions.doc(window.firebaseDb, 'settings', 'global'),
+          { ...defaultSettings, ...data.settings }
+        );
+      }
+      
+      showToast('Backup importado!', 'success');
+    } catch (err) { 
+      showToast('Erro: ' + err.message, 'error'); 
+    }
+  };
+  reader.readAsText(file);
+  event.target.value = '';
+}
+
+// Funções placeholder
+function renderTemplates() {}
+function renderSocialList() {}
+function renderCategoriesList() {}
+function renderCategoryButtons() {}
+function populateCategorySelect() {}
+function applySettings() {}
+function addCategory() {}
+function downloadTemplate() {
+  const template = [{ titulo: 'Exemplo Produto', preco: 99.90, preco_original: 199.90, categoria: 'Eletrônicos', imagem: 'https://placehold.co/400x400', link: 'https://exemplo.com/produto', loja: 'Amazon', descricao: 'Descrição do produto' }];
+  const ws = XLSX.utils.json_to_sheet(template);
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, 'Ofertas');
+  XLSX.writeFile(wb, 'modelo_ofertas_banana_doce.xlsx');
+  showToast('Modelo baixado!', 'success');
 }
 
 const uploadZone = document.getElementById('upload-zone');
@@ -2209,7 +1881,6 @@ function handleFile(file) {
           imported++;
         } else { errors++; }
       });
-      saveOffers();
       resultDiv.innerHTML = `<div class="bg-green-50 border border-green-300 p-3 rounded-lg text-green-800 font-bold"><i class="fas fa-check-circle mr-2"></i>${imported} oferta(s) importada(s)!${errors > 0 ? ` (${errors} ignoradas)` : ''}</div>`;
       showToast(`${imported} ofertas importadas!`, 'success');
       renderOffers();
@@ -2219,58 +1890,6 @@ function handleFile(file) {
     }
   };
   reader.readAsArrayBuffer(file);
-}
-
-function downloadTemplate() {
-  const template = [{ titulo: 'Exemplo Produto', preco: 99.90, preco_original: 199.90, categoria: 'Eletrônicos', imagem: 'https://placehold.co/400x400', link: 'https://exemplo.com/produto', loja: 'Amazon', descricao: 'Descrição do produto' }];
-  const ws = XLSX.utils.json_to_sheet(template);
-  const wb = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(wb, ws, 'Ofertas');
-  XLSX.writeFile(wb, 'modelo_ofertas_banana_doce.xlsx');
-  showToast('Modelo baixado!', 'success');
-}
-
-function saveOffer() {
-  if (!currentUser || currentUser.role !== 'admin') {
-    showToast('Acesso negado', 'error');
-    return;
-  }
-  const titulo = document.getElementById('f-titulo').value.trim();
-  const preco = parseFloat(document.getElementById('f-preco').value);
-  const preco_original = parseFloat(document.getElementById('f-preco-original').value);
-  const categoria = document.getElementById('f-categoria').value;
-  const imagem = document.getElementById('f-imagem').value.trim();
-  const link = document.getElementById('f-link').value.trim();
-  const loja = document.getElementById('f-loja').value.trim();
-  const descricao = document.getElementById('f-descricao').value.trim();
-  
-  if (!titulo || isNaN(preco) || !link) { showToast('Preencha os campos obrigatórios!', 'error'); return; }
-  
-  const offerData = { titulo, preco, preco_original: isNaN(preco_original) ? null : preco_original, categoria, imagem, link, loja, descricao };
-  
-  if (editingOfferId !== null) {
-    const idx = offers.findIndex(o => o.id === editingOfferId);
-    if (idx !== -1) { offers[idx] = { ...offers[idx], ...offerData }; showToast('Oferta atualizada!', 'success'); }
-    editingOfferId = null;
-  } else {
-    offers.push({ id: Date.now(), ...offerData, dateAdded: new Date().toISOString() });
-    showToast('Oferta adicionada!', 'success');
-  }
-  
-  saveOffers();
-  ['f-titulo','f-preco','f-preco-original','f-imagem','f-link','f-loja','f-descricao','f-edit-id'].forEach(id => document.getElementById(id).value = '');
-  closeAddModal();
-  renderOffers();
-}
-
-function showToast(msg, type = 'success') {
-  const toast = document.getElementById('toast');
-  const icon = document.getElementById('toast-icon');
-  const msgEl = document.getElementById('toast-msg');
-  msgEl.textContent = msg;
-  icon.className = type === 'success' ? 'fas fa-check-circle text-green-400' : 'fas fa-exclamation-circle text-red-400';
-  toast.classList.remove('hidden');
-  setTimeout(() => toast.classList.add('hidden'), 3000);
 }
 
 document.querySelectorAll('.modal-overlay').forEach(modal => {
@@ -2284,7 +1903,7 @@ document.querySelectorAll('.modal-overlay').forEach(modal => {
 
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
-    ['upload-modal', 'add-modal', 'customize-modal', 'confirm-modal', 'users-modal', 'change-password-modal'].forEach(id => {
+    ['upload-modal', 'add-modal', 'customize-modal', 'confirm-modal', 'users-modal'].forEach(id => {
       const modal = document.getElementById(id);
       if (modal && !modal.classList.contains('hidden')) {
         modal.classList.add('hidden');
@@ -2299,43 +1918,37 @@ async function initApp() {
   console.log('🚀 Iniciando aplicação...');
   
   try {
-    loadSettings();
-    loadOffers();
+    await waitForFirebase();
+    console.log('✅ Firebase pronto');
     
-    console.log('⏳ Inicializando usuários...');
-    await initializeUsers();
-    console.log('✅ Usuários inicializados:', users.length);
-    
-    applySettings();
-    renderCategoryButtons();
-    populateCategorySelect();
-    renderOffers();
-    updateSavedCount();
-
-    // Marcar app como pronto
-    appReady = true;
-
-    // Verificar sessão ativa
-    const session = loadSession();
-    if (session) {
-      const user = users.find(u => u.username === session.username);
+    // Verificar se já está logado
+    window.firebaseAuthFunctions.onAuthStateChanged(window.firebaseAuth, async (user) => {
       if (user) {
-        currentUser = { username: user.username, displayName: user.displayName, role: user.role };
-        hideLoadingScreen();
+        const userDoc = await window.firebaseFirestoreFunctions.getDoc(
+          window.firebaseFirestoreFunctions.doc(window.firebaseDb, 'users', user.uid)
+        );
+        
+        if (userDoc.exists()) {
+          currentUser = user;
+          currentUserRole = userDoc.data().role || 'viewer';
+        } else {
+          await window.firebaseFirestoreFunctions.setDoc(
+            window.firebaseFirestoreFunctions.doc(window.firebaseDb, 'users', user.uid),
+            { email: user.email, role: 'viewer', createdAt: window.firebaseFirestoreFunctions.serverTimestamp() }
+          );
+          currentUser = user;
+          currentUserRole = 'viewer';
+        }
+        
         showMainApp();
-        console.log('✅ Sessão restaurada:', user.username);
-        return;
+      } else {
+        showLoginScreen();
       }
-    }
-    
-    hideLoadingScreen();
-    showLoginScreen();
-    console.log('🔐 Tela de login exibida');
+    });
     
   } catch (err) {
     console.error('❌ Erro na inicialização:', err);
-    hideLoadingScreen();
-    alert('Erro ao iniciar aplicação: ' + err.message + '\n\nTente limpar o localStorage do navegador.');
+    alert('Erro ao iniciar aplicação: ' + err.message);
   }
 }
 
