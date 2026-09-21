@@ -51,12 +51,6 @@
   }
   .scrollbar-hide::-webkit-scrollbar { display: none; }
   .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-  .admin-only { display: none !important; }
-  .admin-only.visible { display: flex !important; }
-  .admin-only.visible-inline { display: inline-flex !important; }
-  .admin-only.visible-block { display: block !important; }
-  .admin-panel { display: none; }
-  .admin-panel.visible { display: block; }
   .delete-btn { transition: all 0.2s; }
   .delete-btn:hover { transform: scale(1.1); background: #dc2626 !important; }
   .edit-btn { transition: all 0.2s; }
@@ -149,7 +143,6 @@
     text-transform: uppercase;
   }
 
-  /* Ícone X (Twitter) customizado via SVG */
   .fa-x-twitter-custom {
     display: inline-block;
     width: 1em;
@@ -159,7 +152,6 @@
     mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z'/%3E%3C/svg%3E") no-repeat center;
   }
 
-  /* Ícone Threads customizado via SVG */
   .fa-threads-custom {
     display: inline-block;
     width: 1em;
@@ -183,11 +175,11 @@
       </div>
     </div>
     <div class="flex items-center gap-3">
-      <button id="btn-import-excel" onclick="openUploadModal()" class="admin-only bg-gray-900 hover:bg-gray-800 text-yellow-400 px-4 py-2.5 rounded-xl font-bold items-center gap-2 transition-all shadow-lg hover:shadow-xl">
+      <button id="btn-import-excel" onclick="openUploadModal()" class="bg-gray-900 hover:bg-gray-800 text-yellow-400 px-4 py-2.5 rounded-xl font-bold flex items-center gap-2 transition-all shadow-lg hover:shadow-xl">
         <i class="fas fa-file-excel"></i>
         <span class="hidden sm:inline">Importar Excel</span>
       </button>
-      <button id="btn-new-offer" onclick="openAddModal()" class="admin-only bg-white hover:bg-gray-100 text-gray-900 px-4 py-2.5 rounded-xl font-bold items-center gap-2 transition-all shadow-lg hover:shadow-xl">
+      <button id="btn-new-offer" onclick="openAddModal()" class="bg-white hover:bg-gray-100 text-gray-900 px-4 py-2.5 rounded-xl font-bold flex items-center gap-2 transition-all shadow-lg hover:shadow-xl">
         <i class="fas fa-plus"></i>
         <span class="hidden sm:inline">Nova Oferta</span>
       </button>
@@ -225,7 +217,7 @@
 </section>
 
 <!-- ADMIN PANEL -->
-<section class="max-w-7xl mx-auto px-4 pb-6 admin-panel" id="admin-panel">
+<section class="max-w-7xl mx-auto px-4 pb-6" id="admin-panel">
   <div class="bg-white rounded-2xl shadow-lg p-6 border-2 border-yellow-200">
     <div class="flex items-center gap-2 mb-4 flex-wrap">
       <i class="fas fa-cog text-yellow-600 text-xl"></i>
@@ -303,46 +295,6 @@
     <p id="footer-copyright" class="text-xs mt-4">© 2026 Banana Doce. Todos os direitos reservados.</p>
   </div>
 </footer>
-
-<!-- LOGIN MODAL -->
-<div id="login-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 modal-overlay">
-  <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full">
-    <div class="gradient-header p-6 rounded-t-3xl flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center">
-          <i class="fas fa-user-shield text-gray-900 text-2xl"></i>
-        </div>
-        <div>
-          <h3 class="text-xl font-black text-gray-900">Área Restrita</h3>
-          <p class="text-sm text-gray-700">Acesso de administrador</p>
-        </div>
-      </div>
-      <button onclick="closeLoginModal()" class="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-all">
-        <i class="fas fa-times text-gray-700"></i>
-      </button>
-    </div>
-    <div class="p-6 space-y-4">
-      <div class="bg-blue-50 border-l-4 border-blue-500 p-3 rounded-lg">
-        <p class="text-sm text-blue-800"><i class="fas fa-info-circle mr-1"></i> Digite a senha de administrador.</p>
-      </div>
-      <div>
-        <label class="block text-sm font-bold text-gray-700 mb-1">Senha</label>
-        <div class="relative">
-          <input type="password" id="login-password" placeholder="Digite a senha..." class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-yellow-500 focus:outline-none pr-12" onkeypress="if(event.key==='Enter')doLogin()">
-          <button onclick="togglePassword()" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-700">
-            <i class="fas fa-eye" id="eye-icon"></i>
-          </button>
-        </div>
-      </div>
-      <div id="login-error" class="hidden bg-red-50 border border-red-300 text-red-700 px-3 py-2 rounded-lg text-sm">
-        <i class="fas fa-exclamation-circle mr-1"></i>Senha incorreta.
-      </div>
-      <button onclick="doLogin()" class="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-gray-900 font-black py-3 rounded-xl transition-all shadow-lg">
-        <i class="fas fa-sign-in-alt mr-2"></i>Entrar
-      </button>
-    </div>
-  </div>
-</div>
 
 <!-- UPLOAD EXCEL MODAL -->
 <div id="upload-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 modal-overlay">
@@ -729,30 +681,24 @@
 </div>
 
 <script>
-// ============ CONFIGURAÇÃO (senha ofuscada) ============
-const _k = [97,100,109,105,110,49,50,51];
-const ADMIN_PASSWORD = String.fromCharCode.apply(null, _k);
-const STORAGE_KEY = 'banana_doce_admin_logged';
+// ============ CONFIGURAÇÃO ============
 const OFFERS_STORAGE_KEY = 'banana_doce_offers';
 const SETTINGS_STORAGE_KEY = 'banana_doce_settings';
-
-let isAdmin = false;
 
 // ============ 10 TEMPLATES DE CORES ============
 const TEMPLATES = [
   { id: 'default', name: 'Amarelo Banana', icon: '🍌', headerGradient: 'linear-gradient(135deg, #fde047 0%, #facc15 50%, #eab308 100%)', bgColor: '#fefce8', headerTextColor: '#111827', headerSubtitleColor: '#1f2937', discountGradient: 'linear-gradient(135deg, #ef4444, #dc2626)', activeCategoryBg: 'linear-gradient(135deg, #facc15, #eab308)', activeCategoryText: '#1a1a1a', borderColor: '#eab308', borderHover: '#ca8a04', uploadHover: '#fef9c3', heroFrom: 'from-yellow-50', heroTo: 'to-yellow-100', searchBorder: 'border-yellow-200', searchFocus: 'focus:border-yellow-500' },
   { id: 'ocean', name: 'Azul Oceano', icon: '🌊', headerGradient: 'linear-gradient(135deg, #38bdf8 0%, #0ea5e9 50%, #0284c7 100%)', bgColor: '#f0f9ff', headerTextColor: '#ffffff', headerSubtitleColor: '#f0f9ff', discountGradient: 'linear-gradient(135deg, #ef4444, #dc2626)', activeCategoryBg: 'linear-gradient(135deg, #0ea5e9, #0284c7)', activeCategoryText: '#ffffff', borderColor: '#0ea5e9', borderHover: '#0284c7', uploadHover: '#e0f2fe', heroFrom: 'from-sky-50', heroTo: 'to-sky-100', searchBorder: 'border-sky-200', searchFocus: 'focus:border-sky-500' },
   { id: 'forest', name: 'Verde Floresta', icon: '🌲', headerGradient: 'linear-gradient(135deg, #86efac 0%, #22c55e 50%, #16a34a 100%)', bgColor: '#f0fdf4', headerTextColor: '#111827', headerSubtitleColor: '#1f2937', discountGradient: 'linear-gradient(135deg, #ef4444, #dc2626)', activeCategoryBg: 'linear-gradient(135deg, #22c55e, #16a34a)', activeCategoryText: '#ffffff', borderColor: '#22c55e', borderHover: '#16a34a', uploadHover: '#dcfce7', heroFrom: 'from-green-50', heroTo: 'to-green-100', searchBorder: 'border-green-200', searchFocus: 'focus:border-green-500' },
-  { id: 'pink', name: 'Rosa Pink', icon: '', headerGradient: 'linear-gradient(135deg, #f9a8d4 0%, #ec4899 50%, #db2777 100%)', bgColor: '#fdf2f8', headerTextColor: '#ffffff', headerSubtitleColor: '#fdf2f8', discountGradient: 'linear-gradient(135deg, #ef4444, #dc2626)', activeCategoryBg: 'linear-gradient(135deg, #ec4899, #db2777)', activeCategoryText: '#ffffff', borderColor: '#ec4899', borderHover: '#db2777', uploadHover: '#fce7f3', heroFrom: 'from-pink-50', heroTo: 'to-pink-100', searchBorder: 'border-pink-200', searchFocus: 'focus:border-pink-500' },
+  { id: 'pink', name: 'Rosa Pink', icon: '💖', headerGradient: 'linear-gradient(135deg, #f9a8d4 0%, #ec4899 50%, #db2777 100%)', bgColor: '#fdf2f8', headerTextColor: '#ffffff', headerSubtitleColor: '#fdf2f8', discountGradient: 'linear-gradient(135deg, #ef4444, #dc2626)', activeCategoryBg: 'linear-gradient(135deg, #ec4899, #db2777)', activeCategoryText: '#ffffff', borderColor: '#ec4899', borderHover: '#db2777', uploadHover: '#fce7f3', heroFrom: 'from-pink-50', heroTo: 'to-pink-100', searchBorder: 'border-pink-200', searchFocus: 'focus:border-pink-500' },
   { id: 'royal', name: 'Roxo Royal', icon: '👑', headerGradient: 'linear-gradient(135deg, #c4b5fd 0%, #8b5cf6 50%, #7c3aed 100%)', bgColor: '#faf5ff', headerTextColor: '#ffffff', headerSubtitleColor: '#faf5ff', discountGradient: 'linear-gradient(135deg, #ef4444, #dc2626)', activeCategoryBg: 'linear-gradient(135deg, #8b5cf6, #7c3aed)', activeCategoryText: '#ffffff', borderColor: '#8b5cf6', borderHover: '#7c3aed', uploadHover: '#f3e8ff', heroFrom: 'from-purple-50', heroTo: 'to-purple-100', searchBorder: 'border-purple-200', searchFocus: 'focus:border-purple-500' },
   { id: 'sunset', name: 'Laranja Sunset', icon: '🌅', headerGradient: 'linear-gradient(135deg, #fdba74 0%, #f97316 50%, #ea580c 100%)', bgColor: '#fff7ed', headerTextColor: '#ffffff', headerSubtitleColor: '#fff7ed', discountGradient: 'linear-gradient(135deg, #ef4444, #dc2626)', activeCategoryBg: 'linear-gradient(135deg, #f97316, #ea580c)', activeCategoryText: '#ffffff', borderColor: '#f97316', borderHover: '#ea580c', uploadHover: '#ffedd5', heroFrom: 'from-orange-50', heroTo: 'to-orange-100', searchBorder: 'border-orange-200', searchFocus: 'focus:border-orange-500' },
-  { id: 'cherry', name: 'Vermelho Cherry', icon: '', headerGradient: 'linear-gradient(135deg, #fca5a5 0%, #ef4444 50%, #dc2626 100%)', bgColor: '#fef2f2', headerTextColor: '#ffffff', headerSubtitleColor: '#fef2f2', discountGradient: 'linear-gradient(135deg, #7c2d12, #991b1b)', activeCategoryBg: 'linear-gradient(135deg, #ef4444, #dc2626)', activeCategoryText: '#ffffff', borderColor: '#ef4444', borderHover: '#dc2626', uploadHover: '#fee2e2', heroFrom: 'from-red-50', heroTo: 'to-red-100', searchBorder: 'border-red-200', searchFocus: 'focus:border-red-500' },
+  { id: 'cherry', name: 'Vermelho Cherry', icon: '🍒', headerGradient: 'linear-gradient(135deg, #fca5a5 0%, #ef4444 50%, #dc2626 100%)', bgColor: '#fef2f2', headerTextColor: '#ffffff', headerSubtitleColor: '#fef2f2', discountGradient: 'linear-gradient(135deg, #7c2d12, #991b1b)', activeCategoryBg: 'linear-gradient(135deg, #ef4444, #dc2626)', activeCategoryText: '#ffffff', borderColor: '#ef4444', borderHover: '#dc2626', uploadHover: '#fee2e2', heroFrom: 'from-red-50', heroTo: 'to-red-100', searchBorder: 'border-red-200', searchFocus: 'focus:border-red-500' },
   { id: 'elegant', name: 'Preto Elegante', icon: '🖤', headerGradient: 'linear-gradient(135deg, #525252 0%, #262626 50%, #171717 100%)', bgColor: '#fafafa', headerTextColor: '#facc15', headerSubtitleColor: '#fde047', discountGradient: 'linear-gradient(135deg, #facc15, #eab308)', activeCategoryBg: 'linear-gradient(135deg, #262626, #171717)', activeCategoryText: '#facc15', borderColor: '#262626', borderHover: '#171717', uploadHover: '#f5f5f5', heroFrom: 'from-gray-50', heroTo: 'to-gray-100', searchBorder: 'border-gray-300', searchFocus: 'focus:border-gray-600' },
   { id: 'minimal', name: 'Cinza Minimalista', icon: '⚪', headerGradient: 'linear-gradient(135deg, #e5e7eb 0%, #9ca3af 50%, #6b7280 100%)', bgColor: '#ffffff', headerTextColor: '#ffffff', headerSubtitleColor: '#f3f4f6', discountGradient: 'linear-gradient(135deg, #3b82f6, #2563eb)', activeCategoryBg: 'linear-gradient(135deg, #6b7280, #4b5563)', activeCategoryText: '#ffffff', borderColor: '#9ca3af', borderHover: '#6b7280', uploadHover: '#f3f4f6', heroFrom: 'from-gray-50', heroTo: 'to-gray-100', searchBorder: 'border-gray-200', searchFocus: 'focus:border-gray-500' },
   { id: 'tropical', name: 'Tropical', icon: '🌴', headerGradient: 'linear-gradient(135deg, #06b6d4 0%, #10b981 50%, #84cc16 100%)', bgColor: '#ecfdf5', headerTextColor: '#ffffff', headerSubtitleColor: '#ecfdf5', discountGradient: 'linear-gradient(135deg, #f97316, #ef4444)', activeCategoryBg: 'linear-gradient(135deg, #10b981, #059669)', activeCategoryText: '#ffffff', borderColor: '#10b981', borderHover: '#059669', uploadHover: '#d1fae5', heroFrom: 'from-emerald-50', heroTo: 'to-teal-100', searchBorder: 'border-emerald-200', searchFocus: 'focus:border-emerald-500' }
 ];
 
-// ============ REDES SOCIAIS PADRÃO (com X e Threads) ============
 const defaultSocials = [
   { name: 'Instagram', icon: 'fa-instagram', color: '#E1306C', url: '' },
   { name: 'Facebook', icon: 'fa-facebook-f', color: '#1877F2', url: '' },
@@ -842,15 +788,10 @@ function loadSettings() {
       if (!settings.socials) settings.socials = JSON.parse(JSON.stringify(defaultSocials));
       if (!settings.categories) settings.categories = JSON.parse(JSON.stringify(defaultCategories));
       
-      // Migração: adicionar X e Threads se não existirem nas configurações salvas
       const hasX = settings.socials.some(s => s.icon === 'fa-x-twitter-custom' || s.icon === 'fa-x-twitter' || s.name === 'X (Twitter)' || s.name === 'X');
       const hasThreads = settings.socials.some(s => s.icon === 'fa-threads-custom' || s.icon === 'fa-threads' || s.name === 'Threads');
-      if (!hasX) {
-        settings.socials.push({ name: 'X (Twitter)', icon: 'fa-x-twitter-custom', color: '#000000', url: '' });
-      }
-      if (!hasThreads) {
-        settings.socials.push({ name: 'Threads', icon: 'fa-threads-custom', color: '#000000', url: '' });
-      }
+      if (!hasX) settings.socials.push({ name: 'X (Twitter)', icon: 'fa-x-twitter-custom', color: '#000000', url: '' });
+      if (!hasThreads) settings.socials.push({ name: 'Threads', icon: 'fa-threads-custom', color: '#000000', url: '' });
     }
   } catch (e) { settings = JSON.parse(JSON.stringify(defaultSettings)); }
 }
@@ -864,23 +805,13 @@ function updateSavedCount() {
   if (el) el.textContent = `${offers.length} oferta${offers.length !== 1 ? 's' : ''} salva${offers.length !== 1 ? 's' : ''}`;
 }
 
-// ============ RENDERIZAR ÍCONE DE REDE SOCIAL ============
 function renderSocialIcon(iconName) {
-  // Ícones customizados (X e Threads) via CSS mask
-  if (iconName === 'fa-x-twitter-custom') {
-    return '<span class="fa-x-twitter-custom" style="font-size: 1.25em;"></span>';
-  }
-  if (iconName === 'fa-threads-custom') {
-    return '<span class="fa-threads-custom" style="font-size: 1.25em;"></span>';
-  }
-  // Font Awesome
-  if (iconName.startsWith('fa-')) {
-    return `<i class="fab ${iconName} text-white text-xl"></i>`;
-  }
+  if (iconName === 'fa-x-twitter-custom') return '<span class="fa-x-twitter-custom" style="font-size: 1.25em;"></span>';
+  if (iconName === 'fa-threads-custom') return '<span class="fa-threads-custom" style="font-size: 1.25em;"></span>';
+  if (iconName.startsWith('fa-')) return `<i class="fab ${iconName} text-white text-xl"></i>`;
   return `<i class="${iconName} text-white text-xl"></i>`;
 }
 
-// ============ APLICAR CONFIGURAÇÕES VISUAIS ============
 function applySettings() {
   const t = TEMPLATES.find(x => x.id === settings.template) || TEMPLATES[0];
   const root = document.documentElement;
@@ -896,14 +827,8 @@ function applySettings() {
   
   const titleEl = document.getElementById('header-title');
   const subtitleEl = document.getElementById('header-subtitle');
-  if (titleEl) {
-    titleEl.style.color = settings.headerTitleColor || t.headerTextColor;
-    titleEl.textContent = settings.headerTitle;
-  }
-  if (subtitleEl) {
-    subtitleEl.style.color = settings.headerSubtitleColor || t.headerSubtitleColor;
-    subtitleEl.textContent = settings.headerSubtitle;
-  }
+  if (titleEl) { titleEl.style.color = settings.headerTitleColor || t.headerTextColor; titleEl.textContent = settings.headerTitle; }
+  if (subtitleEl) { subtitleEl.style.color = settings.headerSubtitleColor || t.headerSubtitleColor; subtitleEl.textContent = settings.headerSubtitle; }
   
   const logoEl = document.getElementById('logo-img');
   const footerLogoEl = document.getElementById('footer-logo');
@@ -914,7 +839,6 @@ function applySettings() {
   updateOgImage(settings.ogImageUrl || settings.logoUrl);
   
   document.title = settings.pageTitle || `${settings.headerTitle} | ${settings.headerSubtitle}`;
-  
   const ogTitle = document.querySelector('meta[property="og:title"]');
   if (ogTitle) ogTitle.setAttribute('content', settings.pageTitle || `${settings.headerTitle} | ${settings.headerSubtitle}`);
   
@@ -923,38 +847,22 @@ function applySettings() {
   const heroDisclosureEl = document.getElementById('hero-disclosure-text');
   const heroDisclosure = document.getElementById('hero-disclosure');
   
-  if (heroTitleEl) {
-    heroTitleEl.textContent = settings.heroTitle || '🏆 As Melhores Ofertas do Dia';
-    heroTitleEl.style.color = settings.heroTitleColor || '#111827';
-  }
-  if (heroSubtitleEl) {
-    heroSubtitleEl.textContent = settings.heroSubtitle || 'Seleção com as melhores ofertas do dia';
-    heroSubtitleEl.style.color = settings.heroSubtitleColor || '#374151';
-  }
+  if (heroTitleEl) { heroTitleEl.textContent = settings.heroTitle || '🏆 As Melhores Ofertas do Dia'; heroTitleEl.style.color = settings.heroTitleColor || '#111827'; }
+  if (heroSubtitleEl) { heroSubtitleEl.textContent = settings.heroSubtitle || 'Seleção com as melhores ofertas do dia'; heroSubtitleEl.style.color = settings.heroSubtitleColor || '#374151'; }
   if (heroDisclosureEl) heroDisclosureEl.textContent = settings.heroDisclosure || '';
-  
   if (heroDisclosure) {
     if (settings.heroDisclosure && settings.heroDisclosure.trim()) {
       heroDisclosure.style.display = 'inline-flex';
       heroDisclosure.style.backgroundColor = settings.heroDisclosureBg || '#fef08a';
       heroDisclosure.style.color = settings.heroDisclosureTextColor || '#713f12';
-    } else {
-      heroDisclosure.style.display = 'none';
-    }
+    } else heroDisclosure.style.display = 'none';
   }
   
   const footerTextEl = document.getElementById('footer-text');
   const footerCopyrightEl = document.getElementById('footer-copyright');
   const siteFooter = document.getElementById('site-footer');
-  
-  if (footerTextEl) {
-    footerTextEl.textContent = settings.footerText;
-    footerTextEl.style.color = settings.footerTextColor || '#facc15';
-  }
-  if (footerCopyrightEl) {
-    footerCopyrightEl.textContent = settings.footerCopyright || '© 2026 Banana Doce. Todos os direitos reservados.';
-    footerCopyrightEl.style.color = settings.footerCopyrightColor || '#ca8a04';
-  }
+  if (footerTextEl) { footerTextEl.textContent = settings.footerText; footerTextEl.style.color = settings.footerTextColor || '#facc15'; }
+  if (footerCopyrightEl) { footerCopyrightEl.textContent = settings.footerCopyright || '© 2026 Banana Doce. Todos os direitos reservados.'; footerCopyrightEl.style.color = settings.footerCopyrightColor || '#ca8a04'; }
   if (siteFooter) siteFooter.style.backgroundColor = settings.footerBg || '#111827';
   
   const hero = document.getElementById('hero-section');
@@ -969,7 +877,6 @@ function applySettings() {
   renderSocialIcons();
 }
 
-// ============ FAVICON ============
 function updateFavicon(url) {
   if (!url) return;
   const faviconLink = document.getElementById('favicon-link');
@@ -983,37 +890,29 @@ function updateFavicon(url) {
   }
 }
 
-// ============ OPEN GRAPH IMAGE ============
 function updateOgImage(url) {
   const ogMeta = document.querySelector('meta[property="og:image"]');
-  if (ogMeta && url) {
-    ogMeta.setAttribute('content', url);
-  }
+  if (ogMeta && url) ogMeta.setAttribute('content', url);
 }
 
-// ============ RENDERIZAR ÍCONES DE REDES SOCIAIS (FOOTER) ============
 function renderSocialIcons() {
   const container = document.getElementById('social-icons');
   if (!container) return;
   const activeSocials = (settings.socials || []).filter(s => s.url && s.url.trim() !== '');
-  
   if (activeSocials.length === 0) {
     container.innerHTML = '<p class="text-xs text-yellow-600">Redes sociais em breve</p>';
     return;
   }
-  
   container.innerHTML = activeSocials.map(s => `
     <a href="${escapeHtml(s.url)}" target="_blank" rel="noopener noreferrer" 
        class="social-icon-btn w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl"
        style="background-color: ${escapeHtml(s.color)}; color: white;" 
-       title="${escapeHtml(s.name)}"
-       aria-label="${escapeHtml(s.name)}">
+       title="${escapeHtml(s.name)}" aria-label="${escapeHtml(s.name)}">
       ${renderSocialIcon(s.icon)}
     </a>
   `).join('');
 }
 
-// ============ UTILITÁRIOS ============
 function escapeHtml(text) {
   if (!text) return '';
   const div = document.createElement('div');
@@ -1029,7 +928,6 @@ function isValidHexColor(color) {
   return /^#[0-9A-Fa-f]{6}$/.test(color);
 }
 
-// ============ RENDERIZAR TEMPLATES ============
 function renderTemplates() {
   const grid = document.getElementById('templates-grid');
   if (!grid) return;
@@ -1050,11 +948,9 @@ function selectTemplate(id) {
   applySettings();
 }
 
-// ============ RENDERIZAR LISTA DE REDES SOCIAIS (MODAL) ============
 function renderSocialList() {
   const list = document.getElementById('social-list');
   if (!list) return;
-  // Lista de ícones disponíveis - inclui Font Awesome e os customizados (X e Threads)
   const icons = [
     { value: 'fa-x-twitter-custom', label: '✖ X (Twitter) [Oficial]' },
     { value: 'fa-threads-custom', label: '@ Threads [Oficial]' },
@@ -1072,7 +968,6 @@ function renderSocialList() {
     { value: 'fa-twitch', label: 'Twitch' },
     { value: 'fa-reddit-alien', label: 'Reddit' }
   ];
-  
   list.innerHTML = (settings.socials || []).map((s, idx) => `
     <div class="bg-white p-3 rounded-lg border border-gray-200 flex items-center gap-2 flex-wrap">
       <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background-color: ${s.color}; color: white;">
@@ -1114,7 +1009,6 @@ function removeSocial(idx) {
   applySettings();
 }
 
-// ============ CATEGORIAS ============
 function renderCategoriesList() {
   const list = document.getElementById('categories-list');
   if (!list) return;
@@ -1163,7 +1057,6 @@ function renderCategoryButtons() {
     const isActive = (cat.isAll && currentCategory === 'all') || (!cat.isAll && currentCategory === cat.name);
     return `<button class="category-btn px-5 py-2.5 rounded-full font-bold whitespace-nowrap transition-all bg-white text-gray-700 shadow ${isActive ? 'active' : ''}" data-category="${cat.isAll ? 'all' : cat.name}"><i class="fas ${cat.icon} mr-2"></i>${escapeHtml(cat.name)}</button>`;
   }).join('');
-  
   container.querySelectorAll('.category-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       currentCategory = btn.dataset.category;
@@ -1180,84 +1073,7 @@ function populateCategorySelect() {
   select.innerHTML = nonAll.map(c => `<option>${escapeHtml(c.name)}</option>`).join('');
 }
 
-// ============ AUTENTICAÇÃO ============
-function checkAuth() {
-  setAdminMode(localStorage.getItem(STORAGE_KEY) === 'true');
-}
-
-function setAdminMode(active) {
-  isAdmin = active;
-  const authIcon = document.getElementById('auth-icon');
-  const authLabel = document.getElementById('auth-label');
-  const adminBtns = document.querySelectorAll('.admin-only');
-  const adminPanel = document.getElementById('admin-panel');
-
-  if (active) {
-    if (authIcon) authIcon.className = 'fas fa-sign-out-alt';
-    if (authLabel) authLabel.textContent = 'Sair';
-    adminBtns.forEach(btn => {
-      btn.classList.add('visible');
-      if (btn.tagName === 'BUTTON') btn.classList.add('visible-inline');
-    });
-    if (adminPanel) adminPanel.classList.add('visible');
-  } else {
-    if (authIcon) authIcon.className = 'fas fa-lock';
-    if (authLabel) authLabel.textContent = 'Admin';
-    adminBtns.forEach(btn => btn.classList.remove('visible', 'visible-inline', 'visible-block'));
-    if (adminPanel) adminPanel.classList.remove('visible');
-  }
-  renderOffers();
-}
-
-function handleAuth() {
-  if (isAdmin) {
-    localStorage.removeItem(STORAGE_KEY);
-    setAdminMode(false);
-    showToast('Sessão encerrada', 'success');
-  } else {
-    openLoginModal();
-  }
-}
-
-function openLoginModal() {
-  const modal = document.getElementById('login-modal');
-  if (!modal) return;
-  modal.classList.remove('hidden');
-  modal.classList.add('flex');
-  document.getElementById('login-password').value = '';
-  document.getElementById('login-error').classList.add('hidden');
-  setTimeout(() => document.getElementById('login-password').focus(), 100);
-}
-function closeLoginModal() {
-  const modal = document.getElementById('login-modal');
-  if (!modal) return;
-  modal.classList.add('hidden');
-  modal.classList.remove('flex');
-}
-function doLogin() {
-  const password = document.getElementById('login-password').value;
-  if (password === ADMIN_PASSWORD) {
-    localStorage.setItem(STORAGE_KEY, 'true');
-    setAdminMode(true);
-    closeLoginModal();
-    showToast('Bem-vindo, Administrador!', 'success');
-  } else {
-    document.getElementById('login-error').classList.remove('hidden');
-    document.getElementById('login-password').value = '';
-    document.getElementById('login-password').focus();
-  }
-}
-function togglePassword() {
-  const input = document.getElementById('login-password');
-  const icon = document.getElementById('eye-icon');
-  if (input.type === 'password') { input.type = 'text'; icon.className = 'fas fa-eye-slash'; }
-  else { input.type = 'password'; icon.className = 'fas fa-eye'; }
-}
-
-// ============ CUSTOMIZE MODAL ============
 function openCustomizeModal() {
-  if (!isAdmin) { showToast('Acesso restrito', 'error'); return; }
-  
   document.getElementById('cfg-logo').value = settings.logoUrl;
   const logoPreview = document.getElementById('logo-preview');
   logoPreview.src = settings.logoUrl;
@@ -1265,15 +1081,10 @@ function openCustomizeModal() {
   
   document.getElementById('cfg-og-image').value = settings.ogImageUrl || '';
   const ogPreview = document.getElementById('og-preview');
-  if (settings.ogImageUrl) {
-    ogPreview.src = settings.ogImageUrl;
-    ogPreview.style.display = 'block';
-  } else {
-    ogPreview.style.display = 'none';
-  }
+  if (settings.ogImageUrl) { ogPreview.src = settings.ogImageUrl; ogPreview.style.display = 'block'; }
+  else ogPreview.style.display = 'none';
   
   document.getElementById('cfg-page-title').value = settings.pageTitle || 'Banana Doce | Vitrine de Ofertas';
-  
   document.getElementById('cfg-header-title').value = settings.headerTitle;
   document.getElementById('cfg-header-subtitle').value = settings.headerSubtitle;
   setColorInput('cfg-header-title-color', settings.headerTitleColor || '#111827');
@@ -1323,8 +1134,6 @@ function closeCustomizeModal() {
 }
 
 function saveSettings() {
-  if (!isAdmin) return;
-  
   settings.logoUrl = document.getElementById('cfg-logo').value.trim() || settings.logoUrl;
   settings.ogImageUrl = document.getElementById('cfg-og-image').value.trim() || '';
   settings.pageTitle = document.getElementById('cfg-page-title').value.trim() || 'Banana Doce | Vitrine de Ofertas';
@@ -1366,16 +1175,9 @@ function setupColorSync(baseId) {
   const colorInput = document.getElementById(baseId);
   const textInput = document.getElementById(baseId + '-text');
   if (!colorInput || !textInput) return;
-  
-  colorInput.addEventListener('input', (e) => {
-    textInput.value = e.target.value;
-    applySettings();
-  });
+  colorInput.addEventListener('input', (e) => { textInput.value = e.target.value; applySettings(); });
   textInput.addEventListener('input', (e) => {
-    if (isValidHexColor(e.target.value)) {
-      colorInput.value = e.target.value;
-      applySettings();
-    }
+    if (isValidHexColor(e.target.value)) { colorInput.value = e.target.value; applySettings(); }
   });
 }
 
@@ -1409,9 +1211,7 @@ document.getElementById('cfg-og-file').addEventListener('change', (e) => {
   reader.readAsDataURL(file);
 });
 
-// ============ APAGAR OFERTA ============
 function confirmDeleteOffer(id) {
-  if (!isAdmin) return;
   const offer = offers.find(o => o.id === id);
   if (!offer) return;
   pendingDeleteId = id;
@@ -1420,17 +1220,19 @@ function confirmDeleteOffer(id) {
   modal.classList.remove('hidden');
   modal.classList.add('flex');
 }
+
 function closeConfirmModal() {
   pendingDeleteId = null;
   const modal = document.getElementById('confirm-modal');
   modal.classList.add('hidden');
   modal.classList.remove('flex');
 }
+
 document.getElementById('confirm-delete-btn').addEventListener('click', () => {
   if (pendingDeleteId !== null) { deleteOffer(pendingDeleteId); closeConfirmModal(); }
 });
+
 function deleteOffer(id) {
-  if (!isAdmin) return;
   const offer = offers.find(o => o.id === id);
   offers = offers.filter(o => o.id !== id);
   saveOffers();
@@ -1438,9 +1240,7 @@ function deleteOffer(id) {
   showToast(`"${offer ? offer.titulo : 'Oferta'}" apagada!`, 'success');
 }
 
-// ============ RESTAURAR OFERTAS PADRÃO ============
 function resetOffersToDefault() {
-  if (!isAdmin) { showToast('Acesso restrito', 'error'); return; }
   if (!confirm('⚠️ Restaurar o quadro de ofertas para o padrão?\n\nTodas as ofertas atuais serão substituídas pelas ofertas padrão iniciais.\n\nEsta ação não pode ser desfeita.')) return;
   offers = JSON.parse(JSON.stringify(defaultOffers));
   saveOffers();
@@ -1448,9 +1248,7 @@ function resetOffersToDefault() {
   showToast('Quadro de ofertas restaurado com sucesso!', 'success');
 }
 
-// ============ EXPORT/IMPORT JSON ============
 function exportJSON() {
-  if (!isAdmin) return;
   if (offers.length === 0) { showToast('Nenhuma oferta', 'error'); return; }
   const data = JSON.stringify({ offers, settings, exportDate: new Date().toISOString() }, null, 2);
   const blob = new Blob([data], { type: 'application/json' });
@@ -1464,7 +1262,6 @@ function exportJSON() {
 }
 
 function importJSON(event) {
-  if (!isAdmin) return;
   const file = event.target.files[0];
   if (!file) return;
   const reader = new FileReader();
@@ -1490,7 +1287,6 @@ function importJSON(event) {
 }
 
 function clearAllOffers() {
-  if (!isAdmin) return;
   if (!confirm('⚠️ Apagar TODAS as ofertas? Esta ação não pode ser desfeita.')) return;
   offers = [];
   saveOffers();
@@ -1498,18 +1294,15 @@ function clearAllOffers() {
   showToast('Todas as ofertas removidas', 'success');
 }
 
-// ============ DOWNLOAD HTML ============
 function downloadUpdatedHTML() {
-  if (!isAdmin) return;
   if (offers.length === 0) { showToast('Nenhuma oferta', 'error'); return; }
 
   try {
     const clone = document.documentElement.cloneNode(true);
-    ['btn-import-excel','btn-new-offer','admin-panel','login-modal','upload-modal','add-modal','customize-modal','confirm-modal','toast'].forEach(id => {
+    ['btn-import-excel','btn-new-offer','admin-panel','upload-modal','add-modal','customize-modal','confirm-modal','toast'].forEach(id => {
       const el = clone.querySelector('#' + id);
       if (el) el.remove();
     });
-    clone.querySelectorAll('.admin-only').forEach(el => el.remove());
 
     let htmlContent = '<!DOCTYPE html>\n' + clone.outerHTML;
     const offersJSON = JSON.stringify(offers, null, 2);
@@ -1543,15 +1336,9 @@ function isValidHexColor(color) {
 }
 
 function renderSocialIcon(iconName) {
-  if (iconName === 'fa-x-twitter-custom') {
-    return '<span class="fa-x-twitter-custom" style="font-size: 1.25em;"></span>';
-  }
-  if (iconName === 'fa-threads-custom') {
-    return '<span class="fa-threads-custom" style="font-size: 1.25em;"></span>';
-  }
-  if (iconName.startsWith('fa-')) {
-    return '<i class="fab ' + iconName + ' text-white text-xl"></i>';
-  }
+  if (iconName === 'fa-x-twitter-custom') return '<span class="fa-x-twitter-custom" style="font-size: 1.25em;"></span>';
+  if (iconName === 'fa-threads-custom') return '<span class="fa-threads-custom" style="font-size: 1.25em;"></span>';
+  if (iconName.startsWith('fa-')) return '<i class="fab ' + iconName + ' text-white text-xl"></i>';
   return '<i class="' + iconName + ' text-white text-xl"></i>';
 }
 
@@ -1630,10 +1417,7 @@ function renderSocialIcons() {
   const container = document.getElementById('social-icons');
   if (!container) return;
   const activeSocials = (settings.socials || []).filter(s => s.url && s.url.trim() !== '');
-  if (activeSocials.length === 0) {
-    container.innerHTML = '<p class="text-xs text-yellow-600">Redes sociais em breve</p>';
-    return;
-  }
+  if (activeSocials.length === 0) { container.innerHTML = '<p class="text-xs text-yellow-600">Redes sociais em breve</p>'; return; }
   container.innerHTML = activeSocials.map(s => 
     '<a href="' + escapeHtml(s.url) + '" target="_blank" rel="noopener noreferrer" class="social-icon-btn w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl" style="background-color: ' + escapeHtml(s.color) + '; color: white;" title="' + escapeHtml(s.name) + '" aria-label="' + escapeHtml(s.name) + '">' + renderSocialIcon(s.icon) + '</a>'
   ).join('');
@@ -1647,11 +1431,7 @@ function renderCategoryButtons() {
     return '<button class="category-btn px-5 py-2.5 rounded-full font-bold whitespace-nowrap transition-all bg-white text-gray-700 shadow ' + (isActive ? 'active' : '') + '" data-category="' + (cat.isAll ? 'all' : cat.name) + '"><i class="fas ' + cat.icon + ' mr-2"></i>' + escapeHtml(cat.name) + '</button>';
   }).join('');
   container.querySelectorAll('.category-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      currentCategory = btn.dataset.category;
-      renderCategoryButtons();
-      renderOffers();
-    });
+    btn.addEventListener('click', () => { currentCategory = btn.dataset.category; renderCategoryButtons(); renderOffers(); });
   });
 }
 
@@ -1664,10 +1444,7 @@ function getFallbackImage(t, c) {
   return 'https://placehold.co/400x400/' + color + '/ffffff?text=' + encodeURIComponent(String(t).substring(0, 20));
 }
 
-function sortOffers() {
-  currentSort = document.getElementById('sort-select').value;
-  renderOffers();
-}
+function sortOffers() { currentSort = document.getElementById('sort-select').value; renderOffers(); }
 
 function getSortedOffers(list) {
   const sorted = [...list];
@@ -1747,16 +1524,17 @@ renderOffers();
   } catch (err) { showToast('Erro: ' + err.message, 'error'); }
 }
 
-// ============ RENDERIZAÇÃO DE OFERTAS ============
 const categoryColors = { 'Celulares': 'from-blue-400 to-blue-600', 'Eletrônicos': 'from-purple-400 to-purple-600', 'Beleza': 'from-pink-400 to-pink-600', 'Moda': 'from-orange-400 to-orange-600', 'Casa': 'from-green-400 to-green-600', 'Games': 'from-red-400 to-red-600' };
 
 function calculateDiscount(preco, preco_original) {
   if (!preco_original || preco_original <= preco) return 0;
   return Math.round(((preco_original - preco) / preco_original) * 100);
 }
+
 function formatCurrency(value) {
   return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
 }
+
 function getFallbackImage(titulo, categoria) {
   const colors = { 'Celulares': '3b82f6', 'Eletrônicos': '8b5cf6', 'Beleza': 'ec4899', 'Moda': 'f97316', 'Casa': '22c55e', 'Games': 'ef4444' };
   const color = colors[categoria] || 'eab308';
@@ -1798,16 +1576,11 @@ function renderOffers() {
   });
 
   filtered = getSortedOffers(filtered);
-
   countEl.textContent = `${filtered.length} oferta${filtered.length !== 1 ? 's' : ''}`;
 
-  if (filtered.length === 0) {
-    grid.innerHTML = '';
-    emptyState.classList.remove('hidden');
-    return;
-  }
-
+  if (filtered.length === 0) { grid.innerHTML = ''; emptyState.classList.remove('hidden'); return; }
   emptyState.classList.add('hidden');
+
   grid.innerHTML = filtered.map((offer, idx) => {
     const discount = calculateDiscount(offer.preco, offer.preco_original);
     const imgSrc = offer.imagem || getFallbackImage(offer.titulo, offer.categoria);
@@ -1815,31 +1588,21 @@ function renderOffers() {
     const icon = cat ? cat.icon : 'fa-tag';
     const colorClass = categoryColors[offer.categoria] || 'from-yellow-400 to-yellow-600';
 
-    const deleteButton = isAdmin ? `
-      <button onclick="confirmDeleteOffer(${offer.id})" class="admin-only visible delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg items-center justify-center" title="Apagar oferta">
-        <i class="fas fa-trash-alt text-sm"></i>
-      </button>
-    ` : '';
-
-    const editButton = isAdmin ? `
-      <button onclick="editOffer(${offer.id})" class="admin-only visible edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg items-center justify-center" title="Editar oferta">
-        <i class="fas fa-edit text-sm"></i>
-      </button>
-    ` : '';
-
-    const categoryBadgePos = isAdmin ? 'top-14 right-3' : 'top-3 right-3';
-
     return `
       <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: ${idx * 0.05}s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
-          ${editButton}
-          ${deleteButton}
+          <button onclick="editOffer(${offer.id})" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(${offer.id})" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
           <img src="${escapeHtml(imgSrc)}" alt="${escapeHtml(offer.titulo)}" 
                class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                onerror="this.src='${getFallbackImage(offer.titulo, offer.categoria)}'"
                loading="lazy">
           ${discount > 0 ? `<div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-${discount}%</div>` : ''}
-          <div class="absolute ${categoryBadgePos} bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
             <i class="fas ${icon} mr-1"></i>${escapeHtml(offer.categoria)}
           </div>
           ${offer.loja ? `<div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
@@ -1866,7 +1629,6 @@ function renderOffers() {
 }
 
 function editOffer(id) {
-  if (!isAdmin) return;
   const offer = offers.find(o => o.id === id);
   if (!offer) return;
   
@@ -1891,26 +1653,24 @@ function editOffer(id) {
   modal.classList.add('flex');
 }
 
-// ============ FILTROS ============
 document.getElementById('search-input').addEventListener('input', (e) => {
   currentSearch = e.target.value;
   renderOffers();
 });
 
-// ============ MODAIS ============
 function openUploadModal() {
-  if (!isAdmin) { showToast('Acesso restrito', 'error'); return; }
   const modal = document.getElementById('upload-modal');
   modal.classList.remove('hidden');
   modal.classList.add('flex');
 }
+
 function closeUploadModal() {
   const modal = document.getElementById('upload-modal');
   modal.classList.add('hidden');
   modal.classList.remove('flex');
 }
+
 function openAddModal() {
-  if (!isAdmin) { showToast('Acesso restrito', 'error'); return; }
   editingOfferId = null;
   document.getElementById('f-edit-id').value = '';
   document.getElementById('f-titulo').value = '';
@@ -1930,13 +1690,13 @@ function openAddModal() {
   modal.classList.remove('hidden');
   modal.classList.add('flex');
 }
+
 function closeAddModal() {
   const modal = document.getElementById('add-modal');
   modal.classList.add('hidden');
   modal.classList.remove('flex');
 }
 
-// ============ UPLOAD EXCEL ============
 const uploadZone = document.getElementById('upload-zone');
 const fileInput = document.getElementById('file-input');
 
@@ -1969,7 +1729,7 @@ function handleFile(file) {
         const loja = row.loja || row.Loja || row.LOJA || row.store || '';
         const descricao = row.descricao || row.Descricao || row.DESCRICAO || row.description || '';
         if (titulo && !isNaN(preco)) {
-          offers.push({ id: Date.now() + Math.random(), titulo: String(titulo), preco, preco_original: isNaN(preco_original) ? null : preco_original, categoria: String(categoria), imagem: String(imagem), link: String(link), loja: String(loja), descricao: String(descricao), dateAdded: new Date().toISOString() });
+          offers.push({ id: Date.now() + Math.floor(Math.random() * 1000), titulo: String(titulo), preco, preco_original: isNaN(preco_original) ? null : preco_original, categoria: String(categoria), imagem: String(imagem), link: String(link), loja: String(loja), descricao: String(descricao), dateAdded: new Date().toISOString() });
           imported++;
         } else { errors++; }
       });
@@ -1995,7 +1755,6 @@ function downloadTemplate() {
 }
 
 function saveOffer() {
-  if (!isAdmin) { showToast('Acesso restrito', 'error'); return; }
   const titulo = document.getElementById('f-titulo').value.trim();
   const preco = parseFloat(document.getElementById('f-preco').value);
   const preco_original = parseFloat(document.getElementById('f-preco-original').value);
@@ -2044,7 +1803,7 @@ document.querySelectorAll('.modal-overlay').forEach(modal => {
 
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
-    ['login-modal', 'upload-modal', 'add-modal', 'customize-modal', 'confirm-modal'].forEach(id => {
+    ['upload-modal', 'add-modal', 'customize-modal', 'confirm-modal'].forEach(id => {
       const modal = document.getElementById(id);
       if (modal && !modal.classList.contains('hidden')) {
         modal.classList.add('hidden');
@@ -2053,42 +1812,6 @@ document.addEventListener('keydown', (e) => {
     });
   }
 });
-
-// ============ MEDIDAS DE SEGURANÇA ANTI-CÓPIA ============
-(function() {
-  document.addEventListener('contextmenu', (e) => { e.preventDefault(); return false; });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'F12') { e.preventDefault(); return false; }
-    if (e.ctrlKey && e.shiftKey && e.key === 'I') { e.preventDefault(); return false; }
-    if (e.ctrlKey && e.shiftKey && e.key === 'J') { e.preventDefault(); return false; }
-    if (e.ctrlKey && e.shiftKey && e.key === 'C') { e.preventDefault(); return false; }
-    if (e.ctrlKey && e.key === 'u') { e.preventDefault(); return false; }
-    if (e.ctrlKey && e.key === 's') { e.preventDefault(); return false; }
-    if (e.ctrlKey && e.key === 'a' && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') { e.preventDefault(); return false; }
-    if (e.ctrlKey && e.key === 'c' && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') { e.preventDefault(); return false; }
-  });
-  let devtoolsOpen = false;
-  const threshold = 160;
-  setInterval(() => {
-    const widthThreshold = window.outerWidth - window.innerWidth > threshold;
-    const heightThreshold = window.outerHeight - window.innerHeight > threshold;
-    if (widthThreshold || heightThreshold) {
-      if (!devtoolsOpen) {
-        devtoolsOpen = true;
-        console.clear();
-        console.log('%c⚠️ Atenção!', 'color: red; font-size: 30px; font-weight: bold;');
-        console.log('%cEsta ferramenta é destinada a desenvolvedores.', 'color: orange; font-size: 16px;');
-      }
-    } else { devtoolsOpen = false; }
-  }, 1000);
-  document.addEventListener('dragstart', (e) => { if (e.target.tagName === 'IMG') e.preventDefault(); });
-  Object.defineProperty(window, 'adminPassword', {
-    get: function() { return undefined; },
-    set: function() {},
-    enumerable: false,
-    configurable: false
-  });
-})();
 
 // ============ INICIALIZAÇÃO ============
 loadSettings();
@@ -2099,7 +1822,6 @@ loadOffers();
 applySettings();
 renderCategoryButtons();
 populateCategorySelect();
-checkAuth();
 renderOffers();
 updateSavedCount();
 </script>
