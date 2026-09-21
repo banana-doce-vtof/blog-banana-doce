@@ -9,6 +9,13 @@
 <meta property="og:image" id="ogImage" content="">
 <link rel="icon" id="favicon" href="">
 <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+<!-- ===== FIREBASE AUTH (compat) =====
+     IMPORTANTE: no console do Firebase, em "Authentication" > "Sign-in method",
+     ative o provedor "E-mail/Senha". -->
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+
 <style>
 @import url('https://cdn.jsdelivr.net/fontsource/fonts/poppins@latest/latin-400-normal.css');
 @import url('https://cdn.jsdelivr.net/fontsource/fonts/poppins@latest/latin-500-normal.css');
@@ -50,7 +57,7 @@ img{max-width:100%}
 .logo-sm{width:42px;height:42px;font-size:22px;border-radius:12px}
 .main-title{font-size:1.32rem;font-weight:800;line-height:1.15;letter-spacing:-.02em}
 .subtitle{font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
-.header-actions{display:flex;gap:10px;flex-wrap:wrap}
+.header-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 
 .hero{background:linear-gradient(135deg,var(--hero-a),var(--hero-b));color:#fff;padding:64px 0 96px;position:relative;overflow:hidden;transition:background .35s}
 .hero::before,.hero::after{content:'';position:absolute;border-radius:50%;background:rgba(255,255,255,.08)}
@@ -269,8 +276,123 @@ textarea.input{resize:vertical;min-height:84px}
   .sort-select{width:100%}
 }
 </style>
+
+<!-- ==================================================================
+     ESTILOS EXCLUSIVOS DA TELA DE LOGIN/CADASTRO
+     Ficam em um <style> separado de propósito:
+     o botão "Baixar HTML" exporta apenas o primeiro <style>,
+     então a vitrine gerada continua 100% limpa e sem login.
+     ================================================================== -->
+<style id="authStyles">
+body.auth-lock{overflow:hidden}
+
+.auth-gate{position:fixed;inset:0;z-index:500;display:flex;align-items:center;justify-content:center;padding:22px;overflow-y:auto;background:linear-gradient(135deg,var(--hero-a),var(--hero-b))}
+.auth-gate.hidden{display:none}
+.auth-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.auth-bg span{position:absolute;border-radius:50%;background:rgba(255,255,255,.08)}
+.auth-bg span:nth-child(1){width:360px;height:360px;top:-150px;right:-90px}
+.auth-bg span:nth-child(2){width:240px;height:240px;bottom:-120px;left:-80px}
+.auth-bg span:nth-child(3){width:130px;height:130px;top:22%;left:9%;background:rgba(255,255,255,.06);animation:authFloat 9s ease-in-out infinite}
+.auth-bg span:nth-child(4){width:90px;height:90px;bottom:18%;right:12%;background:rgba(255,255,255,.05);animation:authFloat 11s ease-in-out infinite reverse}
+@keyframes authFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-24px)}}
+
+.auth-card{position:relative;z-index:2;width:100%;max-width:432px;background:var(--surface);border:1px solid var(--line);border-radius:22px;box-shadow:0 34px 90px rgba(0,0,0,.38);padding:28px 26px 24px;animation:authIn .4s cubic-bezier(.2,.9,.3,1.1) both}
+@keyframes authIn{from{opacity:0;transform:translateY(22px) scale(.97)}to{opacity:1;transform:none}}
+
+.auth-top{text-align:center;margin-bottom:4px}
+.auth-logo{width:66px;height:66px;border-radius:20px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));display:grid;place-items:center;font-size:34px;margin:0 auto 12px;box-shadow:0 12px 26px rgba(0,0,0,.22);overflow:hidden;position:relative}
+.auth-logo img{width:100%;height:100%;object-fit:cover;display:block}
+.auth-logo::after{content:'';position:absolute;inset:0;background:linear-gradient(115deg,transparent 32%,rgba(255,255,255,.4) 50%,transparent 68%);transform:translateX(-120%);animation:authShine 4.5s ease-in-out 1.2s infinite}
+@keyframes authShine{0%{transform:translateX(-120%)}55%,100%{transform:translateX(120%)}}
+.auth-brand{font-size:.7rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.auth-title{font-size:1.28rem;font-weight:800;letter-spacing:-.02em;margin-top:8px}
+.auth-sub{font-size:.8rem;color:var(--muted);margin-top:5px;line-height:1.5}
+
+.auth-tabs{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:4px;background:rgba(127,127,127,.11);border-radius:14px;padding:4px;margin:20px 0 18px}
+.auth-tabs.signup .auth-tab-ink{transform:translateX(calc(100% + 4px))}
+.auth-tab-ink{position:absolute;z-index:1;top:4px;left:4px;width:calc(50% - 6px);height:calc(100% - 8px);border-radius:11px;background:var(--surface);box-shadow:0 4px 12px rgba(0,0,0,.13);transition:transform .34s cubic-bezier(.2,.9,.3,1.2)}
+.auth-tab{position:relative;z-index:2;border:none;background:transparent;padding:10px 8px;border-radius:11px;font:700 .83rem 'Poppins',sans-serif;color:var(--muted);cursor:pointer;transition:color .25s,transform .2s}
+.auth-tab:hover{color:var(--text)}
+.auth-tab.active{color:var(--text)}
+.auth-tab:active{transform:scale(.97)}
+.auth-tabs.off{display:none}
+
+.auth-msg{display:none;gap:9px;align-items:flex-start;border-radius:12px;padding:11px 13px;font-size:.78rem;font-weight:600;margin-bottom:15px;line-height:1.5}
+.auth-msg.show{display:flex;animation:authMsg .28s ease both}
+@keyframes authMsg{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.auth-msg.err{background:#FEE2E2;color:#B91C1C;border:1px solid #FCA5A5}
+.auth-msg.ok{background:#DCFCE7;color:#15803D;border:1px solid #86EFAC}
+.auth-msg.info{background:rgba(59,130,246,.1);color:#1D4ED8;border:1px solid rgba(59,130,246,.3)}
+.auth-msg i{font-style:normal;font-size:.95rem;line-height:1.2}
+
+.auth-panel{animation:authPanel .32s ease both}
+.auth-panel[hidden]{display:none}
+@keyframes authPanel{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:none}}
+.auth-panel.back{animation-name:authPanelBack}
+@keyframes authPanelBack{from{opacity:0;transform:translateX(-14px)}to{opacity:1;transform:none}}
+
+.af{margin-bottom:13px}
+.af > label{display:block;font-size:.74rem;font-weight:700;color:var(--muted);margin-bottom:6px;letter-spacing:.01em}
+.af-in{position:relative;display:flex;align-items:center}
+.af-in.has-eye .input{padding-right:46px}
+.af-ico{position:absolute;left:13px;font-size:.86rem;opacity:.5;pointer-events:none;line-height:1}
+.af-in.with-ico .input{padding-left:38px}
+.af-eye{position:absolute;right:7px;width:32px;height:32px;border:none;border-radius:9px;background:transparent;cursor:pointer;font-size:.92rem;display:grid;place-items:center;transition:.2s;color:var(--text)}
+.af-eye:hover{background:rgba(127,127,127,.14)}
+.af-err{display:block;font-size:.7rem;font-weight:600;color:#DC2626;margin-top:5px;line-height:1.4}
+.af-err:empty{display:none}
+.af-hint{display:block;font-size:.68rem;font-weight:600;color:var(--muted);margin-top:5px}
+.af-hint.warn{color:#B45309}
+.af.bad .input{border-color:#EF4444;background:#FEF2F2;animation:shake .3s}
+.af.good .input{border-color:#22C55E}
+
+.af-strength{display:flex;align-items:center;gap:9px;margin-top:9px}
+.af-bars{display:flex;gap:4px;flex:1}
+.af-bars i{height:4px;flex:1;border-radius:99px;background:rgba(127,127,127,.2);transition:background .3s}
+.af-strength[data-level="1"] i:nth-child(-n+1){background:#EF4444}
+.af-strength[data-level="2"] i:nth-child(-n+2){background:#F59E0B}
+.af-strength[data-level="3"] i:nth-child(-n+3){background:#3B82F6}
+.af-strength[data-level="4"] i:nth-child(-n+4){background:#22C55E}
+.af-strength-txt{font-size:.67rem;font-weight:800;color:var(--muted);white-space:nowrap;text-transform:uppercase;letter-spacing:.06em}
+
+.auth-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:2px 0 16px;flex-wrap:wrap}
+.auth-check{display:inline-flex;align-items:center;gap:8px;font-size:.76rem;font-weight:600;color:var(--muted);cursor:pointer;user-select:none}
+.auth-check input{position:absolute;opacity:0;width:1px;height:1px}
+.auth-check b{width:19px;height:19px;border-radius:6px;border:1.5px solid var(--line);background:var(--surface);display:grid;place-items:center;transition:.2s;flex-shrink:0}
+.auth-check b::after{content:'✓';font-size:.68rem;font-weight:800;color:#fff;opacity:0;transform:scale(.4);transition:.2s}
+.auth-check input:checked + b{background:var(--primary);border-color:var(--primary)}
+.auth-check input:checked + b::after{opacity:1;transform:none}
+.auth-check input:focus-visible + b{box-shadow:0 0 0 3px rgba(245,158,11,.28)}
+.auth-check.linked b{margin-top:-13px}
+
+.auth-link{border:none;background:none;color:var(--primary-dark);font:700 .76rem 'Poppins',sans-serif;cursor:pointer;padding:2px 0;text-decoration:underline;text-underline-offset:3px;transition:.2s}
+.auth-link:hover{color:var(--primary)}
+
+.auth-submit{width:100%;padding:13px 18px;font-size:.92rem}
+.auth-submit:disabled{opacity:.65;cursor:not-allowed;transform:none}
+.auth-spin{width:15px;height:15px;border:2px solid rgba(255,255,255,.42);border-top-color:#fff;border-radius:50%;animation:authspin .7s linear infinite;display:none;flex-shrink:0}
+.auth-submit.loading .auth-spin{display:block}
+@keyframes authspin{to{transform:rotate(360deg)}}
+
+.auth-div{display:flex;align-items:center;gap:10px;margin:18px 0 12px;color:var(--muted);font-size:.66rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em}
+.auth-div::before,.auth-div::after{content:'';flex:1;height:1px;background:var(--line)}
+.auth-alt{text-align:center;font-size:.77rem;color:var(--muted);line-height:1.6}
+.auth-foot{margin-top:18px;padding-top:15px;border-top:1px dashed var(--line);text-align:center;font-size:.68rem;color:var(--muted);line-height:1.6}
+
+.auth-user{display:inline-flex;align-items:center;gap:8px;padding:5px 14px 5px 5px;border-radius:999px;background:var(--surface);border:1.5px solid var(--line);font-size:.78rem;font-weight:600;color:var(--text);max-width:250px}
+.auth-avatar{width:29px;height:29px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;display:grid;place-items:center;font-size:.7rem;font-weight:800;flex-shrink:0;text-transform:uppercase}
+.auth-user b{font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:165px}
+
+@media(max-width:720px){
+  .auth-card{padding:24px 18px 20px;border-radius:20px}
+  .auth-title{font-size:1.15rem}
+  .auth-user{max-width:100%}
+  .auth-user b{max-width:110px}
+  .auth-row{gap:8px}
+}
+</style>
 </head>
-<body>
+<body class="auth-lock">
 
 <header class="site-header">
   <div class="container header-inner">
@@ -284,6 +406,8 @@ textarea.input{resize:vertical;min-height:84px}
     <nav class="header-actions">
       <button class="btn btn-outline" id="btnExcel">📊 Importar Excel</button>
       <button class="btn btn-primary" id="btnNova">➕ Nova Oferta</button>
+      <span class="auth-user" id="authUserChip" hidden><span class="auth-avatar" id="authUserAvatar">?</span><b id="authUserEmail"></b></span>
+      <button class="btn btn-outline" id="btnLogout" hidden>🚪 Sair</button>
     </nav>
   </div>
 </header>
@@ -555,6 +679,156 @@ textarea.input{resize:vertical;min-height:84px}
   <div class="cp-actions">
     <div class="cp-current"><span class="sw checker" id="cpCurrentSw"><i id="cpCurrentFill" style="display:block;width:100%;height:100%;border-radius:5px"></i></span><span id="cpCurrentHex">#000000</span></div>
     <button class="btn btn-ghost btn-sm" id="cpTransparent" type="button">Transparente</button>
+  </div>
+</div>
+
+<!-- ==================== TELA DE LOGIN / CADASTRO ==================== -->
+<div class="auth-gate" id="authGate" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+  <div class="auth-bg" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+
+  <div class="auth-card">
+    <div class="auth-top">
+      <div class="auth-logo" id="authLogo">🍌</div>
+      <div class="auth-brand" id="authBrand">Banana Doce</div>
+      <h2 class="auth-title" id="authTitle">Bem-vindo(a) de volta</h2>
+      <p class="auth-sub" id="authSub">Entre para acessar o painel de gerenciamento</p>
+    </div>
+
+    <div class="auth-tabs" id="authTabs" role="tablist" aria-label="Entrar ou criar conta">
+      <span class="auth-tab-ink" aria-hidden="true"></span>
+      <button type="button" class="auth-tab active" id="tabLogin" role="tab" aria-selected="true" aria-controls="loginForm">🔐 Entrar</button>
+      <button type="button" class="auth-tab" id="tabSignup" role="tab" aria-selected="false" aria-controls="signupForm">✨ Criar conta</button>
+    </div>
+
+    <div class="auth-msg" id="authMsg" role="alert" aria-live="polite"></div>
+
+    <!-- ========== PAINEL: QUEM JÁ TEM CONTA ========== -->
+    <form class="auth-panel" id="loginForm" role="tabpanel" novalidate autocomplete="on">
+      <div class="af" data-field="loginEmail">
+        <label for="loginEmail">E-mail <span class="req">*</span></label>
+        <div class="af-in with-ico">
+          <span class="af-ico">✉️</span>
+          <input class="input" type="email" id="loginEmail" name="email" placeholder="seu@email.com" autocomplete="username" inputmode="email" spellcheck="false">
+        </div>
+        <small class="af-err"></small>
+      </div>
+
+      <div class="af" data-field="loginPass">
+        <label for="loginPass">Senha <span class="req">*</span></label>
+        <div class="af-in with-ico has-eye">
+          <span class="af-ico">🔒</span>
+          <input class="input" type="password" id="loginPass" name="password" placeholder="Digite sua senha" autocomplete="current-password">
+          <button type="button" class="af-eye" data-eye="loginPass" title="Mostrar senha" aria-label="Mostrar ou ocultar senha">👁️</button>
+        </div>
+        <small class="af-err"></small>
+        <small class="af-hint" data-caps hidden>⚠️ Caps Lock está ativado</small>
+      </div>
+
+      <div class="auth-row">
+        <label class="auth-check" title="Guardar meu e-mail neste navegador">
+          <input type="checkbox" id="rememberEmail"><b></b><span>Manter meu e-mail</span>
+        </label>
+        <button type="button" class="auth-link" id="btnForgot">Esqueci minha senha</button>
+      </div>
+
+      <button type="submit" class="btn btn-primary auth-submit" id="loginSubmit">
+        <span class="auth-spin"></span><span id="loginSubmitLabel">🔐 Entrar</span>
+      </button>
+
+      <div class="auth-div">ou</div>
+
+      <p class="auth-alt">Ainda não tem conta?<br>
+        <button type="button" class="auth-link" data-goto="signup">Criar uma conta grátis →</button>
+      </p>
+    </form>
+
+    <!-- ========== PAINEL: QUEM NÃO TEM CONTA ========== -->
+    <form class="auth-panel" id="signupForm" role="tabpanel" novalidate autocomplete="on" hidden>
+      <div class="af" data-field="suName">
+        <label for="suName">Seu nome</label>
+        <div class="af-in with-ico">
+          <span class="af-ico">🙂</span>
+          <input class="input" type="text" id="suName" placeholder="Como você quer ser chamado(a)" autocomplete="name">
+        </div>
+        <small class="af-err"></small>
+      </div>
+
+      <div class="af" data-field="suEmail">
+        <label for="suEmail">E-mail <span class="req">*</span></label>
+        <div class="af-in with-ico">
+          <span class="af-ico">✉️</span>
+          <input class="input" type="email" id="suEmail" placeholder="seu@email.com" autocomplete="email" inputmode="email" spellcheck="false">
+        </div>
+        <small class="af-err"></small>
+      </div>
+
+      <div class="af" data-field="suPass">
+        <label for="suPass">Crie uma senha <span class="req">*</span></label>
+        <div class="af-in with-ico has-eye">
+          <span class="af-ico">🔑</span>
+          <input class="input" type="password" id="suPass" placeholder="Mínimo de 6 caracteres" autocomplete="new-password">
+          <button type="button" class="af-eye" data-eye="suPass" title="Mostrar senha" aria-label="Mostrar ou ocultar senha">👁️</button>
+        </div>
+        <div class="af-strength" id="pwStrength" data-level="0">
+          <div class="af-bars"><i></i><i></i><i></i><i></i></div>
+          <span class="af-strength-txt" id="pwStrengthTxt">Força da senha</span>
+        </div>
+        <small class="af-err"></small>
+      </div>
+
+      <div class="af" data-field="suPass2">
+        <label for="suPass2">Confirmar senha <span class="req">*</span></label>
+        <div class="af-in with-ico has-eye">
+          <span class="af-ico">🔁</span>
+          <input class="input" type="password" id="suPass2" placeholder="Repita a senha" autocomplete="new-password">
+          <button type="button" class="af-eye" data-eye="suPass2" title="Mostrar senha" aria-label="Mostrar ou ocultar senha">👁️</button>
+        </div>
+        <small class="af-err"></small>
+      </div>
+
+      <div class="af" data-field="suTerms">
+        <label class="auth-check linked">
+          <input type="checkbox" id="suTerms"><b></b>
+          <span class="auth-terms">Li e concordo com os termos de uso e a política de privacidade.</span>
+        </label>
+        <small class="af-err"></small>
+      </div>
+
+      <button type="submit" class="btn btn-primary auth-submit" id="signupSubmit">
+        <span class="auth-spin"></span><span id="signupSubmitLabel">✨ Criar minha conta</span>
+      </button>
+
+      <div class="auth-div">já tem cadastro?</div>
+
+      <p class="auth-alt">
+        <button type="button" class="auth-link" data-goto="login">← Voltar para o login</button>
+      </p>
+    </form>
+
+    <!-- ========== PAINEL: RECUPERAR SENHA ========== -->
+    <form class="auth-panel" id="forgotForm" role="tabpanel" novalidate hidden>
+      <div class="af" data-field="fgEmail">
+        <label for="fgEmail">E-mail cadastrado <span class="req">*</span></label>
+        <div class="af-in with-ico">
+          <span class="af-ico">📧</span>
+          <input class="input" type="email" id="fgEmail" placeholder="seu@email.com" autocomplete="email" inputmode="email" spellcheck="false">
+        </div>
+        <small class="af-err"></small>
+        <small class="af-hint">Enviaremos um link para você definir uma nova senha.</small>
+      </div>
+
+      <button type="submit" class="btn btn-primary auth-submit" id="forgotSubmit">
+        <span class="auth-spin"></span><span id="forgotSubmitLabel">📧 Enviar link de recuperação</span>
+      </button>
+
+      <div class="auth-div">ou</div>
+
+      <p class="auth-alt">
+        <button type="button" class="auth-link" data-goto="login">← Voltar para o login</button>
+      </p>
+    </form>
+
+    <div class="auth-foot">🔐 Conexão segura via Firebase Authentication</div>
   </div>
 </div>
 
@@ -1465,6 +1739,495 @@ buildCpGrid();
 buildColorFields();
 applySettings();
 renderOffers();
+})();
+</script>
+
+<!-- ==================================================================
+     LOGIN / CADASTRO — FIREBASE AUTHENTICATION
+     • Tela com abas: "Entrar" (quem já tem conta) e "Criar conta" (quem não tem)
+     • Painel extra de recuperação de senha
+     • Usa as cores/fontes do próprio site (nada do visual original foi alterado)
+     ================================================================== -->
+<script>
+(function(){
+'use strict';
+
+/* ---------------- Configuração do Firebase ---------------- */
+var firebaseConfig = {
+  apiKey: "AIzaSyDF9Qk26plFmab3UXUykthfiKLvdpqRGqM",
+  authDomain: "banana-doce-f6b9a.firebaseapp.com",
+  projectId: "banana-doce-f6b9a",
+  storageBucket: "banana-doce-f6b9a.firebasestorage.app",
+  messagingSenderId: "823267601256",
+  appId: "1:823267601256:web:ecb90ae9bc8695e2cc44dd"
+};
+
+/* E-mails autorizados a entrar no painel.
+   VAZIA ([]) = qualquer conta cadastrada pode acessar.
+   Ex.: var ALLOWED_EMAILS = ['admin@bananadoce.com','gerente@loja.com']; */
+var ALLOWED_EMAILS = [];
+
+/* true = só entra depois de confirmar o e-mail pelo link recebido */
+var EXIGIR_EMAIL_VERIFICADO = false;
+
+var LS_EMAIL = 'bd_auth_email';
+var LS_VERIF = 'bd_auth_verif_sent';
+
+/* ---------------- Elementos ---------------- */
+function id(x){ return document.getElementById(x); }
+var gate       = id('authGate');
+var authLogo   = id('authLogo');
+var authBrand  = id('authBrand');
+var authTitle  = id('authTitle');
+var authSub    = id('authSub');
+var msgBox     = id('authMsg');
+var tabs       = id('authTabs');
+var tabLogin   = id('tabLogin');
+var tabSignup  = id('tabSignup');
+
+var loginForm  = id('loginForm');
+var signupForm = id('signupForm');
+var forgotForm = id('forgotForm');
+
+var loginEmail = id('loginEmail');
+var loginPass  = id('loginPass');
+var rememberEl = id('rememberEmail');
+var loginBtn   = id('loginSubmit');
+var loginLabel = id('loginSubmitLabel');
+
+var suName  = id('suName');
+var suEmail = id('suEmail');
+var suPass  = id('suPass');
+var suPass2 = id('suPass2');
+var suTerms = id('suTerms');
+var suBtn   = id('signupSubmit');
+var suLabel = id('signupSubmitLabel');
+var pwBox   = id('pwStrength');
+var pwTxt   = id('pwStrengthTxt');
+
+var fgEmail = id('fgEmail');
+var fgBtn   = id('forgotSubmit');
+var fgLabel = id('forgotSubmitLabel');
+
+var chip      = id('authUserChip');
+var chipEmail = id('authUserEmail');
+var chipAvat  = id('authUserAvatar');
+var logoutBtn = id('btnLogout');
+
+var auth = null;
+var pendingMsg = null;
+var msgTimer = null;
+
+/* ---------------- Identidade visual herdada do site ---------------- */
+var mainLogo = id('mainLogo');
+if(mainLogo && authLogo) authLogo.innerHTML = mainLogo.innerHTML;
+var mainTitleEl = id('mainTitleEl');
+if(mainTitleEl && authBrand) authBrand.textContent = mainTitleEl.textContent || 'Banana Doce';
+
+/* ---------------- Mensagens ---------------- */
+var ICONS = {err:'⚠️', ok:'✅', info:'ℹ️'};
+function showMsg(type, text){
+  msgBox.className = 'auth-msg show ' + type;
+  msgBox.innerHTML = '<i>' + (ICONS[type] || '') + '</i><span>' + text + '</span>';
+  clearTimeout(msgTimer);
+  if(type === 'ok' || type === 'info') msgTimer = setTimeout(hideMsg, 6000);
+}
+function hideMsg(){ msgBox.className = 'auth-msg'; msgBox.innerHTML = ''; }
+
+/* ---------------- Estado dos botões ---------------- */
+function loading(btn, label, on, textoOn, textoOff){
+  btn.disabled = on;
+  btn.classList.toggle('loading', on);
+  label.textContent = on ? textoOn : textoOff;
+}
+
+/* ---------------- Validação de campos ---------------- */
+function fieldWrap(el){ return el ? el.closest('.af') : null; }
+function setErr(el, msg){
+  var w = fieldWrap(el);
+  if(w){ w.classList.toggle('bad', !!msg); if(!msg) w.classList.remove('good'); }
+  var box = w ? w.querySelector('.af-err') : null;
+  if(box) box.textContent = msg || '';
+  return !msg;
+}
+function setOk(el){
+  var w = fieldWrap(el);
+  if(w){ w.classList.remove('bad'); w.classList.add('good'); }
+  var box = w ? w.querySelector('.af-err') : null;
+  if(box) box.textContent = '';
+}
+function limparErros(form){
+  Array.prototype.forEach.call(form.querySelectorAll('.af'), function(w){
+    w.classList.remove('bad','good');
+    var b = w.querySelector('.af-err'); if(b) b.textContent = '';
+  });
+}
+var RE_EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+function emailValido(v){ return RE_EMAIL.test(String(v||'').trim()); }
+
+/* ---------------- Força da senha ---------------- */
+var LABELS = ['Força da senha','Muito fraca','Fraca','Boa','Forte'];
+function forcaSenha(s){
+  s = String(s||'');
+  if(!s) return 0;
+  var p = 0;
+  if(s.length >= 6) p++;
+  if(s.length >= 10) p++;
+  if(/[a-z]/.test(s) && /[A-Z]/.test(s)) p++;
+  if(/\d/.test(s)) p++;
+  if(/[^A-Za-z0-9]/.test(s)) p++;
+  if(p <= 1) return 1;
+  if(p === 2) return 2;
+  if(p <= 3) return 3;
+  return 4;
+}
+function atualizarForca(){
+  var lvl = forcaSenha(suPass.value);
+  pwBox.setAttribute('data-level', String(lvl));
+  pwTxt.textContent = LABELS[lvl];
+  if(suPass.value.length && lvl < 2) pwTxt.textContent = 'Muito fraca';
+}
+
+/* ---------------- Abas / painéis ---------------- */
+var TEXTOS = {
+  login:  {title:'Bem-vindo(a) de volta', sub:'Entre para acessar o painel de gerenciamento'},
+  signup: {title:'Crie sua conta',        sub:'Leva menos de um minuto — e é gratuito'},
+  forgot: {title:'Recuperar senha',       sub:'Informe seu e-mail e enviaremos um link de redefinição'}
+};
+function showPanel(nome, sentido){
+  hideMsg();
+  loginForm.hidden  = nome !== 'login';
+  signupForm.hidden = nome !== 'signup';
+  forgotForm.hidden = nome !== 'forgot';
+
+  var painel = nome === 'login' ? loginForm : (nome === 'signup' ? signupForm : forgotForm);
+  painel.classList.remove('back');
+  if(sentido === 'back') painel.classList.add('back');
+  void painel.offsetWidth;
+
+  tabs.classList.toggle('signup', nome === 'signup');
+  tabs.classList.toggle('off', nome === 'forgot');
+  tabLogin.classList.toggle('active', nome === 'login');
+  tabSignup.classList.toggle('active', nome === 'signup');
+  tabLogin.setAttribute('aria-selected', nome === 'login' ? 'true' : 'false');
+  tabSignup.setAttribute('aria-selected', nome === 'signup' ? 'true' : 'false');
+
+  authTitle.textContent = TEXTOS[nome].title;
+  authSub.textContent   = TEXTOS[nome].sub;
+
+  loading(loginBtn, loginLabel, false, '', '🔐 Entrar');
+  loading(suBtn, suLabel, false, '', '✨ Criar minha conta');
+  loading(fgBtn, fgLabel, false, '', '📧 Enviar link de recuperação');
+
+  setTimeout(function(){
+    var alvo = nome === 'login' ? loginEmail : (nome === 'signup' ? suName : fgEmail);
+    if(alvo && !alvo.hidden) alvo.focus();
+  }, 220);
+}
+tabLogin.addEventListener('click',  function(){ showPanel('login','back'); });
+tabSignup.addEventListener('click', function(){ showPanel('signup','next'); });
+Array.prototype.forEach.call(document.querySelectorAll('[data-goto]'), function(b){
+  b.addEventListener('click', function(){
+    var alvo = b.getAttribute('data-goto');
+    if(alvo === 'signup'){
+      if(loginEmail.value.trim()) suEmail.value = loginEmail.value.trim();
+    }
+    showPanel(alvo, alvo === 'login' ? 'back' : 'next');
+  });
+});
+id('btnForgot').addEventListener('click', function(){
+  fgEmail.value = loginEmail.value.trim();
+  showPanel('forgot','next');
+});
+
+/* ---------------- Mostrar / ocultar senha ---------------- */
+Array.prototype.forEach.call(document.querySelectorAll('.af-eye'), function(btn){
+  btn.addEventListener('click', function(){
+    var alvo = id(btn.getAttribute('data-eye'));
+    if(!alvo) return;
+    var vendo = alvo.type === 'text';
+    alvo.type = vendo ? 'password' : 'text';
+    btn.textContent = vendo ? '👁️' : '🙈';
+    btn.title = vendo ? 'Mostrar senha' : 'Ocultar senha';
+    alvo.focus();
+  });
+});
+
+/* ---------------- Caps Lock ---------------- */
+function avisarCaps(e, input){
+  var w = fieldWrap(input); if(!w) return;
+  var hint = w.querySelector('[data-caps]'); if(!hint) return;
+  var on = false;
+  try{ on = e.getModifierState && e.getModifierState('CapsLock'); }catch(err){ on = false; }
+  hint.hidden = !on;
+  if(on) hint.classList.add('warn');
+}
+
+/* ---------------- Validadores ao digitar ---------------- */
+loginEmail.addEventListener('blur', function(){
+  var v = loginEmail.value.trim();
+  if(v && !emailValido(v)) setErr(loginEmail, 'E-mail inválido. Ex.: nome@dominio.com');
+  else { setErr(loginEmail,''); if(v) setOk(loginEmail); }
+});
+loginEmail.addEventListener('input', function(){ setErr(loginEmail,''); });
+loginPass.addEventListener('input', function(){ setErr(loginPass,''); });
+loginPass.addEventListener('keydown', function(e){ avisarCaps(e, loginPass); });
+loginPass.addEventListener('keyup',   function(e){ avisarCaps(e, loginPass); });
+
+suEmail.addEventListener('blur', function(){
+  var v = suEmail.value.trim();
+  if(v && !emailValido(v)) setErr(suEmail, 'E-mail inválido. Ex.: nome@dominio.com');
+  else { setErr(suEmail,''); if(v) setOk(suEmail); }
+});
+suEmail.addEventListener('input', function(){ setErr(suEmail,''); });
+suName.addEventListener('input', function(){ setErr(suName,''); });
+suPass.addEventListener('input', function(){
+  setErr(suPass,''); atualizarForca();
+  if(suPass2.value) validarConfirmacao();
+});
+suPass.addEventListener('keydown', function(e){ avisarCaps(e, suPass); });
+suPass.addEventListener('keyup',   function(e){ avisarCaps(e, suPass); });
+function validarConfirmacao(){
+  if(!suPass2.value) return setErr(suPass2,'');
+  if(suPass2.value !== suPass.value) return setErr(suPass2,'As senhas não conferem');
+  setOk(suPass2); return true;
+}
+suPass2.addEventListener('input', validarConfirmacao);
+suTerms.addEventListener('change', function(){ setErr(suTerms,''); });
+fgEmail.addEventListener('input', function(){ setErr(fgEmail,''); });
+
+/* ---------------- Tradução de erros do Firebase ---------------- */
+function traduzirErro(code){
+  var mapa = {
+    'auth/invalid-email': 'E-mail inválido. Verifique e tente novamente.',
+    'auth/user-disabled': 'Esta conta foi desativada.',
+    'auth/user-not-found': 'Não encontramos nenhuma conta com este e-mail. Clique em "Criar conta" para se cadastrar.',
+    'auth/wrong-password': 'Senha incorreta. Tente novamente ou recupere sua senha.',
+    'auth/invalid-credential': 'E-mail ou senha incorretos.',
+    'auth/email-already-in-use': 'Este e-mail já possui conta. Use a aba "Entrar".',
+    'auth/weak-password': 'A senha deve ter pelo menos 6 caracteres.',
+    'auth/too-many-requests': 'Muitas tentativas seguidas. Aguarde alguns minutos e tente de novo.',
+    'auth/network-request-failed': 'Sem conexão com a internet. Verifique e tente novamente.',
+    'auth/operation-not-allowed': 'Ative o provedor "E-mail/Senha" no console do Firebase (Authentication › Sign-in method).',
+    'auth/requires-recent-login': 'Por segurança, faça login novamente.',
+    'auth/popup-blocked': 'O navegador bloqueou a janela. Permita pop-ups e tente novamente.'
+  };
+  return mapa[code] || 'Não foi possível concluir a operação. Tente novamente.';
+}
+
+/* ---------------- Bloquear / liberar a página ---------------- */
+function iniciais(user){
+  var nome = (user.displayName || user.email || '?').trim();
+  var partes = nome.split(/[\s@._-]+/).filter(Boolean);
+  if(!partes.length) return '?';
+  if(partes.length === 1) return partes[0].slice(0,2);
+  return (partes[0][0] + partes[partes.length-1][0]);
+}
+function unlock(user){
+  gate.classList.add('hidden');
+  gate.setAttribute('aria-hidden','true');
+  document.body.classList.remove('auth-lock');
+  chipEmail.textContent = user.displayName || user.email || '';
+  chipAvat.textContent = iniciais(user);
+  chip.hidden = false;
+  logoutBtn.hidden = false;
+  document.title = (user.displayName ? user.displayName.split(' ')[0] : 'Painel') + ' • ' + (id('pz_pageTitle') ? '' : '') + document.title.replace(/^[^•]*•\s?/,'');
+}
+function lock(){
+  gate.classList.remove('hidden');
+  gate.setAttribute('aria-hidden','false');
+  document.body.classList.add('auth-lock');
+  chip.hidden = true;
+  logoutBtn.hidden = true;
+  loginPass.value = ''; suPass.value = ''; suPass2.value = '';
+  atualizarForca();
+  limparErros(loginForm); limparErros(signupForm); limparErros(forgotForm);
+  loading(loginBtn, loginLabel, false, '', '🔐 Entrar');
+  loading(suBtn, suLabel, false, '', '✨ Criar minha conta');
+  loading(fgBtn, fgLabel, false, '', '📧 Enviar link de recuperação');
+  if(pendingMsg){ showMsg(pendingMsg[0], pendingMsg[1]); pendingMsg = null; }
+}
+function isAllowed(user){
+  if(!ALLOWED_EMAILS || !ALLOWED_EMAILS.length) return true;
+  var e = String(user.email || '').toLowerCase();
+  for(var i=0;i<ALLOWED_EMAILS.length;i++){
+    if(String(ALLOWED_EMAILS[i]).toLowerCase() === e) return true;
+  }
+  return false;
+}
+
+/* ---------------- E-mail lembrado ---------------- */
+function lembrarEmail(){
+  try{
+    var salvo = localStorage.getItem(LS_EMAIL) || '';
+    if(salvo){ loginEmail.value = salvo; fgEmail.value = salvo; rememberEl.checked = true; }
+  }catch(e){}
+}
+function gravarEmail(){
+  try{
+    if(rememberEl.checked) localStorage.setItem(LS_EMAIL, loginEmail.value.trim());
+    else localStorage.removeItem(LS_EMAIL);
+  }catch(e){}
+}
+
+/* ---------------- LOGIN ---------------- */
+loginForm.addEventListener('submit', function(e){
+  e.preventDefault();
+  hideMsg();
+  if(!auth){ showMsg('err','Firebase não está disponível. Recarregue a página.'); return; }
+
+  var email = loginEmail.value.trim();
+  var senha = loginPass.value;
+  var ok = true;
+
+  if(!email){ setErr(loginEmail,'Informe seu e-mail.'); ok = false; }
+  else if(!emailValido(email)){ setErr(loginEmail,'E-mail inválido. Ex.: nome@dominio.com'); ok = false; }
+  else setErr(loginEmail,'');
+
+  if(!senha){ setErr(loginPass,'Informe sua senha.'); ok = false; }
+  else if(senha.length < 6){ setErr(loginPass,'A senha tem no mínimo 6 caracteres.'); ok = false; }
+  else setErr(loginPass,'');
+
+  if(!ok){ showMsg('err','Confira os campos destacados em vermelho.'); return; }
+
+  gravarEmail();
+  loading(loginBtn, loginLabel, true, 'Entrando...', '');
+  auth.signInWithEmailAndPassword(email, senha)
+    .then(function(){ showMsg('ok','Login realizado com sucesso!'); })
+    .catch(function(err){
+      var code = err && err.code;
+      showMsg('err', traduzirErro(code));
+      if(code === 'auth/user-not-found') setErr(loginEmail,'Nenhuma conta encontrada com este e-mail.');
+      if(code === 'auth/wrong-password' || code === 'auth/invalid-credential') setErr(loginPass,'Senha incorreta.');
+      loading(loginBtn, loginLabel, false, '', '🔐 Entrar');
+    });
+});
+
+/* ---------------- CADASTRO ---------------- */
+signupForm.addEventListener('submit', function(e){
+  e.preventDefault();
+  hideMsg();
+  if(!auth){ showMsg('err','Firebase não está disponível. Recarregue a página.'); return; }
+
+  var nome  = suName.value.trim();
+  var email = suEmail.value.trim();
+  var senha = suPass.value;
+  var conf  = suPass2.value;
+  var ok = true;
+
+  if(!email){ setErr(suEmail,'Informe seu e-mail.'); ok = false; }
+  else if(!emailValido(email)){ setErr(suEmail,'E-mail inválido. Ex.: nome@dominio.com'); ok = false; }
+  else setErr(suEmail,'');
+
+  if(!senha){ setErr(suPass,'Crie uma senha.'); ok = false; }
+  else if(senha.length < 6){ setErr(suPass,'A senha precisa ter pelo menos 6 caracteres.'); ok = false; }
+  else setErr(suPass,'');
+
+  if(!conf){ setErr(suPass2,'Confirme sua senha.'); ok = false; }
+  else if(conf !== senha){ setErr(suPass2,'As senhas não conferem.'); ok = false; }
+  else setErr(suPass2,'');
+
+  if(!suTerms.checked){ setErr(suTerms,'É necessário aceitar os termos para continuar.'); ok = false; }
+  else setErr(suTerms,'');
+
+  if(!ok){ showMsg('err','Confira os campos destacados em vermelho.'); return; }
+
+  loading(suBtn, suLabel, true, 'Criando conta...', '');
+  auth.createUserWithEmailAndPassword(email, senha)
+    .then(function(cred){
+      if(nome && cred.user) return cred.user.updateProfile({displayName: nome}).then(function(){ return cred; });
+      return cred;
+    })
+    .then(function(){
+      showMsg('ok','Conta criada com sucesso! Bem-vindo(a) 🎉');
+      try{ localStorage.setItem(LS_EMAIL, email); }catch(e){}
+    })
+    .catch(function(err){
+      var code = err && err.code;
+      showMsg('err', traduzirErro(code));
+      if(code === 'auth/email-already-in-use'){
+        setErr(suEmail,'Este e-mail já está cadastrado.');
+        loginEmail.value = email;
+      }
+      if(code === 'auth/weak-password') setErr(suPass,'Senha muito fraca — use pelo menos 6 caracteres.');
+      loading(suBtn, suLabel, false, '', '✨ Criar minha conta');
+    });
+});
+
+/* ---------------- RECUPERAR SENHA ---------------- */
+forgotForm.addEventListener('submit', function(e){
+  e.preventDefault();
+  hideMsg();
+  if(!auth){ showMsg('err','Firebase não está disponível. Recarregue a página.'); return; }
+
+  var email = fgEmail.value.trim();
+  if(!email){ setErr(fgEmail,'Informe seu e-mail.'); showMsg('err','Digite o e-mail cadastrado.'); return; }
+  if(!emailValido(email)){ setErr(fgEmail,'E-mail inválido.'); showMsg('err','Digite um e-mail válido.'); return; }
+  setErr(fgEmail,'');
+
+  loading(fgBtn, fgLabel, true, 'Enviando...', '');
+  auth.sendPasswordResetEmail(email)
+    .then(function(){
+      showMsg('ok','Link enviado para <b>' + email + '</b>. Verifique também a caixa de spam.');
+      loading(fgBtn, fgLabel, false, '', '📧 Enviar link de recuperação');
+    })
+    .catch(function(err){
+      showMsg('err', traduzirErro(err && err.code));
+      if(err && err.code === 'auth/user-not-found') setErr(fgEmail,'Nenhuma conta encontrada com este e-mail.');
+      loading(fgBtn, fgLabel, false, '', '📧 Enviar link de recuperação');
+    });
+});
+
+/* ---------------- SAIR ---------------- */
+logoutBtn.addEventListener('click', function(){
+  if(!auth) return;
+  if(!window.confirm('Deseja sair da sua conta?')) return;
+  pendingMsg = ['info','Você saiu da sua conta. Até logo! 👋'];
+  auth.signOut().catch(function(){ lock(); });
+});
+
+/* ---------------- Verificação de e-mail (opcional) ---------------- */
+function tratarVerificacao(user){
+  if(!EXIGIR_EMAIL_VERIFICADO || user.emailVerified) return Promise.resolve(true);
+  var agora = Date.now();
+  var ultimo = 0;
+  try{ ultimo = Number(sessionStorage.getItem(LS_VERIF) || 0); }catch(e){}
+  if(agora - ultimo > 60000){
+    try{ sessionStorage.setItem(LS_VERIF, String(agora)); }catch(e){}
+    user.sendVerificationEmail().catch(function(){});
+  }
+  pendingMsg = ['info','📬 Enviamos um link de confirmação para <b>' + user.email + '</b>. Verifique sua caixa de entrada e faça login novamente.'];
+  return auth.signOut().then(function(){ return false; });
+}
+
+/* ---------------- Inicialização ---------------- */
+if(typeof firebase === 'undefined'){
+  showMsg('err','Não foi possível carregar o Firebase. Verifique sua conexão e recarregue a página.');
+} else {
+  try{
+    if(!firebase.apps || !firebase.apps.length) firebase.initializeApp(firebaseConfig);
+    auth = firebase.auth();
+    auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).catch(function(){});
+
+    auth.onAuthStateChanged(function(user){
+      if(!user){ lock(); return; }
+      if(!isAllowed(user)){
+        pendingMsg = ['err','🚫 O e-mail <b>' + user.email + '</b> não tem permissão para acessar este painel.'];
+        auth.signOut().catch(function(){ lock(); });
+        return;
+      }
+      tratarVerificacao(user).then(function(pode){
+        if(pode) unlock(user);
+      });
+    }, function(){ lock(); });
+  }catch(err){
+    showMsg('err','Erro ao iniciar o Firebase: ' + (err && err.message ? err.message : 'desconhecido'));
+  }
+}
+
+lembrarEmail();
+atualizarForca();
+showPanel('login','back');
 })();
 </script>
 </body>
