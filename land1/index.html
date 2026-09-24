@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<meta property="og:title" content="Banana Doce - Vitrine de Ofertas">
+<meta property="og:description" content="Confira as melhores ofertas e promoções exclusivas na nossa vitrine!">
+<meta property="og:image" content="https://banana-doce-vtof.github.io/blog-banana-doce/idvisual.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+ <!-- Código específico para o Twitter/X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://banana-doce-vtof.github.io/blog-banana-doce/idvisual.jpg">
+
+<title>Banana Doce | Vitrine de Ofertas | Suplementos: Whey Protein, Creatina, Pré-Treino e Hipercalórico</title>
+<meta name="description" content="Guia de suplementos com informações sobre whey protein, creatina, pré-treino e hipercalórico. Conheça características e diferenças entre os suplementos.">
+<meta name="keywords" content="suplementos, whey protein, creatina, pré-treino, hipercalórico, suplementos para academia, suplemento alimentar">
+<meta name="robots" content="index, follow">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/poppins@5.0.8/index.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/fredoka@5.0.8/index.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+<style>
+  :root {
+    --banana: #FFD60A;
+    --banana-dark: #E6B800;
+    --orange: #FF8C00;
+    --dark: #1a1a1a;
+  }
+  * { font-family: 'Poppins', sans-serif; }
+  h1, h2, h3, .brand { font-family: 'Fredoka', sans-serif; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #0f0f0f;
+    color: #fff;
+    overflow-x: hidden;
+  }
+  .gradient-bg {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d1b00 50%, #1a1a1a 100%);
+  }
+  .banana-gradient {
+    background: linear-gradient(135deg, #FFD60A 0%, #FF8C00 100%);
+  }
+  .text-banana-gradient {
+    background: linear-gradient(135deg, #FFD60A 0%, #FF8C00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .card-hover {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(255, 214, 10, 0.2);
+  }
+  .glow {
+    box-shadow: 0 0 60px rgba(255, 214, 10, 0.3);
+  }
+  .social-icon {
+    transition: all 0.3s ease;
+  }
+  .social-icon:hover {
+    transform: translateY(-4px) scale(1.1);
+  }
+  .social-icon.instagram:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+  .social-icon.x:hover { background: #000; }
+  .social-icon.threads:hover { background: #000; }
+  .social-icon.youtube:hover { background: #FF0000; }
+  .social-icon.tiktok:hover { background: #000; }
+  .social-icon.facebook:hover { background: #1877F2; }
+  
+  .floating {
+    animation: floating 3s ease-in-out infinite;
+  }
+  @keyframes floating {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+  }
+  
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .pulse-btn {
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255, 214, 10, 0.7); }
+    50% { box-shadow: 0 0 0 20px rgba(255, 214, 10, 0); }
+  }
+  
+  .banana-emoji {
+    display: inline-block;
+    animation: wiggle 2s ease-in-out infinite;
+  }
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(-10deg); }
+    50% { transform: rotate(10deg); }
+  }
+  
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.3;
+    z-index: 0;
+  }
+  
+  .nav-link {
+    position: relative;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #FFD60A, #FF8C00);
+    transition: width 0.3s ease;
+  }
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  
+  .article-card {
+    background: linear-gradient(145deg, #1f1f1f, #151515);
+    border: 1px solid rgba(255, 214, 10, 0.1);
+  }
+  .article-card:hover {
+    border-color: rgba(255, 214, 10, 0.5);
+  }
+  
+  .hero-pattern {
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(255, 214, 10, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(255, 140, 0, 0.15) 0%, transparent 50%);
+  }
+  
+  .scroll-indicator {
+    animation: bounce 2s infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+  }
+</style>
+<link rel="icon" href="logotipo.png">   
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-lg border-b border-yellow-500/20">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-2 brand text-2xl font-bold">
+      <span class="banana-emoji text-3xl">🍌</span>
+      <span class="text-banana-gradient">Banana Doce - Whey Protein, Creatina e Pré-Treino.</span>
+    </a>
+    <a href="https://banana-doce-vtof.github.io/blog-banana-doce/glrof2/" target="_blank" class="banana-gradient text-black font-bold px-5 py-2 rounded-full hover:scale-105 transition-transform">
+      😎 Acessar a Vitrine de Ofertas
+    </a>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="ofertas" class="relative min-h-screen flex items-center justify-center gradient-bg hero-pattern pt-20 overflow-hidden">
+  <div class="blob bg-yellow-500 w-96 h-96 top-20 -left-20"></div>
+  <div class="blob bg-orange-500 w-96 h-96 bottom-20 -right-20"></div>
+  
+  <div class="relative z-10 max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+    <div class="fade-in">
+      <div class="inline-flex items-center gap-2 bg-yellow-500/10 border border-yellow-500/30 rounded-full px-4 py-2 mb-6">
+        <span class="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></span>
+        <span class="text-yellow-400 text-sm font-medium">Ofertas atualizadas diariamente</span>
+      </div>
+      <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6">
+        As Melhores<br/>
+        <span class="text-banana-gradient">Ofertas</span> Estão<br/>
+        Aqui! 🍌
+      </h1>
+      <p class="text-lg text-gray-300 mb-8 max-w-lg">
+        🏆 Tudo para sua Performance: Whey Protein, Creatina e Pré-Treino.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href="https://banana-doce-vtof.github.io/blog-banana-doce/glrof2/" target="_blank" class="banana-gradient text-black font-bold px-8 py-4 rounded-full hover:scale-105 transition-transform pulse-btn flex items-center gap-2">
+          😎 Acessar a Vitrine de Ofertas
+        </a>
+    </div>
+    </div>
+<!-- CTA Section -->
+<section class="py-20 relative overflow-hidden">
+  <div class="max-w-4xl mx-auto px-6 text-center fade-in">
+    <div class="banana-gradient rounded-3xl p-12 relative overflow-hidden">
+      <div class="absolute inset-0 bg-black/10"></div>
+      <div class="relative">
+        <h2 class="text-4xl md:text-5xl font-bold text-black mb-4">
+          Não perca nenhuma oferta! 🍌
+        </h2>
+        <p class="text-black/80 text-lg mb-8 max-w-2xl mx-auto">
+          Siga nossas redes sociais e fique por dentro das melhores promoções em primeira mão.
+        </p>
+        <a href="https://www.facebook.com/bdvitrineofertas" target="_blank" class="inline-flex items-center gap-2 bg-black text-yellow-400 font-bold px-8 py-4 rounded-full hover:scale-105 transition-transform">
+          <i class="fab fa-facebook"></i>
+          Seguir no Facebook
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  // Fade-in animation on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  
+  // Navbar background on scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 50) {
+      nav.classList.add('shadow-lg');
+    } else {
+      nav.classList.remove('shadow-lg');
+    }
+  });
+</script>
+
+</body>
+</html>
