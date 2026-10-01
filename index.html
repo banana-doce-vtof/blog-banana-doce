@@ -163,12 +163,11 @@
 <nav class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-lg border-b border-yellow-500/20">
   <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
     <a href="#" class="flex items-center gap-2 brand text-2xl font-bold">
-      <span class="banana-emoji text-3xl">🍌</span>
+      <!-- Imagem arredondada com Tailwind CSS -->
+      <img src="logotipo.png" alt="Banana" class="h-12 w-12 rounded-full aspect-square object-cover">
       <span class="text-banana-gradient">Banana Doce</span>
     </a>
     <div class="hidden md:flex items-center gap-8">
-      <a href="#ofertas" class="nav-link text-gray-300 hover:text-yellow-400 transition">Ofertas</a>
-      <a href="#blog" class="nav-link text-gray-300 hover:text-yellow-400 transition">Blog</a>
       <a href="#contato" class="nav-link text-gray-300 hover:text-yellow-400 transition">Contato</a>
     </div>
       <a href="https://www.facebook.com/bdvitrineofertas" target="_blank" class="banana-gradient text-black font-bold px-5 py-2 rounded-full hover:scale-105 transition-transform">
@@ -229,129 +228,6 @@
   </div>
 </section>
 
-<!-- Blog Section -->
-<section id="blog" class="py-24 relative">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="text-center mb-16 fade-in">
-      <div class="inline-block banana-gradient text-black font-bold px-4 py-1 rounded-full text-sm mb-4">
-        📚 CONTEÚDO EXCLUSIVO
-      </div>
-      <h2 class="text-4xl md:text-6xl font-bold mb-4">
-        Blog do <span class="text-banana-gradient">Banana Doce</span>
-      </h2>
-      <p class="text-gray-400 text-lg max-w-2xl mx-auto">
-        Artigos completos sobre saúde, suplementação e bem-estar para você tomar decisões inteligentes.
-      </p>
-    </div>
-    
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- Article 1 -->
-      <a href="https://banana-doce-vtof.github.io/blog-banana-doce/artigo7/" target="_blank" class="article-card rounded-2xl overflow-hidden card-hover fade-in group">
-        <div class="h-48 banana-gradient flex items-center justify-center relative overflow-hidden">
-          <div class="text-7xl group-hover:scale-125 transition-transform duration-500">🐟</div>
-          <div class="absolute top-4 right-4 bg-black/60 backdrop-blur text-yellow-400 text-xs font-bold px-3 py-1 rounded-full">SAÚDE</div>
-        </div>
-        <div class="p-6">
-          <h3 class="text-xl font-bold mb-2 group-hover:text-yellow-400 transition">✨ Ômega-3: Essencial para a saúde do coração e do corpo</h3>
-          <p class="text-gray-400 text-sm mb-4">Descubra os benefícios desse ácido graxo fundamental.</p>
-          <div class="flex items-center text-yellow-400 font-semibold text-sm">
-            Saiba mais <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform"></i>
-          </div>
-        </div>
-      </a>
-      
-      <!-- Article 2 -->
-      <a href="https://banana-doce-vtof.github.io/blog-banana-doce/artigo6/" target="_blank" class="article-card rounded-2xl overflow-hidden card-hover fade-in group">
-        <div class="h-48 bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center relative overflow-hidden">
-          <div class="text-7xl group-hover:scale-125 transition-transform duration-500">💊</div>
-          <div class="absolute top-4 right-4 bg-black/60 backdrop-blur text-yellow-400 text-xs font-bold px-3 py-1 rounded-full">SUPLEMENTO</div>
-        </div>
-        <div class="p-6">
-          <h3 class="text-xl font-bold mb-2 group-hover:text-yellow-400 transition">✨ Descubra o poder da N-acetilcisteína (NAC)</h3>
-          <p class="text-gray-400 text-sm mb-4">Saúde do fígado, respiração e saúde mental.</p>
-          <div class="flex items-center text-yellow-400 font-semibold text-sm">
-            Saiba mais <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform"></i>
-          </div>
-        </div>
-      </a>
-      
-      <!-- Article 3 -->
-      <a href="https://banana-doce-vtof.github.io/blog-banana-doce/artigo5/" target="_blank" class="article-card rounded-2xl overflow-hidden card-hover fade-in group">
-        <div class="h-48 bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center relative overflow-hidden">
-          <div class="text-7xl group-hover:scale-125 transition-transform duration-500">🥛</div>
-          <div class="absolute top-4 right-4 bg-black/60 backdrop-blur text-yellow-400 text-xs font-bold px-3 py-1 rounded-full">FITNESS</div>
-        </div>
-        <div class="p-6">
-          <h3 class="text-xl font-bold mb-2 group-hover:text-yellow-400 transition">Tudo sobre Whey Protein antes de comprar! 💪</h3>
-          <p class="text-gray-400 text-sm mb-4">Guia completo para escolher o suplemento certo.</p>
-          <div class="flex items-center text-yellow-400 font-semibold text-sm">
-            Saiba mais <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform"></i>
-          </div>
-        </div>
-      </a>
-      
-      <!-- Article 4 -->
-      <a href="https://banana-doce-vtof.github.io/blog-banana-doce/artigo4/" target="_blank" class="article-card rounded-2xl overflow-hidden card-hover fade-in group">
-        <div class="h-48 bg-gradient-to-br from-green-600 to-teal-500 flex items-center justify-center relative overflow-hidden">
-          <div class="text-7xl group-hover:scale-125 transition-transform duration-500">⚡</div>
-          <div class="absolute top-4 right-4 bg-black/60 backdrop-blur text-yellow-400 text-xs font-bold px-3 py-1 rounded-full">GUIA</div>
-        </div>
-        <div class="p-6">
-          <h3 class="text-xl font-bold mb-2 group-hover:text-yellow-400 transition">O Guia Definitivo do Magnésio</h3>
-          <p class="text-gray-400 text-sm mb-4">Tipos, mecanismos de absorção e benefícios.</p>
-          <div class="flex items-center text-yellow-400 font-semibold text-sm">
-            Saiba mais <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform"></i>
-          </div>
-        </div>
-      </a>
-      
-      <!-- Article 5 -->
-      <a href="https://banana-doce-vtof.github.io/blog-banana-doce/artigo3/" target="_blank" class="article-card rounded-2xl overflow-hidden card-hover fade-in group">
-        <div class="h-48 bg-gradient-to-br from-pink-500 to-rose-500 flex items-center justify-center relative overflow-hidden">
-          <div class="text-7xl group-hover:scale-125 transition-transform duration-500">💎</div>
-          <div class="absolute top-4 right-4 bg-black/60 backdrop-blur text-yellow-400 text-xs font-bold px-3 py-1 rounded-full">BELEZA</div>
-        </div>
-        <div class="p-6">
-          <h3 class="text-xl font-bold mb-2 group-hover:text-yellow-400 transition">Tudo Sobre o Colágeno: Tipos e Benefícios</h3>
-          <p class="text-gray-400 text-sm mb-4">Como escolher a melhor opção para pele e articulações.</p>
-          <div class="flex items-center text-yellow-400 font-semibold text-sm">
-            Saiba mais <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform"></i>
-          </div>
-        </div>
-      </a>
-      
-      <!-- Article 6 -->
-      <a href="https://banana-doce-vtof.github.io/blog-banana-doce/artigo2/" target="_blank" class="article-card rounded-2xl overflow-hidden card-hover fade-in group">
-        <div class="h-48 bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center relative overflow-hidden">
-          <div class="text-7xl group-hover:scale-125 transition-transform duration-500">✨</div>
-          <div class="absolute top-4 right-4 bg-black/60 backdrop-blur text-yellow-400 text-xs font-bold px-3 py-1 rounded-full">BELEZA</div>
-        </div>
-        <div class="p-6">
-          <h3 class="text-xl font-bold mb-2 group-hover:text-yellow-400 transition">O Triângulo da Beleza Descomplicado</h3>
-          <p class="text-gray-400 text-sm mb-4">Cuide da pele, cabelo e unhas de dentro para fora.</p>
-          <div class="flex items-center text-yellow-400 font-semibold text-sm">
-            Saiba mais <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform"></i>
-          </div>
-        </div>
-      </a>
-      
-      <!-- Article 7 - Full width -->
-      <a href="https://banana-doce-vtof.github.io/blog-banana-doce/artigo1/" target="_blank" class="article-card rounded-2xl overflow-hidden card-hover fade-in group md:col-span-2 lg:col-span-3 grid md:grid-cols-2 gap-0">
-        <div class="h-48 md:h-auto bg-gradient-to-br from-yellow-500 via-orange-500 to-red-500 flex items-center justify-center relative overflow-hidden">
-          <div class="text-8xl group-hover:scale-125 transition-transform duration-500">🚀</div>
-          <div class="absolute top-4 right-4 bg-black/60 backdrop-blur text-yellow-400 text-xs font-bold px-3 py-1 rounded-full">DESTAQUE</div>
-        </div>
-        <div class="p-8 flex flex-col justify-center">
-          <h3 class="text-2xl md:text-3xl font-bold mb-3 group-hover:text-yellow-400 transition">A Revolução dos Suplementos Online</h3>
-          <p class="text-gray-400 mb-4">Como Comprar com Inteligência e Segurança. Um guia completo para navegar no mundo dos suplementos digitais.</p>
-          <div class="flex items-center text-yellow-400 font-semibold">
-            Saiba mais <i class="fas fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform"></i>
-          </div>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
 <!-- CTA Section -->
 <section class="py-20 relative overflow-hidden">
   <div class="max-w-4xl mx-auto px-6 text-center fade-in">
@@ -378,10 +254,11 @@
   <div class="max-w-7xl mx-auto px-6">
     <div class="grid md:grid-cols-3 gap-12 mb-12">
       <div>
-        <div class="flex items-center gap-2 mb-4">
-          <span class="text-4xl">🍌</span>
-          <span class="brand text-2xl font-bold text-banana-gradient">Banana Doce</span>
-        </div>
+        <a href="#" class="flex items-center gap-2 brand text-2xl font-bold">
+          <!-- Imagem arredondada com Tailwind CSS -->
+          <img src="logotipo.png" alt="Banana" class="h-12 w-12 rounded-full aspect-square object-cover">
+          <span class="text-banana-gradient">Banana Doce</span>
+        </a>
         <p class="text-gray-400 mb-6">
           Sua vitrine de ofertas exclusiva. As melhores promoções reunidas em um só lugar.
         </p>
@@ -407,35 +284,6 @@
           </a>
         </div>
       </div>
-      
-      <div>
-        <h4 class="text-yellow-400 font-bold mb-4 text-lg">Navegação</h4>
-        <ul class="space-y-2">
-          <li><a href="#ofertas" class="text-gray-400 hover:text-yellow-400 transition">Ofertas</a></li>
-          <li><a href="#blog" class="text-gray-400 hover:text-yellow-400 transition">Blog</a></li>
-          <li><a href="https://www.facebook.com/bdvitrineofertas" target="_blank" class="text-gray-400 hover:text-yellow-400 transition">Facebook</a></li>
-        </ul>
-      </div>
-      
-      <div>
-        <h4 class="text-yellow-400 font-bold mb-4 text-lg">Artigos em Destaque</h4>
-        <ul class="space-y-2 text-sm">
-          <li><a href="https://banana-doce-vtof.github.io/blog-banana-doce/artigo7/" target="_blank" class="text-gray-400 hover:text-yellow-400 transition">Ômega-3</a></li>
-          <li><a href="https://banana-doce-vtof.github.io/blog-banana-doce/artigo5/" target="_blank" class="text-gray-400 hover:text-yellow-400 transition">Whey Protein</a></li>
-          <li><a href="https://banana-doce-vtof.github.io/blog-banana-doce/artigo4/" target="_blank" class="text-gray-400 hover:text-yellow-400 transition">Guia do Magnésio</a></li>
-          <li><a href="https://banana-doce-vtof.github.io/blog-banana-doce/artigo3/" target="_blank" class="text-gray-400 hover:text-yellow-400 transition">Tudo sobre Colágeno</a></li>
-        </ul>
-      </div>
-    </div>
-    
-    <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-      <p><img src="logotipo.png" alt="Descrição da imagem" width="80" height="80" class="rounded-full"></p>
-      <p class="text-gray-500 text-sm">
-        © 2026 <span class="text-yellow-400">Banana Doce</span> - Vitrine de Ofertas. Todos os direitos reservados.
-      </p>
-      <p class="text-gray-500 text-sm flex items-center gap-2">
-        Feito com <span class="text-red-500">❤</span> e <span>🍌</span>
-      </p>
     </div>
   </div>
 </footer>
