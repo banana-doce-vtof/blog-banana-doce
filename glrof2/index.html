@@ -2,24 +2,19 @@
 <html lang="pt-BR" style="--header-gradient: linear-gradient(135deg, #fde047 0%, #facc15 50%, #eab308 100%); --bg-color: #fefce8; --discount-gradient: linear-gradient(135deg, #ef4444, #dc2626); --active-category-bg: linear-gradient(135deg, #facc15, #eab308); --active-category-text: #1a1a1a; --border-color: #eab308; --border-hover: #ca8a04; --upload-hover: #fef9c3;"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Banana Doce | Vitrine de Ofertas | Suplementos: Whey Protein, Creatina, Pré-Treino e Hipercalórico</title>
 <meta name="description" content="Guia de suplementos com informações sobre whey protein, creatina, pré-treino e hipercalórico. Conheça características e diferenças entre os suplementos.">
 <meta name="keywords" content="suplementos, whey protein, creatina, pré-treino, hipercalórico, suplementos para academia, suplemento alimentar">
 <meta name="robots" content="index, follow">
-
 <link id="favicon-link" rel="icon" type="image/jpeg" href="https://banana-doce-vtof.github.io/blog-banana-doce/glrof2/idvisual.jpg">
 <link id="favicon-link-svg" rel="icon" type="image/svg+xml" href="https://banana-doce-vtof.github.io/blog-banana-doce/glrof2">
 <link id="og-image" property="og:image" content="https://banana-doce-vtof.github.io/blog-banana-doce/glrof2">
-
 <!-- 1. Favicon padrão (Formato recomendado: PNG quadrado, ex: apenas o rostinho da banana) -->
 <link id="favicon-link" rel="icon" type="image/png" href="https://banana-doce-vtof.github.io/blog-banana-doce/glrof2/logotipo.png">
 <!-- 3. Imagem de compartilhamento (Usando a tag correta <meta> e apontando para o banner JPG) -->
 <meta id="og-image" property="og:image" content="https://banana-doce-vtof.github.io/blog-banana-doce/glrof2/idvisual.jpg">
-
 <meta property="og:title" content="Banana Doce | Vitrine de Ofertas">
 <meta property="og:description" content="As melhores ofertas do dia">
-
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -206,7 +201,7 @@
 
 <!-- CATEGORIES -->
 <section class="max-w-7xl mx-auto px-4 py-6">
-  <div class="flex gap-3 overflow-x-auto scrollbar-hide pb-2" id="category-container"><button class="category-btn px-5 py-2.5 rounded-full font-bold whitespace-nowrap transition-all bg-white text-gray-700 shadow " data-category="all"><i class="fas fa-th-large mr-2"></i>Todos</button><button class="category-btn px-5 py-2.5 rounded-full font-bold whitespace-nowrap transition-all bg-white text-gray-700 shadow active" data-category="Whey Protein"><i class="fas fa-star mr-2"></i>Whey Protein</button><button class="category-btn px-5 py-2.5 rounded-full font-bold whitespace-nowrap transition-all bg-white text-gray-700 shadow " data-category="Creatina"><i class="fas fa-star mr-2"></i>Creatina</button><button class="category-btn px-5 py-2.5 rounded-full font-bold whitespace-nowrap transition-all bg-white text-gray-700 shadow " data-category="Pré-Treino"><i class="fas fa-star mr-2"></i>Pré-Treino</button><button class="category-btn px-5 py-2.5 rounded-full font-bold whitespace-nowrap transition-all bg-white text-gray-700 shadow " data-category="Hipercalórico"><i class="fas fa-star mr-2"></i>Hipercalórico</button></div>
+  <div class="flex gap-3 overflow-x-auto scrollbar-hide pb-2" id="category-container"><button class="category-btn px-5 py-2.5 rounded-full font-bold whitespace-nowrap transition-all bg-white text-gray-700 shadow active" data-category="all"><i class="fas fa-th-large mr-2"></i>Todos</button><button class="category-btn px-5 py-2.5 rounded-full font-bold whitespace-nowrap transition-all bg-white text-gray-700 shadow " data-category="Whey Protein"><i class="fas fa-star mr-2"></i>Whey Protein</button><button class="category-btn px-5 py-2.5 rounded-full font-bold whitespace-nowrap transition-all bg-white text-gray-700 shadow " data-category="Creatina"><i class="fas fa-star mr-2"></i>Creatina</button><button class="category-btn px-5 py-2.5 rounded-full font-bold whitespace-nowrap transition-all bg-white text-gray-700 shadow " data-category="Pré-Treino"><i class="fas fa-star mr-2"></i>Pré-Treino</button><button class="category-btn px-5 py-2.5 rounded-full font-bold whitespace-nowrap transition-all bg-white text-gray-700 shadow " data-category="Hipercalórico"><i class="fas fa-star mr-2"></i>Hipercalórico</button></div>
 </section>
 
 <!-- SEARCH -->
@@ -239,82 +234,16 @@
         <option value="category">📂 Categoria</option>
         <option value="store">🏪 Loja</option>
       </select>
-      <span id="offer-count" class="text-sm text-gray-600 font-semibold bg-white px-3 py-1 rounded-full shadow">21 ofertas</span>
+      <span id="offer-count" class="text-sm text-gray-600 font-semibold bg-white px-3 py-1 rounded-full shadow">51 ofertas</span>
     </div>
   </div>
   <div id="offers-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
       <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
-          <button onclick="editOffer(1790859403811)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+          <button onclick="editOffer(1791034375587)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
           </button>
-          <button onclick="confirmDeleteOffer(1790859403811)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
-            <i class="fas fa-trash-alt text-sm"></i>
-          </button>
-          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_769532-MLA118148255381_092026-F.webp" alt="100% WHEY Protein Concentrado 900g Sabor Baunilha - Proteína 100% Pura - 3VS Nutrition" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=100%25%20WHEY%20Protein%20Co'" loading="lazy">
-          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-44%</div>
-          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
-            <i class="fas fa-star mr-1"></i>Whey Protein
-          </div>
-          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
-            <i class="fas fa-store mr-1"></i>Mercado Livre
-          </div>
-        </div>
-        <div class="p-4">
-          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">100% WHEY Protein Concentrado 900g Sabor Baunilha - Proteína 100% Pura - 3VS Nutrition</h4>
-          <p class="text-xs text-gray-500 mb-3 line-clamp-2">Mais de 5 mil vendidos e 6 em Suplementos 3VS com Avaliação 4,8 de 5 estrelas 4.984 opiniões</p>
-          <div class="flex items-end justify-between mb-3">
-            <div>
-              <p class="text-xs text-gray-400 line-through">R$&nbsp;319,99</p>
-              <p class="text-xl font-black text-gray-900">R$&nbsp;178,67</p>
-            </div>
-            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;141,32</div>
-          </div>
-          <a href="https://meli.la/2KLzTxz" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
-            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
-          </a>
-        </div>
-      </div>
-    
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.05s">
-        <div class="relative aspect-square overflow-hidden bg-gray-100">
-          <button onclick="editOffer(1790859403090)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
-            <i class="fas fa-edit text-sm"></i>
-          </button>
-          <button onclick="confirmDeleteOffer(1790859403090)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
-            <i class="fas fa-trash-alt text-sm"></i>
-          </button>
-          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_754792-MLA107008782097_022026-F.webp" alt="Proteína Bodybuilders Whey Concentrado em pó sabor Chocolate x 2kg 4 un" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Prote%C3%ADna%20Bodybuilder'" loading="lazy">
-          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-75%</div>
-          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
-            <i class="fas fa-star mr-1"></i>Whey Protein
-          </div>
-          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
-            <i class="fas fa-store mr-1"></i>Mercado Livre
-          </div>
-        </div>
-        <div class="p-4">
-          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Proteína Bodybuilders Whey Concentrado em pó sabor Chocolate x 2kg 4 un</h4>
-          <p class="text-xs text-gray-500 mb-3 line-clamp-2">Mais de 50 mil vendidos e 1 em Suplementos Bodybuilders com Avaliação 4,5 de 5 estrelas 39.874 opiniões</p>
-          <div class="flex items-end justify-between mb-3">
-            <div>
-              <p class="text-xs text-gray-400 line-through">R$&nbsp;299,99</p>
-              <p class="text-xl font-black text-gray-900">R$&nbsp;75,03</p>
-            </div>
-            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;224,96</div>
-          </div>
-          <a href="https://meli.la/338ncLs" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
-            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
-          </a>
-        </div>
-      </div>
-    
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.1s">
-        <div class="relative aspect-square overflow-hidden bg-gray-100">
-          <button onclick="editOffer(1790859403788)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
-            <i class="fas fa-edit text-sm"></i>
-          </button>
-          <button onclick="confirmDeleteOffer(1790859403788)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+          <button onclick="confirmDeleteOffer(1791034375587)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
             <i class="fas fa-trash-alt text-sm"></i>
           </button>
           <img src="https://http2.mlstatic.com/D_NQ_NP_2X_712310-MLA111758946433_052026-F.webp" alt="Whey Protein Isolado Iso Protein Blend Complex 2kg Pretorian Sabor Chocolate" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Whey%20Protein%20Isolado'" loading="lazy">
@@ -328,7 +257,7 @@
         </div>
         <div class="p-4">
           <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Whey Protein Isolado Iso Protein Blend Complex 2kg Pretorian Sabor Chocolate</h4>
-          <p class="text-xs text-gray-500 mb-3 line-clamp-2">Mais de 100 mil vendidos e Avaliação 4,6 de 5 estrelas 6.723 opiniões</p>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
           <div class="flex items-end justify-between mb-3">
             <div>
               <p class="text-xs text-gray-400 line-through">R$&nbsp;189,99</p>
@@ -342,12 +271,12 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.15000000000000002s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.05s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
-          <button onclick="editOffer(1790859403237)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+          <button onclick="editOffer(1791034374859)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
           </button>
-          <button onclick="confirmDeleteOffer(1790859403237)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+          <button onclick="confirmDeleteOffer(1791034374859)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
             <i class="fas fa-trash-alt text-sm"></i>
           </button>
           <img src="https://http2.mlstatic.com/D_NQ_NP_2X_863749-MLA99449597780_112025-F.webp" alt="Suplemento Em Pó Whey Protein 100% Concentrado 900g Sabor Morango" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Suplemento%20Em%20P%C3%B3%20Whe'" loading="lazy">
@@ -361,7 +290,7 @@
         </div>
         <div class="p-4">
           <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Suplemento Em Pó Whey Protein 100% Concentrado 900g Sabor Morango</h4>
-          <p class="text-xs text-gray-500 mb-3 line-clamp-2">Mais de 100 vendidos e 7 em Suplementos Espartanos com Avaliação 4,7 de 5 estrelas 387 opiniões</p>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
           <div class="flex items-end justify-between mb-3">
             <div>
               <p class="text-xs text-gray-400 line-through">R$&nbsp;250,00</p>
@@ -375,12 +304,45 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.2s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.1s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
-          <button onclick="editOffer(1790859403243)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+          <button onclick="editOffer(1791034375544)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
           </button>
-          <button onclick="confirmDeleteOffer(1790859403243)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+          <button onclick="confirmDeleteOffer(1791034375544)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_915381-MLA100054729177_122025-F.webp" alt="100% Creatina 300g Bodybuilders Sem Sabor - Aprovada Abenutri" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=100%25%20Creatina%20300g%20B'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-49%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-tag mr-1"></i>Geral
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Mercado Livre
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">100% Creatina 300g Bodybuilders Sem Sabor - Aprovada Abenutri</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;75,99</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;38,79</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;37,20</div>
+          </div>
+          <a href="https://meli.la/1zY9xhT" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.15000000000000002s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791034375097)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791034375097)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
             <i class="fas fa-trash-alt text-sm"></i>
           </button>
           <img src="https://http2.mlstatic.com/D_NQ_NP_2X_695313-MLA102901906722_012026-F.webp" alt="Kit 2x Whey Protein + 2x Bcaa + 2x Creatina + Coqueteleira - Bodybuilders - Sabor Morango" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Kit%202x%20Whey%20Protein%20'" loading="lazy">
@@ -394,7 +356,7 @@
         </div>
         <div class="p-4">
           <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Kit 2x Whey Protein + 2x Bcaa + 2x Creatina + Coqueteleira - Bodybuilders - Sabor Morango</h4>
-          <p class="text-xs text-gray-500 mb-3 line-clamp-2">Mais de 10 mil vendidos e 12 em Suplementos Bodybuilders com Avaliação 4,2 de 5 estrelas 19.471 opiniões</p>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
           <div class="flex items-end justify-between mb-3">
             <div>
               <p class="text-xs text-gray-400 line-through">R$&nbsp;209,99</p>
@@ -408,12 +370,12 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.25s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.2s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
-          <button onclick="editOffer(1790859403824)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+          <button onclick="editOffer(1791034375315)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
           </button>
-          <button onclick="confirmDeleteOffer(1790859403824)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+          <button onclick="confirmDeleteOffer(1791034375315)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
             <i class="fas fa-trash-alt text-sm"></i>
           </button>
           <img src="https://http2.mlstatic.com/D_NQ_NP_2X_881647-MLA115301331103_072026-F.webp" alt="Kit 2x Suplemento Em Pó Whey Protein Isolado Iso X 1800g Sabor Chocolate" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Kit%202x%20Suplemento%20Em'" loading="lazy">
@@ -427,7 +389,7 @@
         </div>
         <div class="p-4">
           <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Kit 2x Suplemento Em Pó Whey Protein Isolado Iso X 1800g Sabor Chocolate</h4>
-          <p class="text-xs text-gray-500 mb-3 line-clamp-2">Mais de 1000 vendidos e Avaliação 4,5 de 5 estrelas 767 opiniões</p>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
           <div class="flex items-end justify-between mb-3">
             <div>
               <p class="text-xs text-gray-400 line-through">R$&nbsp;350,00</p>
@@ -441,12 +403,12 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.30000000000000004s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.25s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
-          <button onclick="editOffer(1790859403475)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+          <button onclick="editOffer(1791034375441)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
           </button>
-          <button onclick="confirmDeleteOffer(1790859403475)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+          <button onclick="confirmDeleteOffer(1791034375441)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
             <i class="fas fa-trash-alt text-sm"></i>
           </button>
           <img src="https://http2.mlstatic.com/D_NQ_NP_2X_960337-MLA111724818522_062026-F.webp" alt="Proteína Max Titanium Whey Pro Concetrado em pó sabor Baunilha x 1kg" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Prote%C3%ADna%20Max%20Titaniu'" loading="lazy">
@@ -460,7 +422,7 @@
         </div>
         <div class="p-4">
           <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Proteína Max Titanium Whey Pro Concetrado em pó sabor Baunilha x 1kg</h4>
-          <p class="text-xs text-gray-500 mb-3 line-clamp-2">Mais de 250 mil vendidos e 1 em Suplementos Max Titanium com Avaliação 4,8 de 5 estrelas 137.478 opiniões</p>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
           <div class="flex items-end justify-between mb-3">
             <div>
               <p class="text-xs text-gray-400 line-through">R$&nbsp;199,90</p>
@@ -474,12 +436,12 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.35000000000000003s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.30000000000000004s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
-          <button onclick="editOffer(1790859403419)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+          <button onclick="editOffer(1791034375743)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
           </button>
-          <button onclick="confirmDeleteOffer(1790859403419)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+          <button onclick="confirmDeleteOffer(1791034375743)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
             <i class="fas fa-trash-alt text-sm"></i>
           </button>
           <img src="https://http2.mlstatic.com/D_NQ_NP_2X_821774-MLA111620772840_062026-F.webp" alt="Barra de proteínas Probiótica Whey sabor Chocolate x 960g 24 un" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Barra%20de%20prote%C3%ADnas%20P'" loading="lazy">
@@ -493,7 +455,7 @@
         </div>
         <div class="p-4">
           <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Barra de proteínas Probiótica Whey sabor Chocolate x 960g 24 un</h4>
-          <p class="text-xs text-gray-500 mb-3 line-clamp-2">Mais de 10 mil vendidos e 4 em Suplementos Probiótica com Avaliação 4,7 de 5 estrelas 2.385 opiniões</p>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
           <div class="flex items-end justify-between mb-3">
             <div>
               <p class="text-xs text-gray-400 line-through">R$&nbsp;183,03</p>
@@ -507,12 +469,78 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.4s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.35000000000000003s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
-          <button onclick="editOffer(1790859403640)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+          <button onclick="editOffer(1791034375723)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
           </button>
-          <button onclick="confirmDeleteOffer(1790859403640)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+          <button onclick="confirmDeleteOffer(1791034375723)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_928515-MLA113002398542_072026-F.webp" alt="Hipercalórico 1,4kg Mass Titanium 17500 Max Titanium Sabor Baunilha" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Hipercal%C3%B3rico%201%2C4kg%20'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-23%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Hipercalórico
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Mercado Livre
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Hipercalórico 1,4kg Mass Titanium 17500 Max Titanium Sabor Baunilha</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;78,61</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;60,70</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;17,91</div>
+          </div>
+          <a href="https://meli.la/2VH4oTx" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.4s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791034375051)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791034375051)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_623657-MLA99892432437_112025-F.webp" alt="Kit 2x Pré Treino Bulk Nutrition Stoutness 300g Maçã E Frutas" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Kit%202x%20Pr%C3%A9%20Treino%20Bu'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-55%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Pré-Treino
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Mercado Livre
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Kit 2x Pré Treino Bulk Nutrition Stoutness 300g Maçã E Frutas</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;169,90</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;76,53</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;93,37</div>
+          </div>
+          <a href="https://meli.la/2DjUFeD" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.45s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791034374945)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791034374945)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
             <i class="fas fa-trash-alt text-sm"></i>
           </button>
           <img src="https://http2.mlstatic.com/D_NQ_NP_2X_699036-MLA111913472443_052026-F.webp" alt="Kit 2x Whey Protein Blend 900g Pó | Bulk Nutrition Sabor Baunilha" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Kit%202x%20Whey%20Protein%20'" loading="lazy">
@@ -526,7 +554,7 @@
         </div>
         <div class="p-4">
           <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Kit 2x Whey Protein Blend 900g Pó | Bulk Nutrition Sabor Baunilha</h4>
-          <p class="text-xs text-gray-500 mb-3 line-clamp-2">Mais de 500 vendidos e Avaliação 4,7 de 5 estrelas 273 opiniões</p>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
           <div class="flex items-end justify-between mb-3">
             <div>
               <p class="text-xs text-gray-400 line-through">R$&nbsp;220,00</p>
@@ -540,12 +568,210 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.45s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.5s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
-          <button onclick="editOffer(1790859403814)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+          <button onclick="editOffer(1791034375106)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
           </button>
-          <button onclick="confirmDeleteOffer(1790859403814)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+          <button onclick="confirmDeleteOffer(1791034375106)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_678778-MLA99898700493_112025-F.webp" alt="Creatina 1kg Monohidratada 100% Pura Bulk Nutrition" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Creatina%201kg%20Monohid'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-68%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Creatina
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Mercado Livre
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Creatina 1kg Monohidratada 100% Pura Bulk Nutrition</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;199,90</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;64,90</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;135,00</div>
+          </div>
+          <a href="https://meli.la/1yxhtpn" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.55s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791034375270)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791034375270)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_603276-MLA113252583058_072026-F.webp" alt="Pre treino Égide Pote 300g Sabor Abacaxi E Manga Suplemento em Pó Max Titanium" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Pre%20treino%20%C3%89gide%20Pot'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-60%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Pré-Treino
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Mercado Livre
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Pre treino Égide Pote 300g Sabor Abacaxi E Manga Suplemento em Pó Max Titanium</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;233,82</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;94,00</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;139,82</div>
+          </div>
+          <a href="https://meli.la/1pGKFxU" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.6000000000000001s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791034375223)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791034375223)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_621256-MLA115443872594_082026-F.webp" alt="Termogenico Shot Dry 150g Pre Treino Max Titanium Sabor Frutas vermelhas" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Termogenico%20Shot%20Dry'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-35%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Pré-Treino
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Mercado Livre
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Termogenico Shot Dry 150g Pre Treino Max Titanium Sabor Frutas vermelhas</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;131,93</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;85,39</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;46,54</div>
+          </div>
+          <a href="https://meli.la/1YmiNtP" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.65s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791034375139)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791034375139)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_873093-MLA99429380972_112025-F.webp" alt="Hipercalórico 3kg Super Gainers Max Titanium Baunilha Alto Valor Calórico" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Hipercal%C3%B3rico%203kg%20Su'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-46%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Hipercalórico
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Mercado Livre
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Hipercalórico 3kg Super Gainers Max Titanium Baunilha Alto Valor Calórico</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;220,59</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;118,89</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;101,70</div>
+          </div>
+          <a href="https://meli.la/19X44aY" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.7000000000000001s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791034375048)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791034375048)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_944872-MLA99449521788_112025-F.webp" alt="Creatina +Mu em pó sabor Melancia x 500g" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Creatina%20%2BMu%20em%20p%C3%B3%20s'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-44%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Creatina
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Mercado Livre
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Creatina +Mu em pó sabor Melancia x 500g</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;124,99</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;69,76</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;55,23</div>
+          </div>
+          <a href="https://meli.la/2faMRCx" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.75s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791034375513)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791034375513)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_818963-MLA99429360494_112025-F.webp" alt="Suplemento em pó +Mu Performance Pré treino Exquenta sabor Limonada x 500g" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Suplemento%20em%20p%C3%B3%20%2BMu'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-40%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Pré-Treino
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Mercado Livre
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Suplemento em pó +Mu Performance Pré treino Exquenta sabor Limonada x 500g</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;189,99</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;113,90</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;76,09</div>
+          </div>
+          <a href="https://meli.la/16ThyMf" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.8s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791034375393)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791034375393)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
             <i class="fas fa-trash-alt text-sm"></i>
           </button>
           <img src="https://http2.mlstatic.com/D_NQ_NP_2X_957825-MLA99536228402_122025-F.webp" alt="Barra de proteína +Mu Chocowheyfer sabor Chocolate com coco 12 un" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Barra%20de%20prote%C3%ADna%20%2BM'" loading="lazy">
@@ -559,7 +785,7 @@
         </div>
         <div class="p-4">
           <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Barra de proteína +Mu Chocowheyfer sabor Chocolate com coco 12 un</h4>
-          <p class="text-xs text-gray-500 mb-3 line-clamp-2">Mais de 10 mil vendidos e 5 em Suplementos Alimentares Mais Mu com Avaliação 4,8 de 5 estrelas 7.817 opiniões</p>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
           <div class="flex items-end justify-between mb-3">
             <div>
               <p class="text-xs text-gray-400 line-through">R$&nbsp;87,88</p>
@@ -573,12 +799,12 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.5s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.8500000000000001s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
-          <button onclick="editOffer(1790859403571)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+          <button onclick="editOffer(1791034374869)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
           </button>
-          <button onclick="confirmDeleteOffer(1790859403571)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+          <button onclick="confirmDeleteOffer(1791034374869)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
             <i class="fas fa-trash-alt text-sm"></i>
           </button>
           <img src="https://http2.mlstatic.com/D_NQ_NP_2X_720599-MLA99452728192_112025-F.webp" alt="Whey protein +Mu Coco Refil em pó x 900g" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Whey%20protein%20%2BMu%20Coc'" loading="lazy">
@@ -592,7 +818,7 @@
         </div>
         <div class="p-4">
           <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Whey protein +Mu Coco Refil em pó x 900g</h4>
-          <p class="text-xs text-gray-500 mb-3 line-clamp-2">Mais de 1000 vendidos e 9 em Suplementos Alimentares Mais Mu com Avaliação 4,8 de 5 estrelas 234 opiniões</p>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
           <div class="flex items-end justify-between mb-3">
             <div>
               <p class="text-xs text-gray-400 line-through">R$&nbsp;279,99</p>
@@ -606,12 +832,111 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.55s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.9s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
-          <button onclick="editOffer(1790859403299)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+          <button onclick="editOffer(1791034375429)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
           </button>
-          <button onclick="confirmDeleteOffer(1790859403299)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+          <button onclick="confirmDeleteOffer(1791034375429)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_920350-MLA113966831509_062026-F.webp" alt="Creatina Max Titanium em pó Sem sabor x 300g" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Creatina%20Max%20Titaniu'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-54%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Creatina
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Mercado Livre
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Creatina Max Titanium em pó Sem sabor x 300g</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;85,42</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;38,97</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;46,45</div>
+          </div>
+          <a href="https://meli.la/2LDC34B" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.9500000000000001s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791034374858)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791034374858)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_656972-MLA100055795637_122025-F.webp" alt="Suplemento Adaptogen Science Pré Treino Panic en pó sabor morango x 300g" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Suplemento%20Adaptogen'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-41%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Pré-Treino
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Mercado Livre
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Suplemento Adaptogen Science Pré Treino Panic en pó sabor morango x 300g</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;118,99</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;70,20</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;48,79</div>
+          </div>
+          <a href="https://meli.la/1Z9EbWr" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791034375699)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791034375699)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_676100-MLA110120181598_042026-F.webp" alt="Creatina Max Titanium 7 Belo em pó x 300g" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Creatina%20Max%20Titaniu'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-44%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Creatina
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Mercado Livre
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Creatina Max Titanium 7 Belo em pó x 300g</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;80,00</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;45,00</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;35,00</div>
+          </div>
+          <a href="https://meli.la/1ej5oYP" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.05s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791034374885)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791034374885)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
             <i class="fas fa-trash-alt text-sm"></i>
           </button>
           <img src="https://http2.mlstatic.com/D_NQ_NP_2X_963869-MLA111911921048_062026-F.webp" alt="100% Whey Protein Concentrado 900g Cookies &amp; Cream" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=100%25%20Whey%20Protein%20Co'" loading="lazy">
@@ -625,7 +950,7 @@
         </div>
         <div class="p-4">
           <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">100% Whey Protein Concentrado 900g Cookies &amp; Cream</h4>
-          <p class="text-xs text-gray-500 mb-3 line-clamp-2">Mais de 50 mil vendidos e Avaliação 4,8 de 5 estrelas 33.080 opiniões</p>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
           <div class="flex items-end justify-between mb-3">
             <div>
               <p class="text-xs text-gray-400 line-through">R$&nbsp;250,00</p>
@@ -639,12 +964,78 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.6000000000000001s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.1s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
-          <button onclick="editOffer(1790859403755)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+          <button onclick="editOffer(1791034375246)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
           </button>
-          <button onclick="confirmDeleteOffer(1790859403755)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+          <button onclick="confirmDeleteOffer(1791034375246)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_665260-MLA99480244940_112025-F.webp" alt="Pré Treino Muscle Bunny C/300g - Adaptogen Sabor Maçã Verde" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Pr%C3%A9%20Treino%20Muscle%20Bu'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-35%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Pré-Treino
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Mercado Livre
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Pré Treino Muscle Bunny C/300g - Adaptogen Sabor Maçã Verde</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;74,19</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;48,00</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;26,19</div>
+          </div>
+          <a href="https://meli.la/1noWBau" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.1500000000000001s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791034375663)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791034375663)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_662415-MLA97812910758_112025-F.webp" alt="Creatina Growth Supplements Monohidratada em pó Sem sabor x 250g" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Creatina%20Growth%20Supp'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-45%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Creatina
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Mercado Livre
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Creatina Growth Supplements Monohidratada em pó Sem sabor x 250g</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;64,90</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;35,91</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;28,99</div>
+          </div>
+          <a href="https://meli.la/2dZ2jR6" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.2000000000000002s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791034375571)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791034375571)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
             <i class="fas fa-trash-alt text-sm"></i>
           </button>
           <img src="https://http2.mlstatic.com/D_NQ_NP_2X_819000-MLA101180020755_122025-F.webp" alt="Proteína Growth Supplements Basic Whey em pó sabor Chocolate x 1kg" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Prote%C3%ADna%20Growth%20Supp'" loading="lazy">
@@ -658,7 +1049,7 @@
         </div>
         <div class="p-4">
           <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Proteína Growth Supplements Basic Whey em pó sabor Chocolate x 1kg</h4>
-          <p class="text-xs text-gray-500 mb-3 line-clamp-2">Mais de 100 mil vendidos e 9 em Suplementos com Avaliação 4,8 de 5 estrelas 47.124 opiniões</p>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
           <div class="flex items-end justify-between mb-3">
             <div>
               <p class="text-xs text-gray-400 line-through">R$&nbsp;104,90</p>
@@ -672,12 +1063,12 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.65s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.25s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
-          <button onclick="editOffer(1790859403633)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+          <button onclick="editOffer(1791034374838)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
           </button>
-          <button onclick="confirmDeleteOffer(1790859403633)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+          <button onclick="confirmDeleteOffer(1791034374838)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
             <i class="fas fa-trash-alt text-sm"></i>
           </button>
           <img src="https://http2.mlstatic.com/D_NQ_NP_2X_678358-MLA112725007198_062026-F.webp" alt="Proteína Growth Supplements Basic Whey Pro em pó sabor Morango x 1kg" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Prote%C3%ADna%20Growth%20Supp'" loading="lazy">
@@ -691,7 +1082,7 @@
         </div>
         <div class="p-4">
           <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Proteína Growth Supplements Basic Whey Pro em pó sabor Morango x 1kg</h4>
-          <p class="text-xs text-gray-500 mb-3 line-clamp-2">Mais de 10 mil vendidos e Avaliação 4,9 de 5 estrelas 3.153 opiniões</p>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
           <div class="flex items-end justify-between mb-3">
             <div>
               <p class="text-xs text-gray-400 line-through">R$&nbsp;104,90</p>
@@ -705,12 +1096,78 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.7000000000000001s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.3s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
-          <button onclick="editOffer(1790859403209)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+          <button onclick="editOffer(1791034375158)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
           </button>
-          <button onclick="confirmDeleteOffer(1790859403209)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+          <button onclick="confirmDeleteOffer(1791034375158)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_734286-MLA115263082370_082026-F.webp" alt="Creatina Dark Lab Premium Pure em pó Sem sabor x 500g" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Creatina%20Dark%20Lab%20Pr'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-50%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Creatina
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Mercado Livre
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Creatina Dark Lab Premium Pure em pó Sem sabor x 500g</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;99,80</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;49,90</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;49,90</div>
+          </div>
+          <a href="https://meli.la/2eLZycK" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.35s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791034374883)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791034374883)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_830138-MLA116668021755_082026-F.webp" alt="Creatina Dark Lab Premium Pure em pó Sem sabor x 300g" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Creatina%20Dark%20Lab%20Pr'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-49%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Creatina
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Mercado Livre
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Creatina Dark Lab Premium Pure em pó Sem sabor x 300g</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;78,90</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;39,90</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;39,00</div>
+          </div>
+          <a href="https://meli.la/2MvxoKH" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.4000000000000001s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791034375375)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791034375375)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
             <i class="fas fa-trash-alt text-sm"></i>
           </button>
           <img src="https://http2.mlstatic.com/D_NQ_NP_2X_819335-MLA99933248115_112025-F.webp" alt="Whey Protein Concentrado 100% 900g Refil Dark Lab Sabor Baunilha" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Whey%20Protein%20Concent'" loading="lazy">
@@ -724,7 +1181,7 @@
         </div>
         <div class="p-4">
           <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Whey Protein Concentrado 100% 900g Refil Dark Lab Sabor Baunilha</h4>
-          <p class="text-xs text-gray-500 mb-3 line-clamp-2">Mais de 10 mil vendidos e 4 em Suplementos Dark Lab com Avaliação 4,8 de 5 estrelas 21.398 opiniões</p>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
           <div class="flex items-end justify-between mb-3">
             <div>
               <p class="text-xs text-gray-400 line-through">R$&nbsp;499,90</p>
@@ -738,12 +1195,111 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.75s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.4500000000000002s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
-          <button onclick="editOffer(1790859403645)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+          <button onclick="editOffer(1791034375253)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
           </button>
-          <button onclick="confirmDeleteOffer(1790859403645)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+          <button onclick="confirmDeleteOffer(1791034375253)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_670684-MLA99962097649_112025-F.webp" alt="Pre Treino Raze Frutas Amarelas 300g Dark Lab" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Pre%20Treino%20Raze%20Frut'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-58%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Pré-Treino
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Mercado Livre
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Pre Treino Raze Frutas Amarelas 300g Dark Lab</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;189,90</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;78,90</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;111,00</div>
+          </div>
+          <a href="https://meli.la/1dQPbMc" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.5s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791034375257)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791034375257)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_849407-MLA114372301488_082026-F.webp" alt="Creatina Soldiers Nutrition em pó Sem sabor x 600g" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Creatina%20Soldiers%20Nu'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-61%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Creatina
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Mercado Livre
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Creatina Soldiers Nutrition em pó Sem sabor x 600g</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;129,90</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;50,90</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;79,00</div>
+          </div>
+          <a href="https://meli.la/1256NVo" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.55s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791034375747)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791034375747)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_671155-MLA100109181339_122025-F.webp" alt="Suplemento Soldiers Nutrition Evolution en pó sabor blueberry x 300g" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Suplemento%20Soldiers%20'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-54%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Pré-Treino
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Mercado Livre
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Suplemento Soldiers Nutrition Evolution en pó sabor blueberry x 300g</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;99,90</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;45,91</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;53,99</div>
+          </div>
+          <a href="https://meli.la/1cmiZL2" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.6s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791034374928)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791034374928)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
             <i class="fas fa-trash-alt text-sm"></i>
           </button>
           <img src="https://http2.mlstatic.com/D_NQ_NP_2X_601260-MLA114715914237_072026-F.webp" alt="Whey protein Soldiers Nutrition em pó sabor Baunilha x 900g" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Whey%20protein%20Soldier'" loading="lazy">
@@ -757,7 +1313,7 @@
         </div>
         <div class="p-4">
           <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Whey protein Soldiers Nutrition em pó sabor Baunilha x 900g</h4>
-          <p class="text-xs text-gray-500 mb-3 line-clamp-2">Mais de 5 mil vendidos e 2 em Suplementos Alimentares Soldiers Nutrition com Avaliação 4,6 de 5 estrelas 1.556 opiniões</p>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
           <div class="flex items-end justify-between mb-3">
             <div>
               <p class="text-xs text-gray-400 line-through">R$&nbsp;110,90</p>
@@ -771,12 +1327,12 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.8s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.6500000000000001s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
-          <button onclick="editOffer(1790859402845)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+          <button onclick="editOffer(1791034374946)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
           </button>
-          <button onclick="confirmDeleteOffer(1790859402845)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+          <button onclick="confirmDeleteOffer(1791034374946)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
             <i class="fas fa-trash-alt text-sm"></i>
           </button>
           <img src="https://http2.mlstatic.com/D_NQ_NP_2X_859018-MLA100008028659_122025-F.webp" alt="Proteína Soldiers Nutrition Suplementação Whey Protein em pó sabor Chocolate x 1kg" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Prote%C3%ADna%20Soldiers%20Nu'" loading="lazy">
@@ -790,7 +1346,7 @@
         </div>
         <div class="p-4">
           <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Proteína Soldiers Nutrition Suplementação Whey Protein em pó sabor Chocolate x 1kg</h4>
-          <p class="text-xs text-gray-500 mb-3 line-clamp-2">Mais de 100 mil vendidos e 3 em Suplementos Soldiers Nutrition com Avaliação 4,8 de 5 estrelas 30.534 opiniões</p>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
           <div class="flex items-end justify-between mb-3">
             <div>
               <p class="text-xs text-gray-400 line-through">R$&nbsp;429,90</p>
@@ -804,12 +1360,111 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.8500000000000001s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.7000000000000002s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
-          <button onclick="editOffer(1790859402915)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+          <button onclick="editOffer(1791034375662)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
           </button>
-          <button onclick="confirmDeleteOffer(1790859402915)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+          <button onclick="confirmDeleteOffer(1791034375662)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_983649-MLA99941679681_112025-F.webp" alt="Creatina Monohidratada Pura 300g Pote Suplemento em Pó 100% - FTW" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Creatina%20Monohidrata'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-43%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Creatina
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Mercado Livre
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Creatina Monohidratada Pura 300g Pote Suplemento em Pó 100% - FTW</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;70,00</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;39,90</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;30,10</div>
+          </div>
+          <a href="https://meli.la/2DsU9Fc" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.75s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791034375769)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791034375769)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_737279-MLA99611151334_122025-F.webp" alt="Pré Treino Pre Workout DIABO VERDE Pote 150g Sabor Limão FTW" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Pr%C3%A9%20Treino%20Pre%20Worko'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-60%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Pré-Treino
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Mercado Livre
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Pré Treino Pre Workout DIABO VERDE Pote 150g Sabor Limão FTW</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;99,99</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;39,90</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;60,09</div>
+          </div>
+          <a href="https://meli.la/1CeQ7Hf" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.8s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791034375742)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791034375742)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_713175-MLA99939873181_112025-F.webp" alt="Pré Treino Pre Workout DIABO VERDE Pote 300g Sabor Cereja Ice FTW" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Pr%C3%A9%20Treino%20Pre%20Worko'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-3%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Pré-Treino
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Mercado Livre
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Pré Treino Pre Workout DIABO VERDE Pote 300g Sabor Cereja Ice FTW</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;69,00</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;66,93</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;2,07</div>
+          </div>
+          <a href="https://meli.la/28Brkvc" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.85s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791034375403)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791034375403)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
             <i class="fas fa-trash-alt text-sm"></i>
           </button>
           <img src="https://http2.mlstatic.com/D_NQ_NP_2X_770538-MLA96132069383_102025-F.webp" alt="Whey Protein 100% Concentrado Pote 900g Sabor Leite - FTW" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Whey%20Protein%20100%25%20Co'" loading="lazy">
@@ -823,7 +1478,7 @@
         </div>
         <div class="p-4">
           <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Whey Protein 100% Concentrado Pote 900g Sabor Leite - FTW</h4>
-          <p class="text-xs text-gray-500 mb-3 line-clamp-2">Mais de 5 mil vendidos e 9 em Suplementos FTW com Avaliação 4,8 de 5 estrelas 1.990 opiniões</p>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
           <div class="flex items-end justify-between mb-3">
             <div>
               <p class="text-xs text-gray-400 line-through">R$&nbsp;159,90</p>
@@ -837,12 +1492,12 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.9s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.9000000000000001s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
-          <button onclick="editOffer(1790859403715)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+          <button onclick="editOffer(1791034375040)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
           </button>
-          <button onclick="confirmDeleteOffer(1790859403715)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+          <button onclick="confirmDeleteOffer(1791034375040)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
             <i class="fas fa-trash-alt text-sm"></i>
           </button>
           <img src="https://http2.mlstatic.com/D_NQ_NP_2X_931481-MLA110859451612_052026-F.webp" alt="Whey Protein Isolado Mix Pote 907g - Profit Sabor Cookies &amp; Cream" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Whey%20Protein%20Isolado'" loading="lazy">
@@ -856,7 +1511,7 @@
         </div>
         <div class="p-4">
           <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Whey Protein Isolado Mix Pote 907g - Profit Sabor Cookies &amp; Cream</h4>
-          <p class="text-xs text-gray-500 mb-3 line-clamp-2">Mais de 500 vendidos e 6 em Suplementos Profit com Avaliação 4,8 de 5 estrelas 1.375 opiniões</p>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
           <div class="flex items-end justify-between mb-3">
             <div>
               <p class="text-xs text-gray-400 line-through">R$&nbsp;78,90</p>
@@ -870,12 +1525,45 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.9500000000000001s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.9500000000000002s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
-          <button onclick="editOffer(1790859403745)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+          <button onclick="editOffer(1791034375056)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
           </button>
-          <button onclick="confirmDeleteOffer(1790859403745)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+          <button onclick="confirmDeleteOffer(1791034375056)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_997224-MLA110989459945_042026-F.webp" alt="Proteína ProFit Laboratórios Hipercaloricos Anabolic Mass 28500 em pó sabor Leite ninõ x 3kg" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Prote%C3%ADna%20ProFit%20Labo'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-21%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Hipercalórico
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Mercado Livre
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Proteína ProFit Laboratórios Hipercaloricos Anabolic Mass 28500 em pó sabor Leite ninõ x 3kg</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;99,90</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;78,90</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;21,00</div>
+          </div>
+          <a href="https://meli.la/2MuuPX1" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791034375555)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791034375555)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
             <i class="fas fa-trash-alt text-sm"></i>
           </button>
           <img src="https://http2.mlstatic.com/D_NQ_NP_2X_793043-MLA110992549827_042026-F.webp" alt="Whey protein Profit 100% Quality Concentrate em pó sabor Leite Niño x 900g" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Whey%20protein%20Profit%20'" loading="lazy">
@@ -889,7 +1577,7 @@
         </div>
         <div class="p-4">
           <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Whey protein Profit 100% Quality Concentrate em pó sabor Leite Niño x 900g</h4>
-          <p class="text-xs text-gray-500 mb-3 line-clamp-2">Mais de 10 mil vendidos e 1 em Suplementos Profit com Avaliação 4,6 de 5 estrelas 13.171 opiniões</p>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
           <div class="flex items-end justify-between mb-3">
             <div>
               <p class="text-xs text-gray-400 line-through">R$&nbsp;94,90</p>
@@ -903,12 +1591,12 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.0500000000000003s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
-          <button onclick="editOffer(1790859403762)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+          <button onclick="editOffer(1791034375288)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
           </button>
-          <button onclick="confirmDeleteOffer(1790859403762)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+          <button onclick="confirmDeleteOffer(1791034375288)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
             <i class="fas fa-trash-alt text-sm"></i>
           </button>
           <img src="https://http2.mlstatic.com/D_NQ_NP_2X_979670-MLA113106916099_062026-F.webp" alt="Whey Protein Isolate Protein Mix Refil 1,8kg Profit Sabor Cookies &amp; cream" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Whey%20Protein%20Isolate'" loading="lazy">
@@ -922,7 +1610,7 @@
         </div>
         <div class="p-4">
           <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Whey Protein Isolate Protein Mix Refil 1,8kg Profit Sabor Cookies &amp; cream</h4>
-          <p class="text-xs text-gray-500 mb-3 line-clamp-2">Mais de 100 vendidos e 2 em Suplementos Profit com Avaliação 4,7 de 5 estrelas 434 opiniões</p>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
           <div class="flex items-end justify-between mb-3">
             <div>
               <p class="text-xs text-gray-400 line-through">R$&nbsp;189,90</p>
@@ -931,6 +1619,303 @@
             <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;58,33</div>
           </div>
           <a href="https://meli.la/1rdqhhM" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.1s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791034375560)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791034375560)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_816758-MLA97552844798_112025-F.webp" alt="CREATINA MONOHIDRATADA 500g - 100% Pura - 3VS Nutrition" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=CREATINA%20MONOHIDRATA'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-54%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Creatina
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Mercado Livre
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">CREATINA MONOHIDRATADA 500g - 100% Pura - 3VS Nutrition</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;97,99</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;44,99</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;53,00</div>
+          </div>
+          <a href="https://meli.la/2FGyvK7" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.15s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791034374827)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791034374827)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_874524-MLA112937721051_062026-F.webp" alt="CREATINA MONOHIDRATADA 300g - 100% Pura - 3VS Nutrition" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=CREATINA%20MONOHIDRATA'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-63%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Creatina
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Mercado Livre
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">CREATINA MONOHIDRATADA 300g - 100% Pura - 3VS Nutrition</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;83,99</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;30,94</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;53,05</div>
+          </div>
+          <a href="https://meli.la/2fwhV8F" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.2s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791034375632)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791034375632)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_644316-MLA118003166887_092026-F.webp" alt="Pré Treino Prohibido 360g Sabor Green Apple - Fórmula Avançada Contendo Creatina, Beta Alanina, Taurina, L-tirosina, L-alanina, Cafeína, Arginina E Palatinose - Extra Forte Maçã Verde" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Pr%C3%A9%20Treino%20Prohibido'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-44%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Pré-Treino
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Mercado Livre
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Pré Treino Prohibido 360g Sabor Green Apple - Fórmula Avançada Contendo Creatina, Beta Alanina, Taurina, L-tirosina, L-alanina, Cafeína, Arginina E Palatinose - Extra Forte Maçã Verde</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;121,70</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;68,58</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;53,12</div>
+          </div>
+          <a href="https://meli.la/2AqPHF4" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.25s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791034375738)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791034375738)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_769532-MLA118148255381_092026-F.webp" alt="100% WHEY Protein Concentrado 900g Sabor Baunilha - Proteína 100% Pura - 3VS Nutrition" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=100%25%20WHEY%20Protein%20Co'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-44%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Whey Protein
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Mercado Livre
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">100% WHEY Protein Concentrado 900g Sabor Baunilha - Proteína 100% Pura - 3VS Nutrition</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;319,99</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;178,67</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;141,32</div>
+          </div>
+          <a href="https://meli.la/2KLzTxz" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.3000000000000003s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791034375110)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791034375110)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_991048-MLA99993467511_112025-F.webp" alt="PRÉ TREINO SEM CAFEÍNA BEAST 300g - Sabor Maçã Verde - Fórmula Exclusiva com Citrulina, Beta Alanina, Creatina, Água de Coco, Arginina, Taurina e Tirosina" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=PR%C3%89%20TREINO%20SEM%20CAFE%C3%8D'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-28%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Pré-Treino
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Mercado Livre
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">PRÉ TREINO SEM CAFEÍNA BEAST 300g - Sabor Maçã Verde - Fórmula Exclusiva com Citrulina, Beta Alanina, Creatina, Água de Coco, Arginina, Taurina e Tirosina</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;81,77</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;58,99</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;22,78</div>
+          </div>
+          <a href="https://meli.la/2u34d3X" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.35s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791034375390)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791034375390)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_929105-MLA99953997401_112025-F.webp" alt="Pré-treino Beast 300g Sabor: Uva - Ultra Concentrado - Promove Vasodilatação, Recuperação Energética, Aumento De Óxido Nítrico, Desintoxicação E Melhora De Concentração E Foco" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Pr%C3%A9-treino%20Beast%20300'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-42%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Pré-Treino
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Mercado Livre
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Pré-treino Beast 300g Sabor: Uva - Ultra Concentrado - Promove Vasodilatação, Recuperação Energética, Aumento De Óxido Nítrico, Desintoxicação E Melhora De Concentração E Foco</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;101,99</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;58,99</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;43,00</div>
+          </div>
+          <a href="https://meli.la/2nMTjjU" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.4000000000000004s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791034374858)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791034374858)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_754467-MLA114857843925_072026-F.webp" alt="Creatina Monohidratada Power Extra Energy - 300g - 3VS Nutrition" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Creatina%20Monohidrata'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-68%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Creatina
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Mercado Livre
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Creatina Monohidratada Power Extra Energy - 300g - 3VS Nutrition</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;78,99</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;25,00</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;53,99</div>
+          </div>
+          <a href="https://meli.la/2isz4aC" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.45s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791034374925)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791034374925)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_704852-MLB98084319167_112025-F-kit-mass-hipercalorico--bcaa--creatina--glutamina--copo.webp" alt="Kit Mass Hipercalórico + Bcaa + Creatina + Glutamina + Copo" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Kit%20Mass%20Hipercal%C3%B3ri'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-57%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Hipercalórico
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Mercado Livre
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Kit Mass Hipercalórico + Bcaa + Creatina + Glutamina + Copo</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;209,99</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;89,99</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;120,00</div>
+          </div>
+          <a href="https://meli.la/2bYx9wk" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.5s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791034375780)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791034375780)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_754792-MLA107008782097_022026-F.webp" alt="Proteína Bodybuilders Whey Concentrado em pó sabor Chocolate x 2kg 4 un" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Prote%C3%ADna%20Bodybuilder'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-75%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Whey Protein
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Mercado Livre
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Proteína Bodybuilders Whey Concentrado em pó sabor Chocolate x 2kg 4 un</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;299,99</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;75,03</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;224,96</div>
+          </div>
+          <a href="https://meli.la/338ncLs" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
             <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
           </a>
         </div>
@@ -1366,7 +2351,7 @@ const defaultSettings = {
 
 let offers = [
   {
-    "id": 1790859403026,
+    "id": 1791034375560,
     "titulo": "CREATINA MONOHIDRATADA 500g - 100% Pura - 3VS Nutrition",
     "preco": 44.99,
     "preco_original": 97.99,
@@ -1374,11 +2359,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_816758-MLA97552844798_112025-F.webp",
     "link": "https://meli.la/2FGyvK7",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 10 mil vendidos e 4 em Suplementos Alimentares 3VS Nutrition com Avaliação 4,8 de 5 estrelas 7.626 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.802Z"
   },
   {
-    "id": 1790859403735,
+    "id": 1791034374827,
     "titulo": "CREATINA MONOHIDRATADA 300g - 100% Pura - 3VS Nutrition",
     "preco": 30.94,
     "preco_original": 83.99,
@@ -1386,11 +2371,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_874524-MLA112937721051_062026-F.webp",
     "link": "https://meli.la/2fwhV8F",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 100 mil vendidos e 2 em Suplementos 3VS com Avaliação 4,8 de 5 estrelas 21.108 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.802Z"
   },
   {
-    "id": 1790859403409,
+    "id": 1791034375632,
     "titulo": "Pré Treino Prohibido 360g Sabor Green Apple - Fórmula Avançada Contendo Creatina, Beta Alanina, Taurina, L-tirosina, L-alanina, Cafeína, Arginina E Palatinose - Extra Forte Maçã Verde",
     "preco": 68.58,
     "preco_original": 121.7,
@@ -1398,11 +2383,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_644316-MLA118003166887_092026-F.webp",
     "link": "https://meli.la/2AqPHF4",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 50 mil vendidos e 1 em Suplementos 3VS com Avaliação 4,7 de 5 estrelas 77.632 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.802Z"
   },
   {
-    "id": 1790859403811,
+    "id": 1791034375738,
     "titulo": "100% WHEY Protein Concentrado 900g Sabor Baunilha - Proteína 100% Pura - 3VS Nutrition",
     "preco": 178.67,
     "preco_original": 319.99,
@@ -1410,11 +2395,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_769532-MLA118148255381_092026-F.webp",
     "link": "https://meli.la/2KLzTxz",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 5 mil vendidos e 6 em Suplementos 3VS com Avaliação 4,8 de 5 estrelas 4.984 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.802Z"
   },
   {
-    "id": 1790859403264,
+    "id": 1791034375110,
     "titulo": "PRÉ TREINO SEM CAFEÍNA BEAST 300g - Sabor Maçã Verde - Fórmula Exclusiva com Citrulina, Beta Alanina, Creatina, Água de Coco, Arginina, Taurina e Tirosina",
     "preco": 58.99,
     "preco_original": 81.77,
@@ -1422,11 +2407,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_991048-MLA99993467511_112025-F.webp",
     "link": "https://meli.la/2u34d3X",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 1 mil vendidos e 2 em Suplementos 3VS Nutrition com Avaliação 4,8 de 5 estrelas 1.460 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.802Z"
   },
   {
-    "id": 1790859403028,
+    "id": 1791034375390,
     "titulo": "Pré-treino Beast 300g Sabor: Uva - Ultra Concentrado - Promove Vasodilatação, Recuperação Energética, Aumento De Óxido Nítrico, Desintoxicação E Melhora De Concentração E Foco",
     "preco": 58.99,
     "preco_original": 101.99,
@@ -1434,11 +2419,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_929105-MLA99953997401_112025-F.webp",
     "link": "https://meli.la/2nMTjjU",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 1000 vendidos e 5 em Suplementos 3VS Nutrition com Avaliação 4,7 de 5 estrelas 2.007 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.802Z"
   },
   {
-    "id": 1790859403116,
+    "id": 1791034374858,
     "titulo": "Creatina Monohidratada Power Extra Energy - 300g - 3VS Nutrition",
     "preco": 25,
     "preco_original": 78.99,
@@ -1446,11 +2431,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_754467-MLA114857843925_072026-F.webp",
     "link": "https://meli.la/2isz4aC",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 5 mil vendidos e 10 em Suplementos Alimentares 3VS Nutrition com Avaliação 4,7 de 5 estrelas 1.027 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.802Z"
   },
   {
-    "id": 1790859403582,
+    "id": 1791034374925,
     "titulo": "Kit Mass Hipercalórico + Bcaa + Creatina + Glutamina + Copo",
     "preco": 89.99,
     "preco_original": 209.99,
@@ -1458,11 +2443,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_704852-MLB98084319167_112025-F-kit-mass-hipercalorico--bcaa--creatina--glutamina--copo.webp",
     "link": "https://meli.la/2bYx9wk",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 10 mil vendidos e 3 em Suplementos Espartanos com Avaliação 4,8 de 5 estrelas 1.035 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.802Z"
   },
   {
-    "id": 1790859403090,
+    "id": 1791034375780,
     "titulo": "Proteína Bodybuilders Whey Concentrado em pó sabor Chocolate x 2kg 4 un",
     "preco": 75.03,
     "preco_original": 299.99,
@@ -1470,11 +2455,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_754792-MLA107008782097_022026-F.webp",
     "link": "https://meli.la/338ncLs",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 50 mil vendidos e 1 em Suplementos Bodybuilders com Avaliação 4,5 de 5 estrelas 39.874 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.802Z"
   },
   {
-    "id": 1790859403788,
+    "id": 1791034375587,
     "titulo": "Whey Protein Isolado Iso Protein Blend Complex 2kg Pretorian Sabor Chocolate",
     "preco": 81.13,
     "preco_original": 189.99,
@@ -1482,11 +2467,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_712310-MLA111758946433_052026-F.webp",
     "link": "https://meli.la/1hfjy7x",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 100 mil vendidos e Avaliação 4,6 de 5 estrelas 6.723 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859403237,
+    "id": 1791034374859,
     "titulo": "Suplemento Em Pó Whey Protein 100% Concentrado 900g Sabor Morango",
     "preco": 106.4,
     "preco_original": 250,
@@ -1494,11 +2479,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_863749-MLA99449597780_112025-F.webp",
     "link": "https://meli.la/2DiqD9E",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 100 vendidos e 7 em Suplementos Espartanos com Avaliação 4,7 de 5 estrelas 387 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859402968,
+    "id": 1791034375544,
     "titulo": "100% Creatina 300g Bodybuilders Sem Sabor - Aprovada Abenutri",
     "preco": 38.79,
     "preco_original": 75.99,
@@ -1506,11 +2491,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_915381-MLA100054729177_122025-F.webp",
     "link": "https://meli.la/1zY9xhT",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 5 mil vendidos e Avaliação 4,6 de 5 estrelas 1.018 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859403243,
+    "id": 1791034375097,
     "titulo": "Kit 2x Whey Protein + 2x Bcaa + 2x Creatina + Coqueteleira - Bodybuilders - Sabor Morango",
     "preco": 124.84,
     "preco_original": 209.99,
@@ -1518,11 +2503,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_695313-MLA102901906722_012026-F.webp",
     "link": "https://meli.la/2atTjn6",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 10 mil vendidos e 12 em Suplementos Bodybuilders com Avaliação 4,2 de 5 estrelas 19.471 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859403824,
+    "id": 1791034375315,
     "titulo": "Kit 2x Suplemento Em Pó Whey Protein Isolado Iso X 1800g Sabor Chocolate",
     "preco": 186.91,
     "preco_original": 350,
@@ -1530,11 +2515,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_881647-MLA115301331103_072026-F.webp",
     "link": "https://meli.la/1img9m1",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 1000 vendidos e Avaliação 4,5 de 5 estrelas 767 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859403475,
+    "id": 1791034375441,
     "titulo": "Proteína Max Titanium Whey Pro Concetrado em pó sabor Baunilha x 1kg",
     "preco": 89.99,
     "preco_original": 199.9,
@@ -1542,11 +2527,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_960337-MLA111724818522_062026-F.webp",
     "link": "https://meli.la/31oThPS",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 250 mil vendidos e 1 em Suplementos Max Titanium com Avaliação 4,8 de 5 estrelas 137.478 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859403419,
+    "id": 1791034375743,
     "titulo": "Barra de proteínas Probiótica Whey sabor Chocolate x 960g 24 un",
     "preco": 108.9,
     "preco_original": 183.03,
@@ -1554,11 +2539,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_821774-MLA111620772840_062026-F.webp",
     "link": "https://meli.la/1bpZjNF",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 10 mil vendidos e 4 em Suplementos Probiótica com Avaliação 4,7 de 5 estrelas 2.385 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859403653,
+    "id": 1791034375723,
     "titulo": "Hipercalórico 1,4kg Mass Titanium 17500 Max Titanium Sabor Baunilha",
     "preco": 60.7,
     "preco_original": 78.61,
@@ -1566,11 +2551,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_928515-MLA113002398542_072026-F.webp",
     "link": "https://meli.la/2VH4oTx",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 10 mil vendidos e 4 em Suplementos Max Titanium com Avaliação 4,8 de 5 estrelas 11.726 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859402853,
+    "id": 1791034375051,
     "titulo": "Kit 2x Pré Treino Bulk Nutrition Stoutness 300g Maçã E Frutas",
     "preco": 76.53,
     "preco_original": 169.9,
@@ -1578,11 +2563,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_623657-MLA99892432437_112025-F.webp",
     "link": "https://meli.la/2DjUFeD",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 10 mil vendidos e Avaliação 4,8 de 5 estrelas 2.501 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859403640,
+    "id": 1791034374945,
     "titulo": "Kit 2x Whey Protein Blend 900g Pó | Bulk Nutrition Sabor Baunilha",
     "preco": 99,
     "preco_original": 220,
@@ -1590,11 +2575,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_699036-MLA111913472443_052026-F.webp",
     "link": "https://meli.la/2TaTdcY",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 500 vendidos e Avaliação 4,7 de 5 estrelas 273 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859403404,
+    "id": 1791034375106,
     "titulo": "Creatina 1kg Monohidratada 100% Pura Bulk Nutrition",
     "preco": 64.9,
     "preco_original": 199.9,
@@ -1602,11 +2587,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_678778-MLA99898700493_112025-F.webp",
     "link": "https://meli.la/1yxhtpn",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 1000 vendidos e Avaliação 4,8 de 5 estrelas 1.754 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859403636,
+    "id": 1791034375270,
     "titulo": "Pre treino Égide Pote 300g Sabor Abacaxi E Manga Suplemento em Pó Max Titanium",
     "preco": 94,
     "preco_original": 233.82,
@@ -1614,11 +2599,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_603276-MLA113252583058_072026-F.webp",
     "link": "https://meli.la/1pGKFxU",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 10 mil vendidos e 10 em Suplementos Max Titanium com Avaliação 4,7 de 5 estrelas 11.343 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859402839,
+    "id": 1791034375223,
     "titulo": "Termogenico Shot Dry 150g Pre Treino Max Titanium Sabor Frutas vermelhas",
     "preco": 85.39,
     "preco_original": 131.93,
@@ -1626,11 +2611,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_621256-MLA115443872594_082026-F.webp",
     "link": "https://meli.la/1YmiNtP",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 10 mil vendidos e Avaliação 4,8 de 5 estrelas 3.105 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859403112,
+    "id": 1791034375139,
     "titulo": "Hipercalórico 3kg Super Gainers Max Titanium Baunilha Alto Valor Calórico",
     "preco": 118.89,
     "preco_original": 220.59,
@@ -1638,11 +2623,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_873093-MLA99429380972_112025-F.webp",
     "link": "https://meli.la/19X44aY",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 10 mil vendidos e Avaliação 4,8 de 5 estrelas 7.569 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859403086,
+    "id": 1791034375048,
     "titulo": "Creatina +Mu em pó sabor Melancia x 500g",
     "preco": 69.76,
     "preco_original": 124.99,
@@ -1650,11 +2635,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_944872-MLA99449521788_112025-F.webp",
     "link": "https://meli.la/2faMRCx",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 10 mil vendidos e 6 em Suplementos Alimentares Mais Mu com Avaliação 4,9 de 5 estrelas 2.623 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859403643,
+    "id": 1791034375513,
     "titulo": "Suplemento em pó +Mu Performance Pré treino Exquenta sabor Limonada x 500g",
     "preco": 113.9,
     "preco_original": 189.99,
@@ -1662,11 +2647,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_818963-MLA99429360494_112025-F.webp",
     "link": "https://meli.la/16ThyMf",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 10 mil vendidos e 3 em Suplementos Alimentares Mais Mu com Avaliação 4,8 de 5 estrelas 7.235 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859403814,
+    "id": 1791034375393,
     "titulo": "Barra de proteína +Mu Chocowheyfer sabor Chocolate com coco 12 un",
     "preco": 54.04,
     "preco_original": 87.88,
@@ -1674,11 +2659,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_957825-MLA99536228402_122025-F.webp",
     "link": "https://meli.la/2YfrWgx",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 10 mil vendidos e 5 em Suplementos Alimentares Mais Mu com Avaliação 4,8 de 5 estrelas 7.817 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859403571,
+    "id": 1791034374869,
     "titulo": "Whey protein +Mu Coco Refil em pó x 900g",
     "preco": 163.41,
     "preco_original": 279.99,
@@ -1686,11 +2671,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_720599-MLA99452728192_112025-F.webp",
     "link": "https://meli.la/1NHkwpt",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 1000 vendidos e 9 em Suplementos Alimentares Mais Mu com Avaliação 4,8 de 5 estrelas 234 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859402977,
+    "id": 1791034375429,
     "titulo": "Creatina Max Titanium em pó Sem sabor x 300g",
     "preco": 38.97,
     "preco_original": 85.42,
@@ -1698,11 +2683,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_920350-MLA113966831509_062026-F.webp",
     "link": "https://meli.la/2LDC34B",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 1 milhão de vendidos e Avaliação 4,9 de 5 estrelas 168.073 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859403515,
+    "id": 1791034374858,
     "titulo": "Suplemento Adaptogen Science Pré Treino Panic en pó sabor morango x 300g",
     "preco": 70.2,
     "preco_original": 118.99,
@@ -1710,11 +2695,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_656972-MLA100055795637_122025-F.webp",
     "link": "https://meli.la/1Z9EbWr",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 10 mil vendidos e 8 em Suplementos Adaptogen Science com Avaliação 4,8 de 5 estrelas 2.166 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859403099,
+    "id": 1791034375699,
     "titulo": "Creatina Max Titanium 7 Belo em pó x 300g",
     "preco": 45,
     "preco_original": 80,
@@ -1722,11 +2707,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_676100-MLA110120181598_042026-F.webp",
     "link": "https://meli.la/1ej5oYP",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 1 milhão de vendidos e 7 em Suplementos Alimentares Max Titanium com Avaliação 4,8 de 5 estrelas 2.683 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859403299,
+    "id": 1791034374885,
     "titulo": "100% Whey Protein Concentrado 900g Cookies & Cream",
     "preco": 152.1,
     "preco_original": 250,
@@ -1734,11 +2719,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_963869-MLA111911921048_062026-F.webp",
     "link": "https://meli.la/1nCXYLg",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 50 mil vendidos e Avaliação 4,8 de 5 estrelas 33.080 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859403613,
+    "id": 1791034375246,
     "titulo": "Pré Treino Muscle Bunny C/300g - Adaptogen Sabor Maçã Verde",
     "preco": 48,
     "preco_original": 74.19,
@@ -1746,11 +2731,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_665260-MLA99480244940_112025-F.webp",
     "link": "https://meli.la/1noWBau",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 1000 vendidos e Avaliação 4,8 de 5 estrelas 776 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859403728,
+    "id": 1791034375663,
     "titulo": "Creatina Growth Supplements Monohidratada em pó Sem sabor x 250g",
     "preco": 35.91,
     "preco_original": 64.9,
@@ -1758,11 +2743,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_662415-MLA97812910758_112025-F.webp",
     "link": "https://meli.la/2dZ2jR6",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 1 milhão de vendidos e 1 em Suplementos com Avaliação 4,9 de 5 estrelas 264.640 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859403755,
+    "id": 1791034375571,
     "titulo": "Proteína Growth Supplements Basic Whey em pó sabor Chocolate x 1kg",
     "preco": 65.61,
     "preco_original": 104.9,
@@ -1770,11 +2755,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_819000-MLA101180020755_122025-F.webp",
     "link": "https://meli.la/1k9d77J",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 100 mil vendidos e 9 em Suplementos com Avaliação 4,8 de 5 estrelas 47.124 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859403633,
+    "id": 1791034374838,
     "titulo": "Proteína Growth Supplements Basic Whey Pro em pó sabor Morango x 1kg",
     "preco": 72.9,
     "preco_original": 104.9,
@@ -1782,11 +2767,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_678358-MLA112725007198_062026-F.webp",
     "link": "https://meli.la/2fKurLb",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 10 mil vendidos e Avaliação 4,9 de 5 estrelas 3.153 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859403523,
+    "id": 1791034375158,
     "titulo": "Creatina Dark Lab Premium Pure em pó Sem sabor x 500g",
     "preco": 49.9,
     "preco_original": 99.8,
@@ -1794,11 +2779,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_734286-MLA115263082370_082026-F.webp",
     "link": "https://meli.la/2eLZycK",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 1 milhão de vendidos e Avaliação 4,9 de 5 estrelas 506.924 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859403796,
+    "id": 1791034374883,
     "titulo": "Creatina Dark Lab Premium Pure em pó Sem sabor x 300g",
     "preco": 39.9,
     "preco_original": 78.9,
@@ -1806,11 +2791,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_830138-MLA116668021755_082026-F.webp",
     "link": "https://meli.la/2MvxoKH",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 1 milhão de vendidos e Avaliação 4,9 de 5 estrelas 214.247 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859403209,
+    "id": 1791034375375,
     "titulo": "Whey Protein Concentrado 100% 900g Refil Dark Lab Sabor Baunilha",
     "preco": 132.9,
     "preco_original": 499.9,
@@ -1818,11 +2803,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_819335-MLA99933248115_112025-F.webp",
     "link": "https://meli.la/2nLaTAq",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 10 mil vendidos e 4 em Suplementos Dark Lab com Avaliação 4,8 de 5 estrelas 21.398 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859403285,
+    "id": 1791034375253,
     "titulo": "Pre Treino Raze Frutas Amarelas 300g Dark Lab",
     "preco": 78.9,
     "preco_original": 189.9,
@@ -1830,11 +2815,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_670684-MLA99962097649_112025-F.webp",
     "link": "https://meli.la/1dQPbMc",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 5 mil vendidos e 17 em Suplementos Alimentares Dark Lab com Avaliação 4,8 de 5 estrelas 3.370 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859403463,
+    "id": 1791034375257,
     "titulo": "Creatina Soldiers Nutrition em pó Sem sabor x 600g",
     "preco": 50.9,
     "preco_original": 129.9,
@@ -1842,11 +2827,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_849407-MLA114372301488_082026-F.webp",
     "link": "https://meli.la/1256NVo",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 500 mil vendidos e 1 em Suplementos Soldiers Nutrition com Avaliação 4,8 de 5 estrelas 431.151 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859403304,
+    "id": 1791034375747,
     "titulo": "Suplemento Soldiers Nutrition Evolution en pó sabor blueberry x 300g",
     "preco": 45.91,
     "preco_original": 99.9,
@@ -1854,11 +2839,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_671155-MLA100109181339_122025-F.webp",
     "link": "https://meli.la/1cmiZL2",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 50 mil vendidos e 2 em Suplementos Soldiers Nutrition com Avaliação 4,8 de 5 estrelas 38.933 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859403645,
+    "id": 1791034374928,
     "titulo": "Whey protein Soldiers Nutrition em pó sabor Baunilha x 900g",
     "preco": 78.9,
     "preco_original": 110.9,
@@ -1866,11 +2851,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_601260-MLA114715914237_072026-F.webp",
     "link": "https://http2.mlstatic.com/D_NQ_NP_2X_601260-MLA114715914237_072026-F.webp",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 5 mil vendidos e 2 em Suplementos Alimentares Soldiers Nutrition com Avaliação 4,6 de 5 estrelas 1.556 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859402845,
+    "id": 1791034374946,
     "titulo": "Proteína Soldiers Nutrition Suplementação Whey Protein em pó sabor Chocolate x 1kg",
     "preco": 179.93,
     "preco_original": 429.9,
@@ -1878,11 +2863,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_859018-MLA100008028659_122025-F.webp",
     "link": "https://meli.la/1qqLnpA",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 100 mil vendidos e 3 em Suplementos Soldiers Nutrition com Avaliação 4,8 de 5 estrelas 30.534 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859402864,
+    "id": 1791034375662,
     "titulo": "Creatina Monohidratada Pura 300g Pote Suplemento em Pó 100% - FTW",
     "preco": 39.9,
     "preco_original": 70,
@@ -1890,11 +2875,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_983649-MLA99941679681_112025-F.webp",
     "link": "https://meli.la/2DsU9Fc",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 50 mil vendidos e 8 em Suplementos FTW com Avaliação 4,8 de 5 estrelas 33.262 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859403513,
+    "id": 1791034375769,
     "titulo": "Pré Treino Pre Workout DIABO VERDE Pote 150g Sabor Limão FTW",
     "preco": 39.9,
     "preco_original": 99.99,
@@ -1902,11 +2887,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_737279-MLA99611151334_122025-F.webp",
     "link": "https://meli.la/1CeQ7Hf",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 10 mil vendidos e 1 em Suplementos FTW com Avaliação 4,8 de 5 estrelas 74.812 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859403456,
+    "id": 1791034375742,
     "titulo": "Pré Treino Pre Workout DIABO VERDE Pote 300g Sabor Cereja Ice FTW",
     "preco": 66.93,
     "preco_original": 69,
@@ -1914,11 +2899,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_713175-MLA99939873181_112025-F.webp",
     "link": "https://meli.la/28Brkvc",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 10 mil vendidos e 1 em Suplementos FTW com Avaliação 4,8 de 5 estrelas 74.812 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859402915,
+    "id": 1791034375403,
     "titulo": "Whey Protein 100% Concentrado Pote 900g Sabor Leite - FTW",
     "preco": 131.99,
     "preco_original": 159.9,
@@ -1926,11 +2911,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_770538-MLA96132069383_102025-F.webp",
     "link": "https://meli.la/1TE2SjM",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 5 mil vendidos e 9 em Suplementos FTW com Avaliação 4,8 de 5 estrelas 1.990 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859403715,
+    "id": 1791034375040,
     "titulo": "Whey Protein Isolado Mix Pote 907g - Profit Sabor Cookies & Cream",
     "preco": 69.9,
     "preco_original": 78.9,
@@ -1938,11 +2923,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_931481-MLA110859451612_052026-F.webp",
     "link": "https://meli.la/2o2cuks",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 500 vendidos e 6 em Suplementos Profit com Avaliação 4,8 de 5 estrelas 1.375 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859402921,
+    "id": 1791034375056,
     "titulo": "Proteína ProFit Laboratórios Hipercaloricos Anabolic Mass 28500 em pó sabor Leite ninõ x 3kg",
     "preco": 78.9,
     "preco_original": 99.9,
@@ -1950,11 +2935,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_997224-MLA110989459945_042026-F.webp",
     "link": "https://meli.la/2MuuPX1",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 50 mil vendidos e 1 em Suplementos ProFit Laboratórios com Avaliação 4,8 de 5 estrelas 55.145 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859403745,
+    "id": 1791034375555,
     "titulo": "Whey protein Profit 100% Quality Concentrate em pó sabor Leite Niño x 900g",
     "preco": 80.91,
     "preco_original": 94.9,
@@ -1962,11 +2947,11 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_793043-MLA110992549827_042026-F.webp",
     "link": "https://meli.la/1dk2ZBk",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 10 mil vendidos e 1 em Suplementos Profit com Avaliação 4,6 de 5 estrelas 13.171 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   },
   {
-    "id": 1790859403762,
+    "id": 1791034375288,
     "titulo": "Whey Protein Isolate Protein Mix Refil 1,8kg Profit Sabor Cookies & cream",
     "preco": 131.57,
     "preco_original": 189.9,
@@ -1974,8 +2959,8 @@ let offers = [
     "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_979670-MLA113106916099_062026-F.webp",
     "link": "https://meli.la/1rdqhhM",
     "loja": "Mercado Livre",
-    "descricao": "Mais de 100 vendidos e 2 em Suplementos Profit com Avaliação 4,7 de 5 estrelas 434 opiniões",
-    "dateAdded": "2026-10-01T12:56:42.834Z"
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-03T13:32:54.803Z"
   }
 ];
 let settings = JSON.parse(JSON.stringify(defaultSettings));
