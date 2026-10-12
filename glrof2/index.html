@@ -227,11 +227,572 @@
         <option value="category">📂 Categoria</option>
         <option value="store">🏪 Loja</option>
       </select>
-      <span id="offer-count" class="text-sm text-gray-600 font-semibold bg-white px-3 py-1 rounded-full shadow">100 ofertas</span>
+      <span id="offer-count" class="text-sm text-gray-600 font-semibold bg-white px-3 py-1 rounded-full shadow">113 ofertas</span>
     </div>
   </div>
   <div id="offers-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
       <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791815302841)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791815302841)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://down-br.img.susercontent.com/file/br-11134207-81ztc-mkazd9w3cdtve7@resize_w450_nl.webp" alt="Kit 2x Whey Protein 1.8kg Body Nutry" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Kit%202x%20Whey%20Protein%20'" loading="lazy">
+          
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Whey Protein
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Shopee
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Kit 2x Whey Protein 1.8kg Body Nutry</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              
+              <p class="text-xl font-black text-gray-900">R$&nbsp;82,99</p>
+            </div>
+            
+          </div>
+          <a href="https://s.shopee.com.br/70KqZPf8X2" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.05s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791815303112)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791815303112)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://down-br.img.susercontent.com/file/sg-11134201-7repi-m8ibd9co7lzpef@resize_w450_nl.webp" alt="Whey Protein Isolate 2W 900g Metapharma Pote" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Whey%20Protein%20Isolate'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-29%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Whey Protein
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Shopee
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Whey Protein Isolate 2W 900g Metapharma Pote</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;69,00</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;49,00</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;20,00</div>
+          </div>
+          <a href="https://s.shopee.com.br/Lnqm8kD21" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.1s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791815302446)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791815302446)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_804482-MLA116626280023_082026-F.webp" alt="Whey Protein Hyper Whey 900g Chocolate - Profit Laboratórios" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Whey%20Protein%20Hyper%20W'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-29%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Whey Protein
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Mercado Livre
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Whey Protein Hyper Whey 900g Chocolate - Profit Laboratórios</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;69,90</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;49,90</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;20,00</div>
+          </div>
+          <a href="https://meli.la/2tS33hG" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.15000000000000002s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791815302950)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791815302950)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_751549-MLA115224615320_082026-F.webp" alt="Whey Protein Hyper Whey 900g Baunilha - Profit Laboratórios" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Whey%20Protein%20Hyper%20W'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-29%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Whey Protein
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Mercado Livre
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Whey Protein Hyper Whey 900g Baunilha - Profit Laboratórios</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;69,90</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;49,90</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;20,00</div>
+          </div>
+          <a href="https://meli.la/1DuSWi6" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.2s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791815302426)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791815302426)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://down-br.img.susercontent.com/file/br-11134207-820la-ms5p0ikxvcw7e7@resize_w450_nl.webp" alt="Pré Treino Muscle Pump 300g - Espartanos" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Pr%C3%A9%20Treino%20Muscle%20Pu'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-30%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Pré-Treino
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Shopee
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Pré Treino Muscle Pump 300g - Espartanos</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;49,90</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;35,02</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;14,88</div>
+          </div>
+          <a href="https://s.shopee.com.br/1gJKJwPoVW" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.25s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791815303312)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791815303312)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_769872-MLA110079163516_042026-F.webp" alt="Whey Protein 100% Concentrado Premium 840g Chocolate - Profit" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Whey%20Protein%20100%25%20Co'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-20%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Whey Protein
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Mercado Livre
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Whey Protein 100% Concentrado Premium 840g Chocolate - Profit</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;99,90</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;79,90</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;20,00</div>
+          </div>
+          <a href="https://meli.la/1p5h8oX" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.30000000000000004s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791815303171)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791815303171)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://m.media-amazon.com/images/I/61CwcsowYSL._AC_SX679_.jpg" alt="Refil Whey Turbo Baunilha 907g Black Skull" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Refil%20Whey%20Turbo%20Bau'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-34%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Whey Protein
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Amazon
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Refil Whey Turbo Baunilha 907g Black Skull</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;67,96</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;45,00</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;22,96</div>
+          </div>
+          <a href="https://link.amazon/B0c5rfXeV" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.35000000000000003s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791815303348)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791815303348)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m3nrzpuajy2g4b@resize_w450_nl.webp" alt="Pré Treino Tuned 300g Life Sense Nutrition" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Pr%C3%A9%20Treino%20Tuned%20300'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-11%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Pré-Treino
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Shopee
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Pré Treino Tuned 300g Life Sense Nutrition</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;34,90</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;31,11</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;3,79</div>
+          </div>
+          <a href="https://s.shopee.com.br/1B6LCb8kk" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.4s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791815303234)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791815303234)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://down-br.img.susercontent.com/file/br-11134207-820lt-mrw2kc3jy8slfd@resize_w450_nl.webp" alt="Malto Dextrina 1kg Sabor Morango - DNA Suplementos" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Malto%20Dextrina%201kg%20S'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-13%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Pré-Treino
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Shopee
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Malto Dextrina 1kg Sabor Morango - DNA Suplementos</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;23,90</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;20,90</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;3,00</div>
+          </div>
+          <a href="https://s.shopee.com.br/5AtCVsRmtW" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.45s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791815302923)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791815302923)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://down-br.img.susercontent.com/file/br-11134207-820l8-mseh828jw1s5ff@resize_w450_nl.webp" alt="Whey Protein One Refil 900g Dark Lab" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Whey%20Protein%20One%20Ref'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-21%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Whey Protein
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Shopee
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Whey Protein One Refil 900g Dark Lab</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;99,90</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;78,90</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;21,00</div>
+          </div>
+          <a href="https://s.shopee.com.br/2gBrRt0dJZ" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.5s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791815302656)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791815302656)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m9rcxqjfzvgi94@resize_w450_nl.webp" alt="Whey Ultra Protein Concentrado Pote 900g - FTW" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Whey%20Ultra%20Protein%20C'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-36%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Whey Protein
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Shopee
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Whey Ultra Protein Concentrado Pote 900g - FTW</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;109,90</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;69,99</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;39,91</div>
+          </div>
+          <a href="https://s.shopee.com.br/3g4FAAz21p" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.55s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791815302669)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791815302669)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_616506-MLA110075703952_042026-F.webp" alt="Anabolic Mass 28500 3kg Chocolate - Profit Labs" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Anabolic%20Mass%2028500%20'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-37%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Hipercalórico
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Mercado Livre
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Anabolic Mass 28500 3kg Chocolate - Profit Labs</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;99,90</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;63,11</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;36,79</div>
+          </div>
+          <a href="https://meli.la/1zTWPYW" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.6000000000000001s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791815302536)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791815302536)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://m.media-amazon.com/images/I/61TueBp8+cL._AC_SX679_.jpg" alt="B.O.P.E Pré Treino - 300G Frutas Vermelhas - Black Skull" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=B.O.P.E%20Pr%C3%A9%20Treino%20-'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-28%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Pré-Treino
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Amazon
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">B.O.P.E Pré Treino - 300G Frutas Vermelhas - Black Skull</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;55,29</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;39,90</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;15,39</div>
+          </div>
+          <a href="https://link.amazon/B0eHezh9K" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.65s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791815302738)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791815302738)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://down-br.img.susercontent.com/file/4cae1e3415454e71889a46a3720b0616@resize_w450_nl.webp" alt="Pré Treino For Impulse 300g - Fisionutri" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Pr%C3%A9%20Treino%20For%20Impul'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-4%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Pré-Treino
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Shopee
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Pré Treino For Impulse 300g - Fisionutri</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;32,90</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;31,59</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;1,31</div>
+          </div>
+          <a href="https://s.shopee.com.br/40hF7Nnhwn" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.7000000000000001s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791815302755)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791815302755)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://down-br.img.susercontent.com/file/br-11134207-820lr-mrw0d7cd92x049@resize_w450_nl.webp" alt="Malto Dextrina 1kg Açaí com Guaraná - DNA Suplementos" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Malto%20Dextrina%201kg%20A'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-13%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Pré-Treino
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Shopee
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Malto Dextrina 1kg Açaí com Guaraná - DNA Suplementos</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;23,90</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;20,90</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;3,00</div>
+          </div>
+          <a href="https://s.shopee.com.br/6fi0J5jl09" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.75s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791815303301)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791815303301)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-ll0rsii9ngfn17@resize_w450_nl.webp" alt="Kit 2x Whey Complex Protein Blend + Bcaa + Creatina + Shaker" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Kit%202x%20Whey%20Complex%20'" loading="lazy">
+          
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Whey Protein
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Shopee
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Kit 2x Whey Complex Protein Blend + Bcaa + Creatina + Shaker</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              
+              <p class="text-xl font-black text-gray-900">R$&nbsp;89,29</p>
+            </div>
+            
+          </div>
+          <a href="https://s.shopee.com.br/3qNowNr1iV" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.8s">
+        <div class="relative aspect-square overflow-hidden bg-gray-100">
+          <button onclick="editOffer(1791815303046)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
+            <i class="fas fa-edit text-sm"></i>
+          </button>
+          <button onclick="confirmDeleteOffer(1791815303046)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
+            <i class="fas fa-trash-alt text-sm"></i>
+          </button>
+          <img src="https://m.media-amazon.com/images/I/71ERX74XIIL._AC_SX679_.jpg" alt="Pré-Treino Prohibido Morango 360g 3VS Nutrition | Hardcore Underground · Cafeína 200mg por Dose + Beta Alanina + Creatina" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Pr%C3%A9-Treino%20Prohibido'" loading="lazy">
+          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-16%</div>
+          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
+            <i class="fas fa-star mr-1"></i>Pré-Treino
+          </div>
+          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
+            <i class="fas fa-store mr-1"></i>Amazon
+          </div>
+        </div>
+        <div class="p-4">
+          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Pré-Treino Prohibido Morango 360g 3VS Nutrition | Hardcore Underground · Cafeína 200mg por Dose + Beta Alanina + Creatina</h4>
+          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <p class="text-xs text-gray-400 line-through">R$&nbsp;78,33</p>
+              <p class="text-xl font-black text-gray-900">R$&nbsp;66,12</p>
+            </div>
+            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;12,21</div>
+          </div>
+          <a href="https://link.amazon/B09Y1FWIh" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
+          </a>
+        </div>
+      </div>
+    
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.8500000000000001s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791729081454)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -264,7 +825,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.05s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.9s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791729081106)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -297,7 +858,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.1s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.9500000000000001s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791729081022)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -330,7 +891,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.15000000000000002s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791729081288)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -363,7 +924,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.2s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.05s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791729081685)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -396,7 +957,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.25s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.1s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791729081749)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -429,7 +990,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.30000000000000004s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.1500000000000001s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791729081327)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -462,7 +1023,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.35000000000000003s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.2000000000000002s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791729081412)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -495,7 +1056,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.4s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.25s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791729080935)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -528,7 +1089,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.45s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.3s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791729081431)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -561,7 +1122,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.5s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.35s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791652111891)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -594,7 +1155,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.55s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.4000000000000001s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791652111781)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -627,7 +1188,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.6000000000000001s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.4500000000000002s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791652111014)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -660,7 +1221,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.65s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.5s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791652111022)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -693,7 +1254,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.7000000000000001s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.55s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791652111688)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -726,7 +1287,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.75s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.6s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791652110927)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -759,7 +1320,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.8s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.6500000000000001s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791652111716)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -792,7 +1353,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.8500000000000001s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.7000000000000002s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791652111355)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -825,7 +1386,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.9s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.75s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791652111666)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -858,7 +1419,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 0.9500000000000001s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.8s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791652111383)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -891,7 +1452,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.85s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791640183880)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -924,7 +1485,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.05s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.9000000000000001s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791640183781)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -957,7 +1518,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.1s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.9500000000000002s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791640183611)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -990,7 +1551,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.1500000000000001s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791640183534)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -1023,7 +1584,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.2000000000000002s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.0500000000000003s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791640183318)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -1056,7 +1617,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.25s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.1s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791640183674)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -1089,7 +1650,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.3s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.15s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791640183476)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -1122,7 +1683,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.35s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.2s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791640183899)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -1155,7 +1716,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.4000000000000001s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.25s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791640183541)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -1188,7 +1749,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.4500000000000002s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.3000000000000003s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791640183936)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -1221,7 +1782,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.5s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.35s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791640184030)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -1254,7 +1815,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.55s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.4000000000000004s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791640184062)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -1287,7 +1848,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.6s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.45s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791553253501)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -1320,7 +1881,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.6500000000000001s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.5s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791553253958)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -1353,7 +1914,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.7000000000000002s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.5500000000000003s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791553253917)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -1386,7 +1947,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.75s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.6s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791553254329)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -1419,7 +1980,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.8s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.6500000000000004s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791553254182)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -1452,7 +2013,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.85s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.7s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791553253844)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -1485,7 +2046,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.9000000000000001s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.75s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791553253607)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -1518,7 +2079,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 1.9500000000000002s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.8000000000000003s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791553253736)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -1551,7 +2112,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.85s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791553254205)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -1584,7 +2145,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.0500000000000003s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.9000000000000004s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791553253884)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -1617,7 +2178,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.1s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.95s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791553253914)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -1650,7 +2211,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.15s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791553254226)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -1683,7 +2244,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.2s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.0500000000000003s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791553253609)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -1716,7 +2277,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.25s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.1s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791553253536)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -1749,7 +2310,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.3000000000000003s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.1500000000000004s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791553253390)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -1782,7 +2343,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.35s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.2s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791553253379)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -1815,7 +2376,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.4000000000000004s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.25s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791553253797)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -1848,7 +2409,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.45s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.3000000000000003s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791553254026)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -1881,7 +2442,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.5s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.35s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791553253710)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -1914,7 +2475,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.5500000000000003s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.4000000000000004s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791553253688)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -1947,7 +2508,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.6s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.45s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791553253495)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -1980,7 +2541,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.6500000000000004s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.5s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791469104402)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -2013,7 +2574,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.7s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.5500000000000003s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791469103817)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -2046,7 +2607,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.75s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.6s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791469103933)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -2079,7 +2640,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.8000000000000003s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.6500000000000004s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791469103712)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -2112,7 +2673,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.85s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.7s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791469103592)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -2145,7 +2706,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.9000000000000004s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.75s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791469104020)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -2178,7 +2739,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 2.95s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.8000000000000003s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791469103698)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -2211,7 +2772,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.85s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791469104445)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -2244,7 +2805,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.0500000000000003s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.9000000000000004s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791469103691)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -2277,7 +2838,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.1s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.95s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791469104229)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -2310,7 +2871,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.1500000000000004s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791469103754)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -2343,7 +2904,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.2s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.05s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791469103827)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -2376,7 +2937,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.25s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.1000000000000005s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791469103550)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -2409,7 +2970,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.3000000000000003s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.15s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791385427004)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -2442,7 +3003,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.35s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.2s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791385427384)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -2475,7 +3036,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.4000000000000004s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.25s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791385426973)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -2508,7 +3069,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.45s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.3s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791385426950)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -2541,7 +3102,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.5s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.3500000000000005s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791385427366)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -2574,7 +3135,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.5500000000000003s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.4s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791385427182)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -2607,7 +3168,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.6s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.45s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791385427631)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -2640,7 +3201,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.6500000000000004s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.5s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791385427270)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -2673,7 +3234,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.7s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.55s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791385427759)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -2706,7 +3267,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.75s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.6000000000000005s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791385427013)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -2739,7 +3300,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.8000000000000003s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.65s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791385427287)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -2772,7 +3333,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.85s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.7s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791385427381)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -2805,7 +3366,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.9000000000000004s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.75s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791385427418)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -2838,7 +3399,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 3.95s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.800000000000001s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791385427345)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -2871,40 +3432,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4s">
-        <div class="relative aspect-square overflow-hidden bg-gray-100">
-          <button onclick="editOffer(1791385427539)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
-            <i class="fas fa-edit text-sm"></i>
-          </button>
-          <button onclick="confirmDeleteOffer(1791385427539)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
-            <i class="fas fa-trash-alt text-sm"></i>
-          </button>
-          <img src="https://m.media-amazon.com/images/I/61TueBp8+cL._AC_SX679_.jpg" alt="B.O.P.E Pré Treino - 300G Frutas Vermelhas - Black Skull" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=B.O.P.E%20Pr%C3%A9%20Treino%20-'" loading="lazy">
-          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-31%</div>
-          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
-            <i class="fas fa-star mr-1"></i>Pré-Treino
-          </div>
-          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
-            <i class="fas fa-store mr-1"></i>Amazon
-          </div>
-        </div>
-        <div class="p-4">
-          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">B.O.P.E Pré Treino - 300G Frutas Vermelhas - Black Skull</h4>
-          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
-          <div class="flex items-end justify-between mb-3">
-            <div>
-              <p class="text-xs text-gray-400 line-through">R$&nbsp;55,29</p>
-              <p class="text-xl font-black text-gray-900">R$&nbsp;37,90</p>
-            </div>
-            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;17,39</div>
-          </div>
-          <a href="https://link.amazon/B0eHezh9K" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
-            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
-          </a>
-        </div>
-      </div>
-    
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.05s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.8500000000000005s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791385426911)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -2937,7 +3465,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.1000000000000005s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.9s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791385427637)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -2970,7 +3498,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.15s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.95s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791385427607)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -3003,7 +3531,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.2s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 5s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791385426828)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -3036,7 +3564,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.25s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 5.050000000000001s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791385427730)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -3069,7 +3597,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.3s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 5.1000000000000005s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791297240797)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -3102,7 +3630,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.3500000000000005s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 5.15s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791297071592)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -3135,40 +3663,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.4s">
-        <div class="relative aspect-square overflow-hidden bg-gray-100">
-          <button onclick="editOffer(1791297071526)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
-            <i class="fas fa-edit text-sm"></i>
-          </button>
-          <button onclick="confirmDeleteOffer(1791297071526)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
-            <i class="fas fa-trash-alt text-sm"></i>
-          </button>
-          <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-ll0rsii9ngfn17@resize_w450_nl.webp" alt="Kit 2x Whey Complex Protein Blend + Bcaa + Creatina + Shaker" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Kit%202x%20Whey%20Complex%20'" loading="lazy">
-          
-          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
-            <i class="fas fa-star mr-1"></i>Whey Protein
-          </div>
-          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
-            <i class="fas fa-store mr-1"></i>Shopee
-          </div>
-        </div>
-        <div class="p-4">
-          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Kit 2x Whey Complex Protein Blend + Bcaa + Creatina + Shaker</h4>
-          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
-          <div class="flex items-end justify-between mb-3">
-            <div>
-              
-              <p class="text-xl font-black text-gray-900">R$&nbsp;94,91</p>
-            </div>
-            
-          </div>
-          <a href="https://s.shopee.com.br/6fhqhxVElM" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
-            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
-          </a>
-        </div>
-      </div>
-    
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.45s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 5.2s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791297071646)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -3201,7 +3696,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.5s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 5.25s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791297071420)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -3234,7 +3729,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.55s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 5.300000000000001s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791297071064)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -3267,7 +3762,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.6000000000000005s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 5.3500000000000005s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791297071943)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -3300,40 +3795,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.65s">
-        <div class="relative aspect-square overflow-hidden bg-gray-100">
-          <button onclick="editOffer(1791232547395)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
-            <i class="fas fa-edit text-sm"></i>
-          </button>
-          <button onclick="confirmDeleteOffer(1791232547395)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
-            <i class="fas fa-trash-alt text-sm"></i>
-          </button>
-          <img src="https://m.media-amazon.com/images/I/71ERX74XIIL._AC_SX679_.jpg" alt="Pré-Treino Prohibido Morango 360g 3VS Nutrition | Hardcore Underground · Cafeína 200mg por Dose + Beta Alanina + Creatina" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=Pr%C3%A9-Treino%20Prohibido'" loading="lazy">
-          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-17%</div>
-          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
-            <i class="fas fa-star mr-1"></i>Pré-Treino
-          </div>
-          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
-            <i class="fas fa-store mr-1"></i>Amazon
-          </div>
-        </div>
-        <div class="p-4">
-          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">Pré-Treino Prohibido Morango 360g 3VS Nutrition | Hardcore Underground · Cafeína 200mg por Dose + Beta Alanina + Creatina</h4>
-          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
-          <div class="flex items-end justify-between mb-3">
-            <div>
-              <p class="text-xs text-gray-400 line-through">R$&nbsp;78,33</p>
-              <p class="text-xl font-black text-gray-900">R$&nbsp;65,00</p>
-            </div>
-            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;13,33</div>
-          </div>
-          <a href="https://link.amazon/B04F0CIXA" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
-            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
-          </a>
-        </div>
-      </div>
-    
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.7s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 5.4s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791232547801)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -3366,7 +3828,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.75s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 5.45s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791232547181)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -3399,7 +3861,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.800000000000001s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 5.5s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791232547402)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -3432,7 +3894,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.8500000000000005s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 5.550000000000001s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791232547599)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -3465,7 +3927,7 @@
         </div>
       </div>
     
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.9s">
+      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 5.6000000000000005s">
         <div class="relative aspect-square overflow-hidden bg-gray-100">
           <button onclick="editOffer(1791232547914)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
             <i class="fas fa-edit text-sm"></i>
@@ -3493,39 +3955,6 @@
             <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;25,00</div>
           </div>
           <a href="https://meli.la/2dZ2jR6" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
-            <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
-          </a>
-        </div>
-      </div>
-    
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-md fade-in relative" style="animation-delay: 4.95s">
-        <div class="relative aspect-square overflow-hidden bg-gray-100">
-          <button onclick="editOffer(1791232547678)" class="edit-btn absolute top-3 right-14 z-10 w-9 h-9 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Editar oferta">
-            <i class="fas fa-edit text-sm"></i>
-          </button>
-          <button onclick="confirmDeleteOffer(1791232547678)" class="delete-btn absolute top-3 right-3 z-10 w-9 h-9 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center" title="Apagar oferta">
-            <i class="fas fa-trash-alt text-sm"></i>
-          </button>
-          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_963869-MLA111911921048_062026-F.webp" alt="100% Whey Protein Concentrado 900g Cookies &amp; Cream" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" onerror="this.src='https://placehold.co/400x400/eab308/ffffff?text=100%25%20Whey%20Protein%20Co'" loading="lazy">
-          <div class="discount-badge absolute top-3 left-3 text-white font-black px-3 py-1.5 rounded-full text-sm shadow-lg">-32%</div>
-          <div class="absolute top-14 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-gray-700 shadow">
-            <i class="fas fa-star mr-1"></i>Whey Protein
-          </div>
-          <div class="absolute bottom-3 left-3 bg-gray-900/90 backdrop-blur text-yellow-400 px-2.5 py-1 rounded-full text-xs font-bold shadow">
-            <i class="fas fa-store mr-1"></i>Mercado Livre
-          </div>
-        </div>
-        <div class="p-4">
-          <h4 class="font-bold text-gray-900 text-sm line-clamp-2 mb-2 min-h-[2.5rem]">100% Whey Protein Concentrado 900g Cookies &amp; Cream</h4>
-          <p class="text-xs text-gray-500 mb-3 line-clamp-2">⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.</p>
-          <div class="flex items-end justify-between mb-3">
-            <div>
-              <p class="text-xs text-gray-400 line-through">R$&nbsp;250,00</p>
-              <p class="text-xl font-black text-gray-900">R$&nbsp;169,00</p>
-            </div>
-            <div class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-lg">Economize R$&nbsp;81,00</div>
-          </div>
-          <a href="https://meli.la/1nCXYLg" target="_blank" rel="noopener noreferrer" class="block w-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-bold py-2.5 rounded-xl text-center hover:opacity-90 transition-all shadow-md">
             <i class="fas fa-external-link-alt mr-2"></i>Ver Oferta
           </a>
         </div>
@@ -3961,18 +4390,6 @@ const defaultSettings = {
 
 let offers = [
   {
-    "id": 1791232547395,
-    "titulo": "Pré-Treino Prohibido Morango 360g 3VS Nutrition | Hardcore Underground · Cafeína 200mg por Dose + Beta Alanina + Creatina",
-    "preco": 65,
-    "preco_original": 78.33,
-    "categoria": "Pré-Treino",
-    "imagem": "https://m.media-amazon.com/images/I/71ERX74XIIL._AC_SX679_.jpg",
-    "link": "https://link.amazon/B04F0CIXA",
-    "loja": "Amazon",
-    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
-    "dateAdded": "2026-10-05T20:35:47.031Z"
-  },
-  {
     "id": 1791232547801,
     "titulo": "Whey Protein Concentrado 1Kg - Natural - 100% Puro Importado - Soldiers Nutrition",
     "preco": 151.9,
@@ -4033,18 +4450,6 @@ let offers = [
     "dateAdded": "2026-10-05T20:35:47.031Z"
   },
   {
-    "id": 1791232547678,
-    "titulo": "100% Whey Protein Concentrado 900g Cookies & Cream",
-    "preco": 169,
-    "preco_original": 250,
-    "categoria": "Whey Protein",
-    "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_963869-MLA111911921048_062026-F.webp",
-    "link": "https://meli.la/1nCXYLg",
-    "loja": "Mercado Livre",
-    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
-    "dateAdded": "2026-10-05T20:35:47.031Z"
-  },
-  {
     "id": 1791297071592,
     "titulo": "Creatine Turbo BlackSkull - Creatina Monohidratada em pó, com carboidrato para melhor absorção e performance (300g Pote, Laranja)",
     "preco": 31.49,
@@ -4053,18 +4458,6 @@ let offers = [
     "imagem": "https://m.media-amazon.com/images/I/61wRpGz+yIL._AC_SX425_.jpg",
     "link": "https://link.amazon/B0g4QlrRM",
     "loja": "Amazon",
-    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
-    "dateAdded": "2026-10-06T14:31:11.059Z"
-  },
-  {
-    "id": 1791297071526,
-    "titulo": "Kit 2x Whey Complex Protein Blend + Bcaa + Creatina + Shaker",
-    "preco": 94.91,
-    "preco_original": 94.91,
-    "categoria": "Whey Protein",
-    "imagem": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-ll0rsii9ngfn17@resize_w450_nl.webp",
-    "link": "https://s.shopee.com.br/6fhqhxVElM",
-    "loja": "Shopee",
     "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
     "dateAdded": "2026-10-06T14:31:11.059Z"
   },
@@ -4136,18 +4529,6 @@ let offers = [
     "categoria": "Whey Protein",
     "imagem": "https://m.media-amazon.com/images/I/71zuYQSw3jL._AC_SX679_.jpg",
     "link": "https://link.amazon/B054u7hAg",
-    "loja": "Amazon",
-    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
-    "dateAdded": "2026-10-07T15:03:46.782Z"
-  },
-  {
-    "id": 1791385427539,
-    "titulo": "B.O.P.E Pré Treino - 300G Frutas Vermelhas - Black Skull",
-    "preco": 37.9,
-    "preco_original": 55.29,
-    "categoria": "Pré-Treino",
-    "imagem": "https://m.media-amazon.com/images/I/61TueBp8+cL._AC_SX679_.jpg",
-    "link": "https://link.amazon/B0eHezh9K",
     "loja": "Amazon",
     "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
     "dateAdded": "2026-10-07T15:03:46.782Z"
@@ -5159,6 +5540,210 @@ let offers = [
     "loja": "Mercado Livre",
     "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
     "dateAdded": "2026-10-11T14:31:20.793Z"
+  },
+  {
+    "id": 1791815302841,
+    "titulo": "Kit 2x Whey Protein 1.8kg Body Nutry",
+    "preco": 82.99,
+    "preco_original": 82.99,
+    "categoria": "Whey Protein",
+    "imagem": "https://down-br.img.susercontent.com/file/br-11134207-81ztc-mkazd9w3cdtve7@resize_w450_nl.webp",
+    "link": "https://s.shopee.com.br/70KqZPf8X2",
+    "loja": "Shopee",
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-12T14:28:22.404Z"
+  },
+  {
+    "id": 1791815303112,
+    "titulo": "Whey Protein Isolate 2W 900g Metapharma Pote",
+    "preco": 49,
+    "preco_original": 69,
+    "categoria": "Whey Protein",
+    "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-7repi-m8ibd9co7lzpef@resize_w450_nl.webp",
+    "link": "https://s.shopee.com.br/Lnqm8kD21",
+    "loja": "Shopee",
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-12T14:28:22.404Z"
+  },
+  {
+    "id": 1791815302446,
+    "titulo": "Whey Protein Hyper Whey 900g Chocolate - Profit Laboratórios",
+    "preco": 49.9,
+    "preco_original": 69.9,
+    "categoria": "Whey Protein",
+    "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_804482-MLA116626280023_082026-F.webp",
+    "link": "https://meli.la/2tS33hG",
+    "loja": "Mercado Livre",
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-12T14:28:22.404Z"
+  },
+  {
+    "id": 1791815302950,
+    "titulo": "Whey Protein Hyper Whey 900g Baunilha - Profit Laboratórios",
+    "preco": 49.9,
+    "preco_original": 69.9,
+    "categoria": "Whey Protein",
+    "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_751549-MLA115224615320_082026-F.webp",
+    "link": "https://meli.la/1DuSWi6",
+    "loja": "Mercado Livre",
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-12T14:28:22.404Z"
+  },
+  {
+    "id": 1791815302426,
+    "titulo": "Pré Treino Muscle Pump 300g - Espartanos",
+    "preco": 35.02,
+    "preco_original": 49.9,
+    "categoria": "Pré-Treino",
+    "imagem": "https://down-br.img.susercontent.com/file/br-11134207-820la-ms5p0ikxvcw7e7@resize_w450_nl.webp",
+    "link": "https://s.shopee.com.br/1gJKJwPoVW",
+    "loja": "Shopee",
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-12T14:28:22.404Z"
+  },
+  {
+    "id": 1791815303312,
+    "titulo": "Whey Protein 100% Concentrado Premium 840g Chocolate - Profit",
+    "preco": 79.9,
+    "preco_original": 99.9,
+    "categoria": "Whey Protein",
+    "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_769872-MLA110079163516_042026-F.webp",
+    "link": "https://meli.la/1p5h8oX",
+    "loja": "Mercado Livre",
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-12T14:28:22.404Z"
+  },
+  {
+    "id": 1791815303171,
+    "titulo": "Refil Whey Turbo Baunilha 907g Black Skull",
+    "preco": 45,
+    "preco_original": 67.96,
+    "categoria": "Whey Protein",
+    "imagem": "https://m.media-amazon.com/images/I/61CwcsowYSL._AC_SX679_.jpg",
+    "link": "https://link.amazon/B0c5rfXeV",
+    "loja": "Amazon",
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-12T14:28:22.404Z"
+  },
+  {
+    "id": 1791815303348,
+    "titulo": "Pré Treino Tuned 300g Life Sense Nutrition",
+    "preco": 31.11,
+    "preco_original": 34.9,
+    "categoria": "Pré-Treino",
+    "imagem": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m3nrzpuajy2g4b@resize_w450_nl.webp",
+    "link": "https://s.shopee.com.br/1B6LCb8kk",
+    "loja": "Shopee",
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-12T14:28:22.404Z"
+  },
+  {
+    "id": 1791815303234,
+    "titulo": "Malto Dextrina 1kg Sabor Morango - DNA Suplementos",
+    "preco": 20.9,
+    "preco_original": 23.9,
+    "categoria": "Pré-Treino",
+    "imagem": "https://down-br.img.susercontent.com/file/br-11134207-820lt-mrw2kc3jy8slfd@resize_w450_nl.webp",
+    "link": "https://s.shopee.com.br/5AtCVsRmtW",
+    "loja": "Shopee",
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-12T14:28:22.404Z"
+  },
+  {
+    "id": 1791815302923,
+    "titulo": "Whey Protein One Refil 900g Dark Lab",
+    "preco": 78.9,
+    "preco_original": 99.9,
+    "categoria": "Whey Protein",
+    "imagem": "https://down-br.img.susercontent.com/file/br-11134207-820l8-mseh828jw1s5ff@resize_w450_nl.webp",
+    "link": "https://s.shopee.com.br/2gBrRt0dJZ",
+    "loja": "Shopee",
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-12T14:28:22.404Z"
+  },
+  {
+    "id": 1791815302656,
+    "titulo": "Whey Ultra Protein Concentrado Pote 900g - FTW",
+    "preco": 69.99,
+    "preco_original": 109.9,
+    "categoria": "Whey Protein",
+    "imagem": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m9rcxqjfzvgi94@resize_w450_nl.webp",
+    "link": "https://s.shopee.com.br/3g4FAAz21p",
+    "loja": "Shopee",
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-12T14:28:22.404Z"
+  },
+  {
+    "id": 1791815302669,
+    "titulo": "Anabolic Mass 28500 3kg Chocolate - Profit Labs",
+    "preco": 63.11,
+    "preco_original": 99.9,
+    "categoria": "Hipercalórico",
+    "imagem": "https://http2.mlstatic.com/D_NQ_NP_2X_616506-MLA110075703952_042026-F.webp",
+    "link": "https://meli.la/1zTWPYW",
+    "loja": "Mercado Livre",
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-12T14:28:22.404Z"
+  },
+  {
+    "id": 1791815302536,
+    "titulo": "B.O.P.E Pré Treino - 300G Frutas Vermelhas - Black Skull",
+    "preco": 39.9,
+    "preco_original": 55.29,
+    "categoria": "Pré-Treino",
+    "imagem": "https://m.media-amazon.com/images/I/61TueBp8+cL._AC_SX679_.jpg",
+    "link": "https://link.amazon/B0eHezh9K",
+    "loja": "Amazon",
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-12T14:28:22.404Z"
+  },
+  {
+    "id": 1791815302738,
+    "titulo": "Pré Treino For Impulse 300g - Fisionutri",
+    "preco": 31.59,
+    "preco_original": 32.9,
+    "categoria": "Pré-Treino",
+    "imagem": "https://down-br.img.susercontent.com/file/4cae1e3415454e71889a46a3720b0616@resize_w450_nl.webp",
+    "link": "https://s.shopee.com.br/40hF7Nnhwn",
+    "loja": "Shopee",
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-12T14:28:22.404Z"
+  },
+  {
+    "id": 1791815302755,
+    "titulo": "Malto Dextrina 1kg Açaí com Guaraná - DNA Suplementos",
+    "preco": 20.9,
+    "preco_original": 23.9,
+    "categoria": "Pré-Treino",
+    "imagem": "https://down-br.img.susercontent.com/file/br-11134207-820lr-mrw0d7cd92x049@resize_w450_nl.webp",
+    "link": "https://s.shopee.com.br/6fi0J5jl09",
+    "loja": "Shopee",
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-12T14:28:22.404Z"
+  },
+  {
+    "id": 1791815303301,
+    "titulo": "Kit 2x Whey Complex Protein Blend + Bcaa + Creatina + Shaker",
+    "preco": 89.29,
+    "preco_original": 89.29,
+    "categoria": "Whey Protein",
+    "imagem": "https://down-br.img.susercontent.com/file/br-11134207-7r98o-ll0rsii9ngfn17@resize_w450_nl.webp",
+    "link": "https://s.shopee.com.br/3qNowNr1iV",
+    "loja": "Shopee",
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-12T14:28:22.404Z"
+  },
+  {
+    "id": 1791815303046,
+    "titulo": "Pré-Treino Prohibido Morango 360g 3VS Nutrition | Hardcore Underground · Cafeína 200mg por Dose + Beta Alanina + Creatina",
+    "preco": 66.12,
+    "preco_original": 78.33,
+    "categoria": "Pré-Treino",
+    "imagem": "https://m.media-amazon.com/images/I/71ERX74XIIL._AC_SX679_.jpg",
+    "link": "https://link.amazon/B09Y1FWIh",
+    "loja": "Amazon",
+    "descricao": "⚠️ Promoção sujeita à alteração de preço e estoque do site. Ver detalhes na Oferta.",
+    "dateAdded": "2026-10-12T14:28:22.404Z"
   }
 ];
 let settings = JSON.parse(JSON.stringify(defaultSettings));
